@@ -1,7 +1,10 @@
 package exec;
 
 public class Lelloworld {
-
-	return;
+ private int i=2;
+ private int j=3;
+ public Lelloworld() {
+	 System.out.println("negro" + j + i);
+ }
 
 }
