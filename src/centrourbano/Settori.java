@@ -25,6 +25,14 @@ public class Settori implements Serializable{
 	}
 	
 	
+	/**
+	 * Calcola il prezzo del lotto
+	 * @param settore
+	 */
+	
+	public void vendiEdificio(int settore) {
+		// (Valore settore + valore lotto) * coeff. eff.
+	}
 	
 	
 	

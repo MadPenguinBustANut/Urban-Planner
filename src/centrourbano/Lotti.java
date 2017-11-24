@@ -41,6 +41,11 @@ public class Lotti implements Serializable{
 	private int tipo;
 	private int valore;
 	
+	
+	//Li randomizziamo?
+	private int ceff;
+	private int cinv;
+	
 	static private int LIBERO = 0;
 	static private int STRADA = 1;
 	static private int EPUB = 2;

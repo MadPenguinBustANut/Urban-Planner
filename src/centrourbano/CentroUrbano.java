@@ -8,7 +8,9 @@ public class CentroUrbano implements Serializable{
 
 	
 	
-	
+	public void seleLotto() {
+		//TODO
+	}
 	
 	
 	
