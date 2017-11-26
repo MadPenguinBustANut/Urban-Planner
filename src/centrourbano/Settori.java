@@ -9,8 +9,7 @@ public class Settori implements Serializable{
 
 	public Settori() {
 		setValore(0);
-		righe = 0; colonne = 0;
-		lista = new Lotti[righe][colonne];
+		lista = new Lotti[3][5];
 	}
 	/**
 	 * 
@@ -20,12 +19,6 @@ public class Settori implements Serializable{
 	 * @param larghezza colonne
 	 * 
 	 */
-	public Settori(int altezza, int larghezza) {
-		setValore(0);
-
-		righe = altezza; colonne = larghezza;
-		lista = new Lotti[righe][colonne];
-	}
 	
 	
 	/**
@@ -51,6 +44,8 @@ public class Settori implements Serializable{
 	}
 	
 	
+	
+	
 	/**
 	 * Rimuove l'edificio e invere i cambiamenti che questo influiva sui vicini e sul settore.
 	 * -Edificio privato: Semplice rimozione
@@ -64,7 +59,7 @@ public class Settori implements Serializable{
 	 */
 	
 	public void rmEdificio(int riga, int colonna) throws LottoLibero{
-		
+		//TODO
 	}
 	
 	public Lotti getLotto(int riga, int colonna) {
@@ -86,19 +81,6 @@ public class Settori implements Serializable{
 
 
 
-
-	public int getRighe() {
-		return righe;
-	}
-
-	public int getColonne() {
-		return colonne;
-	}
-
-
-
-	private int righe;
-	private int colonne;
 	private int valore;
 	
 	public Lotti[][] lista;

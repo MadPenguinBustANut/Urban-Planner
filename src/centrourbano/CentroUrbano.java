@@ -1,18 +1,29 @@
 package centrourbano;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class CentroUrbano implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	
-	
-	public void seleLotto() {
-		//TODO
+	public CentroUrbano() {
+		lista = new Settori[2][3];
 	}
 	
 	
 	
-	public ArrayList<Settori> lista = new ArrayList<Settori>();
+	
+	/**
+	 * Restituisce il Lotto selezionato (?)
+	 * 
+	 */
+	public Lotti seleLotto(int riga, int colonna) {
+		//TODO
+		return null;
+	}
+	
+	
+	
+	
+	
+	public Settori[][] lista;
 }

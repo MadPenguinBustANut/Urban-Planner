@@ -28,6 +28,8 @@ public class Lotti implements Serializable{
 		
 	}
 	
+	
+	
 	public int getVal() {
 		return valore;
 	}
@@ -35,9 +37,21 @@ public class Lotti implements Serializable{
 	public int getTip() {
 		return tipo;
 	}
-	
-	
-	
+	public int getCeff() {
+		return ceff;
+	}
+	public void setCeff(int ceff) {
+		this.ceff = ceff;
+	}
+	public int getCinv() {
+		return cinv;
+	}
+	public void setCinv(int cinv) {
+		this.cinv = cinv;
+	}
+
+
+
 	private int tipo;
 	private int valore;
 	
@@ -46,8 +60,8 @@ public class Lotti implements Serializable{
 	private int ceff;
 	private int cinv;
 	
-	static private int LIBERO = 0;
-	static private int STRADA = 1;
-	static private int EPUB = 2;
-	static private int EPRIV = 3;
+	private static int LIBERO = 0;
+	private static int STRADA = 1;
+	private static int EPUB = 2;
+	private static int EPRIV = 3;
 }
