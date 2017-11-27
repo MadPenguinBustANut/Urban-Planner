@@ -5,4 +5,63 @@ import java.io.Serializable;
 public class Lotti implements Serializable{
 	private static final long serialVersionUID = 1L;
 
+	public Lotti() {
+		tipo = 0;
+		valore = 0;
+	}
+	
+	/**
+	 * La funzione verrà usata per modificare il tipo di edificio
+	 * sostituendolo con il nuovo edificio
+	 * 
+	 * @param NuovoEdificio
+	 */
+	
+	public void cambiaTipo(int NuovoEdificio) {
+	}
+	
+	/**
+	 * Il valore del lotto viene cambiato al nuovo valore
+	 * @param NuovoValore
+	 */
+	public void cambiaValore(int NuovoValore) {
+		
+	}
+	
+	
+	
+	public int getVal() {
+		return valore;
+	}
+	
+	public int getTip() {
+		return tipo;
+	}
+	public int getCeff() {
+		return ceff;
+	}
+	public void setCeff(int ceff) {
+		this.ceff = ceff;
+	}
+	public int getCinv() {
+		return cinv;
+	}
+	public void setCinv(int cinv) {
+		this.cinv = cinv;
+	}
+
+
+
+	private int tipo;
+	private int valore;
+	
+	
+	//Li randomizziamo?
+	private int ceff;
+	private int cinv;
+	
+	private static int LIBERO = 0;
+	private static int STRADA = 1;
+	private static int EPUB = 2;
+	private static int EPRIV = 3;
 }
