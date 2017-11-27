@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import eccezioni.LottoLibero;
 
+
 public class Settori implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -39,15 +40,20 @@ public class Settori implements Serializable{
 	 * -Edificio privato: Controlla i lotti adiacenti in cerca di strade e aumenta per ogni strada il valore di 1
 	 * @param Nuovo
 	 */
-	public void addLotto(Lotti Nuovo) {
-		//TODO
+	public void addLotto(Lotti Nuovo, int riga, int colonna) {
+		if(Nuovo.getTip() == STRADA)
+			addStrada( Nuovo,riga,colonna);
+		if(Nuovo.getTip() == EPUB)
+			addepub(Nuovo,riga,colonna);
+		if(Nuovo.getTip() == EPRIV)
+			addepriv(Nuovo,  riga, colonna);
 	}
 	
 	
 	
 	
 	/**
-	 * Rimuove l'edificio e invere i cambiamenti che questo influiva sui vicini e sul settore.
+	 * Rimuove l'edificio e inverte i cambiamenti che questo influiva sui vicini e sul settore.
 	 * -Edificio privato: Semplice rimozione
 	 * -Edificio pubblico: Il valore del settore viene ridotto di 1
 	 * -Strada: Riduce di 1 il valore dei lotti adiacenti
@@ -59,7 +65,19 @@ public class Settori implements Serializable{
 	 */
 	
 	public void rmEdificio(int riga, int colonna) throws LottoLibero{
-		//TODO
+		
+	}
+	
+	/**
+	 * Cambia l'edificio selezionato con un altro aggiornando gli effetti
+	 * @param riga
+	 * @param colonna
+	 * @throws LottoLibero
+	 */
+	
+	public void cgEdificio(Lotti nuovo,int riga, int colonna) throws LottoLibero{
+		rmEdificio(riga, colonna);
+		addLotto(nuovo, riga , colonna);
 	}
 	
 	public Lotti getLotto(int riga, int colonna) {
@@ -69,7 +87,14 @@ public class Settori implements Serializable{
 		return io;
 	}
 	
+	private void addStrada(Lotti Nuovo, int riga, int colonna) {
+		}
 	
+	private void addepub(Lotti Nuovo, int riga, int colonna) {
+		}
+	
+	private void addepriv(Lotti Nuovo, int riga, int colonna) {
+		}
 	
 	public int getValore() {
 		return valore;
@@ -82,6 +107,10 @@ public class Settori implements Serializable{
 
 
 	private int valore;
+
+	private static int STRADA = 1;
+	private static int EPUB = 2;
+	private static int EPRIV = 3;
 	
 	public Lotti[][] lista;
 }
