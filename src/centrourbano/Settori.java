@@ -41,11 +41,11 @@ public class Settori implements Serializable{
 	 * @param Nuovo
 	 */
 	public void addLotto(Lotti Nuovo, int riga, int colonna) {
-		if(Nuovo.getTip() == STRADA)
+		if(Nuovo.getTip() == 1)
 			addStrada( Nuovo,riga,colonna);
-		if(Nuovo.getTip() == EPUB)
+		if(Nuovo.getTip() == 2)
 			addepub(Nuovo,riga,colonna);
-		if(Nuovo.getTip() == EPRIV)
+		if(Nuovo.getTip() == 3)
 			addepriv(Nuovo,  riga, colonna);
 	}
 	
@@ -108,9 +108,7 @@ public class Settori implements Serializable{
 
 	private int valore;
 
-	private static int STRADA = 1;
-	private static int EPUB = 2;
-	private static int EPRIV = 3;
+	
 	
 	public Lotti[][] lista;
 }
