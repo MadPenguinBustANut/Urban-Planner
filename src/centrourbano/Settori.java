@@ -107,6 +107,8 @@ public class Settori implements Serializable{
 	 * @param colonna
 	 */
 	private void addStrada(Lotti Nuovo, int riga, int colonna) {
+		
+		//Sta roba manda errori se la usi sui lati, obv
 			lista[riga][colonna] = Nuovo;
 			lista[riga][colonna - 1].setVal(lista[riga][colonna - 1].getVal() +1);
 			lista[riga][colonna + 1].setVal(lista[riga][colonna + 1].getVal() +1);

@@ -1,10 +1,11 @@
 package exec;
 
+import gui.StartFrame;
+
 public class Tester {
 
 	public static void main(String[] args) {
-		System.out.println("No");
-		//Ciao
+		StartFrame io = new StartFrame();
 	}
 
 }
