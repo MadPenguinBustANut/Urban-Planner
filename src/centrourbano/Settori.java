@@ -27,7 +27,7 @@ public class Settori implements Serializable{
 	 * @param settore
 	 */
 	
-	public int vendiEdificio(int riga, int colonna)throws LottoLibero {
+	public int vendiEdificio(int riga, int colonna) {
 		Lotti vend = getLotto(riga, colonna);
 		int tot = (vend.getVal() + this.getValore()) * vend.getCeff();
 		rmEdificio(riga, colonna);
@@ -68,12 +68,14 @@ public class Settori implements Serializable{
 	 * @param colonna
 	 */
 	
-	public void rmEdificio(int riga, int colonna) throws LottoLibero{
+	public void rmEdificio(int riga, int colonna) {
+		if((getLotto(riga, colonna)).getTip() == 0)
+			throw new LottoLibero();
 		if((getLotto(riga, colonna)).getTip() == 1)
 			rmStrada(riga,colonna);
 		if((getLotto(riga, colonna)).getTip() == 2)
 			rmepub(riga,colonna);
-		if((getLotto(riga, colonna)).getTip() == 1)
+		if((getLotto(riga, colonna)).getTip() == 3)
 			rmepriv(riga,colonna);
 		
 	}
@@ -85,7 +87,7 @@ public class Settori implements Serializable{
 	 * @throws LottoLibero
 	 */
 	
-	public void cgEdificio(Lotti nuovo,int riga, int colonna) throws LottoLibero{
+	public void cgEdificio(Lotti nuovo,int riga, int colonna) {
 		rmEdificio(riga, colonna);
 		addLotto(nuovo, riga , colonna);
 	}
@@ -116,6 +118,12 @@ public class Settori implements Serializable{
 			lista[riga + 1][colonna + 1].setVal(lista[riga + 1][colonna + 1].getVal() +1);
 		}
 	
+	/**
+	 * Aggiunge un edificio pubblico e aumenta il valore del settore di 1
+	 * @param Nuovo
+	 * @param riga
+	 * @param colonna
+	 */
 	private void addepub(Lotti Nuovo, int riga, int colonna) {
 		lista[riga][colonna] = Nuovo;
 		this.setValore(this.getValore() + 1);
@@ -125,6 +133,11 @@ public class Settori implements Serializable{
 		lista[riga][colonna] = Nuovo;
 	}
 	
+	/**
+	 * Rimuovi la strada ed elimina il bonus agli edifici adiacenti
+	 * @param riga
+	 * @param colonna
+	 */
 	private void rmStrada(int riga, int colonna) {
 		lista[riga][colonna].setVal(0);
 		lista[riga][colonna].setTip(0);
@@ -137,6 +150,12 @@ public class Settori implements Serializable{
 		lista[riga + 1][colonna - 1].setVal(lista[riga + 1][colonna - 1].getVal() -1);
 		lista[riga + 1][colonna + 1].setVal(lista[riga + 1][colonna + 1].getVal() -1);
 	}
+	
+	/**
+	 * Rimuovi l'edificio pubblico e rimuove il +1 bonus
+	 * @param riga
+	 * @param colonna
+	 */
 	
 	private void rmepub(int riga,int colonna) {
 		lista[riga][colonna].setTip(0);

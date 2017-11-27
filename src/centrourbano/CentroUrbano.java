@@ -17,7 +17,7 @@ public class CentroUrbano implements Serializable{
 	 * 
 	 */
 	public Lotti seleLotto(int riga, int colonna) {
-		//TODO
+		
 		return null;
 	}
 	
