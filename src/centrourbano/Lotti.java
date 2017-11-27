@@ -17,15 +17,16 @@ public class Lotti implements Serializable{
 	 * @param NuovoEdificio
 	 */
 	
-	public void cambiaTipo(int NuovoEdificio) {
+	public void setTip(int NuovoEdificio) {
+		tipo = NuovoEdificio;
 	}
 	
 	/**
 	 * Il valore del lotto viene cambiato al nuovo valore
 	 * @param NuovoValore
 	 */
-	public void cambiaValore(int NuovoValore) {
-		
+	public void setVal(int NuovoValore) {
+		valore = NuovoValore;
 	}
 	
 	
@@ -33,6 +34,7 @@ public class Lotti implements Serializable{
 	public int getVal() {
 		return valore;
 	}
+	
 	
 	public int getTip() {
 		return tipo;

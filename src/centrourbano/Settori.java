@@ -27,8 +27,12 @@ public class Settori implements Serializable{
 	 * @param settore
 	 */
 	
-	public void vendiEdificio(int settore) {
-		// (Valore settore + valore lotto) * coeff. eff.
+	public int vendiEdificio(int riga, int colonna)throws LottoLibero {
+		Lotti vend = getLotto(riga, colonna);
+		int tot = (vend.getVal() + this.getValore()) * vend.getCeff();
+		rmEdificio(riga, colonna);
+		return tot;
+		
 	}
 	
 	
@@ -65,6 +69,12 @@ public class Settori implements Serializable{
 	 */
 	
 	public void rmEdificio(int riga, int colonna) throws LottoLibero{
+		if((getLotto(riga, colonna)).getTip() == 1)
+			rmStrada(riga,colonna);
+		if((getLotto(riga, colonna)).getTip() == 2)
+			rmepub(riga,colonna);
+		if((getLotto(riga, colonna)).getTip() == 1)
+			rmepriv(riga,colonna);
 		
 	}
 	
@@ -87,14 +97,58 @@ public class Settori implements Serializable{
 		return io;
 	}
 	
+	/**
+	 * Aggiunge una strada alla posizione indicata da riga e colonna e aumenta di uno 
+	 * il valore di tutti i lotti adiacenti
+	 * @param Nuovo
+	 * @param riga
+	 * @param colonna
+	 */
 	private void addStrada(Lotti Nuovo, int riga, int colonna) {
+			lista[riga][colonna] = Nuovo;
+			lista[riga][colonna - 1].setVal(lista[riga][colonna - 1].getVal() +1);
+			lista[riga][colonna + 1].setVal(lista[riga][colonna + 1].getVal() +1);
+			lista[riga - 1][colonna].setVal(lista[riga - 1][colonna].getVal() +1);
+			lista[riga - 1][colonna - 1].setVal(lista[riga - 1][colonna - 1].getVal() +1);
+			lista[riga - 1][colonna + 1].setVal(lista[riga - 1][colonna + 1].getVal() +1);
+			lista[riga + 1][colonna].setVal(lista[riga + 1][colonna].getVal() +1);
+			lista[riga + 1][colonna - 1].setVal(lista[riga + 1][colonna - 1].getVal() +1);
+			lista[riga + 1][colonna + 1].setVal(lista[riga + 1][colonna + 1].getVal() +1);
 		}
 	
 	private void addepub(Lotti Nuovo, int riga, int colonna) {
-		}
+		lista[riga][colonna] = Nuovo;
+		this.setValore(this.getValore() + 1);
+	}
 	
 	private void addepriv(Lotti Nuovo, int riga, int colonna) {
-		}
+		lista[riga][colonna] = Nuovo;
+	}
+	
+	private void rmStrada(int riga, int colonna) {
+		lista[riga][colonna].setVal(0);
+		lista[riga][colonna].setTip(0);
+		lista[riga][colonna - 1].setVal(lista[riga][colonna - 1].getVal() -1);
+		lista[riga][colonna + 1].setVal(lista[riga][colonna + 1].getVal() -1);
+		lista[riga - 1][colonna].setVal(lista[riga - 1][colonna].getVal() -1);
+		lista[riga - 1][colonna - 1].setVal(lista[riga - 1][colonna - 1].getVal() -1);
+		lista[riga - 1][colonna + 1].setVal(lista[riga - 1][colonna + 1].getVal() -1);
+		lista[riga + 1][colonna].setVal(lista[riga + 1][colonna].getVal() -1);
+		lista[riga + 1][colonna - 1].setVal(lista[riga + 1][colonna - 1].getVal() -1);
+		lista[riga + 1][colonna + 1].setVal(lista[riga + 1][colonna + 1].getVal() -1);
+	}
+	
+	private void rmepub(int riga,int colonna) {
+		lista[riga][colonna].setTip(0);
+		lista[riga][colonna].setVal(0);
+		this.setValore(this.getValore() - 1);
+	
+	}
+	
+	private void rmepriv(int riga,int colonna) {
+		lista[riga][colonna].setTip(0);
+		lista[riga][colonna].setVal(0);
+	}
 	
 	public int getValore() {
 		return valore;
