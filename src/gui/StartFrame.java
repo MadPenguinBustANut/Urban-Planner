@@ -1,41 +1,44 @@
 package gui;
 
-import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import ascoltatori.StartFrameListener;
+import centrourbano.CentroUrbano;
 
 public class StartFrame extends JFrame{
-
-	public StartFrame() {
+	private static final long serialVersionUID = 1L;
+	public StartFrame(CentroUrbano c) {
 		super("Urban Planner");
+
+		setJMenuBar(addFile());
+		
+		JPanel grid = new JPanel();
+		
 		JPanel io = new JPanel();
-		JPanel grid = new JPanel(new GridLayout(2, 1));
+		
+		
+		centro = new DatiPanel(c);
 		selezione.addActionListener(new StartFrameListener());
 		gestione.addActionListener(new StartFrameListener());
 		visualizzazione.addActionListener(new StartFrameListener());
-		setJMenuBar(addFile());
+		
+		
 		io.add(gestione);
 		io.add(selezione);
 		io.add(visualizzazione);
 		
-		JPanel due = new JPanel();
-		due.add(new JTextArea(5, 30));
 		
-		due.add(new JTextArea());
+		grid.add(centro);
 		grid.add(io);
-		grid.add(due);
+		
 		add(grid);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(800, 600);
+		setSize(800, 100);
 		setVisible(true);
 	}
 	
@@ -53,6 +56,12 @@ public class StartFrame extends JFrame{
 		return due;
 	}
 	
+	
+	
+	
+	
+	
+	
 	private JMenuItem createItem(String a) {
 		
 		JMenuItem it = new JMenuItem(a);
@@ -61,6 +70,8 @@ public class StartFrame extends JFrame{
 		
 	}
 	
+	
+	DatiPanel centro;
 	private JButton selezione = new JButton("Selezione");
 	private JButton gestione = new JButton("Gestione");
 	private JButton visualizzazione = new JButton("Visualizzazione");

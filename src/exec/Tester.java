@@ -1,11 +1,13 @@
 package exec;
 
+import centrourbano.CentroUrbano;
 import gui.StartFrame;
 
 public class Tester {
 
 	public static void main(String[] args) {
-		StartFrame io = new StartFrame();
+		CentroUrbano a = new CentroUrbano();
+		StartFrame io = new StartFrame(a);
 	}
 
 }
