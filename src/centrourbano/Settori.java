@@ -182,6 +182,69 @@ public class Settori implements Serializable{
 		lista[X][Y].setVal(0);
 	}
 	
+	public int calcolaLotti() {
+		int totale = 0;
+		totale+=calcolaLottiLiberi();
+		totale+=calcolaLottiPrivati();
+		totale+=calcolaLottiPubblici();
+		totale+=calcolaStrade();
+		return totale;
+	}
+	
+	public int calcolaLottiLiberi() {
+		int lottiLiberi = 0;
+		for(int i = 0; i <= MAX_X ; i++ ) {
+			for(int j=0;j <= MAX_Y; j++) {
+				if(lista[i][j].getTip() == 0)
+					lottiLiberi++;
+			}
+				
+		}
+		
+		return lottiLiberi;
+	}
+	
+	public int calcolaStrade() {
+		int strade = 0;
+		for(int i = 0; i <= MAX_X ; i++ ) {
+			for(int j=0;j <= MAX_Y; j++) {
+				if(lista[i][j].getTip() == 1)
+					strade++;
+			}
+				
+		}
+		
+		return strade;
+	}
+	
+	
+	public int calcolaLottiPubblici() {
+		int lottiPubblici = 0;
+		for(int i = 0; i <= MAX_X ; i++ ) {
+			for(int j=0;j <= MAX_Y; j++) {
+				if(lista[i][j].getTip() == 2)
+					lottiPubblici++;
+			}
+				
+		}
+		
+		return lottiPubblici;
+	}
+	
+
+	public int calcolaLottiPrivati() {
+		int lottiPrivati = 0;
+		for(int i = 0; i <= MAX_X ; i++ ) {
+			for(int j=0;j <= MAX_Y; j++) {
+				if(lista[i][j].getTip() == 3)
+					lottiPrivati++;
+			}
+				
+		}
+		
+		return lottiPrivati;
+	}
+	
 	public void addOne(int X,int Y) {
 		lista[X][Y].setVal(lista[X][Y].getVal() + 1);
 	}

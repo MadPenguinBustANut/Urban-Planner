@@ -11,18 +11,59 @@ public class CentroUrbano implements Serializable{
 		lista = new Settori[2][3];
 	}
 	
-	
-	
-	
-	/**
-	 * Restituisce il Lotto selezionato (?)
-	 * 
-	 */
-	public Lotti seleLotto(int X, int Y) {
-		
-		return null;
+	public int numSettori() {
+		return 6;
 	}
 	
+	public int numLotti() {
+		int totale = 0;
+		for(int i = 0; i <= MAX_MASTER_X ; i++ ) {
+			for(int j=0;j <= MAX_MASTER_Y; j++)
+				totale = totale +lista[i][j].calcolaLotti();
+		}
+		
+		return totale;
+	}
+	
+	public int numLottiLiberi() {
+		int totale = 0;
+		for(int i = 0; i <= MAX_MASTER_X ; i++ ) {
+			for(int j=0;j <= MAX_MASTER_Y; j++)
+				totale = totale +lista[i][j].calcolaLottiLiberi();
+		}
+		
+		return totale;
+	}
+	
+	public int numLottiPubblici() {
+		int totale = 0;
+		for(int i = 0; i <= MAX_MASTER_X ; i++ ) {
+			for(int j=0;j <= MAX_MASTER_Y; j++)
+				totale = totale +lista[i][j].calcolaLottiPubblici();
+		}
+		
+		return totale;
+	}
+	
+	public int numLottiPrivati() {
+		int totale = 0;
+		for(int i = 0; i <= MAX_MASTER_X ; i++ ) {
+			for(int j=0;j <= MAX_MASTER_Y; j++)
+				totale = totale +lista[i][j].calcolaLottiPrivati();
+		}
+		
+		return totale;
+	}
+	
+	public int numStrade() {
+		int totale = 0;
+		for(int i = 0; i <= MAX_MASTER_X ; i++ ) {
+			for(int j=0;j <= MAX_MASTER_Y; j++)
+				totale = totale +lista[i][j].calcolaStrade();
+		}
+		
+		return totale;
+	}
 	
 	public void addstrada(Lotti Nuovi,int MasterX, int MasterY,int X ,int Y) {
 	
