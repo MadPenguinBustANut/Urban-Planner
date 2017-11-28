@@ -110,22 +110,22 @@ public class Settori implements Serializable{
 			lista[X][Y] = Nuovo;
 			
 			if((Y - 1) >= 0)
-				lista[X][Y - 1].setVal(lista[X][Y - 1].getVal() +1);
+				addOne(X,Y-1);
 			if((Y + 1) <= MAX_Y )
-				lista[X][Y + 1].setVal(lista[X][Y + 1].getVal() +1);
+				addOne(X,Y+1);
 			if((X - 1) >= 0) {
-				lista[X - 1][Y].setVal(lista[X - 1][Y].getVal() +1);
+				addOne(X-1, Y);
 				if((Y-1) >= 0)
-					lista[X - 1][Y - 1].setVal(lista[X - 1][Y - 1].getVal() +1);
+					addOne(X-1, Y-1);
 				if((Y + 1) <= MAX_Y)
-					lista[X - 1][Y + 1].setVal(lista[X - 1][Y + 1].getVal() +1);
+					addOne(X-1, Y+1);
 			}
 			if((X + 1) <= MAX_X) {
-				lista[X + 1][Y].setVal(lista[X + 1][Y].getVal() +1);
+				addOne(X+1, Y);
 				if((Y-1) >= 0)
-					lista[X + 1][Y - 1].setVal(lista[X + 1][Y - 1].getVal() +1);
+					addOne(X+1, Y-1);
 				if((Y+1) <= MAX_Y)
-					lista[X + 1][Y + 1].setVal(lista[X + 1][Y + 1].getVal() +1); 
+					addOne(X+1,Y+1); 
 			}
 		}
 	
@@ -152,16 +152,25 @@ public class Settori implements Serializable{
 	private void rmStrada(int X, int Y) {
 		lista[X][Y].setVal(0);
 		lista[X][Y].setTip(0);
-		/*
-		lista[X][Y - 1].setVal(lista[X][Y - 1].getVal() -1);
-		lista[X][Y + 1].setVal(lista[X][Y + 1].getVal() -1);
-		lista[X - 1][Y].setVal(lista[X - 1][Y].getVal() -1);
-		lista[X - 1][Y - 1].setVal(lista[X - 1][Y - 1].getVal() -1);
-		lista[X - 1][Y + 1].setVal(lista[X - 1][Y + 1].getVal() -1);
-		lista[X + 1][Y].setVal(lista[X + 1][Y].getVal() -1);
-		lista[X + 1][Y - 1].setVal(lista[X + 1][Y - 1].getVal() -1);
-		lista[X + 1][Y + 1].setVal(lista[X + 1][Y + 1].getVal() -1); */
-	}
+		if((Y - 1) >= 0)
+			subOne(X,Y-1);
+		if((Y + 1) <= MAX_Y )
+			subOne(X,Y+1);
+		if((X - 1) >= 0) {
+			subOne(X-1, Y);
+			if((Y-1) >= 0)
+				subOne(X-1, Y-1);
+			if((Y + 1) <= MAX_Y)
+				subOne(X-1, Y+1);
+		}
+		if((X + 1) <= MAX_X) {
+			subOne(X+1, Y);
+			if((Y-1) >= 0)
+				subOne(X+1, Y-1);
+			if((Y+1) <= MAX_Y)
+				subOne(X+1,Y+1); 
+			}
+		}
 	
 	/**
 	 * Rimuovi l'edificio pubblico e rimuove il +1 bonus
@@ -246,11 +255,13 @@ public class Settori implements Serializable{
 	}
 	
 	public void addOne(int X,int Y) {
-		lista[X][Y].setVal(lista[X][Y].getVal() + 1);
+		if(lista[X][Y].getTip()==3)
+			lista[X][Y].setVal(lista[X][Y].getVal() + 1);
 	}
 	
 	public void subOne(int X,int Y) {
-		lista[X][Y].setVal(lista[X][Y].getVal() - 1);
+		if(lista[X][Y].getTip()==3)
+			lista[X][Y].setVal(lista[X][Y].getVal() - 1);
 	}
 	
 	public int getValore() {
