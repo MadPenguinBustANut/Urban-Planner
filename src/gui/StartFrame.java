@@ -21,7 +21,7 @@ public class StartFrame extends JFrame{
 		
 		JPanel io = new JPanel();
 		
-		
+		uno = c;
 		centro = new DatiPanel(c);
 		selezione.addActionListener(new StartFrameListener());
 		gestione.addActionListener(new StartFrameListener());
@@ -70,7 +70,7 @@ public class StartFrame extends JFrame{
 		
 	}
 	
-	
+	CentroUrbano uno;
 	DatiPanel centro;
 	private JButton selezione = new JButton("Selezione");
 	private JButton gestione = new JButton("Gestione");
