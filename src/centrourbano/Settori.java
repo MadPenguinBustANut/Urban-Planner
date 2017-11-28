@@ -30,7 +30,7 @@ public class Settori implements Serializable{
 	public int vendiEdificio(int X, int Y) {
 		Lotti vend = getLotto(X, Y);
 		int tot = (vend.getVal() + this.getValore()) * vend.getCeff();
-		rmEdificio(X, Y);
+		rmLotto(X, Y);
 		return tot;
 		
 	}
@@ -68,7 +68,7 @@ public class Settori implements Serializable{
 	 * @param Y
 	 */
 	
-	public void rmEdificio(int X, int Y) {
+	public void rmLotto(int X, int Y) {
 		if((getLotto(X, Y)).getTip() == 0)
 			throw new LottoLibero();
 		if((getLotto(X, Y)).getTip() == 1)
@@ -88,7 +88,7 @@ public class Settori implements Serializable{
 	 */
 	
 	public void cgEdificio(Lotti nuovo,int X, int Y) {
-		rmEdificio(X, Y);
+		rmLotto(X, Y);
 		addLotto(nuovo, X , Y);
 	}
 	
@@ -184,6 +184,10 @@ public class Settori implements Serializable{
 	
 	public void addOne(int X,int Y) {
 		lista[X][Y].setVal(lista[X][Y].getVal() + 1);
+	}
+	
+	public void subOne(int X,int Y) {
+		lista[X][Y].setVal(lista[X][Y].getVal() - 1);
 	}
 	
 	public int getValore() {
