@@ -78,10 +78,25 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(X==MAX_X && Y == MAX_Y) {
+			if((MasterX + 1) <= MAX_MASTER_X)
+				lista[MasterX + 1][MasterY].addOne(0, Y);
+
+			if((MasterY + 1) <= MAX_MASTER_Y)
+				lista[MasterX][MasterY + 1].addOne(X, 0);
+			
 			if(((MasterX + 1) <= MAX_MASTER_X) && ((MasterY + 1) <= MAX_MASTER_Y))
 				lista[MasterX + 1][MasterY + 1].addOne(0, 0);
+			
+			return;
 		}
 		
+		if(X==MAX_X && Y == 0) {
+			lista[MasterX + 1][MasterY - 1].addOne(0, MAX_Y);
+		}
+		
+		if(X==0 && Y == MAX_Y) {
+			lista[MasterX -1][MasterY + 1].addOne(MAX_X, 0);
+		}
 		
 		if(X==0 && Y >0) {
 			if((MasterX - 1) >=0)
@@ -94,8 +109,16 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(X==0 && Y ==0) {
+			if((MasterY - 1) >=0)
+				lista[MasterX][MasterY - 1].addOne(X, MAX_Y);
+			
+			if((MasterX - 1) >=0)
+				lista[MasterX - 1][MasterY].addOne(MAX_X, Y);
+			
 			if(((MasterX - 1) >=0) && ((MasterY - 1) >=0))
 				lista[MasterX - 1][MasterY].addOne(MAX_X, MAX_Y);
+			
+			return;
 
 		}
 		
