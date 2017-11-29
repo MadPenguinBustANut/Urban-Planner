@@ -16,7 +16,6 @@ public class Lotti implements Serializable{
 	 * 
 	 * @param NuovoEdificio
 	 */
-	
 	public void setTip(int NuovoEdificio) {
 		tipo = NuovoEdificio;
 	}

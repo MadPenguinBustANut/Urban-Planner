@@ -12,21 +12,12 @@ public class Settori implements Serializable{
 		setValore(0);
 		lista = new Lotti[3][5];
 	}
-	/**
-	 * 
-	 * Costruttore per decidere le dimensioni di un settore
-	 * 
-	 * @param altezza righe
-	 * @param larghezza colonne
-	 * 
-	 */
 	
 	
 	/**
 	 * Calcola il prezzo del lotto
 	 * @param settore
 	 */
-	
 	public int vendiEdificio(int X, int Y) {
 		Lotti vend = getLotto(X, Y);
 		int tot = (vend.getVal() + this.getValore()) * vend.getCeff();
