@@ -1,10 +1,11 @@
 package exec;
 
+import centrourbano.CentroUrbano;
+
 public class Tester {
 
 	public static void main(String[] args) {
-		System.out.println("No");
-		//Ciao
+		CentroUrbano a = new CentroUrbano();
 	}
 
 }

@@ -127,7 +127,9 @@ public class Settori implements Serializable{
 				if((Y+1) <= MAX_Y)
 					addOne(X+1,Y+1); 
 			}
-		}
+	}
+			
+	
 	
 	/**
 	 * Aggiunge un edificio pubblico e aumenta il valore del settore di 1
