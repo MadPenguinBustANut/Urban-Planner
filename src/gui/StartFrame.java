@@ -1,5 +1,11 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -17,28 +23,39 @@ public class StartFrame extends JFrame{
 
 		setJMenuBar(addFile());
 		
-		JPanel grid = new JPanel();
+		JPanel grid = new JPanel(new BorderLayout());
 		
 		JPanel io = new JPanel();
 		
 		uno = c;
 		centro = new DatiPanel(c);
-		selezione.addActionListener(new StartFrameListener());
-		gestione.addActionListener(new StartFrameListener());
-		visualizzazione.addActionListener(new StartFrameListener());
+		selezioneB.addActionListener(new ButtonListener(this));
+		gestioneB.addActionListener(new ButtonListener(this));
+		visualizzazioneB.addActionListener(new ButtonListener(this));
+		visualizzazione = new PannelloVisualizzazione(uno);
+		selezione = new PannelloSelezione();
+		gestione = new PannelloGestione();
 		
 		
-		io.add(gestione);
-		io.add(selezione);
-		io.add(visualizzazione);
+		io.add(gestioneB);
+		io.add(selezioneB);
+		io.add(visualizzazioneB);
+		
+		contenitore = new JPanel(new GridLayout(1, 1));
+		
+		grid.add(contenitore, BorderLayout.CENTER);
+		grid.add(gestione, BorderLayout.EAST);
+		grid.add(centro, BorderLayout.NORTH);
+		grid.add(io, BorderLayout.SOUTH);
 		
 		
-		grid.add(centro);
-		grid.add(io);
+		visualizzazione.setVisible(false);
+		selezione.setVisible(false);
+		gestione.setVisible(false);
 		
 		add(grid);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(800, 100);
+		setSize(800, 150);
 		setVisible(true);
 	}
 	
@@ -72,7 +89,53 @@ public class StartFrame extends JFrame{
 	
 	CentroUrbano uno;
 	DatiPanel centro;
-	private JButton selezione = new JButton("Selezione");
-	private JButton gestione = new JButton("Gestione");
-	private JButton visualizzazione = new JButton("Visualizzazione");
+	
+	private JPanel contenitore;
+	private PannelloSelezione selezione;
+	private PannelloGestione gestione;
+	private PannelloVisualizzazione visualizzazione;
+	private JButton selezioneB = new JButton("Selezione");
+	private JButton gestioneB = new JButton("Gestione");
+	private JButton visualizzazioneB = new JButton("Visualizzazione");
+	
+	
+	public class ButtonListener implements ActionListener{
+
+		StartFrame rifer;
+		
+		public ButtonListener(StartFrame e) {
+			rifer = e;
+		}
+		
+		
+		public void actionPerformed(ActionEvent e) {
+			JButton io = (JButton) e.getSource();
+			
+			
+			String testo = io.getText();
+			if(testo.equalsIgnoreCase("Selezione")) {
+				rifer.setSize(800, 400);
+				contenitore.remove(visualizzazione);
+				contenitore.add(selezione);
+				selezione.setVisible(true);
+				gestione.setVisible(false);
+				visualizzazione.setVisible(false);
+			}
+			else if(testo.equalsIgnoreCase("Gestione")) {
+				selezione.setVisible(false);
+				gestione.setVisible(true);
+				visualizzazione.setVisible(false);
+			}
+			else if(testo.equalsIgnoreCase("Visualizzazione")) {
+				rifer.setSize(800, 450);
+				contenitore.remove(selezione);
+				contenitore.add(visualizzazione);
+				selezione.setVisible(false);
+				gestione.setVisible(false);
+				visualizzazione.setVisible(true);
+			}
+			
+		}
+		
+	}
 }

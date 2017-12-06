@@ -11,6 +11,10 @@ public class Settori implements Serializable{
 	public Settori() {
 		setValore(0);
 		lista = new Lotti[3][5];
+		for(int x = 0; x < 3; x++)
+			for(int i = 0; i < 5; i++)
+				lista[x][i] = new Lotti();
+		
 	}
 	
 	

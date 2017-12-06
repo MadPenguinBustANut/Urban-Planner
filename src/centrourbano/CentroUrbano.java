@@ -9,6 +9,10 @@ public class CentroUrbano implements Serializable{
 	
 	public CentroUrbano() {
 		lista = new Settori[2][3];
+		for(int x = 0; x < 2; x++)
+			for(int i = 0; i < 3; i++)
+				lista[x][i] = new Settori();
+		
 	}
 	
 	public int numSettori() {
@@ -19,7 +23,7 @@ public class CentroUrbano implements Serializable{
 		int totale = 0;
 		for(int i = 0; i <= MAX_MASTER_X ; i++ ) {
 			for(int j=0;j <= MAX_MASTER_Y; j++)
-				totale = totale +lista[i][j].calcolaLotti();
+				totale = totale + lista[i][j].calcolaLotti();
 		}
 		
 		return totale;

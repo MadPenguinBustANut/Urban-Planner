@@ -43,11 +43,11 @@ public class DatiPanel extends JPanel {
 }
 	
 	public void nDati(CentroUrbano c) {
-		f1.setText("0");
-		f2.setText("0");
-		f3.setText("0");
-		f4.setText("0");
-		f5.setText("0");
+		f1.setText(""+c.numSettori());
+		f2.setText(""+c.numLotti());
+		f3.setText(""+c.numLottiLiberi());
+		f4.setText(""+c.numStrade());
+		f5.setText(""+c.numLottiPrivati());
 	}
 	
 
