@@ -61,8 +61,8 @@ public class Lotti implements Serializable{
 	private int ceff;
 	private int cinv;
 	
-	private static int LIBERO = 0;
-	private static int STRADA = 1;
-	private static int EPUB = 2;
-	private static int EPRIV = 3;
+	private final static int LIBERO = 0;
+	private final static int STRADA = 1;
+	private final static int EPUB = 2;
+	private final static int EPRIV = 3;
 }
