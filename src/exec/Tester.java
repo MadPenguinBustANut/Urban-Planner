@@ -1,10 +1,13 @@
 package exec;
 
+import centrourbano.CentroUrbano;
+import gui.StartFrame;
+
 public class Tester {
 
 	public static void main(String[] args) {
-		System.out.println("No");
-		//Ciao
+		CentroUrbano a = new CentroUrbano();
+		StartFrame io = new StartFrame(a);
 	}
 
 }
