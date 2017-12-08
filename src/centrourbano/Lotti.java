@@ -2,12 +2,13 @@ package centrourbano;
 
 import java.io.Serializable;
 
+import edifici.Edificabile;
+
 public class Lotti implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public Lotti() {
-		tipo = 0;
-		valore = 0;
+		edi = VUOTO;
 	}
 	
 	/**
@@ -16,29 +17,24 @@ public class Lotti implements Serializable{
 	 * 
 	 * @param NuovoEdificio
 	 */
-	
-	public void setTip(int NuovoEdificio) {
-		tipo = NuovoEdificio;
-	}
-	
-	/**
-	 * Il valore del lotto viene cambiato al nuovo valore
-	 * @param NuovoValore
-	 */
-	public void setVal(int NuovoValore) {
-		valore = NuovoValore;
+	public void modEdi(Edificabile NuovoEdificio) {
+		edi = NuovoEdificio;
 	}
 	
 	
 	
 	public int getVal() {
-		return valore;
+		if(edi.getTipo() == 3);
+			//TODO
+		
+		return 0;
 	}
-	
-	
+
 	public int getTip() {
-		return tipo;
+		return edi.getTipo();
+		
 	}
+	
 	public int getCeff() {
 		return ceff;
 	}
@@ -52,18 +48,38 @@ public class Lotti implements Serializable{
 		this.cinv = cinv;
 	}
 
-
-
-	private int tipo;
-	private int valore;
+	Edificabile edi;
 	
 	
 	//Li randomizziamo?
 	private int ceff;
 	private int cinv;
 	
+	private static Edificabile VUOTO = new Edificabile(){
+		private static final long serialVersionUID = 1L;
+
+		public int getTipo() {
+			return 0;
+		}
+		
+		
+	};
+	
 	private static int LIBERO = 0;
 	private static int STRADA = 1;
 	private static int EPUB = 2;
 	private static int EPRIV = 3;
+
+	
+	//DA FARE
+	public void setVal(int i) {
+		
+	}
+
+	public void setTip(int i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
