@@ -19,7 +19,7 @@ public class Lotti implements Serializable{
 	 */
 	public void modEdi(Edificabile NuovoEdificio) {
 		edi = NuovoEdificio;
-	}
+}
 	
 	
 	
@@ -70,16 +70,4 @@ public class Lotti implements Serializable{
 	private static int EPUB = 2;
 	private static int EPRIV = 3;
 
-	
-	//DA FARE
-	public void setVal(int i) {
-		
-	}
-
-	public void setTip(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }
