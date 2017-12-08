@@ -24,7 +24,7 @@ public class Settori implements Serializable{
 	 */
 	public int vendiEdificio(int X, int Y) {
 		Lotti vend = getLotto(X, Y);
-		int tot = (vend.getVal() + this.getValore()) * vend.getCeff();
+		int tot = (vend.getValore() + this.getValore()) * vend.getCeff();
 		rmLotto(X, Y);
 		return tot;
 		
@@ -40,11 +40,11 @@ public class Settori implements Serializable{
 	 * @param Nuovo
 	 */
 	public void addLotto(Lotti Nuovo, int X, int Y) {
-		if(Nuovo.getTip() == 1)
+		if(Nuovo.getTip() == STRADA)
 			addStrada( Nuovo,X,Y);
-		if(Nuovo.getTip() == 2)
+		if(Nuovo.getTip() == EPUB)
 			addepub(Nuovo,X,Y);
-		if(Nuovo.getTip() == 3)
+		if(Nuovo.getTip() == EPRIV)
 			addepriv(Nuovo,  X, Y);
 	}
 	
@@ -64,13 +64,13 @@ public class Settori implements Serializable{
 	 */
 	
 	public void rmLotto(int X, int Y) {
-		if((getLotto(X, Y)).getTip() == 0)
+		if((getLotto(X, Y)).getTip() == LIBERO)
 			throw new LottoLibero();
-		if((getLotto(X, Y)).getTip() == 1)
+		if((getLotto(X, Y)).getTip() == STRADA)
 			rmStrada(X,Y);
-		if((getLotto(X, Y)).getTip() == 2)
+		if((getLotto(X, Y)).getTip() == EPUB)
 			rmepub(X,Y);
-		if((getLotto(X, Y)).getTip() == 3)
+		if((getLotto(X, Y)).getTip() == EPRIV)
 			rmepriv(X,Y);
 		
 	}
@@ -147,8 +147,7 @@ public class Settori implements Serializable{
 	 * @param Y
 	 */
 	private void rmStrada(int X, int Y) {
-		lista[X][Y].setVal(0);
-		lista[X][Y].setTip(0);
+		lista[X][Y].setEdificio(null);
 		if((Y - 1) >= 0)
 			subOne(X,Y-1);
 		if((Y + 1) <= MAX_Y )
@@ -176,16 +175,14 @@ public class Settori implements Serializable{
 	 */
 	
 	private void rmepub(int X,int Y) {
-		lista[X][Y].setTip(0);
-		lista[X][Y].setVal(0);
+		lista[X][Y].setEdificio(null);
 		this.setValore(this.getValore() - 1);
 	
 	}
 	
 	
 	private void rmepriv(int X,int Y) {
-		lista[X][Y].setTip(0);
-		lista[X][Y].setVal(0);
+		lista[X][Y].setEdificio(null);
 	}
 	
 	public int calcolaLotti() {
@@ -201,7 +198,7 @@ public class Settori implements Serializable{
 		int lottiLiberi = 0;
 		for(int i = 0; i <= MAX_X ; i++ ) {
 			for(int j=0;j <= MAX_Y; j++) {
-				if(lista[i][j].getTip() == 0)
+				if(lista[i][j].getTip() == LIBERO)
 					lottiLiberi++;
 			}
 				
@@ -214,7 +211,7 @@ public class Settori implements Serializable{
 		int strade = 0;
 		for(int i = 0; i <= MAX_X ; i++ ) {
 			for(int j=0;j <= MAX_Y; j++) {
-				if(lista[i][j].getTip() == 1)
+				if(lista[i][j].getTip() == STRADA)
 					strade++;
 			}
 				
@@ -228,7 +225,7 @@ public class Settori implements Serializable{
 		int lottiPubblici = 0;
 		for(int i = 0; i <= MAX_X ; i++ ) {
 			for(int j=0;j <= MAX_Y; j++) {
-				if(lista[i][j].getTip() == 2)
+				if(lista[i][j].getTip() == EPUB)
 					lottiPubblici++;
 			}
 				
@@ -242,7 +239,7 @@ public class Settori implements Serializable{
 		int lottiPrivati = 0;
 		for(int i = 0; i <= MAX_X ; i++ ) {
 			for(int j=0;j <= MAX_Y; j++) {
-				if(lista[i][j].getTip() == 3)
+				if(lista[i][j].getTip() == EPRIV)
 					lottiPrivati++;
 			}
 				
@@ -252,13 +249,13 @@ public class Settori implements Serializable{
 	}
 	
 	public void addOne(int X,int Y) {
-		if(lista[X][Y].getTip()==3)
-			lista[X][Y].setVal(lista[X][Y].getVal() + 1);
+		if(lista[X][Y].getTip()==EPRIV)
+			lista[X][Y].setValore(lista[X][Y].getValore() + 1);
 	}
 	
 	public void subOne(int X,int Y) {
-		if(lista[X][Y].getTip()==3)
-			lista[X][Y].setVal(lista[X][Y].getVal() - 1);
+		if(lista[X][Y].getTip()==EPRIV)
+			lista[X][Y].setValore(lista[X][Y].getValore() - 1);
 	}
 	
 	public int getValore() {
@@ -272,6 +269,10 @@ public class Settori implements Serializable{
 
 	private static final int MAX_X = 2;
 	private static final int MAX_Y = 4;
+	private static final int LIBERO = 0;
+	private static final int STRADA = 1;
+	private static final int EPUB = 2;
+	private static final int EPRIV = 3;
 	private int valore;
 
 	
