@@ -6,5 +6,4 @@ public class Strada implements Edificabile {
 	public int getTipo() {
 		return 1;
 	}
-
 }

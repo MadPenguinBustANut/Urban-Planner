@@ -1,14 +1,18 @@
 package centrourbano;
 
 import java.io.Serializable;
-
-import edifici.Edificabile;
+import edifici.*;
 
 public class Lotti implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public Lotti() {
-		edi = VUOTO;
+		edificio = VUOTO;
+	}
+	
+
+	public Lotti(Edificabile NuovoEdificio) {
+		edificio = NuovoEdificio;
 	}
 	
 	/**
@@ -18,21 +22,37 @@ public class Lotti implements Serializable{
 	 * @param NuovoEdificio
 	 */
 	public void modEdi(Edificabile NuovoEdificio) {
-		edi = NuovoEdificio;
+		edificio = NuovoEdificio;
 }
 	
 	
 	
 	public int getVal() {
-		if(edi.getTipo() == 3);
+		if(edificio.getTipo() == 3);
 			//TODO
 		
 		return 0;
 	}
+	public void setEdificio(Edificabile NuovoEdificio) {
+		edificio = NuovoEdificio;
+	}
+	
+	/**
+	 * Il valore del lotto viene cambiato al nuovo valore
+	 * @param NuovoValore
+	 */
+	public void setValore(int NuovoValore) {
+		((EPrivato) edificio).setValore(NuovoValore);
+	}
+	
+	
+	
+	public int getValore() {
+		return ((EPrivato) edificio).getValore();
+	}
 
 	public int getTip() {
-		return edi.getTipo();
-		
+		return edificio.getTipo();
 	}
 	
 	public int getCeff() {
@@ -48,27 +68,22 @@ public class Lotti implements Serializable{
 		this.cinv = cinv;
 	}
 
-	Edificabile edi;
+
+	private Edificabile edificio;
 	
 	
 	//Li randomizziamo?
 	private int ceff;
 	private int cinv;
 	
+	
 	private static Edificabile VUOTO = new Edificabile(){
 		private static final long serialVersionUID = 1L;
 
 		public int getTipo() {
 			return 0;
-		}
-		
-		
+		}	
 	};
-	
-	private static int LIBERO = 0;
-	private static int STRADA = 1;
-	private static int EPUB = 2;
-	private static int EPRIV = 3;
 
 	public void setTip(int i) {
 		// TODO Auto-generated method stub
