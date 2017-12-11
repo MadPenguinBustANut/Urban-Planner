@@ -1,6 +1,6 @@
 package edifici;
 
-public class EPrivato implements Edificabile{
+public class EPrivato extends Edificabile{
 	private static final long serialVersionUID = 1L;
 
 	int valore;

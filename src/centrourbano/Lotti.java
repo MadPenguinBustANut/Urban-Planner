@@ -23,9 +23,17 @@ public class Lotti implements Serializable{
 	 */
 	public void modEdi(Edificabile NuovoEdificio) {
 		edificio = NuovoEdificio;
-}
-	
-	
+	}
+
+	/**
+	 * Quwato metodo funziona solo se getTipo dà 3
+	 * @param i
+	 */
+	public void setVal(int i) {
+		if(edificio.getTipo() == 3);
+		//TODO
+	}
+
 	
 	public int getVal() {
 		if(edificio.getTipo() == 3);
@@ -56,25 +64,20 @@ public class Lotti implements Serializable{
 	}
 	
 	public int getCeff() {
-		return ceff;
+		return edificio.getCeff();
 	}
 	public void setCeff(int ceff) {
-		this.ceff = ceff;
+		edificio.setCeff(ceff);
 	}
 	public int getCinv() {
-		return cinv;
+		return edificio.getCinv();
 	}
 	public void setCinv(int cinv) {
-		this.cinv = cinv;
+		edificio.setCinv(cinv);
 	}
 
 
 	private Edificabile edificio;
-	
-	
-	//Li randomizziamo?
-	private int ceff;
-	private int cinv;
 	
 	
 	private static Edificabile VUOTO = new Edificabile(){
@@ -84,14 +87,4 @@ public class Lotti implements Serializable{
 			return 0;
 		}	
 	};
-
-	public void setTip(int i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setVal(int i) {
-		
-	}
-
 }
