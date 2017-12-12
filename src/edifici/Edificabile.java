@@ -25,11 +25,11 @@ public abstract class Edificabile implements Serializable{
 	}
 	
 	
-	public int ceff;
-	public int cinv;
+	private int ceff;
+	private int cinv;
 	
-	private static final int	LIBERO = 0;
-	private static final int	STRADA = 1;
-	private static final int	PUBBLICO = 2;
-	private static final int	PRIVATO = 3;
+	public static final int	LIBERO = 0;
+	public static final int	STRADA = 1;
+	public static final int	PUBBLICO = 2;
+	public static final int	PRIVATO = 3;
 }
