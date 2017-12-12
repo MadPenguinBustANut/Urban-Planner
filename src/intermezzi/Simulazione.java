@@ -1,6 +1,5 @@
 package intermezzi;
 
-import java.awt.List;
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
 import centrourbano.Settori;
