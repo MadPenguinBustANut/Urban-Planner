@@ -58,7 +58,7 @@ public class Settori implements Serializable{
 	 * -Strada: Riduce di 1 il valore dei lotti adiacenti
 	 * 
 	 * 
-	 * Nel caso in cui il lotto sia già libero lancia un eccezione di tipo "LottoLibero"
+	 * Nel caso in cui il lotto sia giï¿½ libero lancia un eccezione di tipo "LottoLibero"
 	 * @param X
 	 * @param Y
 	 */
