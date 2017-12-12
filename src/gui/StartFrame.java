@@ -40,11 +40,8 @@ public class StartFrame extends JFrame{
 		io.add(selezioneB);
 		io.add(visualizzazioneB);
 		
-<<<<<<< HEAD
-		contenitore = new JPanel(new GridLayout(1, 1));
-=======
+
 		contenitore = new JPanel(new GridLayout(1,1));
->>>>>>> test
 		
 		grid.add(contenitore, BorderLayout.CENTER);
 		grid.add(centro, BorderLayout.NORTH);
@@ -124,12 +121,8 @@ public class StartFrame extends JFrame{
 				visualizzazione.setVisible(false);
 			}
 			else if(testo.equalsIgnoreCase("Gestione")) {
-<<<<<<< HEAD
 				contenitore.removeAll();
 				contenitore.add(gestione);
-=======
-				contenitore.add(gestione, BorderLayout.CENTER);
->>>>>>> test
 				selezione.setVisible(false);
 				gestione.setVisible(true);
 				visualizzazione.setVisible(false);
