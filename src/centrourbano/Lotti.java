@@ -25,22 +25,6 @@ public class Lotti implements Serializable{
 		edificio = NuovoEdificio;
 	}
 
-	/**
-	 * Quwato metodo funziona solo se getTipo dà 3
-	 * @param i
-	 */
-	public void setVal(int i) {
-		if(edificio.getTipo() == 3);
-		//TODO
-	}
-
-	
-	public int getVal() {
-		if(edificio.getTipo() == 3);
-			//TODO
-		
-		return 0;
-	}
 	public void setEdificio(Edificabile NuovoEdificio) {
 		edificio = NuovoEdificio;
 	}
