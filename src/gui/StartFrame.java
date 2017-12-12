@@ -33,17 +33,16 @@ public class StartFrame extends JFrame{
 		visualizzazioneB.addActionListener(new ButtonListener(this));
 		visualizzazione = new PannelloVisualizzazione(uno);
 		selezione = new PannelloSelezione();
-		gestione = new PannelloGestione();
+		gestione = new PannelloGestione(c);
 		
 		
 		io.add(gestioneB);
 		io.add(selezioneB);
 		io.add(visualizzazioneB);
 		
-		contenitore = new JPanel(new GridLayout(1, 1));
+		contenitore = new JPanel();
 		
 		grid.add(contenitore, BorderLayout.CENTER);
-		grid.add(gestione, BorderLayout.EAST);
 		grid.add(centro, BorderLayout.NORTH);
 		grid.add(io, BorderLayout.SOUTH);
 		
@@ -114,20 +113,20 @@ public class StartFrame extends JFrame{
 			String testo = io.getText();
 			if(testo.equalsIgnoreCase("Selezione")) {
 				rifer.setSize(800, 400);
-				contenitore.remove(visualizzazione);
 				contenitore.add(selezione);
 				selezione.setVisible(true);
 				gestione.setVisible(false);
 				visualizzazione.setVisible(false);
 			}
 			else if(testo.equalsIgnoreCase("Gestione")) {
+				contenitore.add(selezione, BorderLayout.CENTER);
 				selezione.setVisible(false);
 				gestione.setVisible(true);
 				visualizzazione.setVisible(false);
 			}
 			else if(testo.equalsIgnoreCase("Visualizzazione")) {
-				rifer.setSize(800, 450);
-				contenitore.remove(selezione);
+				rifer.setSize(800, 450);	
+				contenitore.removeAll();
 				contenitore.add(visualizzazione);
 				selezione.setVisible(false);
 				gestione.setVisible(false);
