@@ -114,7 +114,7 @@ public class StartFrame extends JFrame{
 			String testo = io.getText();
 			if(testo.equalsIgnoreCase("Selezione")) {
 				rifer.setSize(800, 400);
-				contenitore.remove(visualizzazione);
+				contenitore.removeAll();
 				contenitore.add(selezione);
 				selezione.setVisible(true);
 				gestione.setVisible(false);
@@ -127,7 +127,7 @@ public class StartFrame extends JFrame{
 			}
 			else if(testo.equalsIgnoreCase("Visualizzazione")) {
 				rifer.setSize(800, 450);
-				contenitore.remove(selezione);
+				contenitore.removeAll();
 				contenitore.add(visualizzazione);
 				selezione.setVisible(false);
 				gestione.setVisible(false);
