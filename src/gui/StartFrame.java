@@ -120,7 +120,7 @@ public class StartFrame extends JFrame{
 				visualizzazione.setVisible(false);
 			}
 			else if(testo.equalsIgnoreCase("Gestione")) {
-				contenitore.add(selezione, BorderLayout.CENTER);
+				contenitore.add(gestione, BorderLayout.CENTER);
 				selezione.setVisible(false);
 				gestione.setVisible(true);
 				visualizzazione.setVisible(false);
