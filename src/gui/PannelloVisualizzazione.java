@@ -4,7 +4,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-import javax.swing.JFrame;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
@@ -22,6 +24,7 @@ public class PannelloVisualizzazione extends JPanel {
 	public PannelloVisualizzazione(CentroUrbano e) {
 		rifer = e;
 		addMouseListener(new VisualListener(this));
+		addMouseWheelListener(new Zoomlistener(this));
 		}
 	
 	
@@ -117,24 +120,35 @@ public class PannelloVisualizzazione extends JPanel {
 		
 	}
 	
+	private class Zoomlistener implements MouseWheelListener{
+
+		PannelloVisualizzazione rifer;
+		public Zoomlistener(PannelloVisualizzazione e) {
+			rifer = e;
+		}
+		
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			Z += e.getWheelRotation();
+			if(Z > 10) Z = 10;
+			if(Z < 1) Z = 1;
+			
+			repaint();
+			
+		}
+		
+	}
+	
 	private class VisualListener implements MouseInputListener{
 		
 		Point pos = new Point(0, 0);
 		PannelloVisualizzazione rifer;
 		
+		
 		public VisualListener(PannelloVisualizzazione e) {
 			rifer = e;
 		}
 		
-		public void mouseClicked(MouseEvent e) {
-			if(e.getPoint() == pos)
-				return;
-			
-			JFrame io = new JFrame("Lotto");
-			io.setSize(300, 500);
-			io.setVisible(true);
-			io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			
+		public void mouseClicked(MouseEvent e) {			
 		}
 
 		

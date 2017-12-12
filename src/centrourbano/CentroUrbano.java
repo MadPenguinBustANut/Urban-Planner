@@ -15,9 +15,18 @@ public class CentroUrbano implements Serializable{
 		
 	}
 	
+	/** 
+	 * Calcola il numero di settori
+	 * @return I settori saranno sempre 6, abbiamo deciso di rendere il numero fisso
+	 */
 	public int numSettori() {
 		return 6;
 	}
+	
+	/**
+	 * Calcola il numero di Lotti presenti in tutti i settori, compresi i lotti liberi e le strade
+	 * @return
+	 */
 	
 	public int numLotti() {
 		int totale = 0;
@@ -28,6 +37,8 @@ public class CentroUrbano implements Serializable{
 		
 		return totale;
 	}
+	
+	
 	
 	public int numLottiLiberi() {
 		int totale = 0;
@@ -69,6 +80,16 @@ public class CentroUrbano implements Serializable{
 		return totale;
 	}
 	
+	/**
+	 * Aggiunge una strada al settore indicato con MasterX e MasterY nelle coordinate indicate
+	 * dopo averla aggiunta dovranno anche applicarsi gli effetti speciali della strada,
+	 * ovvero aumentare di 1 il valore degli edifici adiacenti
+	 * @param Nuovi Lotto da inserire
+	 * @param MasterX Coordinata X del settore, insieme a MasterY indica il settore scelto
+	 * @param MasterY Coordinata Y del settore, insieme a MasterX indica il settore scelto
+	 * @param X Coordinata X del lotto, insieme a Y indica dove verra posizionato il lotto
+	 * @param Y Coordinata Y del lotto, insieme a X indica dove verra posizionato il lotto
+	 */
 	public void addstrada(Lotti Nuovi,int MasterX, int MasterY,int X ,int Y) {
 	
 		if(X==MAX_X && Y < MAX_Y) {
@@ -130,6 +151,17 @@ public class CentroUrbano implements Serializable{
 			
 	}
 	
+
+	/**
+	 * Rimuove la strada dal settore indicato con MasterX e MasterY nelle coordinate indicate
+	 * dopo averla rimossa dovranno anche togliersi gli effetti speciali della strada,
+	 * ovvero aumentare di 1 il valore degli edifici adiacenti
+	 * @param MasterX Coordinata X del settore, insieme a MasterY indica il settore scelto
+	 * @param MasterY Coordinata Y del settore, insieme a MasterX indica il settore scelto
+	 * @param X Coordinata X del lotto, insieme a Y indica dove verra posizionato il lotto
+	 * @param Y Coordinata Y del lotto, insieme a X indica dove verra posizionato il lotto
+	 */
+	
 	public void rmstrada(int MasterX, int MasterY,int X ,int Y) {
 		
 		if(X==MAX_X && Y < MAX_Y) {
@@ -143,10 +175,25 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(X==MAX_X && Y == MAX_Y) {
+			if((MasterX + 1) < MAX_MASTER_X)
+				lista[MasterX + 1][MasterY].subOne(0, Y);
+
+			if((MasterY + 1) < MAX_MASTER_Y)
+				lista[MasterX][MasterY + 1].subOne(X, 0);
+			
 			if(((MasterX + 1) < MAX_MASTER_X) && ((MasterY + 1) < MAX_MASTER_Y))
 				lista[MasterX + 1][MasterY + 1].subOne(0, 0);
+			
+			return;
 		}
 		
+		if(X==MAX_X && Y == 0) {
+			lista[MasterX + 1][MasterY - 1].subOne(0, MAX_Y);
+		}
+		
+		if(X==0 && Y == MAX_Y) {
+			lista[MasterX -1][MasterY + 1].subOne(MAX_X, 0);
+		}
 		
 		if(X==0 && Y >0) {
 			if((MasterX - 1) >-1)
@@ -159,10 +206,19 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(X==0 && Y ==0) {
+			if((MasterY - 1) >-1)
+				lista[MasterX][MasterY - 1].subOne(X, MAX_Y);
+			
+			if((MasterX - 1) >-1)
+				lista[MasterX - 1][MasterY].subOne(MAX_X, Y);
+			
 			if(((MasterX - 1) >-1) && ((MasterY - 1) >-1))
 				lista[MasterX - 1][MasterY].subOne(MAX_X, MAX_Y);
+			
+			return;
 
 		}
+		
 		
 		lista[MasterX][MasterY].rmLotto(X, Y);
 			

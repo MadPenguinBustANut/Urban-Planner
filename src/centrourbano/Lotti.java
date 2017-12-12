@@ -1,14 +1,13 @@
 package centrourbano;
 
 import java.io.Serializable;
-
 import edifici.*;
 
 public class Lotti implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public Lotti() {
-		edificio = null;
+		edificio = VUOTO;
 	}
 	
 
@@ -22,6 +21,10 @@ public class Lotti implements Serializable{
 	 * 
 	 * @param NuovoEdificio
 	 */
+	public void modEdi(Edificabile NuovoEdificio) {
+		edificio = NuovoEdificio;
+	}
+
 	public void setEdificio(Edificabile NuovoEdificio) {
 		edificio = NuovoEdificio;
 	}
@@ -39,30 +42,33 @@ public class Lotti implements Serializable{
 	public int getValore() {
 		return ((EPrivato) edificio).getValore();
 	}
-	
-	
+
 	public int getTip() {
 		return edificio.getTipo();
 	}
+	
 	public int getCeff() {
-		return ceff;
+		return edificio.getCeff();
 	}
 	public void setCeff(int ceff) {
-		this.ceff = ceff;
+		edificio.setCeff(ceff);
 	}
 	public int getCinv() {
-		return cinv;
+		return edificio.getCinv();
 	}
 	public void setCinv(int cinv) {
-		this.cinv = cinv;
+		edificio.setCinv(cinv);
 	}
-
 
 
 	private Edificabile edificio;
 	
 	
-	//Li randomizziamo?
-	private int ceff;
-	private int cinv;
+	private static Edificabile VUOTO = new Edificabile(){
+		private static final long serialVersionUID = 1L;
+
+		public int getTipo() {
+			return 0;
+		}	
+	};
 }
