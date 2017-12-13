@@ -17,7 +17,7 @@ public class PannelloGestione extends JPanel {
 	private static final long serialVersionUID = 1L;
 		
 		private JButton pInvecchia; 
-		private JButton pCatastrofe;
+		private JButton pDisastro;
 		private JButton pModifica;
 		private CentroUrbano centroUrbano;
 		
@@ -33,7 +33,7 @@ public class PannelloGestione extends JPanel {
 			paPulsanti = new JPanel(new GridLayout(3, 1));
 			
 			paPulsanti.add(pInvecchia = new JButton ("invecchiamento"));
-			paPulsanti.add(pCatastrofe = new JButton ("catastrofe"));
+			paPulsanti.add(pDisastro = new JButton ("disastro"));
 			paPulsanti.add(pModifica = new JButton ("modifica"));
 			
 			add(informazioni = new JTextArea("PROVA"), BorderLayout.CENTER);
