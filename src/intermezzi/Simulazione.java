@@ -50,9 +50,6 @@ public class Simulazione {
 		int lot2 = -1;
 				
 		//NORDOVEST
-		if ((l1-1)<0){		
-			if ((l2-1) < 0){ 	//se c'è un cambio di settore anche per RIGA E COLONNA
-				if((s1-1) >= 0){ //se non esce dal riquadro
 		if ((l1-1) < 0){		
 			if ((l2-1) < 0){ 				//se c'� un cambio di settore per RIGA E COLONNA
 				if((s1-1) >= 0){ 			//se non esce dal riquadro
@@ -61,6 +58,7 @@ public class Simulazione {
 					set2 = s2-1;
 					lot1 = 2;
 					lot2 = 4;
+					}
 				}
 			}
 			else { 			//se c'è solo un cambio di settore SOLO PER RIGA
@@ -83,6 +81,7 @@ public class Simulazione {
 			lot1 = l1-1;
 			lot2 = l2-1;
 		}
+		
 		centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));	
 	
 	//NORD
@@ -94,7 +93,6 @@ public class Simulazione {
 				lot2 = l2;
 			}
 		}
-
 		else {							//se non cambia settore
 			set1 = s1;
 			set2 = s2;
@@ -109,17 +107,16 @@ public class Simulazione {
 					if ((s2+1) < 3){ 
 						set1 = s1-1;
 						set2 = s2+1;
-						lot1 = l1-1;
-						lot2 = l2+1;
+						lot1 = 2;
+						lot2 = 0;
 					}
-					else throw new IndexOutOfBoundsException();	
 				}
 				else throw new IndexOutOfBoundsException();
 			}	
 			else { //fuori dalla RIGA ma non dalla colonna
 				set1 = s1-1;
 				set2 = s2;
-				lot1 = l1-1;
+				lot1 = 2;
 				lot2 = l2+1;
 			}
 		}
@@ -159,9 +156,7 @@ public class Simulazione {
 						lot1 = 0;
 						lot2 = 0;
 					}
-	
 				}
-	
 			}
 			else if ((s1+1) < 3){			//cambio settore per riga
 				set1 = s1+1;
@@ -170,7 +165,6 @@ public class Simulazione {
 				lot2 = l2+1;
 			}
 		}
-	
 		else if ((l2 + 1) > 2){ 			//cambio di settore per colonna
 			if ((s2+1) < 2) {	
 				set1 = s1;
@@ -178,8 +172,7 @@ public class Simulazione {
 				lot1 = l1+1;
 				lot2 = 0;
 			}
-		}
-		
+		}	
 		else {								//nessun cambio di settore
 			set1 = s1;
 			set2 = s2;
@@ -226,8 +219,8 @@ public class Simulazione {
 				set2 = s2;
 				lot1 = 4;
 				lot2 = l2-1;
-				}
 			}
+		}
 		else if ((l2-1) < 0) {								//cambio di seettore per colonna
 			if ((s2-1) >= 0) {
 				set1 = s1;
@@ -248,7 +241,7 @@ public class Simulazione {
 	
 	//OVEST
 		if((l1-1) < 0) {
-			if ((s1-1) >=0) {
+			if ((s1-1) >=0){
 				set1 = s1-1;
 				set2 = s2;
 				lot1 = 4;
@@ -265,4 +258,4 @@ public class Simulazione {
 		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
 			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
 	}
-}
+}}
