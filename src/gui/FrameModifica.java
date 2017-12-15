@@ -17,7 +17,7 @@ public class FrameModifica extends JFrame{
 	
 	public FrameModifica () {
 		super();
-		
+				
 		
 		
 		setTitle("Modifica");
@@ -29,8 +29,12 @@ public class FrameModifica extends JFrame{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2= (Graphics2D) g;
 		
-		
-			
+		for (x = 30; x < 120; x++) {
+			for (y = 30; y < 30; y++) {
+				g.drawRect(x, y, 30, 10);
+			}
+		}
 	}
+	
 	
 }
