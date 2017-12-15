@@ -11,19 +11,32 @@ public class FrameLotto extends JFrame {
 	private Lotti rifer;
 	private CentroUrbano centro;
 	
-	
-	public FrameLotto(Lotti e, CentroUrbano u) {
-		super("Lotto");
-		rifer = e;	
-		centro = u;
+	/**
+	 * Il frame presenta sul lato sinistro dentro tre campi di testo 
+	 * i valori di:
+	 * 	-Valore lotto
+	 *  -Coefficente di efficenza
+	 *  -Coefficente di invecchiamento
+	 * 
+	 * Sul lato destro abbiamo tre pulsanti radiali con su scritti i nomi dei tipi di edifici costruibili
+	 * e un pulsante normale con su scritto "OK", circondati da un bordo
+	 * Un pulsante con su scritto "Rimozione"
+	 * 
+	 * @param lotto
+	 * @param centrourbano
+	 */
+	public FrameLotto(Lotti lotto, CentroUrbano centrourbano) {			//Se il bordo attorno alla sezione della modifica è brutto, mettilo pure attorno alla sezione
+		super("Lotto");													//di rimozione e poi fallo vedere agli altri
+		rifer = lotto;	
+		centro = centrourbano;
 	}
 	
 	
 	/**
-	 * Elimina il Lotto attuale, chiamando
+	 * Elimina l'edificabile nel lotto attuale sostituendolo con 
+	 * l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		
 	}
 	
 	
