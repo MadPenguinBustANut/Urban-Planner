@@ -99,7 +99,8 @@ public class StartFrame extends JFrame{
 	
 
 
-		
+public class ButtonListener implements ActionListener{	
+	StartFrame rifer;
 		public ButtonListener(StartFrame e) {
 			rifer = e;
 		}

@@ -1,16 +1,16 @@
 package intermezzi;
 
-import java.io.LineNumberInputStream;
 import java.util.Random;
 
 import javax.imageio.ImageTypeSpecifier;
 
 import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
 
+import java.util.Random;
+
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
 import centrourbano.Settori;
-import edifici.Edificabile;
 
 public class Simulazione {
 	
@@ -24,14 +24,10 @@ public class Simulazione {
 					for (Lotti d: c) {
 							d.setCeff(d.getCeff()-(d.getCeff()*d.getCinv())/100);
 				
+					}
 				}
 			}
 		}
-	}
-	}
-	
-	public void modificaDisastro (int x, int y, int z, int w) throws IndexOutOfBoundsException{
-		
 	}
 	
 	public void disastro (CentroUrbano centro) {
@@ -42,11 +38,7 @@ public class Simulazione {
 		int s2 = random.nextInt(3);
 		int l1= random.nextInt(3);
 		int l2= random.nextInt(5);
-<<<<<<< HEAD
 		int d1= random.nextInt(100); //coefficiente di efficenza puÃ² essere anche azzerato;
-=======
-		int d1= random.nextInt(100); //coefficiente di efficenza può essere anche azzerato;
->>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 		
 		//seleziono il lotto casuale usando i numeri generati prima
 		centro.lista[s1][s2].lista[l1][l2].setCeff(centro.lista[s1][s2].lista[l1][l2].getCeff()-d1);
@@ -55,34 +47,20 @@ public class Simulazione {
 		int set1 = -1;
 		int set2 = -1;
 		int lot1 = -1;
-<<<<<<< HEAD
 		int lot2 = -1;
-=======
-		int lot2 = -1; 
-		// settando così i valori la catastrofe se avviene al confine subirà due volte le conseguenze. Non riesco a pensare ad un'alternativa utile che non lanci eccezioni
-		// dovrei dargli dei luoghi da modificare che non mi servono... o controllo prima di effettuare l'operazione!
->>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
-		
-		
-		//modifico ogni elemento circostante
-		//per ogni direzione l'operazione cambia
-		
+				
 		//NORDOVEST
-<<<<<<< HEAD
 		if ((l1-1)<0){		
 			if ((l2-1) < 0){ 	//se c'Ã¨ un cambio di settore anche per RIGA E COLONNA
 				if((s1-1) >= 0){ //se non esce dal riquadro
-=======
 		if ((l1-1) < 0){		
-			if ((l2-1) < 0){ 				//se c'è un cambio di settore per RIGA E COLONNA
+			if ((l2-1) < 0){ 				//se c'ï¿½ un cambio di settore per RIGA E COLONNA
 				if((s1-1) >= 0){ 			//se non esce dal riquadro
 					if ((s2-1) >=0) {
->>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 					set1 = s1-1;
 					set2 = s2-1;
 					lot1 = 2;
 					lot2 = 4;
-<<<<<<< HEAD
 				}
 			}
 			else { 			//se c'Ã¨ solo un cambio di settore SOLO PER RIGA
@@ -107,62 +85,22 @@ public class Simulazione {
 		}
 		centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));	
 	
-	
-	//NORD
-		if ((l1-1) < 0){
-			if((s1-1) >= 0){
-=======
-					}
-				}
-			}
-			else if ((s1-1) >= 0){ 			//se c'è solo un cambio di settore SOLO PER RIGA
-				set1 = s1-1;
-				set2 = s2;
-				lot1 = 2;
-				lot2 = l2;
-			}
-						 					//se c'è un cambio di settore SOLO PER COLONNA 
-		if ((s2-1) > 0)
-				set1 = s1;
-				set2 = s2-1;
-				lot1 = l1;
-				lot2 = 4;	
-		}  								//se non c'è cambio di settore
-		else {
-				set1 = s1;
-				set2 = s2;
-				lot1 = l1-1;
-				lot2 = l2-1;
-		}	
-		
-		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));	
-	
-	
 	//NORD
 		if ((l1-1) < 0){				//cambio settore per riga
 			if((s1-1) >= 0){			//se non esce
->>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 				set1 = s1-1;
 				set2 = s2;
 				lot1 = 2;
 				lot2 = l2;
 			}
-<<<<<<< HEAD
-		//e se esce dall'array che fa? Lancia un'eccezione?
 		}
-		else {
-=======
-		
-		}
+
 		else {							//se non cambia settore
->>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 			set1 = s1;
 			set2 = s2;
 			lot1 = l1-1;
 			lot2 = l2;
 		}
-<<<<<<< HEAD
 	
 		//NORDEST
 		if ((l1-1) < 0){
@@ -186,66 +124,7 @@ public class Simulazione {
 			}
 		}
 		else {
-=======
-		
-		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
-	
-		//NORDEST
-		if ((l1-1) < 0){
-			if ((l2 + 1) > 4){			//cambio settore riga e colonna
-				if ((s1-1) >= 0){ 		
-					if ((s2+1) < 3){ 
-						set1 = s1-1;
-						set2 = s2+1;
-						lot1 = 2;
-						lot2 = 0;
-					}
-			
-				}
-		
-			}	
-			else if ((s1-1) >= 0){ 		//cambio settore riga
-				
-				set1 = s1-1;
-				set2 = s2;
-				lot1 = 2;
-				lot2 = l2+1;
-			}
-		}
-		else if ((l2+1) > 4) {			//cambio settore colonna
-			if ((s2+1) < 2) {
-				set1 = s1;
-				set2 = s2+1;
-				lot1 = l1-1;
-				lot2 = 0;
-			}
-		}
-		else {							//nessun cambio settore
->>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
-			set1 = s1;
-			set2 = s2;
-			lot1 = l1-1;
-			lot2 = l2+1;
-		}
-<<<<<<< HEAD
-	}
-	
-	
-	//EST
-	
-	//SUDEST
-	
-	//SUD
-	
-	//SUDOVEST
-	
-	//OVEST
-	
-}
 
-=======
-	
 		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
 			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
 			
@@ -386,7 +265,4 @@ public class Simulazione {
 		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
 			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
 	}
-	
-	
 }
->>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
