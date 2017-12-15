@@ -42,7 +42,11 @@ public class Simulazione {
 		int s2 = random.nextInt(3);
 		int l1= random.nextInt(3);
 		int l2= random.nextInt(5);
+<<<<<<< HEAD
 		int d1= random.nextInt(100); //coefficiente di efficenza puÃ² essere anche azzerato;
+=======
+		int d1= random.nextInt(100); //coefficiente di efficenza può essere anche azzerato;
+>>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 		
 		//seleziono il lotto casuale usando i numeri generati prima
 		centro.lista[s1][s2].lista[l1][l2].setCeff(centro.lista[s1][s2].lista[l1][l2].getCeff()-d1);
@@ -51,20 +55,34 @@ public class Simulazione {
 		int set1 = -1;
 		int set2 = -1;
 		int lot1 = -1;
+<<<<<<< HEAD
 		int lot2 = -1;
+=======
+		int lot2 = -1; 
+		// settando così i valori la catastrofe se avviene al confine subirà due volte le conseguenze. Non riesco a pensare ad un'alternativa utile che non lanci eccezioni
+		// dovrei dargli dei luoghi da modificare che non mi servono... o controllo prima di effettuare l'operazione!
+>>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 		
 		
 		//modifico ogni elemento circostante
 		//per ogni direzione l'operazione cambia
 		
 		//NORDOVEST
+<<<<<<< HEAD
 		if ((l1-1)<0){		
 			if ((l2-1) < 0){ 	//se c'Ã¨ un cambio di settore anche per RIGA E COLONNA
 				if((s1-1) >= 0){ //se non esce dal riquadro
+=======
+		if ((l1-1) < 0){		
+			if ((l2-1) < 0){ 				//se c'è un cambio di settore per RIGA E COLONNA
+				if((s1-1) >= 0){ 			//se non esce dal riquadro
+					if ((s2-1) >=0) {
+>>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 					set1 = s1-1;
 					set2 = s2-1;
 					lot1 = 2;
 					lot2 = 4;
+<<<<<<< HEAD
 				}
 			}
 			else { 			//se c'Ã¨ solo un cambio di settore SOLO PER RIGA
@@ -93,19 +111,58 @@ public class Simulazione {
 	//NORD
 		if ((l1-1) < 0){
 			if((s1-1) >= 0){
+=======
+					}
+				}
+			}
+			else if ((s1-1) >= 0){ 			//se c'è solo un cambio di settore SOLO PER RIGA
 				set1 = s1-1;
 				set2 = s2;
 				lot1 = 2;
 				lot2 = l2;
 			}
+						 					//se c'è un cambio di settore SOLO PER COLONNA 
+		if ((s2-1) > 0)
+				set1 = s1;
+				set2 = s2-1;
+				lot1 = l1;
+				lot2 = 4;	
+		}  								//se non c'è cambio di settore
+		else {
+				set1 = s1;
+				set2 = s2;
+				lot1 = l1-1;
+				lot2 = l2-1;
+		}	
+		
+		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));	
+	
+	
+	//NORD
+		if ((l1-1) < 0){				//cambio settore per riga
+			if((s1-1) >= 0){			//se non esce
+>>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
+				set1 = s1-1;
+				set2 = s2;
+				lot1 = 2;
+				lot2 = l2;
+			}
+<<<<<<< HEAD
 		//e se esce dall'array che fa? Lancia un'eccezione?
 		}
 		else {
+=======
+		
+		}
+		else {							//se non cambia settore
+>>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 			set1 = s1;
 			set2 = s2;
 			lot1 = l1-1;
 			lot2 = l2;
 		}
+<<<<<<< HEAD
 	
 		//NORDEST
 		if ((l1-1) < 0){
@@ -129,11 +186,49 @@ public class Simulazione {
 			}
 		}
 		else {
+=======
+		
+		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+	
+		//NORDEST
+		if ((l1-1) < 0){
+			if ((l2 + 1) > 4){			//cambio settore riga e colonna
+				if ((s1-1) >= 0){ 		
+					if ((s2+1) < 3){ 
+						set1 = s1-1;
+						set2 = s2+1;
+						lot1 = 2;
+						lot2 = 0;
+					}
+			
+				}
+		
+			}	
+			else if ((s1-1) >= 0){ 		//cambio settore riga
+				
+				set1 = s1-1;
+				set2 = s2;
+				lot1 = 2;
+				lot2 = l2+1;
+			}
+		}
+		else if ((l2+1) > 4) {			//cambio settore colonna
+			if ((s2+1) < 2) {
+				set1 = s1;
+				set2 = s2+1;
+				lot1 = l1-1;
+				lot2 = 0;
+			}
+		}
+		else {							//nessun cambio settore
+>>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
 			set1 = s1;
 			set2 = s2;
 			lot1 = l1-1;
 			lot2 = l2+1;
 		}
+<<<<<<< HEAD
 	}
 	
 	
@@ -149,3 +244,149 @@ public class Simulazione {
 	
 }
 
+=======
+	
+		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+			
+	
+		//EST
+		if ((l2+1) > 4) {					//cambio settore per riga
+			if((s2+1) < 2) {
+				set1 = s1;
+				set2 = s2+1;
+				lot1 = l1;
+				lot2 = 0;
+			}
+
+		}
+		else {								//nessun cambio settore
+			set1 = s1;
+			set2 = s2;
+			lot1 = l1;
+			lot2 = l2+1;
+		}
+	
+		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+	
+		//SUDEST
+		if((l1+1) > 2) {
+			if ((l2+1) > 2) {
+				if((s1+1) < 2) {
+					if ((s2+1) < 3) {		//cambio settore per riga e colonna
+						set1 = s1+1;
+						set2 = s2+1;
+						lot1 = 0;
+						lot2 = 0;
+					}
+	
+				}
+	
+			}
+			else if ((s1+1) < 3){			//cambio settore per riga
+				set1 = s1+1;
+				set2 = s2;
+				lot1 = 0;
+				lot2 = l2+1;
+			}
+		}
+	
+		else if ((l2 + 1) > 2){ 			//cambio di settore per colonna
+			if ((s2+1) < 2) {	
+				set1 = s1;
+				set2 = s2+1;
+				lot1 = l1+1;
+				lot2 = 0;
+			}
+		}
+		
+		else {								//nessun cambio di settore
+			set1 = s1;
+			set2 = s2;
+			lot1 = l1+1;
+			lot2 = l2+1;
+		}
+	
+		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+		
+		//SUD
+		if ((l1+1) > 2) {					//cambio di settore per riga
+			if((s1+1) < 2) {
+				set1 = s1+1;
+				set2 = s2;
+				lot1 = 0;
+				lot2 = l2;
+			}
+		}
+		else {								//nessun cambio di settore
+			set1 = s1;
+			set2 = s2;
+			lot1 = l1+1;
+			lot2 = l2;
+		}
+	
+		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+		
+		//SUDOVEST							
+		if((l1+1) < 0) {
+			if((l2-1) < 0) {
+				if((s1+1) < 2) {			//cambio di settore per riga e colonna
+					if((s2-1) >= 0) {
+						set1 = s1+1;
+						set2 = s2-1;
+						lot1 = 0;
+						lot2 = 4;
+					}
+				}
+			}
+			else if ((s1+1) < 2) {							//cambio di settore per riga
+				set1 = s1+1;
+				set2 = s2;
+				lot1 = 4;
+				lot2 = l2-1;
+				}
+			}
+		else if ((l2-1) < 0) {								//cambio di seettore per colonna
+			if ((s2-1) >= 0) {
+				set1 = s1;
+				set2 = s2-1;
+				lot1 = l1+1;
+				lot2 = 4;
+			}
+		}
+		else {												//nessun cambio di settore
+			set1 = s1;
+			set2 = s2; 
+			lot1 = l1-1;
+			lot2 = l2+1;
+		}
+	
+	if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+		centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+	
+	//OVEST
+		if((l1-1) < 0) {
+			if ((s1-1) >=0) {
+				set1 = s1-1;
+				set2 = s2;
+				lot1 = 4;
+				lot2 = l2;
+			}
+		}
+		else {
+			set1 = s1;
+			set2 = s2;
+			lot1 = l1-1;
+			lot2 = l2;
+		}
+		
+		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
+			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+	}
+	
+	
+}
+>>>>>>> 19c351501a0b810c16764f95558c1a0e3ff33a72
