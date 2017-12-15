@@ -4,15 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
-import intermezzi.Simulazione;
 
 public class PannelloGestione extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -55,7 +52,7 @@ public class PannelloGestione extends JPanel {
 				JButton rif = (JButton) e.getSource();
 				if(rif.getText().equalsIgnoreCase("Modifica")) {
 					JFrame io = new JFrame();
-					io.add(new PannelloVModifica(centroUrbano.lista[0][0]));
+					io.add(new PannelloVModifica(centroUrbano.lista[0][0], centroUrbano));
 					io.setSize(800, 600);
 					io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					io.setVisible(true);

@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
+import centrourbano.CentroUrbano;
 import centrourbano.Settori;
 
 public class PannelloVModifica extends JPanel {
@@ -22,9 +23,11 @@ public class PannelloVModifica extends JPanel {
 	int PY = 3;
 	int L = 10;
 	Settori rifer;
+	CentroUrbano centro;
 	
-	public PannelloVModifica(Settori e) {
+	public PannelloVModifica(Settori e, CentroUrbano t) {
 		rifer = e;
+		centro = t;
 		addMouseListener(new VisualListener(this));
 		}
 	
