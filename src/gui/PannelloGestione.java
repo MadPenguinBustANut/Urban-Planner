@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -29,18 +30,20 @@ public class PannelloGestione extends JPanel {
 		public PannelloGestione (CentroUrbano c) {
 			super(new BorderLayout());
 			centroUrbano = c;
-						
+			pModifica = new JButton ("modifica");
+			
+			pModifica.addActionListener(new ButtonListener());
+			
+			
 			paPulsanti = new JPanel(new GridLayout(3, 1));
 			
 			paPulsanti.add(pInvecchia = new JButton ("invecchiamento"));
 			paPulsanti.add(pDisastro = new JButton ("disastro"));
-			paPulsanti.add(pModifica = new JButton ("modifica"));
+			paPulsanti.add(pModifica);
 			
 			add(informazioni = new JTextArea("PROVA"), BorderLayout.CENTER);
 			
 			ButtonListener bInv = new ButtonListener();
-			
-			pInvecchia.addActionListener(bInv);
 			add(paPulsanti, BorderLayout.EAST);
 		}
 		
@@ -49,9 +52,15 @@ public class PannelloGestione extends JPanel {
 
 			
 			public void actionPerformed(ActionEvent e) {
-				Simulazione sim= new Simulazione();
-				sim.invecchiamento(centroUrbano);
-				informazioni.setText("coefficiente di efficienza aggiornato");
+				JButton rif = (JButton) e.getSource();
+				if(rif.getText().equalsIgnoreCase("Modifica")) {
+					JFrame io = new JFrame();
+					io.add(new PannelloVModifica(centroUrbano.lista[0][0]));
+					io.setSize(800, 600);
+					io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					io.setVisible(true);
+				}
+					
 			}
 			
 		}

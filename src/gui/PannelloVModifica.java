@@ -108,13 +108,12 @@ public class PannelloVModifica extends JPanel {
 		
 		public VisualListener(PannelloVModifica e) {
 			rifer = e;
-			io.add(rifer);
 		}
 		
 		public void mouseClicked(MouseEvent e) {
 			Point evento = e.getPoint();
 			
-			if(evento.getX() < PX & evento.getY() < PY) {
+			if(evento.getX() > PX & evento.getY() > PY) {
 				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2));
 			}
 			

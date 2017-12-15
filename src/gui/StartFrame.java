@@ -121,6 +121,7 @@ public class StartFrame extends JFrame{
 				visualizzazione.setVisible(false);
 			}
 			else if(testo.equalsIgnoreCase("Gestione")) {
+				rifer.setSize(800, 300);
 				contenitore.removeAll();
 				contenitore.add(gestione);
 				selezione.setVisible(false);
