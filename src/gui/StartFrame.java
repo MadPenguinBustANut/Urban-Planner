@@ -97,11 +97,10 @@ public class StartFrame extends JFrame{
 	private JButton gestioneB = new JButton("Gestione");
 	private JButton visualizzazioneB = new JButton("Visualizzazione");
 	
-	
-	public class ButtonListener implements ActionListener{
 
-		StartFrame rifer;
-		
+
+public class ButtonListener implements ActionListener{	
+	StartFrame rifer;
 		public ButtonListener(StartFrame e) {
 			rifer = e;
 		}
