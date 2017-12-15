@@ -3,7 +3,11 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
+
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
@@ -31,9 +35,6 @@ public class PannelloVModifica extends JPanel {
 	public void paintComponent(Graphics g) {
 		Graphics2D u = (Graphics2D) g;
 		u.clearRect(0, 0, this.getWidth(), this.getHeight());
-		
-		
-		
 		
 		int i, j;
 		for(i = 0; i < 5 ;i++ ) {
