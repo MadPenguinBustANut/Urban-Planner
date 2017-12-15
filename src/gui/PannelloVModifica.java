@@ -119,6 +119,7 @@ public class PannelloVModifica extends JPanel {
 			
 			if(evento.getX() > PX & evento.getY() > PY) {
 				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2));
+				
 			}
 			
 

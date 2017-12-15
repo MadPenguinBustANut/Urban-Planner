@@ -17,24 +17,15 @@ public class FrameModifica extends JFrame{
 	
 	public FrameModifica () {
 		super();
-				
 		
+		PannelloSettore x = new PannelloSettore();
 		
+		add(x);
+						
 		setTitle("Modifica");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(500, 750);
 		setVisible(true);
 	}
-	
-	public void paintComponent(Graphics g) {
-		Graphics2D g2= (Graphics2D) g;
-		
-		for (x = 30; x < 120; x++) {
-			for (y = 30; y < 30; y++) {
-				g.drawRect(x, y, 30, 10);
-			}
-		}
-	}
-	
 	
 }

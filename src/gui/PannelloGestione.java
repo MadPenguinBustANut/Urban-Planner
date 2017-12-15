@@ -51,8 +51,7 @@ public class PannelloGestione extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton rif = (JButton) e.getSource();
 				if(rif.getText().equalsIgnoreCase("Modifica")) {
-					JFrame io = new JFrame();
-					io.add(new PannelloVModifica(centroUrbano.lista[0][0], centroUrbano));
+					FrameModifica io = new FrameModifica();
 					io.setSize(800, 600);
 					io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					io.setVisible(true);
