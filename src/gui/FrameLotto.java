@@ -1,6 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,17 +39,17 @@ public class FrameLotto extends JFrame {
 		createTesti();
 		createBottoni();
 		createPanel();
-		setSize(200,200); //qua mi devi dire tu
+		setSize(400,200); //qua mi devi dire tu
 	}
 	public void createTesti() {
 		s1 = new JLabel("Valore Lotto");
-		p1 = new JTextField();
+		p1 = new JTextField(TEXTLARGO);
 		p1.setText(" ");
 		s2 = new JLabel("Coefficiente di efficenza");
-		p2 = new JTextField();
+		p2 = new JTextField(TEXTLARGO);
 		p2.setText(" ");
 		s3 = new JLabel("Coefficiente di invecchiamento");
-		p3 = new JTextField();
+		p3 = new JTextField(TEXTLARGO);
 		p3.setText(" ");
 	}
 	
@@ -97,24 +97,34 @@ class RemoveButton implements ActionListener{
 
 	}
 	public void createPanel() {
-		JPanel panel = new JPanel();
-
-		add(panel);
-		panel.add(s1, BorderLayout.WEST);
-		panel.add(p1, BorderLayout.WEST);
-		panel.add(s2, BorderLayout.WEST);
-		panel.add(p2, BorderLayout.WEST);
-		panel.add(s3, BorderLayout.WEST);
-		panel.add(p3, BorderLayout.WEST);
 		ButtonGroup radio = new ButtonGroup();
 		radio.add(radio1);
 		radio.add(radio2);
 		radio.add(radio3);
-		panel.add(radio1, BorderLayout.EAST);
-		panel.add(radio2, BorderLayout.EAST);
-		panel.add(radio3, BorderLayout.EAST);
+		
+		JPanel panel = new JPanel(new GridLayout(6,2));
+
+		add(panel);
+		panel.add(s1);
+		panel.add(radio1);
+		panel.add(p1);
+		panel.add(radio2);
+		panel.add(s2);
+		panel.add(radio3);
+		panel.add(p2);
 		panel.add(removeButton);
+		panel.add(s3);
 		panel.add(okButton);
+		panel.add(p3);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		panel.setVisible(true);
 		add(panel);
@@ -152,4 +162,5 @@ class RemoveButton implements ActionListener{
 	private JTextField p1, p2, p3;
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
+	final int TEXTLARGO=10;
 }
