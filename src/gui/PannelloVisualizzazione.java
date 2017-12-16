@@ -24,7 +24,7 @@ public class PannelloVisualizzazione extends JPanel {
 	public PannelloVisualizzazione(CentroUrbano e) {
 		rifer = e;
 		addMouseListener(new VisualListener(this));
-		addMouseWheelListener(new Zoomlistener(this));
+		addMouseWheelListener(new Zoomlistener());
 		}
 	
 	
@@ -122,10 +122,6 @@ public class PannelloVisualizzazione extends JPanel {
 	
 	private class Zoomlistener implements MouseWheelListener{
 
-		PannelloVisualizzazione rifer;
-		public Zoomlistener(PannelloVisualizzazione e) {
-			rifer = e;
-		}
 		
 		public void mouseWheelMoved(MouseWheelEvent e) {
 			Z += e.getWheelRotation();

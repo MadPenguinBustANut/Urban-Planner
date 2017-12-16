@@ -1,14 +1,9 @@
 package gui;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.lang.reflect.Array;
-import java.util.concurrent.ArrayBlockingQueue;
-
 import javax.swing.JFrame;
 
 public class FrameModifica extends JFrame{
+	private static final long serialVersionUID = 1L;
 	boolean[] arrayB = new boolean [6];
 	private int x;
 	private int y;

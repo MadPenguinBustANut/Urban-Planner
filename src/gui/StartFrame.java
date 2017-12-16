@@ -81,13 +81,13 @@ public class StartFrame extends JFrame{
 	private JMenuItem createItem(String a) {
 		
 		JMenuItem it = new JMenuItem(a);
-		it.addActionListener(new StartFrameListener());
+		it.addActionListener(new StartFrameListener(this));
 		return it;
 		
 	}
 	
-	CentroUrbano uno;
-	DatiPanel centro;
+	public CentroUrbano uno;
+	public DatiPanel centro;
 	
 	private JPanel contenitore;
 	private PannelloSelezione selezione;

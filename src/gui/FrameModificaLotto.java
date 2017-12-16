@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import centrourbano.Settori;
 
 public class FrameModificaLotto extends JFrame {
+	private static final long serialVersionUID = 1L;
 	int PX = 3;
 	int PY = 3;
 	int L = 10;
