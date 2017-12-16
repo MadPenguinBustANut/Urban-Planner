@@ -1,13 +1,10 @@
 package gui;
 
 import java.awt.BorderLayout;
-<<<<<<< HEAD
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-=======
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
->>>>>>> 5c2732d5c71030ff4567c992713a3f2726a4b4ea
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
