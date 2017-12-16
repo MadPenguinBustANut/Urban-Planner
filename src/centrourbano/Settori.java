@@ -25,6 +25,7 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano che edificio vendere
 	 * @return	Ritorna il prezzo di vendita dell'edificio
 	 */
+	
 	public int vendiEdificio(int X, int Y) {
 		Lotti vend = getLotto(X, Y);
 		int tot = (vend.getValore() + this.getValore()) * vend.getCeff();
@@ -42,6 +43,7 @@ public class Settori implements Serializable{
 	 * -Edificio privato: Controlla i lotti adiacenti in cerca di strade e aumenta per ogni strada il valore di 1
 	 * @param Nuovo Il Lotto che va inserito
 	 */
+	
 	public void addLotto(Lotti Nuovo, int X, int Y) {
 		if(Nuovo.getTip() == STRADA)
 			addStrada( Nuovo,X,Y);
@@ -112,6 +114,7 @@ public class Settori implements Serializable{
 	 * @param X Coordinata X, che insieme alla Y indicano la posizione della strada
 	 * @param Y Coordinata Y, che insieme alla X indicano la posizione della strada
 	 */
+	
 	private void addStrada(Lotti Nuovo, int X, int Y) {
 			lista[X][Y] = Nuovo;
 			
@@ -143,20 +146,31 @@ public class Settori implements Serializable{
 	 * @param X Coordinata X, che insieme alla Y indicano in che posizione aggiungere il lotto
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
 	 */
+	
 	private void addepub(Lotti Nuovo, int X, int Y) {
 		lista[X][Y] = Nuovo;
 		this.setValore(this.getValore() + 1);
 	}
+	
+	/**
+	 * Aggiunge un edificio privato
+	 * @param Nuovo Il lotto da aggiungere
+	 * @param X Coordinata X, che insieme alla Y indicano in che posizione aggiungere il lotto
+	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
+	 */
 	
 	private void addepriv(Lotti Nuovo, int X, int Y) {
 		lista[X][Y] = Nuovo;
 	}
 	
 	/**
-	 * Rimuovi la strada ed elimina il bonus agli edifici adiacenti
-	 * @param X
-	 * @param Y
+	 * Rimuove la strada alla posizione indicata da X e Y 
+	 * Inoltre riduce di uno il valore di tutti i lotti adiacenti in modo da annullare il
+	 * bonus dato dalla strada
+	 * @param X Coordinata X, che insieme alla Y indicano la posizione della strada da rimuovere
+	 * @param Y Coordinata Y, che insieme alla X indicano la posizione della strada da rimuovere
 	 */
+	
 	private void rmStrada(int X, int Y) {
 		lista[X][Y].setEdificio(null);
 		if((Y - 1) > -1)
@@ -180,9 +194,9 @@ public class Settori implements Serializable{
 		}
 	
 	/**
-	 * Rimuovi l'edificio pubblico e rimuove il +1 bonus
-	 * @param X
-	 * @param Y
+	 * Rimuovi l'edificio pubblico e rimuove il +1 bonus al settore
+	 * @param X Coordinata X, che insieme alla Y indicano in che posizione rimuovere il lotto
+	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
 	 */
 	
 	private void rmepub(int X,int Y) {
@@ -191,10 +205,19 @@ public class Settori implements Serializable{
 	
 	}
 	
+	/**
+	 * Rimuovi l'edificio privato
+	 * @param X Coordinata X, che insieme alla Y indicano in che posizione rimuovere il lotto
+	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
+	 */
 	
 	private void rmepriv(int X,int Y) {
 		lista[X][Y].setEdificio(null);
 	}
+	
+	/**
+	 * Calcola il numero di lotti presenti nel settore compresi i lotti liberi
+	 */
 	
 	public int calcolaLotti() {
 		int totale = 0;
@@ -204,6 +227,10 @@ public class Settori implements Serializable{
 		totale+=calcolaStrade();
 		return totale;
 	}
+	
+	/**
+	 * Calcola il numero di lotti liberi presenti nel settore
+	 */
 	
 	public int calcolaLottiLiberi() {
 		int lottiLiberi = 0;
@@ -218,6 +245,10 @@ public class Settori implements Serializable{
 		return lottiLiberi;
 	}
 	
+	/**
+	 * Calcola il numero di strade presenti nel settore
+	 */
+	
 	public int calcolaStrade() {
 		int strade = 0;
 		for(int i = 0; i < MAX_X ; i++ ) {
@@ -231,6 +262,9 @@ public class Settori implements Serializable{
 		return strade;
 	}
 	
+	/**
+	 * Calcola il numero di lotti pubblici presenti nel settore
+	 */
 	
 	public int calcolaLottiPubblici() {
 		int lottiPubblici = 0;
@@ -245,7 +279,10 @@ public class Settori implements Serializable{
 		return lottiPubblici;
 	}
 	
-
+/**
+ * Calcola il numero di lotti privati presenti nel settore
+ */
+	
 	public int calcolaLottiPrivati() {
 		int lottiPrivati = 0;
 		for(int i = 0; i < MAX_X ; i++ ) {
@@ -258,28 +295,54 @@ public class Settori implements Serializable{
 		
 		return lottiPrivati;
 	}
+
+	/**
+	 *Questo metodo aumenta di uno il valore del lotto,  ma solo se è un edificio privato 
+	 * @param X Coordinata X, che insieme alla Y indicano in che posizione si trova il lotto a cui aumentare il valore
+	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui aumentare il valore
+	 */
 	
 	public void addOne(int X,int Y) {
 		if(lista[X][Y].getTip()==EPRIV)
 			lista[X][Y].setValore(lista[X][Y].getValore() + 1);
 	}
 	
+	/**
+	 * Questo metodo riduce di uno il valore del lotto, ma solo se è un edificio privato
+	 * @param X Coordinata X, che insieme alla Y indicano in che posizione si trova il lotto a cui ridurre il valore
+	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui ridurre il valore
+	 */
+	
 	public void subOne(int X,int Y) {
 		if(lista[X][Y].getTip()==EPRIV)
 			lista[X][Y].setValore(lista[X][Y].getValore() - 1);
 	}
 	
+	/**
+	 * Questo metodo ritorna il valore del settore
+	 * @return Valore del settore
+	 */
+	
 	public int getValore() {
 		return valore;
 	}
+	
+	/**
+	 * Questo metodo modifica il valore del settore
+	 * @param valore Valore del settore
+	 */
+	
 	public void setValore(int valore) {
 		this.valore = valore;
 	}
 
 
 
+	//Ho associato delle MACRO ai limiti del settore in modo da rendere piu leggibile il codice
 	private static final int MAX_X = 3;
 	private static final int MAX_Y = 5;
+	
+	//A ogni tipo di edificio ho associato un valore, creando una MACRO che rende piu leggibile il codice
 	private static final int LIBERO = 0;
 	private static final int STRADA = 1;
 	private static final int EPUB = 2;
