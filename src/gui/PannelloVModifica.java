@@ -44,12 +44,13 @@ public class PannelloVModifica extends JPanel {
 			for(j = 0; j < 3; j++) {
 				u.drawRect(PX+(L*i*Z), PY+(L*j*Z), L*Z, L*Z);
 				
+				//Controllo il tipo del lotto
 				switch(rifer.lista[j][i].getTip()) {
-				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);
+				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);	//STRADA
 						break;
-				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z); 
+				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z);			//PUBBLICO
 						break;
-				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 
+				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 			//PRIVATO
 						break;
 				default: break;
 				}
@@ -72,7 +73,7 @@ public class PannelloVModifica extends JPanel {
 	private void paintStrada(Graphics2D e, int x, int y, int L, int i, int j) {
 		e.drawLine(x+(L/2), y, x+(L/2), y+L-(L/2));
 
-		
+		//Controllo se i lotti adiacenti hanno una strada
 		
 		//Destra
 		if( (y) == 4 ) {
@@ -117,27 +118,27 @@ public class PannelloVModifica extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			Point evento = e.getPoint();
 			
+			//Se il mouse è all'interno del disegno
 			if(evento.getX() > PX & evento.getY() > PY) {
-				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2));
-				
-			}
-			
+				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2)) {
 
-			if(io.isVisible()) {
-				io.setVisible(false);
-				io.dispose();
-				//Inizializzazione a nuovo Lotto
-				io.setSize(300, 500);
-				io.setVisible(true);
-				io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					if(io.isVisible()) {
+						io.setVisible(false);
+						io.dispose();
+						//Inizializzazione a nuovo Lotto
+						io.setSize(300, 500);
+						io.setVisible(true);
+						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					}
+					else {
+						//Inizializzazione a Lotto
+						io.setSize(300, 500);
+						io.setVisible(true);
+						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
+					}
+				}
 			}
-			else {
-				//Inizializzazione a Lotto
-				io.setSize(300, 500);
-				io.setVisible(true);
-				io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			}
-			
 		}
 
 		

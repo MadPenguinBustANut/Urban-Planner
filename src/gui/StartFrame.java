@@ -99,8 +99,9 @@ public class StartFrame extends JFrame{
 	
 
 
-public class ButtonListener implements ActionListener{	
-	StartFrame rifer;
+public class ButtonListener implements ActionListener{
+		StartFrame rifer;
+	
 		public ButtonListener(StartFrame e) {
 			rifer = e;
 		}
@@ -111,15 +112,15 @@ public class ButtonListener implements ActionListener{
 			
 			
 			String testo = io.getText();
-			if(testo.equalsIgnoreCase("Selezione")) {
-				rifer.setSize(800, 400);
+			if(testo.equalsIgnoreCase("Selezione")){			//Ridimensionamento del frame per
+				rifer.setSize(800, 400);						//visualizzare il pannello di selezione
 				contenitore.removeAll();
 				contenitore.add(selezione);
 				selezione.setVisible(true);
 				gestione.setVisible(false);
 				visualizzazione.setVisible(false);
 			}
-			else if(testo.equalsIgnoreCase("Gestione")) {
+			else if(testo.equalsIgnoreCase("Gestione")){		//visualizzazione del pannello di gestione
 				rifer.setSize(800, 300);
 				contenitore.removeAll();
 				contenitore.add(gestione);
@@ -127,7 +128,7 @@ public class ButtonListener implements ActionListener{
 				gestione.setVisible(true);
 				visualizzazione.setVisible(false);
 			}
-			else if(testo.equalsIgnoreCase("Visualizzazione")) {
+			else if(testo.equalsIgnoreCase("Visualizzazione")){	//visualizzazione del pannello di visualizzazione
 				rifer.setSize(800, 450);	
 				contenitore.removeAll();
 				contenitore.add(visualizzazione);

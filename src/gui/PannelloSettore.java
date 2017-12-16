@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 public class PannelloSettore extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private int x;
 	private int y;
 	private int weight;
