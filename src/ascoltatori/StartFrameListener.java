@@ -6,12 +6,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
@@ -61,8 +58,8 @@ public class StartFrameListener implements ActionListener{
 	
 	private void carica() {
 		JFileChooser io = new JFileChooser();
-		io.addActionListener(new Filechooserlistener());
 		JFrame nuovo = new JFrame("File");
+		io.addActionListener(new Filechooserlistener(nuovo));
 		nuovo.add(io);
 		nuovo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		nuovo.setSize(600,  300);
@@ -79,6 +76,12 @@ public class StartFrameListener implements ActionListener{
 	
 	private class Filechooserlistener implements ActionListener{
 
+		JFrame rife;
+		
+		public Filechooserlistener(JFrame nuovo) {
+			rife = nuovo;
+		}
+		
 		
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser chooser = (JFileChooser) e.getSource();
@@ -97,6 +100,10 @@ public class StartFrameListener implements ActionListener{
 				} catch (ClassNotFoundException e1) {
 				} catch (IOException e1) {
 				}
+				rifer.centro.nDati(rifer.uno);
+			}
+			else if(JFileChooser.CANCEL_SELECTION.equalsIgnoreCase(e.getActionCommand())) {
+				rife.dispose();
 			}
 		}
 		

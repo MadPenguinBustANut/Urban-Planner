@@ -1,6 +1,15 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
@@ -44,11 +53,13 @@ public class FrameLotto extends JFrame {
 		panel.add(s3, BorderLayout.WEST);
 		panel.add(p3, BorderLayout.WEST);
 		ButtonGroup radio= new ButtonGroup();
-		radio.add(radio1,BorderLayout.EAST);
-		radio.add(radio2,BorderLayout.EAST);
-		radio.add(radio3,BorderLayout.EAST);
-		panel.add(removeButton,BorderLayout.EAST);
-		panel.add(okButton,BorderLayout.EAST);
+		
+		//NON È UN PANNELLO
+//		radio.add(radio1,BorderLayout.EAST);
+//		radio.add(radio2,BorderLayout.EAST);
+//		radio.add(radio3,BorderLayout.EAST);
+//		panel.add(removeButton,BorderLayout.EAST);
+//		panel.add(okButton,BorderLayout.EAST);
 
 
 	}
@@ -57,13 +68,15 @@ public class FrameLotto extends JFrame {
 		radio1= new JRadioButton("Edificio 1");
 		radio1.setSelected(true);
 		okButton= new JButton("OK");
-
-		//ActionListener
-		public void actionPerformed(ActionEvent e){
-			p1=""+e.getLotto();
-			p2=""+e.getEfficienza();
-			p3=""+e.getInvecchiamento();
-		}
+		
+		
+//MA CHE CAZZO DI ROBA È QUESTA?!
+//		//ActionListener
+//		public void actionPerformed(ActionEvent e){
+//			p1=""+e.getLotto();
+//			p2=""+e.getEfficienza();
+//			p3=""+e.getInvecchiamento();
+//		}
 
 	}
 
@@ -72,7 +85,6 @@ public class FrameLotto extends JFrame {
 	 * l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		Edificabile=null;
 	}
 
 
@@ -98,5 +110,6 @@ public class FrameLotto extends JFrame {
 	private CentroUrbano centro;
 	private	JLabel s1,s2,s3;
 	private JTextField p1,p2,p3;
-	private JButton okButton,removeButton,radio1,radio2,radio3;
+	private JButton okButton,removeButton,radio2,radio3;
+	JRadioButton radio1;
 }
