@@ -1,6 +1,16 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
@@ -98,5 +108,6 @@ public class FrameLotto extends JFrame {
 	private CentroUrbano centro;
 	private	JLabel s1,s2,s3;
 	private JTextField p1,p2,p3;
-	private JButton okButton,removeButton,radio1,radio2,radio3;
+	private JButton okButton,removeButton,radio2,radio3;
+	JRadioButton radio1;
 }
