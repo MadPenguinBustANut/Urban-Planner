@@ -44,7 +44,8 @@ public class FrameLotto extends JFrame {
 		 s3= new JLabel("Coefficiente di invecchiamento");
 		 p3=new JTextField("");
 
-		JPanel panel= new JPanel(new GridLayout(2,6));
+		JFrame panel= new JFrame("Lotto");
+
 		add(panel);
 		panel.add(s1, BorderLayout.WEST);
 		panel.add(p1, BorderLayout.WEST);
@@ -53,30 +54,50 @@ public class FrameLotto extends JFrame {
 		panel.add(s3, BorderLayout.WEST);
 		panel.add(p3, BorderLayout.WEST);
 		ButtonGroup radio= new ButtonGroup();
-		
-		//NON » UN PANNELLO
-//		radio.add(radio1,BorderLayout.EAST);
-//		radio.add(radio2,BorderLayout.EAST);
-//		radio.add(radio3,BorderLayout.EAST);
-//		panel.add(removeButton,BorderLayout.EAST);
-//		panel.add(okButton,BorderLayout.EAST);
 
 
+	radio.add(radio1,BorderLayout.EAST);
+	radio.add(radio2,BorderLayout.EAST);
+	radio.add(radio3,BorderLayout.EAST);
+	panel.add(removeButton,BorderLayout.EAST);
+	panel.add(okButton,BorderLayout.EAST);
+//lo chiamo panel perch√© cos√¨ mi piace chiamarlo
+	panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	panel.setVisible(true);
 	}
 
 	public void creaBottoni(){
 		radio1= new JRadioButton("Edificio 1");
 		radio1.setSelected(true);
+		radio2= new JRadioButton("Edificio 2");
+		radio3= new JRadioButton("Edificio3");
 		okButton= new JButton("OK");
-		
-		
-//MA CHE CAZZO DI ROBA » QUESTA?!
-//		//ActionListener
-//		public void actionPerformed(ActionEvent e){
-//			p1=""+e.getLotto();
-//			p2=""+e.getEfficienza();
-//			p3=""+e.getInvecchiamento();
-//		}
+		//ActionListener radio
+		class ActionMan implements ActionListener{
+			public void actionPerformed(ActionEvent e){
+				getInfo(); //stessa questione dei parametri
+			}
+			ActionListener radioActive= new ActionMan();
+			radio1.AddActionListener(radioActive);
+			radio2.AddActionListener(radioActive);
+			radio3.AddActionListener(radioActive);
+		}
+	//ActionListener per OK, praticamente fa mostrare i campi a sinistra a seconda dell'edificio scelto. Ho messo getsource ma non ho capito da dove prendere gli edifici so
+	class OkButtoner implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+		costruzione(); //ancora, non so cosa passargli, non sto a cap√¨ ao
+				}
+		ActionListener listenerOk= new OkButtoner();
+		okButton.addActionListener(listenerOk);
+//ActionListener per remove. chiama il metodo rimozione quando premi il bottone. Come prima non so come prendere l'edificio selezionato da radiobuttons quindi gli passo il nulla per ora
+class RemoveButton implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+		rimozione();
+	}
+	ActionListener remover= new RemoveButton;
+	removeButton.AddActionListener(remover);
+}
+		}
 
 	}
 
@@ -84,7 +105,8 @@ public class FrameLotto extends JFrame {
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con
 	 * l'edificabile VUOTO
 	 */
-	public void rimozione() {
+	public void rimozione(Edificabile a) {
+		a=vuoto;
 	}
 
 
@@ -93,7 +115,7 @@ public class FrameLotto extends JFrame {
 	 * uno del tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-
+//non ho capito
 	}
 
 
@@ -102,8 +124,10 @@ public class FrameLotto extends JFrame {
 	 * alla sinistra del pannello
 	 *
 	 */
-	public void getInfo() {
-
+	public void getInfo(Edificabile a) {
+		p1=""+a.Lotto();
+		p2=""+a.getEfficienza();
+		p3=""a.getInvecchiamento();
 	}
 
 	private Lotti rifer;
