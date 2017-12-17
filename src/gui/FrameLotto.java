@@ -55,13 +55,12 @@ public class FrameLotto extends JFrame {
 		panel.add(p3, BorderLayout.WEST);
 		ButtonGroup radio= new ButtonGroup();
 
-
+		//CONTINUA A NON ESSERE UN PANNELLO
 	radio.add(radio1,BorderLayout.EAST);
 	radio.add(radio2,BorderLayout.EAST);
 	radio.add(radio3,BorderLayout.EAST);
 	panel.add(removeButton,BorderLayout.EAST);
 	panel.add(okButton,BorderLayout.EAST);
-//lo chiamo panel perché così mi piace chiamarlo
 	panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	panel.setVisible(true);
 	}
@@ -106,7 +105,7 @@ class RemoveButton implements ActionListener{
 	 * l'edificabile VUOTO
 	 */
 	public void rimozione(Edificabile a) {
-		a=vuoto;
+		a=vuoto;								//Vatti a leggere Edificabile.java
 	}
 
 
@@ -115,7 +114,7 @@ class RemoveButton implements ActionListener{
 	 * uno del tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-//non ho capito
+												//non ho capito
 	}
 
 
@@ -127,7 +126,7 @@ class RemoveButton implements ActionListener{
 	public void getInfo(Edificabile a) {
 		p1=""+a.Lotto();
 		p2=""+a.getEfficienza();
-		p3=""a.getInvecchiamento();
+		p3=""+a.getInvecchiamento();
 	}
 
 	private Lotti rifer;
