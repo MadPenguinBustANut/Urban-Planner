@@ -9,7 +9,6 @@ public class Tester {
 		JFrame nuovo= new FrameLotto();
 		nuovo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		nuovo.setVisible(true);
-		nuovo.setResizable(false);
 	}
 
 }

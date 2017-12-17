@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 //import centrourbano.CentroUrbano;
 //import centrourbano.Lotti;
@@ -40,17 +42,18 @@ public class FrameLotto extends JFrame {
 		createBottoni();
 		createPanel();
 		setSize(400,200); //qua mi devi dire tu
+		setResizable(false);
 	}
 	public void createTesti() {
 		s1 = new JLabel("Valore Lotto");
-		p1 = new JTextField(TEXTLARGO);
-		p1.setText(" ");
-		s2 = new JLabel("Coefficiente di efficenza");
-		p2 = new JTextField(TEXTLARGO);
-		p2.setText(" ");
+		p1 = new JTextArea();
+		p1.setEditable(false);
+		s2 = new JLabel("Coefficiente di efficienza");
+		p2 = new JTextArea();
+		p2.setEditable(false);
 		s3 = new JLabel("Coefficiente di invecchiamento");
-		p3 = new JTextField(TEXTLARGO);
-		p3.setText(" ");
+		p3 = new JTextArea();
+		p3.setEditable(false);
 	}
 	
 
@@ -101,10 +104,13 @@ class RemoveButton implements ActionListener{
 		radio.add(radio1);
 		radio.add(radio2);
 		radio.add(radio3);
+		//vito non cancellare queste cose, l'ordine dei bottoni mi serve se dobbiamo tornare coem prima. al massimo metti tutto in commento e copia
 		
-		JPanel panel = new JPanel(new GridLayout(6,2));
-
+		JPanel panel = new JPanel(new GridLayout(7,2));
+		FlowLayout flow1= new FlowLayout();
+		panel.setLayout(flow1);
 		add(panel);
+		panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		panel.add(s1);
 		panel.add(radio1);
 		panel.add(p1);
@@ -112,20 +118,16 @@ class RemoveButton implements ActionListener{
 		panel.add(s2);
 		panel.add(radio3);
 		panel.add(p2);
-		panel.add(removeButton);
-		panel.add(s3);
 		panel.add(okButton);
+		panel.add(s3);
+		//panel.add(new JLabel()); questi li ho messi in commenti non li cancellare, se togli flowlayout servono per gli spazi vuoti.
 		panel.add(p3);
+		//panel.add(new JLabel());
+		panel.add(removeButton);
+		//panel.add(new JLabel());
+	
 		
 		
-		
-		
-		
-		
-		
-		
-		
-
 		panel.setVisible(true);
 		add(panel);
 	}
@@ -159,7 +161,7 @@ class RemoveButton implements ActionListener{
 	//private Lotti rifer;
 	//private CentroUrbano centro;
 	private JLabel s1, s2, s3;
-	private JTextField p1, p2, p3;
+	private JTextArea p1,p2,p3;
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO=10;
