@@ -1,7 +1,10 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.ComponentOrientation;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -9,114 +12,140 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
+import edifici.Edificabile;
+
+//import centrourbano.CentroUrbano;
+//import centrourbano.Lotti;
+//import edifici.Edificabile;
 
 public class FrameLotto extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-
-
 	/**
-	 * Il frame presenta sul lato sinistro dentro tre campi di testo
-	 * i valori di:
-	 * 	-Valore lotto
-	 *  -Coefficente di efficienza
-	 *  -Coefficente di invecchiamento
+	 * Il frame presenta sul lato sinistro dentro tre campi di testo i valori di:
+	 * -Valore lotto -Coefficente di efficienza -Coefficente di invecchiamento
 	 *
-	 * Sul lato destro abbiamo tre pulsanti radiali con su scritti i nomi dei tipi di edifici costruibili
-	 * e un pulsante normale con su scritto "OK", circondati da un bordo
-	 * Un pulsante con su scritto "Rimozione"
+	 * Sul lato destro abbiamo tre pulsanti radiali con su scritti i nomi dei tipi
+	 * di edifici costruibili e un pulsante normale con su scritto "OK", circondati
+	 * da un bordo Un pulsante con su scritto "Rimozione"
 	 *
 	 * @param lotto
 	 * @param centrourbano
 	 */
-	public FrameLotto(Lotti lotto, CentroUrbano centrourbano) {			//Se il bordo attorno alla sezione della modifica e brutto, mettilo pure attorno alla sezione
-		super("Lotto");													//di rimozione e poi fallo vedere agli altri
-		rifer = lotto;
-		centro = centrourbano;
-		 s1 = new JLabel("Valore Lotto");
-		 p1=new JTextField("");
-		 s2= new JLabel("Coefficiente di efficenza");
-		 p2=new JTextField("");
-		 s3= new JLabel("Coefficiente di invecchiamento");
-		 p3=new JTextField("");
-
-		JFrame panel= new JFrame("Lotto");
-
-		add(panel);
-		panel.add(s1, BorderLayout.WEST);
-		panel.add(p1, BorderLayout.WEST);
-		panel.add(s2, BorderLayout.WEST);
-		panel.add(p2, BorderLayout.WEST);
-		panel.add(s3, BorderLayout.WEST);
-		panel.add(p3, BorderLayout.WEST);
-		ButtonGroup radio= new ButtonGroup();
-
-		//CONTINUA A NON ESSERE UN PANNELLO
-	radio.add(radio1,BorderLayout.EAST);
-	radio.add(radio2,BorderLayout.EAST);
-	radio.add(radio3,BorderLayout.EAST);
-	panel.add(removeButton,BorderLayout.EAST);
-	panel.add(okButton,BorderLayout.EAST);
-	panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	panel.setVisible(true);
+	public FrameLotto(Lotti lotto, CentroUrbano centrourbano) {		// Se il bordo attorno alla sezione della modifica e
+																		// brutto, mettilo pure attorno alla sezione
+																		// di rimozione e poi fallo vedere agli altri
+		
+		createTesti();
+		createBottoni();
+		createPanel();
+		setSize(400,200); //qua mi devi dire tu
+		setResizable(false);
 	}
+	public void createTesti() {
+		s1 = new JLabel("Valore Lotto");
+		p1 = new JTextArea();
+		p1.setEditable(false);
+		s2 = new JLabel("Coefficiente di efficienza");
+		p2 = new JTextArea();
+		p2.setEditable(false);
+		s3 = new JLabel("Coefficiente di invecchiamento");
+		p3 = new JTextArea();
+		p3.setEditable(false);
+	}
+	
 
-	public void creaBottoni(){
+	public void createBottoni(){
 		radio1= new JRadioButton("Edificio 1");
 		radio1.setSelected(true);
 		radio2= new JRadioButton("Edificio 2");
 		radio3= new JRadioButton("Edificio3");
 		okButton= new JButton("OK");
+		removeButton= new JButton("Rimuovi");
+		
 		//ActionListener radio
 		class ActionMan implements ActionListener{
 			public void actionPerformed(ActionEvent e){
-				getInfo(); //stessa questione dei parametri
+				//getInfo(); //stessa questione dei parametri
+				p3.setText("prova radio ok");
 			}
-			ActionListener radioActive= new ActionMan();
-			radio1.AddActionListener(radioActive);
-			radio2.AddActionListener(radioActive);
-			radio3.AddActionListener(radioActive);
 		}
-	//ActionListener per OK, praticamente fa mostrare i campi a sinistra a seconda dell'edificio scelto. Ho messo getsource ma non ho capito da dove prendere gli edifici so
+			ActionListener radioActive= new ActionMan();
+			radio1.addActionListener(radioActive);
+			radio2.addActionListener(radioActive);
+			radio3.addActionListener(radioActive);
+		
 	class OkButtoner implements ActionListener{
 	public void actionPerformed(ActionEvent e){
-		costruzione(); //ancora, non so cosa passargli, non sto a capì ao
+		//costruzione(); 
+		p1.setText("Ok button ok");
 				}
+	}
 		ActionListener listenerOk= new OkButtoner();
 		okButton.addActionListener(listenerOk);
-//ActionListener per remove. chiama il metodo rimozione quando premi il bottone. Come prima non so come prendere l'edificio selezionato da radiobuttons quindi gli passo il nulla per ora
+		
+		
 class RemoveButton implements ActionListener{
 	public void actionPerformed(ActionEvent e){
-		rimozione();
+		//rimozione();
+		p2.setText("bottone rimuovi ok");
 	}
-	ActionListener remover= new RemoveButton;
-	removeButton.AddActionListener(remover);
 }
-		}
+	ActionListener remover= new RemoveButton();
+	removeButton.addActionListener(remover);
+
+		
 
 	}
-
+	public void createPanel() {
+		ButtonGroup radio = new ButtonGroup();
+		radio.add(radio1);
+		radio.add(radio2);
+		radio.add(radio3);
+		//vito non cancellare queste cose, l'ordine dei bottoni mi serve se dobbiamo tornare coem prima. al massimo metti tutto in commento e copia
+		
+		JPanel panel = new JPanel(new GridLayout(7,2));
+		FlowLayout flow1= new FlowLayout();
+		panel.setLayout(flow1);
+		add(panel);
+		panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		panel.add(s1);
+		panel.add(radio1);
+		panel.add(p1);
+		panel.add(radio2);
+		panel.add(s2);
+		panel.add(radio3);
+		panel.add(p2);
+		panel.add(okButton);
+		panel.add(s3);
+		//panel.add(new JLabel()); questi li ho messi in commenti non li cancellare, se togli flowlayout servono per gli spazi vuoti.
+		panel.add(p3);
+		//panel.add(new JLabel());
+		panel.add(removeButton);
+		//panel.add(new JLabel());
+	
+		
+		
+		panel.setVisible(true);
+		add(panel);
+	}
+	
 	/**
-	 * Elimina l'edificabile nel lotto attuale sostituendolo con
-	 * l'edificabile VUOTO
+	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
-	public void rimozione(Edificabile a) {
-		a=vuoto;								//Vatti a leggere Edificabile.java
+	public void rimozione() {
 	}
 
-
 	/**
-	 * La funzione cambia l'Edificabile contenuto all'interno del Lotto con
-	 * uno del tipo scelto dall'utente attraverso i pulsanti radiali
+	 * La funzione cambia l'Edificabile contenuto all'interno del Lotto con uno del
+	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-												//non ho capito
 	}
-
 
 	/**
 	 * La funzione legge coefficienti e valore del lotto (nel caso sia privato) e li stampa in Campi di testo
@@ -124,15 +153,16 @@ class RemoveButton implements ActionListener{
 	 *
 	 */
 	public void getInfo(Edificabile a) {
-		p1=""+a.Lotto();
-		p2=""+a.getEfficienza();
-		p3=""+a.getInvecchiamento();
+//		p1=""+a.Lotto();
+//		p2=""+a.getEfficienza();
+//		p3=""+a.getInvecchiamento();
 	}
 
-	private Lotti rifer;
-	private CentroUrbano centro;
-	private	JLabel s1,s2,s3;
-	private JTextField p1,p2,p3;
-	private JButton okButton,removeButton,radio2,radio3;
-	JRadioButton radio1;
+	//private Lotti rifer;
+	//private CentroUrbano centro;
+	private JLabel s1, s2, s3;
+	private JTextArea p1,p2,p3;
+	private JButton okButton, removeButton;
+	private JRadioButton radio1, radio2, radio3;
+	final int TEXTLARGO=10;
 }
