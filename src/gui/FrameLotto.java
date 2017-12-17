@@ -18,9 +18,6 @@ import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
 import edifici.Edificabile;
 
-//import centrourbano.CentroUrbano;
-//import centrourbano.Lotti;
-//import edifici.Edificabile;
 
 public class FrameLotto extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -36,41 +33,37 @@ public class FrameLotto extends JFrame {
 	 * @param lotto
 	 * @param centrourbano
 	 */
-	public FrameLotto(Lotti lotto, CentroUrbano centrourbano) {		// Se il bordo attorno alla sezione della modifica e
-																		// brutto, mettilo pure attorno alla sezione
-																		// di rimozione e poi fallo vedere agli altri
-		
+	public FrameLotto(Lotti lotto, CentroUrbano centrourbano) {
 		createTesti();
 		createBottoni();
 		createPanel();
-		setSize(400,200); //qua mi devi dire tu
-		setResizable(false);
+		setSize(530, 200);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
 	}
 	public void createTesti() {
 		s1 = new JLabel("Valore Lotto");
-		p1 = new JTextArea();
+		p1 = new JTextArea(1, 4);
 		p1.setEditable(false);
 		s2 = new JLabel("Coefficiente di efficienza");
-		p2 = new JTextArea();
+		p2 = new JTextArea(1, 4);
 		p2.setEditable(false);
 		s3 = new JLabel("Coefficiente di invecchiamento");
-		p3 = new JTextArea();
+		p3 = new JTextArea(1, 4);
 		p3.setEditable(false);
 	}
 	
 
 	public void createBottoni(){
-		radio1= new JRadioButton("Edificio 1");
-		radio1.setSelected(true);
-		radio2= new JRadioButton("Edificio 2");
-		radio3= new JRadioButton("Edificio3");
-		okButton= new JButton("OK");
-		removeButton= new JButton("Rimuovi");
+		radio1= new JRadioButton("Strada");
+		radio2= new JRadioButton("Pubblico");
+		radio3= new JRadioButton("Privato");
+		okButton= new JButton("Costruire");
+		removeButton= new JButton("Demolisci");
 		
 		//ActionListener radio
 		class ActionMan implements ActionListener{
 			public void actionPerformed(ActionEvent e){
-				//getInfo(); //stessa questione dei parametri
 				p3.setText("prova radio ok");
 			}
 		}
@@ -81,7 +74,6 @@ public class FrameLotto extends JFrame {
 		
 	class OkButtoner implements ActionListener{
 	public void actionPerformed(ActionEvent e){
-		//costruzione(); 
 		p1.setText("Ok button ok");
 				}
 	}
@@ -91,7 +83,6 @@ public class FrameLotto extends JFrame {
 		
 class RemoveButton implements ActionListener{
 	public void actionPerformed(ActionEvent e){
-		//rimozione();
 		p2.setText("bottone rimuovi ok");
 	}
 }
@@ -106,27 +97,25 @@ class RemoveButton implements ActionListener{
 		radio.add(radio1);
 		radio.add(radio2);
 		radio.add(radio3);
-		//vito non cancellare queste cose, l'ordine dei bottoni mi serve se dobbiamo tornare coem prima. al massimo metti tutto in commento e copia
 		
-		JPanel panel = new JPanel(new GridLayout(7,2));
-		FlowLayout flow1= new FlowLayout();
-		panel.setLayout(flow1);
+		JPanel panel = new JPanel(new GridLayout(1,2));
+		JPanel sx = new JPanel(new GridLayout(7,1));
+		JPanel dx = new JPanel();
+		panel.add(sx);
+		panel.add(dx);
+		
 		add(panel);
-		panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		panel.add(s1);
-		panel.add(radio1);
-		panel.add(p1);
-		panel.add(radio2);
-		panel.add(s2);
-		panel.add(radio3);
-		panel.add(p2);
-		panel.add(okButton);
-		panel.add(s3);
-		//panel.add(new JLabel()); questi li ho messi in commenti non li cancellare, se togli flowlayout servono per gli spazi vuoti.
-		panel.add(p3);
-		//panel.add(new JLabel());
-		panel.add(removeButton);
-		//panel.add(new JLabel());
+		sx.add(s1);
+		dx.add(radio1);
+		sx.add(p1);
+		dx.add(radio2);
+		sx.add(s2);
+		dx.add(radio3);
+		sx.add(p2);
+		dx.add(okButton);
+		sx.add(s3);
+		sx.add(p3);
+		sx.add(removeButton);
 	
 		
 		
