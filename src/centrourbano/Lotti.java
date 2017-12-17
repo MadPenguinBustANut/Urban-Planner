@@ -93,7 +93,7 @@ public class Lotti implements Serializable{
 //Questo sta qua da un po, ma lo usiamo ancora? 
 	// o lo si puo eliminare?
 	
-	private static Edificabile VUOTO = new Edificabile(){
+	public static Edificabile VUOTO = new Edificabile(){
 		private static final long serialVersionUID = 1L;
 
 		public int getTipo() {
