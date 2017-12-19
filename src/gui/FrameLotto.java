@@ -131,8 +131,7 @@ public class FrameLotto extends JFrame {
 	 */
 	public void rimozione() {
 		if(radio1.isSelected()) centroUrbano.rmStrada(SettX, SettY,LX, LY); //coordinate provvisorie
-		if(radio2.isSelected()) Settori.rmepub(LX,LY);
-		if(radio3.isSelected()) Settori.rmepriv(LX,LY);
+		else if ((radio2.isSelected()) || (radio3.isSelected()) Settori.rmLotto(LX,LY);
 	}
 
 	/**

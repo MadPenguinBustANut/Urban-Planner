@@ -101,83 +101,83 @@ public class CentroUrbano implements Serializable{
 	}
 	
 	/**
-	 * Aggiunge una strada al settore indicato con MasterX e MasterY nelle coordinate indicate
+	 * Aggiunge una strada al settore indicato con settX e settY nelle coordinate indicate
 	 * dopo averla aggiunta dovranno anche applicarsi gli effetti speciali della strada,
 	 * ovvero aumentare di 1 il valore degli edifici adiacenti
 	 * @param Nuovi Lotto da inserire
-	 * @param MasterX Coordinata X del settore, insieme a MasterY indica il settore scelto
-	 * @param MasterY Coordinata Y del settore, insieme a MasterX indica il settore scelto
+	 * @param settX Coordinata X del settore, insieme a settY indica il settore scelto
+	 * @param settY Coordinata Y del settore, insieme a settX indica il settore scelto
 	 * @param X Coordinata X del lotto, insieme a Y indica dove verra posizionato il lotto
 	 * @param Y Coordinata Y del lotto, insieme a X indica dove verra posizionato il lotto
 	 */
-	public void addStrada(int MasterX, int MasterY,int X ,int Y) {
+	public void addStrada(double settX, double settY,double LX ,double LY) {
 	
-		if(X==MAX_X && Y < MAX_Y) {
-			if((MasterX + 1) < MAX_MASTER_X)
-				lista[MasterX + 1][MasterY].addOne(0, Y);
+		if(LX==MAX_X && LY < MAX_Y) {
+			if((settX + 1) < MAX_MASTER_X)
+				lista[(int) (settX + 1)][(int) settY].addOne(0, LY);
 		}
 		
-		if(X < MAX_X && Y == MAX_Y) {
-			if((MasterY + 1) < MAX_MASTER_Y)
-				lista[MasterX][MasterY + 1].addOne(X, 0);
+		if(LX < MAX_X && LY == MAX_Y) {
+			if((settY + 1) < MAX_MASTER_Y)
+				lista[(int) settX][(int) (settY + 1)].addOne(LX, 0);
 		}
 		
-		if(X==MAX_X && Y == MAX_Y) {
-			if((MasterX + 1) < MAX_MASTER_X)
-				lista[MasterX + 1][MasterY].addOne(0, Y);
+		if(LX==MAX_X && LY == MAX_Y) {
+			if((settX + 1) < MAX_MASTER_X)
+				lista[(int) (settX + 1)][(int) settY].addOne(0, LY);
 
-			if((MasterY + 1) < MAX_MASTER_Y)
-				lista[MasterX][MasterY + 1].addOne(X, 0);
+			if((settY + 1) < MAX_MASTER_Y)
+				lista[(int) settX][(int) (settY + 1)].addOne(LX, 0);
 			
-			if(((MasterX + 1) < MAX_MASTER_X) && ((MasterY + 1) < MAX_MASTER_Y))
-				lista[MasterX + 1][MasterY + 1].addOne(0, 0);
+			if(((settX + 1) < MAX_MASTER_X) && ((settY + 1) < MAX_MASTER_Y))
+				lista[(int) (settX + 1)][(int) (settY + 1)].addOne(0, 0);
 			
 			return;
 		}
 		
-		if(X==MAX_X && Y == 0) {
-			lista[MasterX + 1][MasterY - 1].addOne(0, MAX_Y);
+		if(LX==MAX_X && LY == 0) {
+			lista[(int) (settX + 1)][(int) (settY - 1)].addOne(0, MAX_Y);
 		}
 		
-		if(X==0 && Y == MAX_Y) {
-			lista[MasterX -1][MasterY + 1].addOne(MAX_X, 0);
+		if(LX==0 && LY == MAX_Y) {
+			lista[(int) (settX -1)][(int) (settY + 1)].addOne(MAX_X, 0);
 		}
 		
-		if(X==0 && Y >0) {
-			if((MasterX - 1) >-1)
-				lista[MasterX - 1][MasterY].addOne(MAX_X, Y);
+		if(LX==0 && LY >0) {
+			if((settX - 1) >-1)
+				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
 		}
 		
-		if(X>0 && Y ==0) {
-			if((MasterY - 1) >-1)
-				lista[MasterX][MasterY - 1].addOne(X, MAX_Y);
+		if(LX>0 && LY ==0) {
+			if((settY - 1) >-1)
+				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
 		}
 		
-		if(X==0 && Y ==0) {
-			if((MasterY - 1) >-1)
-				lista[MasterX][MasterY - 1].addOne(X, MAX_Y);
+		if(LX==0 && LY ==0) {
+			if((settY - 1) >-1)
+				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
 			
-			if((MasterX - 1) >-1)
-				lista[MasterX - 1][MasterY].addOne(MAX_X, Y);
+			if((settX - 1) >-1)
+				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
 			
-			if(((MasterX - 1) >-1) && ((MasterY - 1) >-1))
-				lista[MasterX - 1][MasterY].addOne(MAX_X, MAX_Y);
+			if(((settX - 1) >-1) && ((settY - 1) >-1))
+				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, MAX_Y);
 			
 			return;
 
 		}
 		
-		lista[MasterX][MasterY].addLotto(new Strada(), X, Y);
+		lista[(int) settX][(int) settY].addLotto(new Strada(), LX, LY);
 			
 	}
 	
 
 	/**
-	 * Rimuove la strada dal settore indicato con MasterX e MasterY nelle coordinate indicate
+	 * Rimuove la strada dal settore indicato con settX e settY nelle coordinate indicate
 	 * dopo averla rimossa dovranno anche togliersi gli effetti speciali della strada,
 	 * ovvero aumentare di 1 il valore degli edifici adiacenti
-	 * @param settX Coordinata X del settore, insieme a MasterY indica il settore scelto
-	 * @param settY Coordinata Y del settore, insieme a MasterX indica il settore scelto
+	 * @param settX Coordinata X del settore, insieme a settY indica il settore scelto
+	 * @param settY Coordinata Y del settore, insieme a settX indica il settore scelto
 	 * @param lX Coordinata X del lotto, insieme a Y indica dove verra posizionato il lotto
 	 * @param lY Coordinata Y del lotto, insieme a X indica dove verra posizionato il lotto
 	 */
