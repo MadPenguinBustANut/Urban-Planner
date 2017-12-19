@@ -9,7 +9,7 @@ public class Lotti implements Serializable{
 	public Lotti() {
 		edificio = VUOTO;
 	}
-	
+	//Puppa
 
 	public Lotti(Edificabile NuovoEdificio) {
 		edificio = NuovoEdificio;
