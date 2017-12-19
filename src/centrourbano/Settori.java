@@ -200,7 +200,7 @@ public class Settori implements Serializable{
 	 * @param y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
 	 */
 
-	public static void rmepub(double x,double y) {
+	private void rmepub(double x,double y) {
 		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
 		setValore(getValore() - 1);
 
@@ -212,7 +212,7 @@ public class Settori implements Serializable{
 	 * @param y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
 	 */
 
-	public static void rmepriv(double x,double y) {
+	private void rmepriv(double x,double y) {
 		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
 	}
 
