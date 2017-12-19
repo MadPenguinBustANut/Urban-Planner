@@ -3,6 +3,7 @@ package centrourbano;
 import java.io.Serializable;
 
 import eccezioni.LottoLibero;
+import edifici.Edificabile;
 
 
 public class Settori implements Serializable{
@@ -44,12 +45,12 @@ public class Settori implements Serializable{
 	 * @param Nuovo Il Lotto che va inserito
 	 */
 
-	public void addLotto(Lotti Nuovo, int X, int Y) {
-		if(Nuovo.getTip() == STRADA)
+	public void addLotto(Edificabile Nuovo, int X, int Y) {
+		if(Nuovo.getTipo() == STRADA)
 			addStrada( Nuovo,X,Y);
-		if(Nuovo.getTip() == EPUB)
+		if(Nuovo.getTipo() == EPUB)
 			addepub(Nuovo,X,Y);
-		if(Nuovo.getTip() == EPRIV)
+		if(Nuovo.getTipo() == EPRIV)
 			addepriv(Nuovo,  X, Y);
 	}
 
@@ -87,7 +88,7 @@ public class Settori implements Serializable{
 	 * @throws LottoLibero Nel caso il lotto sia gia libero lancia una eccezzione
 	 */
 
-	public void cgEdificio(Lotti nuovo,int X, int Y) {
+	public void cgEdificio(Edificabile nuovo,int X, int Y) {
 		rmLotto(X, Y);
 		addLotto(nuovo, X , Y);
 	}
@@ -115,8 +116,8 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano la posizione della strada
 	 */
 
-	private void addStrada(Lotti Nuovo, int X, int Y) {
-			lista[X][Y] = Nuovo;
+	private void addStrada(Edificabile Nuovo, int X, int Y) {
+			lista[X][Y].setEdificio(Nuovo);
 
 			if((Y - 1) > -1)
 				addOne(X,Y-1);
@@ -147,8 +148,8 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
 	 */
 
-	private void addepub(Lotti Nuovo, int X, int Y) {
-		lista[X][Y] = Nuovo;
+	private void addepub(Edificabile NuovoEdificio, int X, int Y) {
+		lista[X][Y].setEdificio(NuovoEdificio);
 		this.setValore(this.getValore() + 1);
 	}
 
@@ -159,8 +160,8 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
 	 */
 
-	private void addepriv(Lotti Nuovo, int X, int Y) {
-		lista[X][Y] = Nuovo;
+	private void addepriv(Edificabile Nuovo, int X, int Y) {
+		lista[X][Y].setEdificio(Nuovo);
 	}
 
 	/**

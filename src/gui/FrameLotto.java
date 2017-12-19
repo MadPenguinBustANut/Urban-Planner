@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +15,7 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
+import edifici.EPubblico;
 
 public class FrameLotto extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +31,7 @@ public class FrameLotto extends JFrame {
 	 * @param lotto
 	 * @param centrourbano
 	 */
-	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano) {
+	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano, Point Settore, Point Lotto) {
 		this.lotto = lotto;
 		this.centroUrbano = centroUrbano;
 		createTesti();
@@ -123,7 +125,7 @@ public class FrameLotto extends JFrame {
 	 */
 	public void rimozione() {
 		if(radio1.isSelected()) centroUrbano.rmStrada(1,1,1,1); //coordinate provvisorie
-		//if(radio2.isSelected()) //roba pubblico
+		//if(radio2.isSelected()) //Copia riga 138
 		//if(radio3.isSelected()) //roba privato
 	}
 
@@ -132,8 +134,8 @@ public class FrameLotto extends JFrame {
 	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-		if(radio1.isSelected()) centroUrbano.addStrada(lotto,1,1,1,1); //coordinate provvisorie
-		//if(radio2.isSelected()) //roba pubblico
+		if(radio1.isSelected()) centroUrbano.addStrada(1,1,1,1); //coordinate provvisorie
+		if(radio2.isSelected()) centroUrbano.lista[SettX][SettY].addLotto(new EPubblico(), LX, LY);
 		//if(radio3.isSelected()) new EPrivato(); //boh
 	}
 

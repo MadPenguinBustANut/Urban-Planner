@@ -13,6 +13,8 @@ public class Lotti implements Serializable{
 
 	public Lotti(Edificabile NuovoEdificio) {
 		edificio = NuovoEdificio;
+		VUOTO.setCeff(0);
+		VUOTO.setCinv(0);
 	}
 	
 	/**
