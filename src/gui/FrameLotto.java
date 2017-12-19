@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.ComponentOrientation;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,8 +14,6 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
-import edifici.EPrivato;
-import edifici.Edificabile;
 
 public class FrameLotto extends JFrame {
 	private static final long serialVersionUID = 1L;
