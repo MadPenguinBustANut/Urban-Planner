@@ -1,8 +1,10 @@
 package eccezioni;
 
-import java.io.IOException;
-
-public class LottoLibero extends IOException {
+public class LottoLibero extends RuntimeException {
 	private static final long serialVersionUID = 1L;
+	
+	public LottoLibero() {
+		super("Il lotto è vuoto:");
+	}
 
 }

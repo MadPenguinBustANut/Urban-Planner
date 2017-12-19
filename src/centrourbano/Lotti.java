@@ -1,67 +1,103 @@
 package centrourbano;
 
 import java.io.Serializable;
+import edifici.*;
 
 public class Lotti implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	public Lotti() {
-		tipo = 0;
-		valore = 0;
+		edificio = VUOTO;
+	}
+	
+
+	public Lotti(Edificabile NuovoEdificio) {
+		edificio = NuovoEdificio;
 	}
 	
 	/**
-	 * La funzione verrà usata per modificare il tipo di edificio
-	 * sostituendolo con il nuovo edificio
+	 * La funzione verrà usata per modificare il tipo di lotto
+	 * sostituendolo con il nuovo lotto
 	 * 
-	 * @param NuovoEdificio
+	 * @param NuovoEdificio il nuovo lotto
 	 */
 	
-	public void cambiaTipo(int NuovoEdificio) {
+	//public void modEdi(Edificabile NuovoEdificio) {
+	//	edificio = NuovoEdificio;
+	//}
+
+	public void setEdificio(Edificabile NuovoEdificio) {
+		edificio = NuovoEdificio;
 	}
 	
 	/**
 	 * Il valore del lotto viene cambiato al nuovo valore
-	 * @param NuovoValore
+	 * @param NuovoValore Il valore che verra assegnato a edificio
 	 */
-	public void cambiaValore(int NuovoValore) {
-		
+	public void setValore(int NuovoValore) {
+		((EPrivato) edificio).setValore(NuovoValore);
 	}
 	
 	
+	/**
+	 * Restituisce il valore dell'edificio
+	 */
 	
-	public int getVal() {
-		return valore;
+	public int getValore() {
+		return ((EPrivato) edificio).getValore();
 	}
+
+	/**
+	 * Restituisce il tipo dell'edificio
+	 */
 	
 	public int getTip() {
-		return tipo;
+		return edificio.getTipo();
 	}
+	
+	/**
+	 * Restituisce il coefficiente di efficienza dell'edificio
+	 */
+	
 	public int getCeff() {
-		return ceff;
+		return edificio.getCeff();
 	}
+	
+	/**
+	 * Cambia il coeffficiente di efficienza
+	 */
+	
 	public void setCeff(int ceff) {
-		this.ceff = ceff;
+		edificio.setCeff(ceff);
 	}
+	
+	/**
+	 * Restituisce il coefficiente di invecchiamento
+	 */
+	
 	public int getCinv() {
-		return cinv;
+		return edificio.getCinv();
 	}
+	
+	/**
+	 * Imposta il coefficiente di invecchiamento
+	 */
+	
 	public void setCinv(int cinv) {
-		this.cinv = cinv;
+		edificio.setCinv(cinv);
 	}
 
 
+	private Edificabile edificio;
+	
+//Questo sta qua da un po, ma lo usiamo ancora? 
+	// o lo si puo eliminare?
+	
+	public static Edificabile VUOTO = new Edificabile(){
+		private static final long serialVersionUID = 1L;
 
-	private int tipo;
-	private int valore;
-	
-	
-	//Li randomizziamo?
-	private int ceff;
-	private int cinv;
-	
-	private static int LIBERO = 0;
-	private static int STRADA = 1;
-	private static int EPUB = 2;
-	private static int EPRIV = 3;
+		public int getTipo() {
+			return 0;
+		}	
+	};
 }
