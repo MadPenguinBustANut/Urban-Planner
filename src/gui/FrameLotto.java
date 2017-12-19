@@ -1,8 +1,6 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,11 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
-//import centrourbano.CentroUrbano;
-//import centrourbano.Lotti;
-//import edifici.Edificabile;
+import centrourbano.CentroUrbano;
+import centrourbano.Lotti;
 
 public class FrameLotto extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -32,101 +29,102 @@ public class FrameLotto extends JFrame {
 	 * @param lotto
 	 * @param centrourbano
 	 */
-	public FrameLotto(/*Lotti lotto, CentroUrbano centrourbano*/) {		// Se il bordo attorno alla sezione della modifica e
-																		// brutto, mettilo pure attorno alla sezione
-		/*super("Lotto"); 												// di rimozione e poi fallo vedere agli altri
-		rifer = lotto;
-		centro = centrourbano;
-		*/
+	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano) {
+		this.lotto = lotto;
+		this.centroUrbano = centroUrbano;
 		createTesti();
 		createBottoni();
 		createPanel();
-		setSize(200,200); //qua mi devi dire tu
+		setSize(530, 200);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
 	}
+
 	public void createTesti() {
 		s1 = new JLabel("Valore Lotto");
-		p1 = new JTextField();
-		p1.setText(" ");
-		s2 = new JLabel("Coefficiente di efficenza");
-		p2 = new JTextField();
-		p2.setText(" ");
+		p1 = new JTextArea(1, 4);
+		p1.setEditable(false);
+		s2 = new JLabel("Coefficiente di efficienza");
+		p2 = new JTextArea(1, 4);
+		p2.setEditable(false);
 		s3 = new JLabel("Coefficiente di invecchiamento");
-		p3 = new JTextField();
-		p3.setText(" ");
+		p3 = new JTextArea(1, 4);
+		p3.setEditable(false);
 	}
-	
 
-	public void createBottoni(){
-		radio1= new JRadioButton("Edificio 1");
-		radio1.setSelected(true);
-		radio2= new JRadioButton("Edificio 2");
-		radio3= new JRadioButton("Edificio3");
-		okButton= new JButton("OK");
-		removeButton= new JButton("Rimuovi");
-		
-		//ActionListener radio
-		class ActionMan implements ActionListener{
-			public void actionPerformed(ActionEvent e){
-				//getInfo(); //stessa questione dei parametri
-				p3.setText("prova radio ok");
+	public void createBottoni() {
+		radio1 = new JRadioButton("Strada");
+		radio2 = new JRadioButton("Pubblico");
+		radio3 = new JRadioButton("Privato");
+		okButton = new JButton("Costruire");
+		removeButton = new JButton("Demolisci");
+
+		// ActionListener radio
+		class ActionMan implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				getInfo();
 			}
 		}
-			ActionListener radioActive= new ActionMan();
-			radio1.addActionListener(radioActive);
-			radio2.addActionListener(radioActive);
-			radio3.addActionListener(radioActive);
-		
-	class OkButtoner implements ActionListener{
-	public void actionPerformed(ActionEvent e){
-		//costruzione(); 
-		p1.setText("Ok button ok");
-				}
-	}
-		ActionListener listenerOk= new OkButtoner();
+		ActionListener radioActive = new ActionMan();
+		radio1.addActionListener(radioActive);
+		radio2.addActionListener(radioActive);
+		radio3.addActionListener(radioActive);
+
+		class OkButtoner implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				// costruisci
+				costruzione();
+			}
+		}
+		ActionListener listenerOk = new OkButtoner();
 		okButton.addActionListener(listenerOk);
-		
-		
-class RemoveButton implements ActionListener{
-	public void actionPerformed(ActionEvent e){
-		//rimozione();
-		p2.setText("bottone rimuovi ok");
-	}
-}
-	ActionListener remover= new RemoveButton();
-	removeButton.addActionListener(remover);
 
-		
+		class RemoveButton implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				rimozione();
+			}
+		}
+		ActionListener remover = new RemoveButton();
+		removeButton.addActionListener(remover);
 
 	}
+
 	public void createPanel() {
-		JPanel panel = new JPanel();
-
-		add(panel);
-		panel.add(s1, BorderLayout.WEST);
-		panel.add(p1, BorderLayout.WEST);
-		panel.add(s2, BorderLayout.WEST);
-		panel.add(p2, BorderLayout.WEST);
-		panel.add(s3, BorderLayout.WEST);
-		panel.add(p3, BorderLayout.WEST);
 		ButtonGroup radio = new ButtonGroup();
 		radio.add(radio1);
 		radio.add(radio2);
 		radio.add(radio3);
-		panel.add(radio1, BorderLayout.EAST);
-		panel.add(radio2, BorderLayout.EAST);
-		panel.add(radio3, BorderLayout.EAST);
-		panel.add(removeButton);
-		panel.add(okButton);
+
+		JPanel panel = new JPanel(new GridLayout(1, 2));
+		JPanel sx = new JPanel(new GridLayout(7, 1));
+		JPanel dx = new JPanel();
+		panel.add(sx);
+		panel.add(dx);
+
+		add(panel);
+		sx.add(s1);
+		dx.add(radio1);
+		sx.add(p1);
+		dx.add(radio2);
+		sx.add(s2);
+		dx.add(radio3);
+		sx.add(p2);
+		dx.add(okButton);
+		sx.add(s3);
+		sx.add(p3);
+		sx.add(removeButton);
 
 		panel.setVisible(true);
 		add(panel);
 	}
-	
+
 	/**
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		//a = vuoto;
+		if(radio1.isSelected()) centroUrbano.rmStrada(1,1,1,1); //coordinate provvisorie
+		//if(radio2.isSelected()) //roba pubblico
+		//if(radio3.isSelected()) //roba privato
 	}
 
 	/**
@@ -134,24 +132,27 @@ class RemoveButton implements ActionListener{
 	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-		// non ho capito
+		if(radio1.isSelected()) centroUrbano.addStrada(lotto,1,1,1,1); //coordinate provvisorie
+		//if(radio2.isSelected()) //roba pubblico
+		//if(radio3.isSelected()) new EPrivato(); //boh
 	}
 
 	/**
-	 * La funzione legge coefficienti e valore del lotto (nel caso sia privato) e li stampa in Campi di testo
-	 * alla sinistra del pannello
+	 * La funzione legge coefficienti e valore del lotto (nel caso sia privato) e li
+	 * stampa in Campi di testo alla sinistra del pannello
 	 *
 	 */
 	public void getInfo() {
-		//p1.setText(""+getTipo());
-		//p2.setText(""+getCeff());
-		//p3.setText(""+getCinv());
+		p1.setText("" + lotto.getValore());
+		p2.setText("" + lotto.getCeff());
+		p3.setText("" + lotto.getCinv());
 	}
 
-	//private Lotti rifer;
-	//private CentroUrbano centro;
+	private Lotti lotto;
+	private CentroUrbano centroUrbano;
 	private JLabel s1, s2, s3;
-	private JTextField p1, p2, p3;
+	private JTextArea p1, p2, p3;
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
+	final int TEXTLARGO = 10;
 }
