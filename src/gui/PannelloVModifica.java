@@ -3,11 +3,16 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
+
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
+import centrourbano.CentroUrbano;
 import centrourbano.Settori;
 
 public class PannelloVModifica extends JPanel {
@@ -18,9 +23,11 @@ public class PannelloVModifica extends JPanel {
 	int PY = 3;
 	int L = 10;
 	Settori rifer;
+	CentroUrbano centro;
 	
-	public PannelloVModifica(Settori e) {
+	public PannelloVModifica(Settori e, CentroUrbano t) {
 		rifer = e;
+		centro = t;
 		addMouseListener(new VisualListener(this));
 		}
 	
@@ -32,20 +39,18 @@ public class PannelloVModifica extends JPanel {
 		Graphics2D u = (Graphics2D) g;
 		u.clearRect(0, 0, this.getWidth(), this.getHeight());
 		
-		
-		
-		
 		int i, j;
 		for(i = 0; i < 5 ;i++ ) {
 			for(j = 0; j < 3; j++) {
 				u.drawRect(PX+(L*i*Z), PY+(L*j*Z), L*Z, L*Z);
 				
+				//Controllo il tipo del lotto
 				switch(rifer.lista[j][i].getTip()) {
-				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);
+				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);	//STRADA
 						break;
-				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z); 
+				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z);			//PUBBLICO
 						break;
-				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 
+				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 			//PRIVATO
 						break;
 				default: break;
 				}
@@ -68,7 +73,7 @@ public class PannelloVModifica extends JPanel {
 	private void paintStrada(Graphics2D e, int x, int y, int L, int i, int j) {
 		e.drawLine(x+(L/2), y, x+(L/2), y+L-(L/2));
 
-		
+		//Controllo se i lotti adiacenti hanno una strada
 		
 		//Destra
 		if( (y) == 4 ) {
@@ -108,32 +113,32 @@ public class PannelloVModifica extends JPanel {
 		
 		public VisualListener(PannelloVModifica e) {
 			rifer = e;
-			io.add(rifer);
 		}
 		
 		public void mouseClicked(MouseEvent e) {
 			Point evento = e.getPoint();
 			
-			if(evento.getX() < PX & evento.getY() < PY) {
-				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2));
-			}
-			
+			//Se il mouse è all'interno del disegno
+			if(evento.getX() > PX & evento.getY() > PY) {
+				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2)) {
 
-			if(io.isVisible()) {
-				io.setVisible(false);
-				io.dispose();
-				//Inizializzazione a nuovo Lotto
-				io.setSize(300, 500);
-				io.setVisible(true);
-				io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					if(io.isVisible()) {
+						io.setVisible(false);
+						io.dispose();
+						//Inizializzazione a nuovo Lotto
+						io.setSize(300, 500);
+						io.setVisible(true);
+						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					}
+					else {
+						//Inizializzazione a Lotto
+						io.setSize(300, 500);
+						io.setVisible(true);
+						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
+					}
+				}
 			}
-			else {
-				//Inizializzazione a Lotto
-				io.setSize(300, 500);
-				io.setVisible(true);
-				io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			}
-			
 		}
 
 		

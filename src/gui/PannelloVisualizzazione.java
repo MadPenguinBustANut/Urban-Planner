@@ -24,7 +24,7 @@ public class PannelloVisualizzazione extends JPanel {
 	public PannelloVisualizzazione(CentroUrbano e) {
 		rifer = e;
 		addMouseListener(new VisualListener(this));
-		addMouseWheelListener(new Zoomlistener(this));
+		addMouseWheelListener(new Zoomlistener());
 		}
 	
 	
@@ -69,7 +69,7 @@ public class PannelloVisualizzazione extends JPanel {
 	}
 	
 	private void paintStrada(Graphics2D e, int x, int y, int L, int i, int j) {
-		e.drawLine(x+(L/2), y, x+(L/2), y+L-(L/2));
+		e.drawLine(x+(L/2), y, x+(L/2), y+(L/2));
 
 		int settX, settY, lottX, lottY;
 		
@@ -122,10 +122,6 @@ public class PannelloVisualizzazione extends JPanel {
 	
 	private class Zoomlistener implements MouseWheelListener{
 
-		PannelloVisualizzazione rifer;
-		public Zoomlistener(PannelloVisualizzazione e) {
-			rifer = e;
-		}
 		
 		public void mouseWheelMoved(MouseWheelEvent e) {
 			Z += e.getWheelRotation();

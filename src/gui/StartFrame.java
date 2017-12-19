@@ -33,17 +33,17 @@ public class StartFrame extends JFrame{
 		visualizzazioneB.addActionListener(new ButtonListener(this));
 		visualizzazione = new PannelloVisualizzazione(uno);
 		selezione = new PannelloSelezione();
-		gestione = new PannelloGestione();
+		gestione = new PannelloGestione(c);
 		
 		
 		io.add(gestioneB);
 		io.add(selezioneB);
 		io.add(visualizzazioneB);
 		
-		contenitore = new JPanel(new GridLayout(1, 1));
+
+		contenitore = new JPanel(new GridLayout(1,1));
 		
 		grid.add(contenitore, BorderLayout.CENTER);
-		grid.add(gestione, BorderLayout.EAST);
 		grid.add(centro, BorderLayout.NORTH);
 		grid.add(io, BorderLayout.SOUTH);
 		
@@ -81,13 +81,13 @@ public class StartFrame extends JFrame{
 	private JMenuItem createItem(String a) {
 		
 		JMenuItem it = new JMenuItem(a);
-		it.addActionListener(new StartFrameListener());
+		it.addActionListener(new StartFrameListener(this));
 		return it;
 		
 	}
 	
-	CentroUrbano uno;
-	DatiPanel centro;
+	public CentroUrbano uno;
+	public DatiPanel centro;
 	
 	private JPanel contenitore;
 	private PannelloSelezione selezione;
@@ -97,11 +97,11 @@ public class StartFrame extends JFrame{
 	private JButton gestioneB = new JButton("Gestione");
 	private JButton visualizzazioneB = new JButton("Visualizzazione");
 	
-	
-	public class ButtonListener implements ActionListener{
 
+
+public class ButtonListener implements ActionListener{
 		StartFrame rifer;
-		
+	
 		public ButtonListener(StartFrame e) {
 			rifer = e;
 		}
@@ -112,22 +112,25 @@ public class StartFrame extends JFrame{
 			
 			
 			String testo = io.getText();
-			if(testo.equalsIgnoreCase("Selezione")) {
-				rifer.setSize(800, 400);
-				contenitore.remove(visualizzazione);
+			if(testo.equalsIgnoreCase("Selezione")){			//Ridimensionamento del frame per
+				rifer.setSize(800, 400);						//visualizzare il pannello di selezione
+				contenitore.removeAll();
 				contenitore.add(selezione);
 				selezione.setVisible(true);
 				gestione.setVisible(false);
 				visualizzazione.setVisible(false);
 			}
-			else if(testo.equalsIgnoreCase("Gestione")) {
+			else if(testo.equalsIgnoreCase("Gestione")){		//visualizzazione del pannello di gestione
+				rifer.setSize(800, 300);
+				contenitore.removeAll();
+				contenitore.add(gestione);
 				selezione.setVisible(false);
 				gestione.setVisible(true);
 				visualizzazione.setVisible(false);
 			}
-			else if(testo.equalsIgnoreCase("Visualizzazione")) {
-				rifer.setSize(800, 450);
-				contenitore.remove(selezione);
+			else if(testo.equalsIgnoreCase("Visualizzazione")){	//visualizzazione del pannello di visualizzazione
+				rifer.setSize(800, 450);	
+				contenitore.removeAll();
 				contenitore.add(visualizzazione);
 				selezione.setVisible(false);
 				gestione.setVisible(false);
