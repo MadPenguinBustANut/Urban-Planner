@@ -15,6 +15,8 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
+import centrourbano.Settori;
+import edifici.EPrivato;
 import edifici.EPubblico;
 
 public class FrameLotto extends JFrame {
@@ -32,6 +34,10 @@ public class FrameLotto extends JFrame {
 	 * @param centrourbano
 	 */
 	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano, Point Settore, Point Lotto) {
+		SettX=Settore.getX();
+		SettY=Settore.getY();
+		LX=Lotto.getX();
+		LY=Lotto.getY();
 		this.lotto = lotto;
 		this.centroUrbano = centroUrbano;
 		createTesti();
@@ -124,9 +130,9 @@ public class FrameLotto extends JFrame {
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		if(radio1.isSelected()) centroUrbano.rmStrada(1,1,1,1); //coordinate provvisorie
-		//if(radio2.isSelected()) //Copia riga 138
-		//if(radio3.isSelected()) //roba privato
+		if(radio1.isSelected()) centroUrbano.rmStrada(SettX, SettY,LX, LY); //coordinate provvisorie
+		if(radio2.isSelected()) Settori.rmepub(LX,LY);
+		if(radio3.isSelected()) Settori.rmepriv(LX,LY);
 	}
 
 	/**
@@ -135,8 +141,8 @@ public class FrameLotto extends JFrame {
 	 */
 	public void costruzione() {
 		if(radio1.isSelected()) centroUrbano.addStrada(1,1,1,1); //coordinate provvisorie
-		if(radio2.isSelected()) centroUrbano.lista[SettX][SettY].addLotto(new EPubblico(), LX, LY);
-		//if(radio3.isSelected()) new EPrivato(); //boh
+		if(radio2.isSelected()) centroUrbano.lista[(int) SettX][(int) SettY].addLotto(new EPubblico(), LX, LY);
+		if(radio3.isSelected()) centroUrbano.lista[(int) SettX][(int) SettY].addLotto(new EPrivato(), LX, LY);
 	}
 
 	/**
@@ -151,6 +157,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	private Lotti lotto;
+	private double SettX, SettY, LX,LY;
 	private CentroUrbano centroUrbano;
 	private JLabel s1, s2, s3;
 	private JTextArea p1, p2, p3;
