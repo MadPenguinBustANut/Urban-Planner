@@ -24,8 +24,10 @@ public class CreaStrada extends JPanel {
 	CentroUrbano centro;
 	public int Z = 5;
 	
-	public CreaStrada(Point unsettore) {
-		NSettore = unsettore;
+	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
+		NSettore = numsettore;
+		rifer = ilsettore;
+		centro= uncentro;
 	}
 	
 	
