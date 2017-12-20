@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -139,13 +140,7 @@ public class FrameLotto extends JFrame {
 			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 
-				JFrame erroreDemolizione = new JFrame();
-				JPanel nuovoErrore = new JPanel();
-				JLabel errore= new JLabel("Demolizione gia' effettuata");
-				nuovoErrore.add(errore);
-				erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				erroreDemolizione.setSize(200,100);
-				erroreDemolizione.setVisible(true);
+				JOptionPane.showMessageDialog(null, "Rimozione già effettuata.");
 			}
 			else x.addStato();
 		}
