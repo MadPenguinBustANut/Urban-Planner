@@ -9,6 +9,7 @@ public class Tester {
 		
 		CentroUrbano a = new CentroUrbano();
 		StartFrame io = new StartFrame(a);
+		
 	}
 
 }
