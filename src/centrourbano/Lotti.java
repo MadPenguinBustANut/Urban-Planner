@@ -90,7 +90,7 @@ public class Lotti implements Serializable{
 	}
 
 
-	private Edificabile edificio;
+	public Edificabile edificio;
 	
 //Questo sta qua da un po, ma lo usiamo ancora? 
 	// o lo si puo eliminare?
