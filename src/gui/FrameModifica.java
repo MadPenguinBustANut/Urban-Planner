@@ -1,21 +1,13 @@
 package gui;
 
 import java.awt.BorderLayout;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> e51f98a5ee0e060b4d31fd2e13b860a262956056
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-<<<<<<< HEAD
-
-=======
->>>>>>> e51f98a5ee0e060b4d31fd2e13b860a262956056
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
