@@ -45,6 +45,7 @@ public class FrameLotto extends JFrame {
 		getInfo();
 		setSize(530, 200);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setResizable(false);
 		setVisible(true);
 	}
 
@@ -61,6 +62,8 @@ public class FrameLotto extends JFrame {
 		p2.setEditable(false);
 		s3 = new JLabel("Coefficiente di invecchiamento");
 		p3 = new JTextArea(1, 4);
+		success= new JTextArea();
+		success.setEditable(false);
 		p3.setEditable(false);
 	}
 
@@ -69,6 +72,7 @@ public class FrameLotto extends JFrame {
 		radio2 = new JRadioButton("Pubblico");
 		radio3 = new JRadioButton("Privato");
 		okButton = new JButton("Costruire");
+
 		removeButton = new JButton("Demolisci");
 		if (lotto.getTip()==0) removeButton.setEnabled(false);
 
@@ -85,6 +89,7 @@ public class FrameLotto extends JFrame {
 		class RemoveButton implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 			 rimozione();
+			 
 			}
 		}
 		ActionListener remover = new RemoveButton();
@@ -114,6 +119,7 @@ public class FrameLotto extends JFrame {
 		sx.add(p2);
 		dx.add(okButton);
 		sx.add(s3);
+		dx.add(success);
 		sx.add(p3);
 		sx.add(removeButton);
 
@@ -143,7 +149,7 @@ public class FrameLotto extends JFrame {
 			else x.addStato();
 		}
 		else centroUrbano.lista[SettX][SettY].rmLotto(LX, LY);
-		
+		success.setText("Demolizione avvenuta.");
 	}
 
 	/**
@@ -151,9 +157,10 @@ public class FrameLotto extends JFrame {
 	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX); //coordinate provvisorie
+		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX);
 		if(radio2.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPubblico(), LY, LX);
 		if(radio3.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPrivato(), LY, LX);
+		success.setText("Costruzione avvenuta.");
 	}
 
 	/**
@@ -173,7 +180,7 @@ public class FrameLotto extends JFrame {
 	private int SettX, SettY, LX,LY;
 	private CentroUrbano centroUrbano;
 	private JLabel s1, s2, s3;
-	private JTextArea p1, p2, p3;
+	private JTextArea p1, p2, p3, success;
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO = 10;
