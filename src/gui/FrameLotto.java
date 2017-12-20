@@ -34,10 +34,10 @@ public class FrameLotto extends JFrame {
 	 * @param centrourbano
 	 */
 	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano, Point Settore, Point Lotto) {
-		SettX=Settore.getX();
-		SettY=Settore.getY();
-		LX=Lotto.getX();
-		LY=Lotto.getY();
+		SettX= 	(int) Settore.getX();
+		SettY= 	(int) Settore.getY();
+		LX= 	(int) Lotto.getX();
+		LY=		(int) Lotto.getY();
 		this.lotto = lotto;
 		this.centroUrbano = centroUrbano;
 		createTesti();
@@ -131,22 +131,25 @@ public class FrameLotto extends JFrame {
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		if(flag==false) {
-		if(Epubblico.getStato()==0) .addStato(); VITO VEDI TU NUN O SACC FA
-		if(radio1.isSelected()) centroUrbano.rmStrada(SettX, SettY,LX, LY); //coordinate provvisorie
-		else if ((radio2.isSelected()) || (radio3.isSelected())) centroUrbano.lista[(int) SettX][(int) SettY].rmLotto(LX,LY);
-		flag=true;
+		removeButton.setEnabled(false);
+		
+		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettX, SettY, LX, LX);
+		else if(lotto.getTip() == 2) {
+			EPubblico x = (EPubblico) centroUrbano.lista[SettX][SettY].lista[LX][LY].edificio;
+			if(x.getStato() > 0) {
+
+				JFrame erroreDemolizione = new JFrame();
+				JPanel nuovoErrore = new JPanel();
+				JLabel errore= new JLabel("Demolizione già effettuata");
+				nuovoErrore.add(errore);
+				erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				erroreDemolizione.setSize(200,100);
+				erroreDemolizione.setVisible(true);
+			}
+			else x.addStato();
 		}
-		else{
-			removeButton.setEnabled(false);
-			JFrame erroreDemolizione= new JFrame();
-			JPanel nuovoErrore= new JPanel();
-			JLabel errore= new JLabel("Demolizione già effettuata");
-			nuovoErrore.add(errore);
-			erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			erroreDemolizione.setSize(200,100);
-			erroreDemolizione.setVisible(true);
-		}
+		else centroUrbano.lista[SettX][SettY].rmLotto(LX, LY);
+		
 	}
 
 	/**
@@ -171,7 +174,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	private Lotti lotto;
-	private double SettX, SettY, LX,LY;
+	private int SettX, SettY, LX,LY;
 	private CentroUrbano centroUrbano;
 	private JLabel s1, s2, s3;
 	private JTextArea p1, p2, p3;
