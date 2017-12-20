@@ -10,8 +10,8 @@ public class PannelloPulsanti extends JPanel{
 	public PannelloPulsanti () {
 		super(new GridLayout(1, 2));
 
-		JButton modStrada = new JButton();
-		JButton modLotto = new JButton();
+		JButton modStrada = new JButton("crea strada");
+		JButton modLotto = new JButton("modifica lotto");
 		
 		add(modStrada);
 		add(modLotto);
