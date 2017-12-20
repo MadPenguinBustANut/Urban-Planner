@@ -1,14 +1,11 @@
 package gui;
 
 import java.awt.BorderLayout;
-<<<<<<< HEAD
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-=======
->>>>>>> 3874a378c51ce4a9ae45f92ce6cc68dad05ce90b
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -60,18 +57,18 @@ public class FrameModifica extends JFrame{
 				CreaStrada nuovaS = new CreaStrada ();
 
 				nuovoFrame.add(nuovaS);
-				setVisible(true);
-				setSize(720, 560);
-				setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				nuovoFrame.setVisible(true);
+				nuovoFrame.setSize(720, 560);
+				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 			else if(rif.getText().equalsIgnoreCase("modifica settore")) {
 				JFrame nuovoFrame = new JFrame ();
 				PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer);
 				
 				nuovoFrame.add(VMod);
-				setVisible(true);
-				setSize(720, 560);
-				setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				nuovoFrame.setVisible(true);
+				nuovoFrame.setSize(720, 560);
+				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		}
 			
