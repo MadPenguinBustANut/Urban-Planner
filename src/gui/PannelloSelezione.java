@@ -75,7 +75,7 @@ public class PannelloSelezione extends JPanel{
 	    calButton=new JButton("Effettua Selezione");
 	    calButton.addActionListener(listener);
 	    
-	    textArea= new JTextArea(10,30);
+	    textArea= new JTextArea(5,30);
 	    textArea.setEditable(false);
 	    scrollPanel= new JScrollPane(textArea);
 	    
@@ -134,15 +134,6 @@ public class PannelloSelezione extends JPanel{
 	
 	private void OrdPrintLista(Seleziona Select) {
 		
-		centro.lista[1][1].lista[1][1].setCeff(20);
-		centro.lista[1][1].lista[1][1].setCinv(100);
-		centro.lista[1][1].lista[1][1].setCinv(100);
-		centro.lista[1][1].lista[1][2].setCeff(30);
-		centro.lista[1][1].lista[1][2].setCinv(50);
-		centro.lista[1][1].lista[1][2].setCinv(50);
-		centro.lista[1][1].lista[1][3].setCeff(10);
-		centro.lista[1][1].lista[1][3].setCinv(40);
-		centro.lista[1][1].lista[1][3].setValore(40);
 		
 		int flag=0;
 		Ordinamento Ord;
