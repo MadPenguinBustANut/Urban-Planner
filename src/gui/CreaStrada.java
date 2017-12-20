@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-
+import eccezioni.Ortogonale;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,13 +13,8 @@ import centrourbano.Settori;
 
 public class CreaStrada extends JPanel {
 
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	boolean inizio;
+	Point NSettore;
 	int primoX,primoY;
 	int secondoX,secondoY;
 	int PX = 3;
@@ -28,6 +23,12 @@ public class CreaStrada extends JPanel {
 	Settori rifer;
 	CentroUrbano centro;
 	public int Z = 5;
+	
+	public CreaStrada(Point unsettore) throws Ortogonale {
+		NSettore = unsettore;
+	}
+	
+	
 	
 	public void paintComponent(Graphics g) {
 		Graphics2D u = (Graphics2D) g;
@@ -98,7 +99,7 @@ public class CreaStrada extends JPanel {
 		
 	}
 	
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(MouseEvent e) throws Ortogonale {
 		if(inizio == true) {
 			Point evento = e.getPoint();
 			primoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
@@ -109,40 +110,79 @@ public class CreaStrada extends JPanel {
 			Point evento = e.getPoint();
 			secondoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
 			secondoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			if(controllaPercorso()== true)
-				costruisciPercorso();
+			costruisciPercorso();
 			inizio = false;
 		}
 	
 	}
 	
-	private boolean controllaPercorso() {  //DA FINIRE
+	private boolean costruisciPercorso() throws Ortogonale{ 
 		if (primoX == secondoX) {
 			int diff = primoY - secondoY;
 			if(diff < 0) {
-				check(primoY,diff);
+				if (checkY(primoY,diff)==true) {
+					costruisciY(primoY,diff);
+					return true;}
 				}
 			if(diff > 0) {
-				check(secondoY,diff);
-				
+				if (checkY(secondoY,diff)== true) {
+					costruisciY(secondoY,diff);
+					return true;}
 			}
 		}
 		
 		if (primoY == secondoY) {
+			int diff = primoX - secondoX;
+			if(diff < 0) {
+				if (checkX(primoX,diff)==true) {
+					costruisciY(primoX,diff);
+					return true;}
+				}
+			if(diff > 0) {
+				if (checkY(secondoY,diff)==true) {
+					costruisciY(secondoY,diff);
+					return true;}
+				}
+			}
 			
+		throw new Ortogonale();
+	}
+	
+
+	
+	/**
+	 * Funzioni chiamate dal metodo controllaPercorso, controllano effettivamente se e' libero
+	 * @param inizio Valore da cui far partire il ciclo for
+	 * @param diff La differenza di caselle , indica quando si deve fermare
+	 * @return True se e' libero, false se non lo e'
+	 */
+	private boolean checkY(int valoreIniziale, int diff) {
+		for(int i=valoreIniziale;i<diff;i++) {
+			if(rifer.lista[primoX][i].getTip() != 0)
+				return false;
 		}
-		//LANCIA ECCEZZIONE
-		return false;
+		return true;
 	}
 	
-	private boolean check(int inizio, int diff) {
-		for(int i=inizio;i<diff;i++) {
-			//FAI COSA
+	private boolean checkX(int valoreIniziale,int diff) {
+		for(int i=valoreIniziale;i<diff;i++) {
+			if(rifer.lista[i][primoY].getTip() != 0)
+				return false;
+		}
+		return true;
+	}
+	
+	private void costruisciY(int valoreIniziale, int diff) {
+		for(int i=valoreIniziale;i<diff;i++) {
+			centro.addStrada(NSettore.x, NSettore.y, primoX, i);
+			//DISEGNA LA STRADA
 		}
 	}
 	
-	private void costruisciPercorso() {  //DA FINIRE
-		
+	private void costruisciX(int valoreIniziale,int diff) {
+		for(int i=valoreIniziale;i<diff;i++) {
+			centro.addStrada(NSettore.x, NSettore.y, i, primoY);
+			//DISEGNA LA STRADA
+		}
 	}
-	
 }

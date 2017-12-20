@@ -1,14 +1,21 @@
 package gui;
 
 import java.awt.BorderLayout;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> a3b34d144051b67fc018e8291fbe8280c1d08ef1
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+<<<<<<< HEAD
 
+=======
+>>>>>>> a3b34d144051b67fc018e8291fbe8280c1d08ef1
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -37,6 +44,7 @@ public class FrameModifica extends JFrame{
 		
 		modStrada.addActionListener(new ButtonListener());
 		modSettore.addActionListener(new ButtonListener());
+	
 		
 		io.add(x, BorderLayout.CENTER);
 		io2.add(PPul);
@@ -56,16 +64,26 @@ public class FrameModifica extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			JButton rif = (JButton) e.getSource();
 			if(rif.getText().equalsIgnoreCase("crea strada")) {
+				
+				Point newP = new Point(settX, settY);				
+				
 				JFrame nuovoFrame = new JFrame ();
-				CreaStrada nuovaS = new CreaStrada ();
+				CreaStrada nuovaS = new CreaStrada (newP);
 
 				nuovoFrame.add(nuovaS);
-				setVisible(true);
-				setSize(720, 560);
-				setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				nuovoFrame.setVisible(true);
+				nuovoFrame.setSize(720, 560);
+				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 			else if(rif.getText().equalsIgnoreCase("modifica settore")) {
-				FrameModificaLotto unLotto = new FrameModificaLotto();
+				Point newP = new Point(settX, settY);
+				JFrame nuovoFrame = new JFrame ();
+				PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer, newP);
+				
+				nuovoFrame.add(VMod);
+				nuovoFrame.setVisible(true);
+				nuovoFrame.setSize(720, 560);
+				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		}
 			

@@ -15,7 +15,6 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
-import centrourbano.Settori;
 import edifici.EPrivato;
 import edifici.EPubblico;
 
@@ -46,6 +45,10 @@ public class FrameLotto extends JFrame {
 		setSize(530, 200);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
+	}
+
+	public FrameLotto() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public void createTesti() {
@@ -181,5 +184,4 @@ public class FrameLotto extends JFrame {
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO = 10;
-	private boolean flag=false;
 }

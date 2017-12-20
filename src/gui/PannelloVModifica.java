@@ -3,11 +3,7 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
-
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
@@ -24,11 +20,13 @@ public class PannelloVModifica extends JPanel {
 	int L = 10;
 	Settori rifer;
 	CentroUrbano centro;
+	Point coordinate;
 	
-	public PannelloVModifica(Settori e, CentroUrbano t) {
+	public PannelloVModifica(Settori e, CentroUrbano t, Point a) {
 		rifer = e;
 		centro = t;
 		addMouseListener(new VisualListener(this));
+		coordinate = a;
 		}
 	
 	
@@ -108,11 +106,12 @@ public class PannelloVModifica extends JPanel {
 		
 		PannelloVModifica rifer;
 
-		JFrame io = new JFrame("Lotto");
+		FrameLotto io = new FrameLotto();
 		
 		
 		public VisualListener(PannelloVModifica e) {
 			rifer = e;
+			io.setVisible(false);
 		}
 		
 		public void mouseClicked(MouseEvent e) {
@@ -120,7 +119,11 @@ public class PannelloVModifica extends JPanel {
 			
 			//Se il mouse è all'interno del disegno
 			if(evento.getX() > PX & evento.getY() > PY) {
-				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2)) {
+				if(evento.getX() <= PX+(Z*L*5) & evento.getY() <= PY+(Z*L*3)) {
+					
+					Point Lotto = new Point((int) evento.getX()/(L*Z),(int) evento.getY()/(L*Z));
+					
+					io = new FrameLotto(centro.lista[coordinate.x][coordinate.y].lista[Lotto.x][Lotto.y], centro, coordinate, Lotto);
 
 					if(io.isVisible()) {
 						io.setVisible(false);
