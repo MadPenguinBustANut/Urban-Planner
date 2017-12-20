@@ -9,6 +9,7 @@ public class PannelloSettore extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private int x;
 	private int y;
+	private int cost = 300;
 	private int weight;
 	private int height;
 	
@@ -21,7 +22,7 @@ public class PannelloSettore extends JPanel {
 		
 		for (x = 0; x < 3; x++) {
 			for (y = 30; y < 2; y++) {
-				g2.drawRect(x, y, weight, height);
+				g2.drawRect(x, y, weight*2*cost, height*2*cost);
 			}
 		}
 	}

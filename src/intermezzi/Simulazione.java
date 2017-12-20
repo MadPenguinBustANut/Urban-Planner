@@ -258,4 +258,5 @@ public class Simulazione {
 		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
 			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
 	}
-}}
+}
+}
