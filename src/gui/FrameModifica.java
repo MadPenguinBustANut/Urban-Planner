@@ -65,7 +65,13 @@ public class FrameModifica extends JFrame{
 				setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 			else if(rif.getText().equalsIgnoreCase("modifica settore")) {
-				FrameModificaLotto unLotto = new FrameModificaLotto();
+				JFrame nuovoFrame = new JFrame ();
+				PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer);
+				
+				nuovoFrame.add(VMod);
+				setVisible(true);
+				setSize(720, 560);
+				setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		}
 			
