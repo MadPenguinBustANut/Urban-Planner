@@ -17,20 +17,6 @@ public class Lotti implements Serializable{
 		VUOTO.setCinv(0);
 	}
 	
-	/**
-	 * La funzione verrà usata per modificare il tipo di lotto
-	 * sostituendolo con il nuovo lotto
-	 * 
-	 * @param NuovoEdificio il nuovo lotto
-	 */
-	
-	//public void modEdi(Edificabile NuovoEdificio) {
-	//	edificio = NuovoEdificio;
-	//}
-
-	public void setEdificio(Edificabile NuovoEdificio) {
-		edificio = NuovoEdificio;
-	}
 	
 	/**
 	 * Il valore del lotto viene cambiato al nuovo valore
