@@ -62,8 +62,7 @@ public class FrameLotto extends JFrame {
 		p2.setEditable(false);
 		s3 = new JLabel("Coefficiente di invecchiamento");
 		p3 = new JTextArea(1, 4);
-		success= new JTextArea();
-		success.setEditable(false);
+		success= new JLabel();
 		p3.setEditable(false);
 	}
 
@@ -162,7 +161,10 @@ public class FrameLotto extends JFrame {
 		if(radio2.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPubblico(), LY, LX);
 		if(radio3.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPrivato(), LY, LX);
 		success.setText("Costruzione avvenuta.");
+<<<<<<< HEAD
 		//PannelloVModifica(roba non ricordo vito fai tu tbh)
+=======
+>>>>>>> 8cc30d58bac6388fc28e1032a3d15956f48226b3
 	}
 
 	/**
@@ -181,8 +183,8 @@ public class FrameLotto extends JFrame {
 	private Lotti lotto;
 	private int SettX, SettY, LX,LY;
 	private CentroUrbano centroUrbano;
-	private JLabel s1, s2, s3;
-	private JTextArea p1, p2, p3, success;
+	private JLabel s1, s2, s3,success;
+	private JTextArea p1, p2, p3;
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO = 10;

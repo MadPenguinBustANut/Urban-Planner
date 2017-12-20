@@ -101,7 +101,7 @@ public class Settori implements Serializable{
 	 */
 
 	public Lotti getLotto(int X, int y) {
-		Lotti io = lista[(int) X][(int) y];
+		Lotti io = lista[X][y];
 
 
 		return io;
