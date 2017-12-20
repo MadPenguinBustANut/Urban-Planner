@@ -33,7 +33,7 @@ public class FrameLotto extends JFrame {
 	 * @param centrourbano
 	 */
 	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano, Point Settore, Point Lotto) {
-		SettX= 	(int) Settore.getX();
+		SettX= 	(int) Settore.getX(); 
 		SettY= 	(int) Settore.getY();
 		LX= 	(int) Lotto.getX();
 		LY=		(int) Lotto.getY();
