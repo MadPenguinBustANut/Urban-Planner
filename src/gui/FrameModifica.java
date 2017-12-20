@@ -62,6 +62,7 @@ public class FrameModifica extends JFrame{
 				JFrame nuovoFrame = new JFrame ();
 				CreaStrada nuovaS = new CreaStrada (newP);
 				nuovoFrame.add(nuovaS);
+				nuovoFrame.setVisible(true);
 			
 			}
 			
