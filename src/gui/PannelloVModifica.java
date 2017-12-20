@@ -20,11 +20,13 @@ public class PannelloVModifica extends JPanel {
 	int L = 10;
 	Settori rifer;
 	CentroUrbano centro;
+	Point coordinate;
 	
-	public PannelloVModifica(Settori e, CentroUrbano t) {
+	public PannelloVModifica(Settori e, CentroUrbano t, Point a) {
 		rifer = e;
 		centro = t;
 		addMouseListener(new VisualListener(this));
+		coordinate = a;
 		}
 	
 	
@@ -104,7 +106,7 @@ public class PannelloVModifica extends JPanel {
 		
 		PannelloVModifica rifer;
 
-		JFrame io = new JFrame("Lotto");
+		FrameLotto io;
 		
 		
 		public VisualListener(PannelloVModifica e) {
@@ -117,7 +119,11 @@ public class PannelloVModifica extends JPanel {
 			
 			//Se il mouse è all'interno del disegno
 			if(evento.getX() > PX & evento.getY() > PY) {
-				if(evento.getX() < PX+(Z*L*4) & evento.getY() < PY+(Z*L*2)) {
+				if(evento.getX() <= PX+(Z*L*5) & evento.getY() <= PY+(Z*L*3)) {
+					
+					Point Lotto = new Point((int) evento.getX()/(L*Z),(int) evento.getY()/(L*Z));
+					
+					io = new FrameLotto(centro.lista[coordinate.x][coordinate.y].lista[Lotto.x][Lotto.y], centro, coordinate, Lotto);
 
 					if(io.isVisible()) {
 						io.setVisible(false);
