@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class FrameModifica extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -13,12 +14,14 @@ public class FrameModifica extends JFrame{
 	public FrameModifica () {
 		super();
 		
+		JPanel unPannello = new JPanel();
 		PannelloSettore x = new PannelloSettore();
 		
-		add(x);
-						
+		unPannello.add(x);
+		add(unPannello);	
+		
 		setTitle("Modifica");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(500, 750);
 		setVisible(true);
 	}
