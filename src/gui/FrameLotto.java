@@ -9,6 +9,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -133,18 +134,13 @@ public class FrameLotto extends JFrame {
 	public void rimozione() {
 		removeButton.setEnabled(false);
 		
-		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettX, SettY, LX, LX);
+		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettY, SettX, LX, LX);
+		
 		else if(lotto.getTip() == 2) {
 			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 
-				JFrame erroreDemolizione = new JFrame();
-				JPanel nuovoErrore = new JPanel();
-				JLabel errore= new JLabel("Demolizione gia' effettuata");
-				nuovoErrore.add(errore);
-				erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				erroreDemolizione.setSize(200,100);
-				erroreDemolizione.setVisible(true);
+				JOptionPane.showMessageDialog(null, "Rimozione già effettuata.");
 			}
 			else x.addStato();
 		}
@@ -158,8 +154,8 @@ public class FrameLotto extends JFrame {
 	 */
 	public void costruzione() {
 		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX);
-		if(radio2.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPubblico(), LY, LX);
-		if(radio3.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPrivato(), LY, LX);
+		if(radio2.isSelected()) centroUrbano.lista[SettY][SettX].addLotto(new EPubblico(), LY, LX);
+		if(radio3.isSelected()) centroUrbano.lista[SettY][SettX].addLotto(new EPrivato(), LY, LX);
 		success.setText("Costruzione avvenuta.");
 	}
 
