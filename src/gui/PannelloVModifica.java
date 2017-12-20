@@ -136,7 +136,7 @@ public class PannelloVModifica extends JPanel {
 						io.setVisible(false);
 						io.dispose();
 						//Inizializzazione a nuovo Lotto
-						io.setSize(300, 500);
+						io.setSize(700, 700);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					}
