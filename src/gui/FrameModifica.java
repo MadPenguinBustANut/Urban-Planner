@@ -17,7 +17,10 @@ public class FrameModifica extends JFrame{
 		super("Seleziona settore");
 		JPanel io = new JPanel(new BorderLayout());
 		PannelloSettore x = new PannelloSettore();
+		PannelloPulsanti PPul = new PannelloPulsanti();
 		io.add(x, BorderLayout.CENTER);
+		io.add(PPul, BorderLayout.EAST);
+		PPul.setSize(400, 400);
 		add(io);
 						
 		setTitle("Modifica");
