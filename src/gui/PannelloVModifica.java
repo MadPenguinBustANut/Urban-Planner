@@ -106,7 +106,7 @@ public class PannelloVModifica extends JPanel {
 		
 		PannelloVModifica rifer;
 
-		FrameLotto io;
+		FrameLotto io = new FrameLotto();
 		
 		
 		public VisualListener(PannelloVModifica e) {

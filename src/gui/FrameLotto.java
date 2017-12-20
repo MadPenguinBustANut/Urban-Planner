@@ -47,6 +47,10 @@ public class FrameLotto extends JFrame {
 		setVisible(true);
 	}
 
+	public FrameLotto() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void createTesti() {
 		s1 = new JLabel("Valore Lotto");
 		p1 = new JTextArea(1, 4);
