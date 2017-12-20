@@ -41,8 +41,10 @@ public class PannelloVisualizzazione extends JPanel {
 		int i, j;
 		for(i = 0; i < 6 ;i++ ) {
 			for(j = 0; j < 15; j++) {
-				u.drawRect(PX+(L*i*Z), PY+(L*j*Z), L*Z, L*Z);
-				u.drawString(""+ i%2+"-"+ j%3+","+i%3+"-"+j%5, PX+(L*i*Z), PY+(L*j*Z));
+				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
+				u.drawString(""+ i%2+"-"+ j%3+","+i%3+"-"+j%5, PX+(L*j*Z), PY+(L*i*Z));
+				
+				
 //				switch(rifer.lista[i%2][j%3].lista[i%3][j%5].getTip()) {
 //				case 1:	paintStrada(u, PX+(L*i*Z), PY+(L*j*Z), L*Z, i, j);
 //						break;
