@@ -2,7 +2,10 @@ package gui;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import centrourbano.CentroUrbano;
@@ -16,7 +19,9 @@ public class CreaStrada extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
+	boolean inizio;
+	int primoX,primoY;
+	int secondoX,secondoY;
 	int PX = 3;
 	int PY = 3;
 	int L = 10;
@@ -92,4 +97,31 @@ public class CreaStrada extends JPanel {
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 	}
+	
+	public void mouseClicked(MouseEvent e) {
+		if(inizio == true) {
+			Point evento = e.getPoint();
+			primoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			primoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			inizio = false;
+		}
+		if(inizio == false) {
+			Point evento = e.getPoint();
+			secondoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			secondoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			if(controllaPercorso()== true)
+				costruisciPercorso();
+			inizio = false;
+		}
+	
+	}
+	
+	private boolean controllaPercorso() {  //DA FINIRE
+		return true;
+	}
+	
+	private void costruisciPercorso() {  //DA FINIRE
+		
+	}
+	
 }
