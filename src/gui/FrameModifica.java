@@ -69,8 +69,6 @@ public class FrameModifica extends JFrame{
 					
 					 settX = a/(10);
 					 settY = b/(10);
-				
-				
 			}
 		}	
 		}
