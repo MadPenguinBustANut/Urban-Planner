@@ -2,12 +2,6 @@ package intermezzi;
 
 import java.util.Random;
 
-import javax.imageio.ImageTypeSpecifier;
-
-import org.omg.PortableServer.ID_ASSIGNMENT_POLICY_ID;
-
-import java.util.Random;
-
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
 import centrourbano.Settori;
@@ -30,7 +24,7 @@ public class Simulazione {
 							EPubblico EPub = (EPubblico) ed;
 							if (EPub.getStato()>1) {
 								d.setValore(1);
-								d.setEdificio(d.VUOTO);
+								d.edificio = Lotti.VUOTO;
 							}
 						}
 							d.setCeff(d.getCeff()-(d.getCeff()*d.getCinv())/100);
