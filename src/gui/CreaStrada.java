@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-import eccezioni.Ortogonale;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,7 +23,7 @@ public class CreaStrada extends JPanel {
 	CentroUrbano centro;
 	public int Z = 5;
 	
-	public CreaStrada(Point unsettore) throws Ortogonale {
+	public CreaStrada(Point unsettore) {
 		NSettore = unsettore;
 	}
 	
@@ -98,8 +97,8 @@ public class CreaStrada extends JPanel {
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 	}
-	
-	public void mouseClicked(MouseEvent e) throws Ortogonale {
+	 
+	public void mouseClicked(MouseEvent e) {
 		if(inizio == true) {
 			Point evento = e.getPoint();
 			primoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
@@ -116,18 +115,18 @@ public class CreaStrada extends JPanel {
 	
 	}
 	
-	private boolean costruisciPercorso() throws Ortogonale{ 
+	private void costruisciPercorso() { 
 		if (primoX == secondoX) {
 			int diff = primoY - secondoY;
 			if(diff < 0) {
 				if (checkY(primoY,diff)==true) {
 					costruisciY(primoY,diff);
-					return true;}
+					return;}
 				}
 			if(diff > 0) {
 				if (checkY(secondoY,diff)== true) {
 					costruisciY(secondoY,diff);
-					return true;}
+					return;}
 			}
 		}
 		
@@ -136,16 +135,17 @@ public class CreaStrada extends JPanel {
 			if(diff < 0) {
 				if (checkX(primoX,diff)==true) {
 					costruisciY(primoX,diff);
-					return true;}
+					return;}
 				}
 			if(diff > 0) {
 				if (checkY(secondoY,diff)==true) {
 					costruisciY(secondoY,diff);
-					return true;}
+					return;}
 				}
 			}
 			
-		throw new Ortogonale();
+		//COPIARE FRAME DI ERROR DI TIZIANA
+		return;
 	}
 	
 
@@ -175,14 +175,14 @@ public class CreaStrada extends JPanel {
 	private void costruisciY(int valoreIniziale, int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
 			centro.addStrada(NSettore.x, NSettore.y, primoX, i);
-			//DISEGNA LA STRADA
 		}
+		this.repaint();
 	}
 	
 	private void costruisciX(int valoreIniziale,int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
 			centro.addStrada(NSettore.x, NSettore.y, i, primoY);
-			//DISEGNA LA STRADA
 		}
+		this.repaint();
 	}
 }
