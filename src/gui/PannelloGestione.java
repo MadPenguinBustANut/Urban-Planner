@@ -38,7 +38,7 @@ public class PannelloGestione extends JPanel {
 			paPulsanti.add(pDisastro = new JButton ("disastro"));
 			paPulsanti.add(pModifica);
 			
-			add(informazioni = new JTextArea("PROVA"), BorderLayout.CENTER);
+			add(informazioni = new JTextArea(), BorderLayout.CENTER);
 			add(paPulsanti, BorderLayout.EAST);
 		}
 		

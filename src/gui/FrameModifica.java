@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -17,19 +19,20 @@ public class FrameModifica extends JFrame{
 		super("Seleziona settore");
 		
 		rifer = e;
-		
 		JPanel io = new JPanel(new BorderLayout());
+		JPanel io2 = new JPanel();
 		PannelloSettore x = new PannelloSettore();
 		PannelloPulsanti PPul = new PannelloPulsanti();
 		io.add(x, BorderLayout.CENTER);
-		io.add(PPul, BorderLayout.EAST);
-		PPul.setSize(400, 400);
-		add(io);
-						
+		io2.add(PPul);
+		add(io, BorderLayout.CENTER);
+		add(io2, BorderLayout.SOUTH);
+		
 		setTitle("Modifica");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(500, 750);
 		setVisible(true);
 	}
+	
 	
 }
