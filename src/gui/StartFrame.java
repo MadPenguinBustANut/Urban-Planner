@@ -32,7 +32,7 @@ public class StartFrame extends JFrame{
 		gestioneB.addActionListener(new ButtonListener(this));
 		visualizzazioneB.addActionListener(new ButtonListener(this));
 		visualizzazione = new PannelloVisualizzazione(uno);
-		selezione = new PannelloSelezione();
+		selezione = new PannelloSelezione(c);
 		gestione = new PannelloGestione(c);
 		
 		

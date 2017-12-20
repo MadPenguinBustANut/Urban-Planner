@@ -10,26 +10,24 @@ public class Seleziona implements Serializable{
 	//Seleziona contiene il settore selezionato, il massimo e il minimo ammissibili nella selezione, 
 	//il tipi di selezione scelta e un array che conterra tutti i lotti scelti
 	
-	public Seleziona(Settori sett) {
+	public Seleziona(CentroUrbano centr,double ma,double mi,int scelt) {
         lista= new Lotti[DIM_LIST];
-		settore = sett;
-		max=90;
-		min=10;
-		scelta=0;
+		centro=centr;
+		max=ma;
+		min=mi;
+		scelta=scelt;
 		
 	}
 	
 	//Il metodo scelta selezione il metodo di selezione
 	
-	public void Scelta(Seleziona select) {
+	public void Scelta() {
 		switch(scelta) {
-		case 0:select.coeffEff();
+		case 0:coeffEff();
 		       break;
-		case 1:select.coeffInv();
+		case 1:coeffInv();
 		       break;
-		case 2:select.coeffDann();
-		       break;
-		case 3:select.val();
+		case 2:val();
 		       break;
 		default: System.out.println("Selezione Errata\n");
 		}
@@ -41,12 +39,14 @@ public class Seleziona implements Serializable{
 	
 	private void coeffEff() {
 		int j=0;
-		for(int i=0;i<MAX_X;i++)
-			for(int y=0;y<MAX_Y;y++) {
-				if(settore.getLotto(i, y).getCeff()>min && settore.getLotto(i, y).getCeff()<max) {
-					lista[j]=settore.getLotto(i, y);
-				}
-			}
+		for(int l=0;l<2;l++)
+			for(int k=0;k<3;k++)
+				for(int i=0;i<MAX_X;i++)
+					for(int y=0;y<MAX_Y;y++) {
+						if(centro.lista[l][k].getLotto(i, y).getCeff()>min && centro.lista[l][k].getLotto(i, y).getCeff()<max) {
+							lista[j]=centro.lista[l][k].getLotto(i, y);
+						}
+					}
 		this.setCount(j);
 	}
 	
@@ -55,19 +55,14 @@ public class Seleziona implements Serializable{
 	
 	private void coeffInv() {
 		int j=0;
-		for(int i=0;i<MAX_X;i++)
-			for(int y=0;y<MAX_Y;y++) {
-				if(settore.getLotto(i, y).getCinv()>min && settore.getLotto(i, y).getCinv()<max)
-					lista[j]=settore.getLotto(i, y);
-			}
+		for(int l=0;l<2;l++)
+			for(int k=0;k<3;k++)
+				for(int i=0;i<MAX_X;i++)
+					for(int y=0;y<MAX_Y;y++) {	
+						if(centro.lista[l][k].getLotto(i, y).getCinv()>min && centro.lista[l][k].getLotto(i, y).getCinv()<max)
+							lista[j]=centro.lista[l][k].getLotto(i, y);
+					}
 		this.setCount(j);
-	}
-	
-	//Il metodo coeffDan seleziona i lotti presenti nel settore selezionato che rispettano 
-	//le condizioni di max e min di coeff di Danno dei lotti
-	
-	private void coeffDann() {
-		
 	}
 	
 	//Il metodo val seleziona i lotti presenti nel settore selezionato che rispettano 
@@ -76,10 +71,12 @@ public class Seleziona implements Serializable{
 	
 	private void val() {
 		int j=0;
-		for(int i=0;i<MAX_X;i++)
-			for(int y=0;y<MAX_Y;y++)
-			    if(settore.getLotto(i, y).getValore()>min && settore.getLotto(i, y).getValore()<max)
-			    	lista[j]=settore.getLotto(i, y);
+		for(int l=0;l<2;l++)
+			for(int k=0;k<3;k++)	
+				for(int i=0;i<MAX_X;i++)
+					for(int y=0;y<MAX_Y;y++)
+						if(centro.lista[l][k].getLotto(i, y).getValore()>min && centro.lista[l][k].getLotto(i, y).getValore()<max)
+							lista[j]=centro.lista[l][k].getLotto(i, y);
 		this.setCount(j);
 	}
 	
@@ -97,7 +94,7 @@ public class Seleziona implements Serializable{
 	}
 	
 
-    private Settori settore;
+    private CentroUrbano centro;
     private double max;
     private double min;
     private int scelta;
@@ -107,6 +104,7 @@ public class Seleziona implements Serializable{
     private static final int MAX_X = 2;
 	private static final int MAX_Y = 4;
     private final static int DIM_LIST=90;
+    
     
     public Lotti lista[];
 }
