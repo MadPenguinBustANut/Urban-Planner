@@ -24,9 +24,7 @@ public class Ordinamento implements Serializable{
 		        break;
 		case 1: ord.coeffInv();
 		        break;
-		case 2: ord.coeffDan();
-		        break;
-		case 3: ord.val();
+		case 2: ord.val();
 		        break;
 		} 
 		
@@ -38,12 +36,23 @@ public class Ordinamento implements Serializable{
 		for(int i=0;i<select.getCount();i++) {
 			boolean f=false;
 			for(int j=0;j<select.getCount()-1;j++) {
-				if(select.lista[j].getCeff()>select.lista[j+1].getCeff()) {
-					Lotti k=select.lista[j];
-					select.lista[j]=select.lista[j+1];
-					select.lista[j+1]=k;
-					f=true;
+				if(flag==0) {
+					if(select.lista[j].getCeff()>select.lista[j+1].getCeff()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						f=true;
+					}
 				}
+				else {
+					if(select.lista[j].getCeff()<select.lista[j+1].getCeff()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						f=true;
+					}
+				}
+					
 			}
 			if(!f) break;
 		}
@@ -56,23 +65,28 @@ public class Ordinamento implements Serializable{
 		for(int i=0;i<select.getCount();i++) {
 			boolean f=false;
 			for(int j=0;j<select.getCount()-1;j++) {
-				if(select.lista[j].getCinv()>select.lista[j+1].getCinv()) {
-					Lotti k=select.lista[j];
-					select.lista[j]=select.lista[j+1];
-					select.lista[j+1]=k;
-					f=true;
-				}
+			    if(flag==0) {
+			    	if(select.lista[j].getCinv()>select.lista[j+1].getCinv()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						f=true;
+					}
+			    }
+			    else{
+			    	if(select.lista[j].getCinv()<select.lista[j+1].getCinv()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						f=true;
+					}
+			    }
 			}
 			if(!f) break;
 		}
 		
 	}
 	
-	//Il metodo coeffDan effettua il bubleSort della lista in base al coeff. di Danno
-	
-	private void coeffDan() {
-		
-	}
 	
 	//Il metodo val effettua il bubleSort della lista in base al Valore
 	
@@ -80,11 +94,21 @@ public class Ordinamento implements Serializable{
 		for(int i=0;i<select.getCount();i++) {
 			boolean f=false;
 			for(int j=0;j<select.getCount()-1;j++) {
-				if(select.lista[j].getValore()>select.lista[j+1].getValore()) {
-					Lotti k=select.lista[j];
-					select.lista[j]=select.lista[j+1];
-					select.lista[j+1]=k;
-					f=true;
+				if(flag==0) {
+					if(select.lista[j].getValore()>select.lista[j+1].getValore()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						f=true;
+					}
+				}
+				else{
+					if(select.lista[j].getValore()<select.lista[j+1].getValore()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						f=true;
+					}
 				}
 			}
 			if(!f) break;
