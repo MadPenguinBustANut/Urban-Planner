@@ -132,24 +132,25 @@ public class CentroUrbano implements Serializable{
 			if((settX + 1) < MAX_MASTER_X)
 				lista[(int) (settX + 1)][(int) settY].addOne(0, LY);
 
-			if((settY + 1) < MAX_MASTER_Y)
-				lista[(int) settX][(int) (settY + 1)].addOne(LX, 0);
+			if((settY - 1) > -1)
+				lista[(int) settX][(int) (settY - 1)].addOne(LX, 0);
 			
-			if(((settX + 1) < MAX_MASTER_X) && ((settY + 1) < MAX_MASTER_Y))
-				lista[(int) (settX + 1)][(int) (settY + 1)].addOne(0, 0);
+			if(((settX + 1) < MAX_MASTER_X) && ((settY - 1) < MAX_MASTER_Y))
+				lista[(int) (settX + 1)][(int) (settY - 1)].addOne(0, 0);
 			
 			return;
 		}
 		
 		if(LX==0 && LY == MAX_Y) {
-			if((settY - 1) >-1)
-				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
+			
+			if((settY + 1) < MAX_MASTER_Y)
+				lista[(int) settX][(int) (settY + 1)].addOne(LX, 0);
 			
 			if((settX - 1) >-1)
 				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
 			
-			if(((settX - 1) >-1) && ((settY - 1) >-1))
-				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, MAX_Y);
+			if(((settX - 1) >-1) && ((settY + 1) < MAX_MASTER_Y))
+				lista[(int) (settX - 1)][(int) settY + 1].addOne(MAX_X, 0);
 			
 			return;
 		}
@@ -160,8 +161,8 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(LX>0 && LY ==0) {
-			if((settY + 1) < MAX_MASTER_Y)
-				lista[(int) settX][(int) (settY + 1)].addOne(LX, MAX_Y);
+			if((settY - 1) > -1)
+				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
 		}
 		
 		if(LX==0 && LY ==0) {
@@ -249,8 +250,8 @@ public class CentroUrbano implements Serializable{
 	}
 
 	//Ho associato delle MACRO ai limiti del settore in modo da rendere piu leggibile il codice
-	private static final int MAX_X = 2;
-	private static final int MAX_Y = 4;
+	private static final int MAX_X = 4;
+	private static final int MAX_Y = 2;
 	
 
 	//Ho associato delle MACRO ai limiti del centrourbano in modo da rendere piu leggibile il codice
