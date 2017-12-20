@@ -155,8 +155,8 @@ public class CreaStrada extends JPanel {
 					return;}
 				}
 			if(diff > 0) {
-				if (checkY(secondoY,diff)==true) {
-					costruisciY(secondoY,diff);
+				if (checkY(secondoX,diff)==true) {
+					costruisciY(secondoX,diff);
 					return;}
 				}
 			}
