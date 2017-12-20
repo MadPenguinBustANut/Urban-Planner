@@ -50,7 +50,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	public FrameLotto() {
-		// TODO Auto-generated constructor stub
+		// TODO vito è gay
 	}
 
 	public void createTesti() {
@@ -81,6 +81,7 @@ public class FrameLotto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// costruisci
 				costruzione();
+				
 			}
 		}
 		ActionListener listenerOk = new OkButtoner();
