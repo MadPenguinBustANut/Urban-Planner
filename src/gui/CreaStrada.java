@@ -117,7 +117,28 @@ public class CreaStrada extends JPanel {
 	}
 	
 	private boolean controllaPercorso() {  //DA FINIRE
-		return true;
+		if (primoX == secondoX) {
+			int diff = primoY - secondoY;
+			if(diff < 0) {
+				check(primoY,diff);
+				}
+			if(diff > 0) {
+				check(secondoY,diff);
+				
+			}
+		}
+		
+		if (primoY == secondoY) {
+			
+		}
+		//LANCIA ECCEZZIONE
+		return false;
+	}
+	
+	private boolean check(int inizio, int diff) {
+		for(int i=inizio;i<diff;i++) {
+			//FAI COSA
+		}
 	}
 	
 	private void costruisciPercorso() {  //DA FINIRE
