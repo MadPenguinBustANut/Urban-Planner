@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class PannelloSettore extends JPanel {
@@ -19,8 +20,13 @@ public class PannelloSettore extends JPanel {
 	private int settX = 0;
 	private int settY = 0;
 	
-	public PannelloSettore () {
+	private FrameModifica ilFrame;
+	
+	boolean[][] arrayB = new boolean [2][3];
+	
+	public PannelloSettore (FrameModifica unFrame) {
 		super();
+		ilFrame = unFrame;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -49,19 +55,19 @@ public class PannelloSettore extends JPanel {
 			int b = e.getY();
 			
 			if (a > 20 && a < 20 +(weight*2) && b > 20 && b < 20+(height*3)) {
-				int SettX = a/weight;
-				int SettY = b/height;
+				ilFrame.settX = (a/weight);
+				ilFrame.settY = b/height;
 				
 				Graphics2D g3 = null;
 				Color colore = new Color (200,200, 200);
 				for (int i = 0; i < weight; i++) {
 					for (int j=0; j<height;j++) {
 						g3.setColor(colore);
-						g3.drawLine(SettX,  SettY, weight*SettX, height*SettY);
+						g3.drawLine(ilFrame.settX,  ilFrame.settY, weight*ilFrame.settX, height*ilFrame.settY);
 					}
 				repaint();
 				}
-		}
+			}
 		}
 
 		@Override

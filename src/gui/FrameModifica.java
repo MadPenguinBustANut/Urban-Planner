@@ -24,9 +24,8 @@ import centrourbano.CentroUrbano;
 
 public class FrameModifica extends JFrame{
 	private static final long serialVersionUID = 1L;
-	boolean[] arrayB = new boolean [6];
-	private int settX;
-	private int settY;
+	public int settX;
+	public int settY;
 	private CentroUrbano rifer;
 	
 	public FrameModifica (CentroUrbano e) {
@@ -35,7 +34,7 @@ public class FrameModifica extends JFrame{
 		rifer = e;
 		JPanel io = new JPanel(new BorderLayout());
 		JPanel io2 = new JPanel();
-		PannelloSettore x = new PannelloSettore();
+		PannelloSettore x = new PannelloSettore(this);
 		JPanel PPul = new JPanel(new GridLayout(1,2));
 		
 		JButton modStrada = new JButton("crea strada");
@@ -103,4 +102,5 @@ public class FrameModifica extends JFrame{
 				}	
 			}
 		}
+
 	}
