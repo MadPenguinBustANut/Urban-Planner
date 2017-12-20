@@ -75,28 +75,28 @@ public class CreaStrada extends JPanel {
 
 		//Controllo se i lotti adiacenti hanno una strada
 		
-		//Destra.
+		//Destra
 		if( (y) == 4 ) {
 		}
 		else if(rifer.lista[x][y+1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+L, y+(L/2));
 		
 		
-		//Basso.
+		//Basso
 		if( (x) == 2) {
 		}
 		else if(rifer.lista[x+1][y].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 		
-		//Sinistra.
+		//Sinistra
 		if( (y) == 0 ) {
 		}
 		else if(rifer.lista[x][y-1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x, y+(L/2));
 		
 		
-		//Sopra.
+		//Sopra
 		if( (x) == 0) {
 		}
 		else if(rifer.lista[x-1][y].getTip() == 1)

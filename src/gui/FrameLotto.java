@@ -50,7 +50,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	public FrameLotto() {
-		// TODO vito è gay
+		// TODO vito e' gay
 	}
 
 	public void createTesti() {
@@ -140,7 +140,7 @@ public class FrameLotto extends JFrame {
 
 				JFrame erroreDemolizione = new JFrame();
 				JPanel nuovoErrore = new JPanel();
-				JLabel errore= new JLabel("Demolizione già effettuata");
+				JLabel errore= new JLabel("Demolizione gia' effettuata");
 				nuovoErrore.add(errore);
 				erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				erroreDemolizione.setSize(200,100);
@@ -161,10 +161,6 @@ public class FrameLotto extends JFrame {
 		if(radio2.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPubblico(), LY, LX);
 		if(radio3.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPrivato(), LY, LX);
 		success.setText("Costruzione avvenuta.");
-<<<<<<< HEAD
-		//PannelloVModifica(roba non ricordo vito fai tu tbh)
-=======
->>>>>>> 8cc30d58bac6388fc28e1032a3d15956f48226b3
 	}
 
 	/**
