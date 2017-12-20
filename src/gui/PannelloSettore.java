@@ -35,16 +35,13 @@ public class PannelloSettore extends JPanel {
 
 		g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 		
-		if(tr) {
-			g2.drawLine(0, 0, 15, 15);
-		}
 		
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 2; j++) {
 				g2.drawRect(20+(weight*j), 20+(height*i), weight, height);
-				if(arrayB[j][i]) {
-					g2.setColor(Color.CYAN);
-					g2.fillRect(19+(weight*j), 19+(height*i), weight-2, height-2);
+				if(arrayB[j][i] == true) {
+					g2.setColor(Color.YELLOW);
+					g2.fillRect(21+(weight*j), 21+(height*i), weight-2, height-2);
 					g2.setColor(Color.BLACK);
 			}
 		}	
@@ -64,14 +61,15 @@ public class PannelloSettore extends JPanel {
 			int b = e.getY();
 			
 			if (a > 20 && a < 20 +(weight*2) && b > 20 && b < 20+(height*3)) {
-				settX = (a/weight);
+				settX = a/weight;
 				settY = b/height;
-				for(boolean[] x : arrayB) {
-					for(boolean t : x)
-						t = false;
+				for(int i = 0; i < 2; i++) {
+					for(int j = 0; i < 3; i++) {
+						arrayB[j][i] = false;
+					}
 				}
 				
-				arrayB[settY][settX] = true;
+				arrayB[settX][settY] = true;
 				repaint();
 				}
 			}
