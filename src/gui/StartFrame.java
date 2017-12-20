@@ -124,7 +124,7 @@ public class ButtonListener implements ActionListener{
 			
 			String testo = io.getText();
 			if(testo.equalsIgnoreCase("Selezione")){			//Ridimensionamento del frame per
-				rifer.setSize(800, 400);						//visualizzare il pannello di selezione
+				rifer.setSize(800, 600);						//visualizzare il pannello di selezione
 				contenitore.removeAll();
 				contenitore.add(selezione);
 				selezione.setVisible(true);
@@ -132,7 +132,7 @@ public class ButtonListener implements ActionListener{
 				visualizzazione.setVisible(false);
 			}
 			else if(testo.equalsIgnoreCase("Gestione")){		//visualizzazione del pannello di gestione
-				rifer.setSize(800, 300);
+				rifer.setSize(800, 600);
 				contenitore.removeAll();
 				contenitore.add(gestione);
 				selezione.setVisible(false);
@@ -140,7 +140,7 @@ public class ButtonListener implements ActionListener{
 				visualizzazione.setVisible(false);
 			}
 			else if(testo.equalsIgnoreCase("Visualizzazione")){	//visualizzazione del pannello di visualizzazione
-				rifer.setSize(800, 450);	
+				rifer.setSize(800, 600);	
 				contenitore.removeAll();
 				contenitore.add(visualizzazione);
 				selezione.setVisible(false);
