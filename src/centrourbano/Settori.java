@@ -49,9 +49,9 @@ public class Settori implements Serializable{
 		if(Nuovo.getTipo() == STRADA)
 			addStrada( Nuovo,X,Y);
 		if(Nuovo.getTipo() == EPUB)
-			addepub(Nuovo,X,Y);
+			addEpub(Nuovo,X,Y);
 		if(Nuovo.getTipo() == EPRIV)
-			addepriv(Nuovo,  X, Y);
+			addEpriv(Nuovo,  X, Y);
 	}
 
 
@@ -64,7 +64,7 @@ public class Settori implements Serializable{
 	 * -Strada: Riduce di 1 il valore dei lotti adiacenti
 	 *
 	 *
-	 * Nel caso in cui il lotto sia gi� libero lancia un eccezione di tipo "LottoLibero"
+	 * Nel caso in cui il lotto sia gia libero lancia un eccezione di tipo "LottoLibero"
 	 * @param x Coordinata X, che insieme alla Y indicano che edificio rimuovere
 	 * @param y Coordinata Y, che insieme alla X indicano che edificio rimuovere
 	 */
@@ -75,9 +75,9 @@ public class Settori implements Serializable{
 		if((getLotto(x, y)).getTip() == STRADA)
 			rmStrada(x,y);
 		if((getLotto(x, y)).getTip() == EPUB)
-			rmepub(x,y);
+			rmEpub(x,y);
 		if((getLotto(x, y)).getTip() == EPRIV)
-			rmepriv(x,y);
+			rmEpriv(x,y);
 
 	}
 
@@ -148,7 +148,7 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
 	 */
 
-	private void addepub(Edificabile NuovoEdificio, double X, double Y) {
+	private void addEpub(Edificabile NuovoEdificio, double X, double Y) {
 		lista[(int) X][(int) Y].setEdificio(NuovoEdificio);
 		this.setValore(this.getValore() + 1);
 	}
@@ -160,7 +160,7 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
 	 */
 
-	private void addepriv(Edificabile Nuovo, double X, double Y) {
+	private void addEpriv(Edificabile Nuovo, double X, double Y) {
 		lista[(int) X][(int) Y].setEdificio(Nuovo);
 	}
 
@@ -200,7 +200,7 @@ public class Settori implements Serializable{
 	 * @param y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
 	 */
 
-	private void rmepub(double x,double y) {
+	private void rmEpub(double x,double y) {
 		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
 		setValore(getValore() - 1);
 
@@ -212,7 +212,7 @@ public class Settori implements Serializable{
 	 * @param y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
 	 */
 
-	private void rmepriv(double x,double y) {
+	private void rmEpriv(double x,double y) {
 		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
 	}
 
@@ -298,7 +298,7 @@ public class Settori implements Serializable{
 	}
 
 	/**
-	 *Questo metodo aumenta di uno il valore del lotto,  ma solo se � un edificio privato
+	 *Questo metodo aumenta di uno il valore del lotto,  ma solo se  e' un edificio privato
 	 * @param X Coordinata X, che insieme alla Y indicano in che posizione si trova il lotto a cui aumentare il valore
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui aumentare il valore
 	 */
@@ -309,7 +309,7 @@ public class Settori implements Serializable{
 	}
 
 	/**
-	 * Questo metodo riduce di uno il valore del lotto, ma solo se � un edificio privato
+	 * Questo metodo riduce di uno il valore del lotto, ma solo se  e' un edificio privato
 	 * @param X Coordinata X, che insieme alla Y indicano in che posizione si trova il lotto a cui ridurre il valore
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui ridurre il valore
 	 */
