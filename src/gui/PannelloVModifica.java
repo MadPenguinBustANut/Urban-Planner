@@ -3,11 +3,7 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
-
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
@@ -113,6 +109,7 @@ public class PannelloVModifica extends JPanel {
 		
 		public VisualListener(PannelloVModifica e) {
 			rifer = e;
+			io.setVisible(false);
 		}
 		
 		public void mouseClicked(MouseEvent e) {
@@ -120,7 +117,7 @@ public class PannelloVModifica extends JPanel {
 			
 			//Se il mouse è all'interno del disegno
 			if(evento.getX() > PX & evento.getY() > PY) {
-				if(evento.getX()+(Z*L*4) < PX+(Z*L*4) & evento.getY()+(Z*L*2) < PY+(Z*L*2)) {
+				if(evento.getX() < PX+(Z*L*4) & evento.getY() < PY+(Z*L*2)) {
 
 					if(io.isVisible()) {
 						io.setVisible(false);
