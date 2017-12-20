@@ -9,20 +9,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import centrourbano.*;
+import seleziona.*;
 
 public class PannelloSelezione extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	public PannelloSelezione(CentroUrbano c) {
 		super(new BorderLayout());
-		centro=c;
 		
+		centro= c;
 		cEffButton= new JRadioButton ("Coefficiente Efficienza");
-		cEffButton.addActionListener(listener);
 		cInvButton= new JRadioButton ("Coefficiente Invecchiamento");
-		cInvButton.addActionListener(listener);
 	    ValoreButton= new JRadioButton ("Valore");
-	    ValoreButton.addActionListener(listener);
 		cEffButton.setSelected(true);
 	    
 		ButtonGroup group= new ButtonGroup();
@@ -38,14 +36,12 @@ public class PannelloSelezione extends JPanel{
 	    panel.setBorder(new TitledBorder(new EtchedBorder(),"Metodi di Selezione in base a:"));
 	    
 	    normalOrdButton= new JRadioButton("Dal più Grande al più Piccolo");
-	    normalOrdButton.addActionListener(listenerOrd);
 	    inversOrdButton= new JRadioButton("Dal più Piccolo al più Grande");
-	    inversOrdButton.addActionListener(listenerOrd);
 	    normalOrdButton.setSelected(true);
 	    
 	    ButtonGroup groupOrd= new ButtonGroup();
-	    group.add(normalOrdButton);
-	    group.add(inversOrdButton);
+	    groupOrd.add(normalOrdButton);
+	    groupOrd.add(inversOrdButton);
 	    
 	    panelG= new JPanel(new GridLayout(2,1));
 	    panelG.add(normalOrdButton);
@@ -77,10 +73,11 @@ public class PannelloSelezione extends JPanel{
 	    panelM.setBorder(new TitledBorder(new EtchedBorder(),"Massimo   -   Minimo"));
 	    
 	    calButton=new JButton("Effetua Selezione");
+	    calButton.addActionListener(listener);
 	    
-	    JTextArea textArea= new JTextArea(10,30);
+	    textArea= new JTextArea(10,30);
 	    textArea.setEditable(false);
-	    JScrollPane scrollPanel= new JScrollPane(textArea);
+	    scrollPanel= new JScrollPane(textArea);
 	    
 	    add(scrollPanel,BorderLayout.SOUTH);
 	    add(calButton,BorderLayout.NORTH);
@@ -94,15 +91,69 @@ public class PannelloSelezione extends JPanel{
 	public class ButtonListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
+		
+			double max;
+			double min;
+			int scelta;
+			Seleziona Select;
+
 			
+			if(cEffButton.isSelected()) {
+				max= Double.parseDouble(maxEff.getText());
+				min= Double.parseDouble(minEff.getText());
+				scelta=0;
+				Select= new Seleziona(centro,max,min,scelta);
+				Select.Scelta();
+                OrdPrintLista(Select);
+			}
+			else {
+				if(cInvButton.isSelected()) {
+				   max= Double.parseDouble(maxInv.getText());
+				   min= Double.parseDouble(minInv.getText());
+				   scelta=1;
+				   Select= new Seleziona(centro,max,min,scelta);
+				   Select.Scelta();
+                   OrdPrintLista(Select);
+				}
+				else {
+					if(ValoreButton.isSelected()) {
+						max= Double.parseDouble(maxVal.getText());
+						min= Double.parseDouble(minVal.getText());
+						scelta=2;
+						Select= new Seleziona(centro,max,min,scelta);
+						Select.Scelta();
+                        OrdPrintLista(Select);
+					}
+				}
+			
+			}
 			
 		}
-		
+			
 	}
 	
+	private void OrdPrintLista(Seleziona Select) {
+		
+		int flag=0;
+		Ordinamento Ord;
+		
+		if(normalOrdButton.isSelected()) {
+			flag=0;
+		}
+		if(inversOrdButton.isSelected()) {
+			flag=1;
+		}
+		Ord= new Ordinamento(flag,Select);
+		Ord.sceltaOrd();
+		for(int i=0;i<Select.getCount();i++) {
+			textArea.append("Lotto :"+i+"\n");
+			textArea.append("Coeff Efficienza"+Select.lista[i].getCeff()+"\n");
+			textArea.append("Coeff Invecchiamento"+Select.lista[i].getCinv()+"\n");
+			textArea.append("Valore"+Select.lista[i].getValore()+"\n");
+			textArea.append("\n");
+		}
+	}
 
-    private CentroUrbano centro;
-    
     private JRadioButton cEffButton;
     private JTextField maxEff;
     private JTextField minEff;
@@ -123,8 +174,14 @@ public class PannelloSelezione extends JPanel{
     private JPanel panelG;
     private JPanel panelM;
     
+    private JTextArea textArea;
+    
+    private JScrollPane scrollPanel;
+    
     private ActionListener listener = new ButtonListener();
-    private ActionListener listenerOrd;
+    
+    private CentroUrbano centro;
     
     private static final int FIELD_WIDTH=10;
 }
+

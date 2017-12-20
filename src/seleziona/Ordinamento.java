@@ -17,14 +17,14 @@ public class Ordinamento implements Serializable{
 	
 	//Il metodo sceltaOrd seleziona in base a quale valore effettuare l'ordinamento
 	
-	public void sceltaOrd(Ordinamento ord) {
+	public void sceltaOrd() {
 		
 		switch(select.getScelta()) {
-		case 0: ord.coeffEff();
+		case 0: coeffEff();
 		        break;
-		case 1: ord.coeffInv();
+		case 1: coeffInv();
 		        break;
-		case 2: ord.val();
+		case 2: val();
 		        break;
 		} 
 		

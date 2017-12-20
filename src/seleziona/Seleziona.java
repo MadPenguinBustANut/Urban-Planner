@@ -10,24 +10,24 @@ public class Seleziona implements Serializable{
 	//Seleziona contiene il settore selezionato, il massimo e il minimo ammissibili nella selezione, 
 	//il tipi di selezione scelta e un array che conterra tutti i lotti scelti
 	
-	public Seleziona(CentroUrbano centr) {
+	public Seleziona(CentroUrbano centr,double ma,double mi,int scelt) {
         lista= new Lotti[DIM_LIST];
 		centro=centr;
-		max=90;
-		min=10;
-		scelta=0;
+		max=ma;
+		min=mi;
+		scelta=scelt;
 		
 	}
 	
 	//Il metodo scelta selezione il metodo di selezione
 	
-	public void Scelta(Seleziona select) {
+	public void Scelta() {
 		switch(scelta) {
-		case 0:select.coeffEff();
+		case 0:coeffEff();
 		       break;
-		case 1:select.coeffInv();
+		case 1:coeffInv();
 		       break;
-		case 2:select.val();
+		case 2:val();
 		       break;
 		default: System.out.println("Selezione Errata\n");
 		}
@@ -104,6 +104,7 @@ public class Seleziona implements Serializable{
     private static final int MAX_X = 2;
 	private static final int MAX_Y = 4;
     private final static int DIM_LIST=90;
+    
     
     public Lotti lista[];
 }
