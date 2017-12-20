@@ -169,13 +169,13 @@ public class CreaStrada extends JPanel {
 	
 	private void costruisciY(int valoreIniziale, int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
-			centro.addStrada(settX, settY, primoX, i);
+			centro.addStrada(NSettore.x, NSettore.y, primoX, i);
 		}
 	}
 	
 	private void costruisciX(int valoreIniziale,int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
-			centro.addStrada(settX, settY, i, primoY);
+			centro.addStrada(NSettore.x, NSettore.y, i, primoY);
 		}
 	}
 }
