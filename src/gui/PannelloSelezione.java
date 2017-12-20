@@ -80,7 +80,7 @@ public class PannelloSelezione extends JPanel{
 	    scrollPanel= new JScrollPane(textArea);
 	    
 	    add(scrollPanel,BorderLayout.SOUTH);
-	    add(calButton,BorderLayout.NORTH);
+	    add(calButton,BorderLayout.SOUTH);
 	    
 	    add(panel, BorderLayout.WEST);
 	    add(panelG,BorderLayout.EAST);
