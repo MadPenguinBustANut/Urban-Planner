@@ -117,7 +117,7 @@ public class Settori implements Serializable{
 	 */
 
 	private void addStrada(Edificabile Nuovo, double X, double Y) {
-			lista[(int) X][(int) Y].setEdificio(Nuovo);
+			lista[(int) X][(int) Y].edificio = Nuovo;
 
 			if((Y - 1) > -1)
 				addOne(X,Y-1);
@@ -149,7 +149,7 @@ public class Settori implements Serializable{
 	 */
 
 	private void addEpub(Edificabile NuovoEdificio, double X, double Y) {
-		lista[(int) X][(int) Y].setEdificio(NuovoEdificio);
+		lista[(int) X][(int) Y].edificio = NuovoEdificio;
 		this.setValore(this.getValore() + 1);
 	}
 
@@ -161,7 +161,7 @@ public class Settori implements Serializable{
 	 */
 
 	private void addEpriv(Edificabile Nuovo, double X, double Y) {
-		lista[(int) X][(int) Y].setEdificio(Nuovo);
+		lista[(int) X][(int) Y].edificio = Nuovo;
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class Settori implements Serializable{
 	 */
 
 	private void rmStrada(double x, double y) {
-		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
+		lista[(int) x][(int) y].edificio = Lotti.VUOTO;
 		if((y - 1) > -1)
 			subOne(x,y-1);
 		if((y + 1) < MAX_Y )
@@ -201,7 +201,7 @@ public class Settori implements Serializable{
 	 */
 
 	private void rmEpub(double x,double y) {
-		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
+		lista[(int) x][(int) y].edificio = Lotti.VUOTO;
 		setValore(getValore() - 1);
 
 	}
@@ -213,7 +213,7 @@ public class Settori implements Serializable{
 	 */
 
 	private void rmEpriv(double x,double y) {
-		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
+		lista[(int) x][(int) y].edificio = Lotti.VUOTO;
 	}
 
 	/**
