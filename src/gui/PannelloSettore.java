@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
@@ -37,6 +38,7 @@ public class PannelloSettore extends JPanel {
 
 			}
 		}
+		
 	}
 	
 	class Posizione implements MouseListener{
@@ -50,8 +52,16 @@ public class PannelloSettore extends JPanel {
 				int SettX = a/weight;
 				int SettY = b/height;
 				
-				
-			}
+				Graphics2D g3 = null;
+				Color colore = new Color (200,200, 200);
+				for (int i = 0; i < weight; i++) {
+					for (int j=0; j<height;j++) {
+						g3.setColor(colore);
+						g3.drawLine(SettX,  SettY, weight*SettX, height*SettY);
+					}
+				repaint();
+				}
+		}
 		}
 
 		@Override
