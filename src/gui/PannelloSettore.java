@@ -7,11 +7,11 @@ import javax.swing.JPanel;
 
 public class PannelloSettore extends JPanel {
 	private static final long serialVersionUID = 1L;
-	private int x;
-	private int y;
-	private int cost = 300;
-	private int weight;
-	private int height;
+	private int x = 30;
+	private int y = 30;
+	private int cost = 30;
+	private int weight= 300;
+	private int height= 100;
 	
 	public PannelloSettore () {
 		super();
@@ -20,9 +20,9 @@ public class PannelloSettore extends JPanel {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		
-		for (x = 0; x < 3; x++) {
-			for (y = 30; y < 2; y++) {
-				g2.drawRect(x, y, weight*2*cost, height*2*cost);
+		for (int i = 0; i < 3; i++) {
+			for (int j = 30; j < 2; j++) {
+				g2.drawRect(x, y, weight*i, height*j);
 			}
 		}
 	}
