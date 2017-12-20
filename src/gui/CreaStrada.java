@@ -24,8 +24,10 @@ public class CreaStrada extends JPanel {
 	CentroUrbano centro;
 	public int Z = 5;
 	
-	public CreaStrada(Point unsettore) {
-		NSettore = unsettore;
+	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
+		NSettore = numsettore;
+		rifer = ilsettore;
+		centro= uncentro;
 	}
 	
 	
@@ -102,14 +104,14 @@ public class CreaStrada extends JPanel {
 	public void mouseClicked(MouseEvent e) {
 		if(inizio == true) {
 			Point evento = e.getPoint();
-			primoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			primoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			primoX= e.getX()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			primoY= e.getY()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
 			inizio = false;
 		}
 		if(inizio == false) {
 			Point evento = e.getPoint();
-			secondoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			secondoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			secondoX= e.getX()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			secondoY= e.getY()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
 			costruisciPercorso();
 			inizio = false;
 		}
