@@ -8,8 +8,8 @@ import javax.swing.JPanel;
 public class PannelloPulsanti extends JPanel{
 	
 	public PannelloPulsanti () {
-		super(new GridLayout(2, 1));
-		
+		super(new GridLayout(1, 2));
+
 		JButton modStrada = new JButton();
 		JButton modLotto = new JButton();
 		
