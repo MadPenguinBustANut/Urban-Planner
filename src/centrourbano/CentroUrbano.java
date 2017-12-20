@@ -110,7 +110,7 @@ public class CentroUrbano implements Serializable{
 	 * @param X Coordinata X del lotto, insieme a Y indica dove verra posizionato il lotto
 	 * @param Y Coordinata Y del lotto, insieme a X indica dove verra posizionato il lotto
 	 */
-	public void addStrada(double settX, double settY,double LX ,double LY) {
+	public void addStrada(int settX, int settY,int LX ,int LY) {
 	
 		if(LX==MAX_X && LY < MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X)
@@ -182,7 +182,7 @@ public class CentroUrbano implements Serializable{
 	 * @param lY Coordinata Y del lotto, insieme a X indica dove verra posizionato il lotto
 	 */
 	
-	public void rmStrada(double settX, double settY,double lX ,double lY) {
+	public void rmStrada(int settX, int settY,int lX ,int lY) {
 		
 		if(lX==MAX_X && lY < MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X)

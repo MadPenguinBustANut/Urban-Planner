@@ -100,6 +100,9 @@ public class CreaStrada extends JPanel {
 	}
 	
 	public void mouseClicked(MouseEvent e) {
+		
+		
+		
 		if(inizio == true) {
 			Point evento = e.getPoint();
 			primoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
