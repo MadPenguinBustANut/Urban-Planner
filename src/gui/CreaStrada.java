@@ -112,14 +112,14 @@ public class CreaStrada extends JPanel {
 	public void mouseClicked(MouseEvent e) {
 		if(inizio == true) {
 			Point evento = e.getPoint();
-			primoX= e.getX()/(L*Z);;		
-			primoY= e.getY()/(L*Z);;		
+			primoX= e.getX()/(L*Z);		
+			primoY= e.getY()/(L*Z);		
 			inizio = false;
 		}
 		if(inizio == false) {
 			Point evento = e.getPoint();
-			secondoX= e.getX()/(L*Z);;		
-			secondoY= e.getY()/(L*Z);;		
+			secondoX= e.getX()/(L*Z);	
+			secondoY= e.getY()/(L*Z);	
 			costruisciPercorso();
 			inizio = false;
 		}
