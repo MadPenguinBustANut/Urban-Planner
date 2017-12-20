@@ -324,7 +324,7 @@ public class Settori implements Serializable{
 	 * @return Valore del settore
 	 */
 
-	public static int getValore() {
+	public int getValore() {
 		return valore;
 	}
 
@@ -333,8 +333,8 @@ public class Settori implements Serializable{
 	 * @param valore Valore del settore
 	 */
 
-	public static void setValore(int value) {
-		valore = valore;
+	public void setValore(int value) {
+		valore = value;
 	}
 
 
@@ -348,9 +348,9 @@ public class Settori implements Serializable{
 	private static final int STRADA = 1;
 	private static final int EPUB = 2;
 	private static final int EPRIV = 3;
-	private static int valore;
+	private int valore;
 
 
 
-	public static Lotti[][] lista;
+	public Lotti[][] lista;
 }
