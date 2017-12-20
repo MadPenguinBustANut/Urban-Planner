@@ -72,7 +72,6 @@ public class PannelloSettore extends JPanel {
 				}
 				
 				arrayB[settY][settX] = true;
-				
 				repaint();
 				}
 			}
