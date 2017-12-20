@@ -4,17 +4,20 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import centrourbano.CentroUrbano;
+
 public class FrameModifica extends JFrame{
 	private static final long serialVersionUID = 1L;
 	boolean[] arrayB = new boolean [6];
-	private int x;
-	private int y;
-	private int weight;
-	private int height;
+	private int settX;
+	private int settY;
+	private CentroUrbano rifer;
 	
-	public FrameModifica () {
-
+	public FrameModifica (CentroUrbano e) {
 		super("Seleziona settore");
+		
+		rifer = e;
+		
 		JPanel io = new JPanel(new BorderLayout());
 		PannelloSettore x = new PannelloSettore();
 		PannelloPulsanti PPul = new PannelloPulsanti();

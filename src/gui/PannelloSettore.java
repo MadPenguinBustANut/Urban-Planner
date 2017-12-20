@@ -39,7 +39,7 @@ public class PannelloSettore extends JPanel {
 		}
 	}
 	
-	public class Posizione implements MouseListener{
+	class Posizione implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
 
