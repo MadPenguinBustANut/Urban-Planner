@@ -109,40 +109,68 @@ public class CreaStrada extends JPanel {
 			Point evento = e.getPoint();
 			secondoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
 			secondoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			if(controllaPercorso()== true)
-				costruisciPercorso();
+			costruisciPercorso();
 			inizio = false;
 		}
 	
 	}
 	
-	private boolean controllaPercorso() {  //DA FINIRE
+	private boolean costruisciPercorso() {  //DA FINIRE
 		if (primoX == secondoX) {
 			int diff = primoY - secondoY;
 			if(diff < 0) {
-				check(primoY,diff);
+				if (checkY(primoY,diff)==true)
+					costruisciY();
 				}
 			if(diff > 0) {
-				check(secondoY,diff);
-				
+				if (checkY(secondoY,diff)== true)
+					costruisciX();
 			}
 		}
 		
 		if (primoY == secondoY) {
+			int diff = primoX - secondoX;
+			if(diff < 0) {
+				return checkX(primoX,diff);
+				}
+			if(diff > 0) {
+				return checkX(secondoX,diff);
+			}
 			
 		}
-		//LANCIA ECCEZZIONE
+		//LANCIA ECCEZIONE SE NON E' ORTOGONALE
 		return false;
 	}
 	
-	private boolean check(int inizio, int diff) {
+
+	
+	/**
+	 * Funzioni chiamate dal metodo controllaPercorso, controllano effettivamente se e' libero
+	 * @param inizio Valore da cui far partire il ciclo for
+	 * @param diff La differenza di caselle , indica quando si deve fermare
+	 * @return True se e' libero, false se non lo e'
+	 */
+	private boolean checkY(int inizio, int diff) {
 		for(int i=inizio;i<diff;i++) {
-			//FAI COSA
+			if(rifer.lista[primoX][i].getTip() != 0)
+				return false;
 		}
+		return true;
 	}
 	
-	private void costruisciPercorso() {  //DA FINIRE
+	private boolean checkX(int inizio,int diff) {
+		for(int i=inizio;i<diff;i++) {
+			if(rifer.lista[i][primoY].getTip() != 0)
+				return false;
+		}
+		return true;
+	}
+	
+	private void costruisciY() {
 		
 	}
 	
+	private void costruisciX() {
+		
+	}
 }
