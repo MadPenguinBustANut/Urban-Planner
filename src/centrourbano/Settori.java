@@ -202,11 +202,12 @@ public class Settori implements Serializable{
 	 */
 
 	private void rmEpub(int x,int y) {
-		if(((EPubblico) ( lista[(int) x][(int) y]).edificio).getStato() == 0)
-			((EPubblico) ( lista[(int) x][(int) y]).edificio).addStato();
-		lista[(int) x][(int) y].edificio = Lotti.VUOTO;
-		setValore(getValore() - 1);
-
+		if(((EPubblico) ( lista[x][y]).edificio).getStato() == 0)
+			((EPubblico) ( lista[x][y]).edificio).addStato();
+		else {
+			lista[x][y].edificio = Lotti.VUOTO;
+			setValore(getValore() - 1);
+		}
 	}
 
 	/**
