@@ -3,6 +3,7 @@ package centrourbano;
 import java.io.Serializable;
 
 import eccezioni.LottoLibero;
+import edifici.Edificabile;
 
 
 public class Settori implements Serializable{
@@ -26,7 +27,7 @@ public class Settori implements Serializable{
 	 * @return	Ritorna il prezzo di vendita dell'edificio
 	 */
 
-	public int vendiEdificio(int X, int Y) {
+	public int vendiEdificio(double X, double Y) {
 		Lotti vend = getLotto(X, Y);
 		int tot = (vend.getValore() + this.getValore()) * vend.getCeff();
 		rmLotto(X, Y);
@@ -44,13 +45,13 @@ public class Settori implements Serializable{
 	 * @param Nuovo Il Lotto che va inserito
 	 */
 
-	public void addLotto(Lotti Nuovo, int X, int Y) {
-		if(Nuovo.getTip() == STRADA)
+	public void addLotto(Edificabile Nuovo, double X, double Y) {
+		if(Nuovo.getTipo() == STRADA)
 			addStrada( Nuovo,X,Y);
-		if(Nuovo.getTip() == EPUB)
-			addepub(Nuovo,X,Y);
-		if(Nuovo.getTip() == EPRIV)
-			addepriv(Nuovo,  X, Y);
+		if(Nuovo.getTipo() == EPUB)
+			addEpub(Nuovo,X,Y);
+		if(Nuovo.getTipo() == EPRIV)
+			addEpriv(Nuovo,  X, Y);
 	}
 
 
@@ -63,20 +64,20 @@ public class Settori implements Serializable{
 	 * -Strada: Riduce di 1 il valore dei lotti adiacenti
 	 *
 	 *
-	 * Nel caso in cui il lotto sia gi� libero lancia un eccezione di tipo "LottoLibero"
-	 * @param X Coordinata X, che insieme alla Y indicano che edificio rimuovere
-	 * @param Y Coordinata Y, che insieme alla X indicano che edificio rimuovere
+	 * Nel caso in cui il lotto sia gia libero lancia un eccezione di tipo "LottoLibero"
+	 * @param x Coordinata X, che insieme alla Y indicano che edificio rimuovere
+	 * @param y Coordinata Y, che insieme alla X indicano che edificio rimuovere
 	 */
 
-	public void rmLotto(int X, int Y) {
-		if((getLotto(X, Y)).getTip() == LIBERO)
+	public void rmLotto(double x, double y) {
+		if((getLotto(x, y)).getTip() == LIBERO)
 			throw new LottoLibero();
-		if((getLotto(X, Y)).getTip() == STRADA)
-			rmStrada(X,Y);
-		if((getLotto(X, Y)).getTip() == EPUB)
-			rmepub(X,Y);
-		if((getLotto(X, Y)).getTip() == EPRIV)
-			rmepriv(X,Y);
+		if((getLotto(x, y)).getTip() == STRADA)
+			rmStrada(x,y);
+		if((getLotto(x, y)).getTip() == EPUB)
+			rmEpub(x,y);
+		if((getLotto(x, y)).getTip() == EPRIV)
+			rmEpriv(x,y);
 
 	}
 
@@ -87,7 +88,7 @@ public class Settori implements Serializable{
 	 * @throws LottoLibero Nel caso il lotto sia gia libero lancia una eccezzione
 	 */
 
-	public void cgEdificio(Lotti nuovo,int X, int Y) {
+	public void cgEdificio(Edificabile nuovo,double X, double Y) {
 		rmLotto(X, Y);
 		addLotto(nuovo, X , Y);
 	}
@@ -95,12 +96,12 @@ public class Settori implements Serializable{
 	/**
 	 * Restituisce il lotto in posizione X, Y
 	 * @param X Coordinata X, che insieme alla Y indicano che edificio restituire
-	 * @param Y Coordinata Y, che insieme alla X indicano che edificio restituire
+	 * @param y Coordinata Y, che insieme alla X indicano che edificio restituire
 	 * @return
 	 */
 
-	public Lotti getLotto(int X, int Y) {
-		Lotti io = lista[X][Y];
+	public Lotti getLotto(double X, double y) {
+		Lotti io = lista[(int) X][(int) y];
 
 
 		return io;
@@ -115,8 +116,8 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano la posizione della strada
 	 */
 
-	private void addStrada(Lotti Nuovo, int X, int Y) {
-			lista[X][Y] = Nuovo;
+	private void addStrada(Edificabile Nuovo, double X, double Y) {
+			lista[(int) X][(int) Y].setEdificio(Nuovo);
 
 			if((Y - 1) > -1)
 				addOne(X,Y-1);
@@ -147,8 +148,8 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
 	 */
 
-	private void addepub(Lotti Nuovo, int X, int Y) {
-		lista[X][Y] = Nuovo;
+	private void addEpub(Edificabile NuovoEdificio, double X, double Y) {
+		lista[(int) X][(int) Y].setEdificio(NuovoEdificio);
 		this.setValore(this.getValore() + 1);
 	}
 
@@ -159,60 +160,60 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione aggiungere il lotto
 	 */
 
-	private void addepriv(Lotti Nuovo, int X, int Y) {
-		lista[X][Y] = Nuovo;
+	private void addEpriv(Edificabile Nuovo, double X, double Y) {
+		lista[(int) X][(int) Y].setEdificio(Nuovo);
 	}
 
 	/**
 	 * Rimuove la strada alla posizione indicata da X e Y
 	 * Inoltre riduce di uno il valore di tutti i lotti adiacenti in modo da annullare il
 	 * bonus dato dalla strada
-	 * @param X Coordinata X, che insieme alla Y indicano la posizione della strada da rimuovere
-	 * @param Y Coordinata Y, che insieme alla X indicano la posizione della strada da rimuovere
+	 * @param x Coordinata X, che insieme alla Y indicano la posizione della strada da rimuovere
+	 * @param y Coordinata Y, che insieme alla X indicano la posizione della strada da rimuovere
 	 */
 
-	private void rmStrada(int X, int Y) {
-		lista[X][Y].setEdificio(Lotti.VUOTO);
-		if((Y - 1) > -1)
-			subOne(X,Y-1);
-		if((Y + 1) < MAX_Y )
-			subOne(X,Y+1);
-		if((X - 1) > -1) {
-			subOne(X-1, Y);
-			if((Y-1) > -1)
-				subOne(X-1, Y-1);
-			if((Y + 1) < MAX_Y)
-				subOne(X-1, Y+1);
+	private void rmStrada(double x, double y) {
+		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
+		if((y - 1) > -1)
+			subOne(x,y-1);
+		if((y + 1) < MAX_Y )
+			subOne(x,y+1);
+		if((x - 1) > -1) {
+			subOne(x-1, y);
+			if((y-1) > -1)
+				subOne(x-1, y-1);
+			if((y + 1) < MAX_Y)
+				subOne(x-1, y+1);
 		}
-		if((X + 1) < MAX_X) {
-			subOne(X+1, Y);
-			if((Y-1) > -1)
-				subOne(X+1, Y-1);
-			if((Y+1) < MAX_Y)
-				subOne(X+1,Y+1);
+		if((x + 1) < MAX_X) {
+			subOne(x+1, y);
+			if((y-1) > -1)
+				subOne(x+1, y-1);
+			if((y+1) < MAX_Y)
+				subOne(x+1,y+1);
 			}
 		}
 
 	/**
 	 * Rimuovi l'edificio pubblico e rimuove il +1 bonus al settore
-	 * @param X Coordinata X, che insieme alla Y indicano in che posizione rimuovere il lotto
-	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
+	 * @param x Coordinata X, che insieme alla Y indicano in che posizione rimuovere il lotto
+	 * @param y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
 	 */
 
-	private void rmepub(int X,int Y) {
-		lista[X][Y].setEdificio(Lotti.VUOTO);
-		this.setValore(this.getValore() - 1);
+	private void rmEpub(double x,double y) {
+		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
+		setValore(getValore() - 1);
 
 	}
 
 	/**
 	 * Rimuovi l'edificio privato
-	 * @param X Coordinata X, che insieme alla Y indicano in che posizione rimuovere il lotto
-	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
+	 * @param x Coordinata X, che insieme alla Y indicano in che posizione rimuovere il lotto
+	 * @param y Coordinata Y, che insieme alla X indicano in che posizione rimuovere il lotto
 	 */
 
-	private void rmepriv(int X,int Y) {
-		lista[X][Y].setEdificio(Lotti.VUOTO);
+	private void rmEpriv(double x,double y) {
+		lista[(int) x][(int) y].setEdificio(Lotti.VUOTO);
 	}
 
 	/**
@@ -297,25 +298,25 @@ public class Settori implements Serializable{
 	}
 
 	/**
-	 *Questo metodo aumenta di uno il valore del lotto,  ma solo se � un edificio privato
+	 *Questo metodo aumenta di uno il valore del lotto,  ma solo se  e' un edificio privato
 	 * @param X Coordinata X, che insieme alla Y indicano in che posizione si trova il lotto a cui aumentare il valore
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui aumentare il valore
 	 */
 
-	public void addOne(int X,int Y) {
-		if(lista[X][Y].getTip()==EPRIV)
-			lista[X][Y].setValore(lista[X][Y].getValore() + 1);
+	public void addOne(double X,double Y) {
+		if(lista[(int) X][(int) Y].getTip()==EPRIV)
+			lista[(int) X][(int) Y].setValore(lista[(int) X][(int) Y].getValore() + 1);
 	}
 
 	/**
-	 * Questo metodo riduce di uno il valore del lotto, ma solo se � un edificio privato
+	 * Questo metodo riduce di uno il valore del lotto, ma solo se  e' un edificio privato
 	 * @param X Coordinata X, che insieme alla Y indicano in che posizione si trova il lotto a cui ridurre il valore
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui ridurre il valore
 	 */
 
-	public void subOne(int X,int Y) {
-		if(lista[X][Y].getTip()==EPRIV)
-			lista[X][Y].setValore(lista[X][Y].getValore() - 1);
+	public void subOne(double X,double Y) {
+		if(lista[(int) X][(int) Y].getTip()==EPRIV)
+			lista[(int) X][(int) Y].setValore(lista[(int) X][(int) Y].getValore() - 1);
 	}
 
 	/**
@@ -332,8 +333,8 @@ public class Settori implements Serializable{
 	 * @param valore Valore del settore
 	 */
 
-	public void setValore(int valore) {
-		this.valore = valore;
+	public void setValore(int value) {
+		valore = value;
 	}
 
 

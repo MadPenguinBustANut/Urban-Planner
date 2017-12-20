@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +15,9 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
+import centrourbano.Settori;
+import edifici.EPrivato;
+import edifici.EPubblico;
 
 public class FrameLotto extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +33,11 @@ public class FrameLotto extends JFrame {
 	 * @param lotto
 	 * @param centrourbano
 	 */
-	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano) {
+	public FrameLotto(Lotti lotto, CentroUrbano centroUrbano, Point Settore, Point Lotto) {
+		SettX= 	(int) Settore.getX();
+		SettY= 	(int) Settore.getY();
+		LX= 	(int) Lotto.getX();
+		LY=		(int) Lotto.getY();
 		this.lotto = lotto;
 		this.centroUrbano = centroUrbano;
 		createTesti();
@@ -58,6 +66,7 @@ public class FrameLotto extends JFrame {
 		radio3 = new JRadioButton("Privato");
 		okButton = new JButton("Costruire");
 		removeButton = new JButton("Demolisci");
+		if (lotto.getTip()==0) removeButton.setEnabled(false);
 
 		// ActionListener radio
 		class ActionMan implements ActionListener {
@@ -81,7 +90,7 @@ public class FrameLotto extends JFrame {
 
 		class RemoveButton implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
-				rimozione();
+			 rimozione();
 			}
 		}
 		ActionListener remover = new RemoveButton();
@@ -122,9 +131,25 @@ public class FrameLotto extends JFrame {
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		if(radio1.isSelected()) centroUrbano.rmStrada(1,1,1,1); //coordinate provvisorie
-		//if(radio2.isSelected()) //roba pubblico
-		//if(radio3.isSelected()) //roba privato
+		removeButton.setEnabled(false);
+		
+		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettX, SettY, LX, LX);
+		else if(lotto.getTip() == 2) {
+			EPubblico x = (EPubblico) centroUrbano.lista[SettX][SettY].lista[LX][LY].edificio;
+			if(x.getStato() > 0) {
+
+				JFrame erroreDemolizione = new JFrame();
+				JPanel nuovoErrore = new JPanel();
+				JLabel errore= new JLabel("Demolizione già effettuata");
+				nuovoErrore.add(errore);
+				erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				erroreDemolizione.setSize(200,100);
+				erroreDemolizione.setVisible(true);
+			}
+			else x.addStato();
+		}
+		else centroUrbano.lista[SettX][SettY].rmLotto(LX, LY);
+		
 	}
 
 	/**
@@ -132,9 +157,9 @@ public class FrameLotto extends JFrame {
 	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-		if(radio1.isSelected()) centroUrbano.addStrada(lotto,1,1,1,1); //coordinate provvisorie
-		//if(radio2.isSelected()) //roba pubblico
-		//if(radio3.isSelected()) new EPrivato(); //boh
+		if(radio1.isSelected()) centroUrbano.addStrada(1,1,1,1); //coordinate provvisorie
+		if(radio2.isSelected()) centroUrbano.lista[(int) SettX][(int) SettY].addLotto(new EPubblico(), LX, LY);
+		if(radio3.isSelected()) centroUrbano.lista[(int) SettX][(int) SettY].addLotto(new EPrivato(), LX, LY);
 	}
 
 	/**
@@ -149,10 +174,12 @@ public class FrameLotto extends JFrame {
 	}
 
 	private Lotti lotto;
+	private int SettX, SettY, LX,LY;
 	private CentroUrbano centroUrbano;
 	private JLabel s1, s2, s3;
 	private JTextArea p1, p2, p3;
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO = 10;
+	private boolean flag=false;
 }

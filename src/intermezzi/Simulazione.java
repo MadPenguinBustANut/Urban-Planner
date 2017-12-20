@@ -11,6 +11,8 @@ import java.util.Random;
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
 import centrourbano.Settori;
+import edifici.EPubblico;
+import edifici.Edificabile;
 
 public class Simulazione {
 	
@@ -22,6 +24,15 @@ public class Simulazione {
 			for (Settori a: x) {
 				for (Lotti[]c: a.lista) {
 					for (Lotti d: c) {
+						if (d.getTip()==2) { //se per la seconda volta invecchia un edificio pubblico, questo viene distrutto.
+							Edificabile ed;
+							ed = d.edificio;
+							EPubblico EPub = (EPubblico) ed;
+							if (EPub.getStato()>1) {
+								d.setValore(1);
+								d.setEdificio(d.VUOTO);
+							}
+						}
 							d.setCeff(d.getCeff()-(d.getCeff()*d.getCinv())/100);
 				
 					}
@@ -258,4 +269,5 @@ public class Simulazione {
 		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
 			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
 	}
-}}
+}
+}

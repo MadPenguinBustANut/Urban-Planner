@@ -38,7 +38,7 @@ public class PannelloGestione extends JPanel {
 			paPulsanti.add(pDisastro = new JButton ("disastro"));
 			paPulsanti.add(pModifica);
 			
-			add(informazioni = new JTextArea("PROVA"), BorderLayout.CENTER);
+			add(informazioni = new JTextArea(), BorderLayout.CENTER);
 			add(paPulsanti, BorderLayout.EAST);
 		}
 		
@@ -49,7 +49,7 @@ public class PannelloGestione extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton rif = (JButton) e.getSource();
 				if(rif.getText().equalsIgnoreCase("Modifica")) {
-					FrameModifica io = new FrameModifica();
+					FrameModifica io = new FrameModifica(centroUrbano);
 					io.setSize(800, 600);
 					io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					io.setVisible(true);
