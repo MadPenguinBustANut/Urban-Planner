@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class PannelloSettore extends JPanel {
@@ -63,19 +64,19 @@ public class PannelloSettore extends JPanel {
 			int b = e.getY();
 			
 			if (a > 20 && a < 20 +(weight*2) && b > 20 && b < 20+(height*3)) {
-				int SettX = a/weight;
-				int SettY = b/height;
-				
+				settX = (a/weight);
+				settY = b/height;
 				for(boolean[] x : arrayB) {
 					for(boolean t : x)
 						t = false;
 				}
 				
-				arrayB[SettY][SettX] = true;
+				arrayB[settY][settX] = true;
 				
 				repaint();
 				}
-		}
+			}
+		
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
@@ -102,9 +103,9 @@ public class PannelloSettore extends JPanel {
 		}
 		
 	}
-	
+}
 
 		
-}
+
 
 

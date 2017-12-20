@@ -165,6 +165,7 @@ public class CreaStrada extends JPanel {
 		JLabel scritta = new JLabel ("Seleziona un punto ortogonale");
 		FrameEcc.add(scritta);
 		FrameEcc.setSize(300, 60);
+		FrameEcc.setVisible(true);
 		return;
 	}
 	

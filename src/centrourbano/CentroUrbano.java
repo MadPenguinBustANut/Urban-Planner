@@ -118,11 +118,17 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(LX < MAX_X && LY == MAX_Y) {
-			if((settY + 1) < MAX_MASTER_Y)
-				lista[(int) settX][(int) (settY + 1)].addOne(LX, 0);
+			if((settY - 1) > -1)
+				 lista[(int) settX][(int) (settY - 1)].addOne(LX, 0);
 		}
 		
 		if(LX==MAX_X && LY == MAX_Y) {
+			if((settX + 1) < MAX_MASTER_X && (settY - 1) >-1)
+				lista[(int) (settX + 1)][(int) (settY - 1)].addOne(0, MAX_Y);			
+	
+		}
+		
+		if(LX==MAX_X && LY == 0) {
 			if((settX + 1) < MAX_MASTER_X)
 				lista[(int) (settX + 1)][(int) settY].addOne(0, LY);
 
@@ -135,25 +141,7 @@ public class CentroUrbano implements Serializable{
 			return;
 		}
 		
-		if(LX==MAX_X && LY == 0) {
-			lista[(int) (settX + 1)][(int) (settY - 1)].addOne(0, MAX_Y);
-		}
-		
 		if(LX==0 && LY == MAX_Y) {
-			lista[(int) (settX -1)][(int) (settY + 1)].addOne(MAX_X, 0);
-		}
-		
-		if(LX==0 && LY >0) {
-			if((settX - 1) >-1)
-				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
-		}
-		
-		if(LX>0 && LY ==0) {
-			if((settY - 1) >-1)
-				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
-		}
-		
-		if(LX==0 && LY ==0) {
 			if((settY - 1) >-1)
 				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
 			
@@ -164,6 +152,22 @@ public class CentroUrbano implements Serializable{
 				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, MAX_Y);
 			
 			return;
+		}
+		
+		if(LX==0 && LY >0) {
+			if((settX - 1) >-1)
+				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
+		}
+		
+		if(LX>0 && LY ==0) {
+			if((settY + 1) < MAX_MASTER_Y)
+				lista[(int) settX][(int) (settY + 1)].addOne(LX, MAX_Y);
+		}
+		
+		if(LX==0 && LY ==0) {
+			
+			if((settX - 1) >-1 && (settY + 1) < MAX_MASTER_Y)
+				lista[(int) (settX -1)][(int) (settY + 1)].addOne(MAX_X, 0);
 
 		}
 		
