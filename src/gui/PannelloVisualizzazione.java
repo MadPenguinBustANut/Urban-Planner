@@ -39,19 +39,19 @@ public class PannelloVisualizzazione extends JPanel {
 		
 		
 		int i, j;
-		for(i = 0; i < 15 ;i++ ) {
-			for(j = 0; j < 6; j++) {
+		for(i = 0; i < 6 ;i++ ) {
+			for(j = 0; j < 15; j++) {
 				u.drawRect(PX+(L*i*Z), PY+(L*j*Z), L*Z, L*Z);
-				
-				switch(rifer.lista[j%2][i%3].lista[j%3][i%5].getTip()) {
-				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);
-						break;
-				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z); 
-						break;
-				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 
-						break;
-				default: break;
-				}
+				u.drawString(""+ i%2+"-"+ j%3+"", x, y);
+//				switch(rifer.lista[i%2][j%3].lista[i%3][j%5].getTip()) {
+//				case 1:	paintStrada(u, PX+(L*i*Z), PY+(L*j*Z), L*Z, i, j);
+//						break;
+//				case 2:	paintPub(u,PX+(L*i*Z), PY+(L*j*Z), L*Z); 
+//						break;
+//				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 
+//						break;
+//				default: break;
+//				}
 			}
 		}
 		
@@ -73,7 +73,7 @@ public class PannelloVisualizzazione extends JPanel {
 
 		int settX, settY, lottX, lottY;
 		
-		settX = j%2; settY = j%3; lottX = j%3; lottY = i%5;
+		settX = i%2; settY = j%3; lottX = i%3; lottY = j%5;
 		
 		//Destra
 		if( (lottY) == 4 ) {

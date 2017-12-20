@@ -9,7 +9,6 @@ public class Lotti implements Serializable{
 	public Lotti() {
 		edificio = VUOTO;
 	}
-	//Puppa
 
 	public Lotti(Edificabile NuovoEdificio) {
 		edificio = NuovoEdificio;
@@ -77,8 +76,6 @@ public class Lotti implements Serializable{
 
 	public Edificabile edificio;
 	
-//Questo sta qua da un po, ma lo usiamo ancora? 
-	// o lo si puo eliminare?
 	
 	public static Edificabile VUOTO = new Edificabile(){
 		private static final long serialVersionUID = 1L;

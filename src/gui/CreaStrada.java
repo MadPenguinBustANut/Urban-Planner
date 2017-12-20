@@ -4,8 +4,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-import eccezioni.Ortogonale;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import centrourbano.CentroUrbano;
@@ -24,8 +24,10 @@ public class CreaStrada extends JPanel {
 	CentroUrbano centro;
 	public int Z = 5;
 	
-	public CreaStrada(Point unsettore) throws Ortogonale {
-		NSettore = unsettore;
+	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
+		NSettore = numsettore;
+		rifer = ilsettore;
+		centro= uncentro;
 	}
 	
 	
@@ -98,36 +100,36 @@ public class CreaStrada extends JPanel {
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 	}
-	
-	public void mouseClicked(MouseEvent e) throws Ortogonale {
+	 
+	public void mouseClicked(MouseEvent e) {
 		if(inizio == true) {
 			Point evento = e.getPoint();
-			primoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			primoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			primoX= e.getX()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			primoY= e.getY()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
 			inizio = false;
 		}
 		if(inizio == false) {
 			Point evento = e.getPoint();
-			secondoX= e.getX();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			secondoY= e.getY();		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			secondoX= e.getX()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			secondoY= e.getY()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
 			costruisciPercorso();
 			inizio = false;
 		}
 	
 	}
 	
-	private boolean costruisciPercorso() throws Ortogonale{ 
+	private void costruisciPercorso() { 
 		if (primoX == secondoX) {
 			int diff = primoY - secondoY;
 			if(diff < 0) {
 				if (checkY(primoY,diff)==true) {
 					costruisciY(primoY,diff);
-					return true;}
+					return;}
 				}
 			if(diff > 0) {
 				if (checkY(secondoY,diff)== true) {
 					costruisciY(secondoY,diff);
-					return true;}
+					return;}
 			}
 		}
 		
@@ -136,16 +138,20 @@ public class CreaStrada extends JPanel {
 			if(diff < 0) {
 				if (checkX(primoX,diff)==true) {
 					costruisciY(primoX,diff);
-					return true;}
+					return;}
 				}
 			if(diff > 0) {
 				if (checkY(secondoY,diff)==true) {
 					costruisciY(secondoY,diff);
-					return true;}
+					return;}
 				}
 			}
 			
-		throw new Ortogonale();
+		JFrame FrameEcc = new JFrame ();
+		JLabel scritta = new JLabel ("Seleziona un punto ortogonale");
+		FrameEcc.add(scritta);
+		FrameEcc.setSize(300, 60);
+		return;
 	}
 	
 
@@ -175,14 +181,14 @@ public class CreaStrada extends JPanel {
 	private void costruisciY(int valoreIniziale, int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
 			centro.addStrada(NSettore.x, NSettore.y, primoX, i);
-			//DISEGNA LA STRADA
 		}
+		this.repaint();
 	}
 	
 	private void costruisciX(int valoreIniziale,int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
 			centro.addStrada(NSettore.x, NSettore.y, i, primoY);
-			//DISEGNA LA STRADA
 		}
+		this.repaint();
 	}
 }
