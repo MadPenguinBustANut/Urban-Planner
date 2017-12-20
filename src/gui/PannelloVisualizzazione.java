@@ -124,7 +124,7 @@ public class PannelloVisualizzazione extends JPanel {
 
 		
 		public void mouseWheelMoved(MouseWheelEvent e) {
-			Z += e.getWheelRotation();
+			Z -= e.getWheelRotation();
 			if(Z > 10) Z = 10;
 			if(Z < 1) Z = 1;
 			

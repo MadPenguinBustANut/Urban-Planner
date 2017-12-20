@@ -1,7 +1,6 @@
 package exec;
 
 import centrourbano.CentroUrbano;
-import gui.FrameLotto;
 import gui.StartFrame;
 
 public class Tester {
