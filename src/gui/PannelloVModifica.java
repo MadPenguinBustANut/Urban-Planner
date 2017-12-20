@@ -38,17 +38,17 @@ public class PannelloVModifica extends JPanel {
 		u.clearRect(0, 0, this.getWidth(), this.getHeight());
 		
 		int i, j;
-		for(i = 0; i < 5 ;i++ ) {
-			for(j = 0; j < 3; j++) {
-				u.drawRect(PX+(L*i*Z), PY+(L*j*Z), L*Z, L*Z);
+		for(i = 0; i < 3 ;i++ ) {
+			for(j = 0; j < 5; j++) {
+				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
 				
 				//Controllo il tipo del lotto
-				switch(rifer.lista[j][i].getTip()) {
-				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);	//STRADA
+				switch(rifer.lista[i][j].getTip()) {
+				case 1:	paintStrada(u, PX+(L*j*Z), PY+(L*i*Z), L*Z, i, j);	//STRADA
 						break;
-				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z);			//PUBBLICO
+				case 2:	paintPub(u,PX+(L*j*Z), PY+(L*i*Z), L*Z);			//PUBBLICO
 						break;
-				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 			//PRIVATO
+				case 3: paintPriv(u, PX+(L*j*Z), PY+(L*i*Z), L*Z); 			//PRIVATO
 						break;
 				default: break;
 				}
@@ -72,32 +72,32 @@ public class PannelloVModifica extends JPanel {
 		e.drawLine(x+(L/2), y, x+(L/2), y+L-(L/2));
 
 		//Controllo se i lotti adiacenti hanno una strada
-		
+		System.out.println("X ="+ j + "Y ="+ i);
 		//Destra
-		if( (y) == 4 ) {
+		if( (j) == 4 ) {
 		}
-		else if(rifer.lista[x][y+1].getTip() == 1)
+		else if(rifer.lista[i][j+1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+L, y+(L/2));
 		
 		
 		//Basso
-		if( (x) == 2) {
+		if( (i) == 2) {
 		}
-		else if(rifer.lista[x+1][y].getTip() == 1)
+		else if(rifer.lista[i+1][j].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 		
 		//Sinistra
-		if( (y) == 0 ) {
+		if( (j) == 0 ) {
 		}
-		else if(rifer.lista[x][y-1].getTip() == 1)
+		else if(rifer.lista[i][j-1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x, y+(L/2));
 		
 		
 		//Sopra
-		if( (x) == 0) {
+		if( (i) == 0) {
 		}
-		else if(rifer.lista[x-1][y].getTip() == 1)
+		else if(rifer.lista[i-1][j].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 	}
@@ -121,9 +121,16 @@ public class PannelloVModifica extends JPanel {
 			if(evento.getX() > PX & evento.getY() > PY) {
 				if(evento.getX() <= PX+(Z*L*5) & evento.getY() <= PY+(Z*L*3)) {
 					
-					Point Lotto = new Point((int) evento.getX()/(L*Z),(int) evento.getY()/(L*Z));
+					int lx = e.getX()/(L*Z);
+					int ly = e.getY()/(L*Z);
 					
-					io = new FrameLotto(centro.lista[coordinate.x][coordinate.y].lista[Lotto.x][Lotto.y], centro, coordinate, Lotto);
+					System.out.println("X =" + lx + " Y =" + ly);
+					
+					
+					
+					Point Lotto = new Point(lx, ly);
+					
+					io = new FrameLotto(centro.lista[coordinate.x][coordinate.y].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
 
 					if(io.isVisible()) {
 						io.setVisible(false);

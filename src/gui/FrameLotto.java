@@ -42,6 +42,7 @@ public class FrameLotto extends JFrame {
 		createTesti();
 		createBottoni();
 		createPanel();
+		getInfo();
 		setSize(530, 200);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
@@ -71,17 +72,7 @@ public class FrameLotto extends JFrame {
 		removeButton = new JButton("Demolisci");
 		if (lotto.getTip()==0) removeButton.setEnabled(false);
 
-		// ActionListener radio
-		class ActionMan implements ActionListener {
-			public void actionPerformed(ActionEvent e) {
-				getInfo();
-			}
-		}
-		ActionListener radioActive = new ActionMan();
-		radio1.addActionListener(radioActive);
-		radio2.addActionListener(radioActive);
-		radio3.addActionListener(radioActive);
-
+		
 		class OkButtoner implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// costruisci
@@ -138,7 +129,7 @@ public class FrameLotto extends JFrame {
 		
 		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettX, SettY, LX, LX);
 		else if(lotto.getTip() == 2) {
-			EPubblico x = (EPubblico) centroUrbano.lista[SettX][SettY].lista[LX][LY].edificio;
+			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 
 				JFrame erroreDemolizione = new JFrame();
@@ -160,9 +151,9 @@ public class FrameLotto extends JFrame {
 	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-		if(radio1.isSelected()) centroUrbano.addStrada(1,1,1,1); //coordinate provvisorie
-		if(radio2.isSelected()) centroUrbano.lista[(int) SettX][(int) SettY].addLotto(new EPubblico(), LX, LY);
-		if(radio3.isSelected()) centroUrbano.lista[(int) SettX][(int) SettY].addLotto(new EPrivato(), LX, LY);
+		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX); //coordinate provvisorie
+		if(radio2.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPubblico(), LY, LX);
+		if(radio3.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPrivato(), LY, LX);
 	}
 
 	/**
@@ -171,7 +162,9 @@ public class FrameLotto extends JFrame {
 	 *
 	 */
 	public void getInfo() {
-		p1.setText("" + lotto.getValore());
+		
+		if(lotto.getTip() == 3) p1.setText("" + lotto.getValore());
+		else p1.setText("N/A");
 		p2.setText("" + lotto.getCeff());
 		p3.setText("" + lotto.getCinv());
 	}
