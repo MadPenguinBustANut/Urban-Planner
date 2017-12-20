@@ -7,12 +7,23 @@ import centrourbano.Lotti;
 import centrourbano.Settori;
 import edifici.EPubblico;
 import edifici.Edificabile;
-
+/**
+ * In questa classe si simulano l'invecchiamento del Centro Urbano e la gestione di un disastro. 
+ * L'invecchiamento fa diminuire il coefficiente di efficienza. In caso di secondo invecchiamento di un edificio pubblico, questo viene distrutto.
+ * Il disastro viene generato in un lotto determinato casualmente. Esso apporta una modifica sostanziosa (un numero casuale da 1 a 100) 
+ * del coefficiente di efficienza del lotto colpito dal disastro e una modifica ridotta (quel numero casuale /3), a tutti settori circostanti. 
+ * 
+ * */
 public class Simulazione {
 	
 	public Simulazione() {
 	}
 	
+	
+	/**
+	 * RICEVE: @param CentroUrbano e ne modifica il coefficiente di efficienza di ogni lotto in ogni settore 
+	 * moltiplicandolo per il suo coefficiente di invecchiamento /100
+	 * */
 	public void invecchiamento (CentroUrbano centro) {
 		for (Settori[]x : centro.lista ) {
 			for (Settori a: x) {
@@ -35,6 +46,12 @@ public class Simulazione {
 		}
 	}
 	
+	
+	/**
+	 * RICEVE: @param CentroUrbano
+	 * seleziona un lotto causale, ne modifica il coefficiente di efficienza sottraendo ad esso un numero causale da 1 a 100)
+	 * poi modifica tutti i lotti circostanti sottraendo al loro coefficiente di efficienza un terzo di quel numero casuale
+	 * */
 	public void disastro (CentroUrbano centro) {
 	
 	//genero numeri casuali per determinare settore e lotto
