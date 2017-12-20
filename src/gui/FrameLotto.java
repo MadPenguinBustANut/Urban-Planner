@@ -130,7 +130,7 @@ public class FrameLotto extends JFrame {
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		if(lotto.getTip()==2) addDemo(); VITOVITOVITOVITOVITOVITOVITOVITOVITOVITO
+		if(lotto.getTip()==2) //addDemo();
 		if(radio1.isSelected()) centroUrbano.rmStrada(SettX, SettY,LX, LY); //coordinate provvisorie
 		else if ((radio2.isSelected()) || (radio3.isSelected())) centroUrbano.lista[(int) SettX][(int) SettY].rmLotto(LX,LY);
 	}
