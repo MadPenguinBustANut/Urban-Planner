@@ -1,6 +1,9 @@
 package gui;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class FrameModifica extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -11,14 +14,14 @@ public class FrameModifica extends JFrame{
 	private int height;
 	
 	public FrameModifica () {
-		super();
-		
+		super("Seleziona settore");
+		JPanel io = new JPanel(new BorderLayout());
 		PannelloSettore x = new PannelloSettore();
-		
-		add(x);
+		io.add(x, BorderLayout.CENTER);
+		add(io);
 						
 		setTitle("Modifica");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(500, 750);
 		setVisible(true);
 	}
