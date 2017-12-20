@@ -5,6 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import centrourbano.CentroUrbano;
@@ -144,7 +145,10 @@ public class CreaStrada extends JPanel {
 				}
 			}
 			
-		//COPIARE FRAME DI ERROR DI TIZIANA
+		JFrame FrameEcc = new JFrame ();
+		JLabel scritta = new JLabel ("Seleziona un punto ortogonale");
+		FrameEcc.add(scritta);
+		FrameEcc.setSize(300, 60);
 		return;
 	}
 	
