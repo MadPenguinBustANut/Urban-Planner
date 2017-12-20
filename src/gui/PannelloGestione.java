@@ -44,6 +44,7 @@ public class PannelloGestione extends JPanel {
 			
 			add(informazioni = new JTextArea(), BorderLayout.CENTER);
 			add(paPulsanti, BorderLayout.EAST);
+			informazioni.setEditable(false);
 		}
 		
 		
