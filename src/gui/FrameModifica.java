@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -53,8 +54,9 @@ public class FrameModifica extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			JButton rif = (JButton) e.getSource();
 			if(rif.getText().equalsIgnoreCase("crea strada")) {
+				Point newP = new Point(settX, settY);
 				JFrame nuovoFrame = new JFrame ();
-				CreaStrada nuovaS = new CreaStrada ();
+				CreaStrada nuovaS = new CreaStrada (newP);
 
 				nuovoFrame.add(nuovaS);
 				nuovoFrame.setVisible(true);
@@ -62,8 +64,9 @@ public class FrameModifica extends JFrame{
 				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 			else if(rif.getText().equalsIgnoreCase("modifica settore")) {
+				Point newP = new Point(settX, settY);
 				JFrame nuovoFrame = new JFrame ();
-				PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer);
+				PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer, newP);
 				
 				nuovoFrame.add(VMod);
 				nuovoFrame.setVisible(true);
