@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
@@ -11,9 +13,10 @@ public class PannelloSettore extends JPanel {
 	private int x = 30;
 	private int y = 60;
 
-	private int cost = 300;
 	private int weight = 300;
 	private int height = 100;
+	private int settX = 0;
+	private int settY = 0;
 	
 	public PannelloSettore () {
 		super();
@@ -34,6 +37,47 @@ public class PannelloSettore extends JPanel {
 
 			}
 		}
+	}
+	
+	class Posizione implements MouseListener{
+
+		public void mouseClicked(MouseEvent e) {
+
+			int a = e.getX();
+			int b = e.getY();
+			
+			if (a > 20 && a < 20 +(weight*2) && b > 20 && b < 20+(height*3)) {
+				int SettX = a/weight;
+				int SettY = b/height;
+				
+				
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 	
 }

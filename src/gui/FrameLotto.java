@@ -66,6 +66,7 @@ public class FrameLotto extends JFrame {
 		radio3 = new JRadioButton("Privato");
 		okButton = new JButton("Costruire");
 		removeButton = new JButton("Demolisci");
+		if (lotto.getTip()==0) removeButton.setEnabled(false);
 
 		// ActionListener radio
 		class ActionMan implements ActionListener {
@@ -89,7 +90,7 @@ public class FrameLotto extends JFrame {
 
 		class RemoveButton implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
-				rimozione();
+			 rimozione();
 			}
 		}
 		ActionListener remover = new RemoveButton();
@@ -130,9 +131,22 @@ public class FrameLotto extends JFrame {
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
 	public void rimozione() {
-		if(lotto.getTip()==2) //addDemo();
+		if(flag==false) {
+		if(Epubblico.getStato()==0) .addStato(); VITO VEDI TU NUN O SACC FA
 		if(radio1.isSelected()) centroUrbano.rmStrada(SettX, SettY,LX, LY); //coordinate provvisorie
 		else if ((radio2.isSelected()) || (radio3.isSelected())) centroUrbano.lista[(int) SettX][(int) SettY].rmLotto(LX,LY);
+		flag=true;
+		}
+		else{
+			removeButton.setEnabled(false);
+			JFrame erroreDemolizione= new JFrame();
+			JPanel nuovoErrore= new JPanel();
+			JLabel errore= new JLabel("Demolizione già effettuata");
+			nuovoErrore.add(errore);
+			erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			erroreDemolizione.setSize(200,100);
+			erroreDemolizione.setVisible(true);
+		}
 	}
 
 	/**
@@ -164,4 +178,5 @@ public class FrameLotto extends JFrame {
 	private JButton okButton, removeButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO = 10;
+	private boolean flag=false;
 }

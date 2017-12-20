@@ -49,7 +49,7 @@ public class PannelloGestione extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JButton rif = (JButton) e.getSource();
 				if(rif.getText().equalsIgnoreCase("Modifica")) {
-					FrameModifica io = new FrameModifica();
+					FrameModifica io = new FrameModifica(centroUrbano);
 					io.setSize(800, 600);
 					io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					io.setVisible(true);
