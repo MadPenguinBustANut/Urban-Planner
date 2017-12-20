@@ -43,7 +43,8 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {
-						if(centro.lista[l][k].getLotto(i, y).getCeff()>min && centro.lista[l][k].getLotto(i, y).getCeff()<max) {
+						if(centro.lista[l][k].getLotto(i, y).getTip()!=0)
+						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
 							lista[j]=centro.lista[l][k].getLotto(i, y);
 						}
 					}
@@ -59,6 +60,7 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {	
+						if(centro.lista[l][k].getLotto(i, y).getTip()!=0)
 						if(centro.lista[l][k].getLotto(i, y).getCinv()>min && centro.lista[l][k].getLotto(i, y).getCinv()<max)
 							lista[j]=centro.lista[l][k].getLotto(i, y);
 					}
@@ -75,6 +77,7 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)	
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++)
+						if(centro.lista[l][k].lista[i][y].getTip()==3 && centro.lista[l][k].getLotto(i, y).getTip()!=0)
 						if(centro.lista[l][k].getLotto(i, y).getValore()>min && centro.lista[l][k].getLotto(i, y).getValore()<max)
 							lista[j]=centro.lista[l][k].getLotto(i, y);
 		this.setCount(j);
