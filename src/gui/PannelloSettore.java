@@ -65,7 +65,6 @@ public class PannelloSettore extends JPanel {
 						g3.setColor(colore);
 						g3.drawLine(ilFrame.settX,  ilFrame.settY, weight*ilFrame.settX, height*ilFrame.settY);
 					}
-				repaint();
 				}
 			}
 		}
