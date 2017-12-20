@@ -156,13 +156,13 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(LX==0 && LY >0) {
-			if((settY - 1) >-1)
+			if((settX - 1) >-1)
 				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
 		}
 		
 		if(LX>0 && LY ==0) {
-			if((settY + 1) < MAX_MASTER_Y)
-				lista[(int) settX][(int) (settY + 1)].addOne(LX, MAX_Y);
+			if((settY - 1) > -1)
+				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
 		}
 		
 		if(LX==0 && LY ==0) {
