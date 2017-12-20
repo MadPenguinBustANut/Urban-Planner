@@ -50,7 +50,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	public FrameLotto() {
-		// TODO vito è gay
+		// TODO vito e' gay
 	}
 
 	public void createTesti() {
@@ -135,9 +135,21 @@ public class FrameLotto extends JFrame {
 		
 		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettY, SettX, LX, LX);
 		
-		else 
-			centroUrbano.lista[SettY][SettX].rmLotto(LY, LX);
-		
+		else if(lotto.getTip() == 2) {
+			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
+			if(x.getStato() > 0) {
+
+				JFrame erroreDemolizione = new JFrame();
+				JPanel nuovoErrore = new JPanel();
+				JLabel errore= new JLabel("Demolizione gia' effettuata");
+				nuovoErrore.add(errore);
+				erroreDemolizione.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				erroreDemolizione.setSize(200,100);
+				erroreDemolizione.setVisible(true);
+			}
+			else x.addStato();
+		}
+		else centroUrbano.lista[SettX][SettY].rmLotto(LX, LY);
 		success.setText("Demolizione avvenuta.");
 	}
 

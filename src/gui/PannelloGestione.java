@@ -31,15 +31,15 @@ public class PannelloGestione extends JPanel {
 		public PannelloGestione (CentroUrbano c) {
 			super(new BorderLayout());
 			centroUrbano = c;
-			pModifica = new JButton ("modifica");
+			pModifica = new JButton ("Modifica");
 			
 			pModifica.addActionListener(new ButtonListener());
 			
 			
 			paPulsanti = new JPanel(new GridLayout(3, 1));
 			
-			paPulsanti.add(pInvecchia = new JButton ("invecchiamento"));
-			paPulsanti.add(pDisastro = new JButton ("disastro"));
+			paPulsanti.add(pInvecchia = new JButton ("Invecchiamento"));
+			paPulsanti.add(pDisastro = new JButton ("Disastro"));
 			paPulsanti.add(pModifica);
 			
 			add(informazioni = new JTextArea(), BorderLayout.CENTER);

@@ -1,6 +1,7 @@
 package centrourbano;
 
 import java.io.Serializable;
+import edifici.EPubblico;
 
 import eccezioni.LottoLibero;
 import edifici.Edificabile;
@@ -201,6 +202,8 @@ public class Settori implements Serializable{
 	 */
 
 	private void rmEpub(int x,int y) {
+		if(((EPubblico) ( lista[(int) x][(int) y]).edificio).getStato() == 0)
+			((EPubblico) ( lista[(int) x][(int) y]).edificio).addStato();
 		lista[(int) x][(int) y].edificio = Lotti.VUOTO;
 		setValore(getValore() - 1);
 
