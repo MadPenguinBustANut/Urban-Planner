@@ -43,7 +43,7 @@ public class FrameLotto extends JFrame {
 		createBottoni();
 		createPanel();
 		getInfo();
-		setSize(530, 200);
+		setSize(700, 700);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);

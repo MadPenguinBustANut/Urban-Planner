@@ -69,7 +69,7 @@ public class FrameModifica extends JFrame{
 				JFrame nuovoFrame = new JFrame ();
 				CreaStrada nuovaS = new CreaStrada (newP, rifer.lista[settX][settY], rifer);
 				nuovoFrame.add(nuovaS);
-				nuovoFrame.setSize(400, 400);
+				nuovoFrame.setSize(700, 700);
 				nuovoFrame.setVisible(true);
 				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			
@@ -83,7 +83,7 @@ public class FrameModifica extends JFrame{
 				
 				nuovoFrame.add(VMod);
 				nuovoFrame.setVisible(true);
-				nuovoFrame.setSize(400,400);
+				nuovoFrame.setSize(700,700);
 				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			}
 		}
