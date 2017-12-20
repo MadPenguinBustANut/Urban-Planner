@@ -31,6 +31,9 @@ public class CreaStrada extends JPanel {
 	}
 	
 	
+	/**
+	 * Serve a disegnare il tutto
+	 */
 	
 	public void paintComponent(Graphics g) {
 		Graphics2D u = (Graphics2D) g;
@@ -100,23 +103,34 @@ public class CreaStrada extends JPanel {
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 	}
+	
+	/**
+	 * Metodo principale della classe, si avvia quando viene cliccato il mouse
+	 * @param e L'evento che genera il clic
+	 */
 	 
 	public void mouseClicked(MouseEvent e) {
 		if(inizio == true) {
 			Point evento = e.getPoint();
-			primoX= e.getX()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			primoY= e.getY()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			primoX= e.getX()/(L*Z);		
+			primoY= e.getY()/(L*Z);		
 			inizio = false;
 		}
 		if(inizio == false) {
 			Point evento = e.getPoint();
-			secondoX= e.getX()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
-			secondoY= e.getY()/(L*Z);;		//FARE IN MODO CHE SI PRENDA LA VERA POSIZIONE
+			secondoX= e.getX()/(L*Z);	
+			secondoY= e.getY()/(L*Z);	
 			costruisciPercorso();
 			inizio = false;
 		}
 	
 	}
+	
+	/**
+	 * Viene chiamato da mouseClicked 
+	 * chiama i metodi check che si occupano di controllare  se siano liberi i percorsi 
+	 * e poi successivamente costruisci che aggiungono le strade
+	 */
 	
 	private void costruisciPercorso() { 
 		if (primoX == secondoX) {
@@ -141,8 +155,8 @@ public class CreaStrada extends JPanel {
 					return;}
 				}
 			if(diff > 0) {
-				if (checkY(secondoY,diff)==true) {
-					costruisciY(secondoY,diff);
+				if (checkY(secondoX,diff)==true) {
+					costruisciY(secondoX,diff);
 					return;}
 				}
 			}
@@ -157,11 +171,12 @@ public class CreaStrada extends JPanel {
 
 	
 	/**
-	 * Funzioni chiamate dal metodo controllaPercorso, controllano effettivamente se e' libero
-	 * @param inizio Valore da cui far partire il ciclo for
+	 * Funzione chiamata dal metodo costruisciPercorso, controllano effettivamente se e' libero
+	 * @param valoreIniziale Valore da cui far partire il ciclo for
 	 * @param diff La differenza di caselle , indica quando si deve fermare
 	 * @return True se e' libero, false se non lo e'
 	 */
+	
 	private boolean checkY(int valoreIniziale, int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
 			if(rifer.lista[primoX][i].getTip() != 0)
@@ -169,6 +184,14 @@ public class CreaStrada extends JPanel {
 		}
 		return true;
 	}
+	
+
+	/**
+	 * Funzione chiamata dal metodo costruisciPercorso, controllano effettivamente se e' libero
+	 * @param valoreIniziale Valore da cui far partire il ciclo for
+	 * @param diff La differenza di caselle , indica quando si deve fermare
+	 * @return True se e' libero, false se non lo e'
+	 */
 	
 	private boolean checkX(int valoreIniziale,int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
@@ -178,12 +201,24 @@ public class CreaStrada extends JPanel {
 		return true;
 	}
 	
+	/**
+	 * Funzione chiamata dal metodo costruisciPercorso, si occupa di aggiungere la strada
+	 * @param valoreIniziale Valore da cui far partire il ciclo for
+	 * @param diff La differenza di caselle , indica quando si deve fermare
+	 */
+	
 	private void costruisciY(int valoreIniziale, int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
 			centro.addStrada(NSettore.x, NSettore.y, primoX, i);
 		}
 		this.repaint();
 	}
+	
+	/**
+	 * Funzione chiamata dal metodo costruisciPercorso, si occupa di aggiungere la strada
+	 * @param valoreIniziale Valore da cui far partire il ciclo for
+	 * @param diff La differenza di caselle , indica quando si deve fermare
+	 */
 	
 	private void costruisciX(int valoreIniziale,int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
