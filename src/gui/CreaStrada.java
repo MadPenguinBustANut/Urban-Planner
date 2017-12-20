@@ -13,7 +13,7 @@ import centrourbano.Settori;
 
 public class CreaStrada extends JPanel {
 
-	boolean inizio;
+	boolean inizio = true;
 	Point NSettore;
 	int primoX,primoY;
 	int secondoX,secondoY;

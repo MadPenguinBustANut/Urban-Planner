@@ -63,6 +63,7 @@ public class FrameModifica extends JFrame{
 				JFrame nuovoFrame = new JFrame ();
 				CreaStrada nuovaS = new CreaStrada (newP, rifer.lista[settX][settY], rifer);
 				nuovoFrame.add(nuovaS);
+				nuovoFrame.setSize(300, 300);
 				nuovoFrame.setVisible(true);
 				nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			
