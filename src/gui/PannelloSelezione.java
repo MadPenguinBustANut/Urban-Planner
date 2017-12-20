@@ -75,7 +75,7 @@ public class PannelloSelezione extends JPanel{
 	    calButton=new JButton("Effetua Selezione");
 	    calButton.addActionListener(listener);
 	    
-	    textArea= new JTextArea(10,30);
+	    textArea= new JTextArea(5,30);
 	    textArea.setEditable(false);
 	    scrollPanel= new JScrollPane(textArea);
 	    
