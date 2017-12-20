@@ -116,11 +116,11 @@ public class CreaStrada extends JPanel {
 	
 	}
 	
-	private boolean controllaPercorso() {
+	private boolean controllaPercorso() {  //DA FINIRE
 		return true;
 	}
 	
-	private void costruisciPercorso() {
+	private void costruisciPercorso() {  //DA FINIRE
 		
 	}
 	
