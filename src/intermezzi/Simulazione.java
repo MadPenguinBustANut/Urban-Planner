@@ -11,6 +11,7 @@ import java.util.Random;
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
 import centrourbano.Settori;
+import edifici.EPubblico;
 
 public class Simulazione {
 	
@@ -22,6 +23,10 @@ public class Simulazione {
 			for (Settori a: x) {
 				for (Lotti[]c: a.lista) {
 					for (Lotti d: c) {
+						if (d.getTip()==2) {
+							EPubblico newEd = (EPubblico) d;
+							
+						}
 							d.setCeff(d.getCeff()-(d.getCeff()*d.getCinv())/100);
 				
 					}

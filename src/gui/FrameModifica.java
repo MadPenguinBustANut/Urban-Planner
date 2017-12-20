@@ -66,9 +66,7 @@ public class FrameModifica extends JFrame{
 			}
 		}
 			
-			
-				
-		}
+	}
 		
 	
 }
