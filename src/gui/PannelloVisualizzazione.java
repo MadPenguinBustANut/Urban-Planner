@@ -37,23 +37,25 @@ public class PannelloVisualizzazione extends JPanel {
 		
 		
 		
-		
-		int i, j;
-		for(i = 0; i < 6 ;i++ ) {
-			for(j = 0; j < 15; j++) {
+
+		int i, j, settx, setty;
+		for(i = 0, setty = 0; i < 6 ;i++) {
+			if(i%3 == 0) setty = i/3;
+			for(j = 0, settx = 0; j < 15; j++) {
+				if(j%5 == 0) settx = j/5;
 				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
-				u.drawString(""+ i%2+"-"+ j%3+","+i%3+"-"+j%5, PX+(L*j*Z), PY+(L*i*Z));
+				u.drawString(""+ setty +"-"+ settx +","+ i%3 +"-"+j%5, PX+(L*j*Z), PY+(L*i*Z));
 				
-				
-//				switch(rifer.lista[i%2][j%3].lista[i%3][j%5].getTip()) {
-//				case 1:	paintStrada(u, PX+(L*i*Z), PY+(L*j*Z), L*Z, i, j);
-//						break;
-//				case 2:	paintPub(u,PX+(L*i*Z), PY+(L*j*Z), L*Z); 
-//						break;
-//				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 
-//						break;
-//				default: break;
-//				}
+				System.out.println(""+setty+","+settx+","+i%3+","+j%5);
+				switch(rifer.lista[setty][settx].lista[i%3][j%5].getTip()) {
+				case 1:	paintStrada(u, PX+(L*i*Z), PY+(L*j*Z), L*Z, i, j);
+						break;
+				case 2:	paintPub(u,PX+(L*i*Z), PY+(L*j*Z), L*Z); 
+						break;
+				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 
+						break;
+				default: break;
+				}
 			}
 		}
 		
