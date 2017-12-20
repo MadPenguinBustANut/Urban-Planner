@@ -45,7 +45,7 @@ public class Seleziona implements Serializable{
 					for(int y=0;y<MAX_Y;y++) {
 						if(centro.lista[l][k].getLotto(i, y).getTip()!=0)
 						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
-							lista[j]=centro.lista[l][k].getLotto(i, y);
+							lista[j]=centro.lista[l][k].lista[i][y];
 						}
 					}
 		this.setCount(j);

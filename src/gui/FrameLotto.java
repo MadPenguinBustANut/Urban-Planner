@@ -162,7 +162,7 @@ public class FrameLotto extends JFrame {
 		if(radio2.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPubblico(), LY, LX);
 		if(radio3.isSelected()) centroUrbano.lista[(int) SettY][(int) SettX].addLotto(new EPrivato(), LY, LX);
 		success.setText("Costruzione avvenuta.");
-		PannelloVModifica(roba non ricordo vito fai tu tbh)
+		//PannelloVModifica(roba non ricordo vito fai tu tbh)
 	}
 
 	/**
