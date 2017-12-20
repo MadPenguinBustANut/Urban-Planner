@@ -35,6 +35,7 @@ public class FrameModifica extends JFrame{
 		
 		modStrada.addActionListener(new ButtonListener());
 		modSettore.addActionListener(new ButtonListener());
+	
 		
 		io.add(x, BorderLayout.CENTER);
 		io2.add(PPul);
@@ -54,7 +55,9 @@ public class FrameModifica extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			JButton rif = (JButton) e.getSource();
 			if(rif.getText().equalsIgnoreCase("crea strada")) {
-				Point newP = new Point(settX, settY);
+				
+				Point newP = new Point(settX, settY);				
+				
 				JFrame nuovoFrame = new JFrame ();
 				CreaStrada nuovaS = new CreaStrada (newP);
 

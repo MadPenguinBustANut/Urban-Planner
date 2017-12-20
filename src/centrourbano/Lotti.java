@@ -17,7 +17,6 @@ public class Lotti implements Serializable{
 		VUOTO.setCinv(0);
 	}
 	
-	
 	/**
 	 * Il valore del lotto viene cambiato al nuovo valore
 	 * @param NuovoValore Il valore che verra assegnato a edificio
