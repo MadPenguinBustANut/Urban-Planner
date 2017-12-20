@@ -14,6 +14,13 @@ import javax.swing.JPanel;
 
 import centrourbano.CentroUrbano;
 
+/**
+ * Frame che compare al premere del pulsante "Modifica" del Pannello Gestione. 
+ * In esso deve essere possibile scegliere tra la costruzione di una strada e la modifica di un settore. 
+ * RICEVE: @param centroUrbano
+ * GENERA: 	un Frame con un pannello "CreaStrada" o "PannelloVModifica"  
+ * */
+
 public class FrameModifica extends JFrame{
 	private static final long serialVersionUID = 1L;
 	boolean[] arrayB = new boolean [6];

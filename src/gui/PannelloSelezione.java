@@ -72,7 +72,7 @@ public class PannelloSelezione extends JPanel{
 	    
 	    panelM.setBorder(new TitledBorder(new EtchedBorder(),"Massimo   -   Minimo"));
 	    
-	    calButton=new JButton("Effetua Selezione");
+	    calButton=new JButton("Effettua Selezione");
 	    calButton.addActionListener(listener);
 	    
 	    textArea= new JTextArea(5,30);

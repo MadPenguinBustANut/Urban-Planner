@@ -11,6 +11,10 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 
+
+/**
+ * Il Pannello Gestione contiene una finestra informativa ed una serie di pulsanti 
+ * */
 public class PannelloGestione extends JPanel {
 	private static final long serialVersionUID = 1L;
 		
