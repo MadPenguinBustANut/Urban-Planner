@@ -15,9 +15,6 @@ import javax.swing.border.TitledBorder;
 public class PannelloSettore extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	private int x = 30;
-	private int y = 60;
-
 	private int weight = 300;
 	private int height = 100;
 	private int settX = 0;
