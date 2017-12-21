@@ -58,8 +58,7 @@ public class FrameModifica extends JFrame{
 		
 		setTitle("Modifica");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(500, 500);
-		setResizable(false);
+		setSize(300, 300);
 		setVisible(true);
 	}
 	
@@ -94,7 +93,7 @@ public class FrameModifica extends JFrame{
 				}
 				
 				else if(rif.getText().equalsIgnoreCase("modifica settore")) {
-					Point newP = new Point(settX, settY);
+					Point newP = new Point(settY, settX);
 					JFrame nuovoFrame = new JFrame ();
 					PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer, newP);
 					

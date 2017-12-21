@@ -72,9 +72,11 @@ public class StartFrameListener implements ActionListener{
 	}
 	
 	private void nuovo() {
-		rifer.uno = new CentroUrbano();
-		rifer.centro.nDati(rifer.uno);
-		rifer.repaint();
+		rifer.setVisible(false);
+		StartFrame io = new StartFrame(new CentroUrbano());
+		io.setLocation(rifer.getX(), rifer.getY());
+		rifer.dispose();
+		
 	}
 
 	
