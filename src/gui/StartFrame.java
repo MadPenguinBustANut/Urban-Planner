@@ -4,12 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import ascoltatori.StartFrameListener;
@@ -28,22 +32,29 @@ public class StartFrame extends JFrame{
 		
 		uno = c;
 		centro = new DatiPanel(c);
+		
+		//Aggiunge i bottoni Selezione Visualizzazione e Gestione presenti in tutti i pannel
 		selezioneB.addActionListener(new ButtonListener(this));
 		gestioneB.addActionListener(new ButtonListener(this));
 		visualizzazioneB.addActionListener(new ButtonListener(this));
 		visualizzazione = new PannelloVisualizzazione(uno);
-		selezione = new PannelloSelezione();
-		gestione = new PannelloGestione();
+		selezione = new PannelloSelezione(c);
+		gestione = new PannelloGestione(c);
 		
+		
+		//Li inserisce nel frame
 		
 		io.add(gestioneB);
 		io.add(selezioneB);
 		io.add(visualizzazioneB);
 		
-		contenitore = new JPanel(new GridLayout(1, 1));
+		//Crea il pannello contenitore
+		
+		contenitore = new JPanel(new GridLayout(1,1));
+		
+		//Vengono piazzati i varii oggetti nel frame
 		
 		grid.add(contenitore, BorderLayout.CENTER);
-		grid.add(gestione, BorderLayout.EAST);
 		grid.add(centro, BorderLayout.NORTH);
 		grid.add(io, BorderLayout.SOUTH);
 		
@@ -54,9 +65,13 @@ public class StartFrame extends JFrame{
 		
 		add(grid);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	          
+	   
 		setSize(800, 150);
 		setVisible(true);
 	}
+	
+	//Menu non implementato per caricare un file contentente il centro da esaminare (cioè penso)
 	
 	private JMenuBar addFile() {
 		JMenuBar due = new JMenuBar();
@@ -81,13 +96,13 @@ public class StartFrame extends JFrame{
 	private JMenuItem createItem(String a) {
 		
 		JMenuItem it = new JMenuItem(a);
-		it.addActionListener(new StartFrameListener());
+		it.addActionListener(new StartFrameListener(this));
 		return it;
 		
 	}
-	
-	CentroUrbano uno;
-	DatiPanel centro;
+		
+	public CentroUrbano uno;
+	public DatiPanel centro;
 	
 	private JPanel contenitore;
 	private PannelloSelezione selezione;
@@ -97,11 +112,13 @@ public class StartFrame extends JFrame{
 	private JButton gestioneB = new JButton("Gestione");
 	private JButton visualizzazioneB = new JButton("Visualizzazione");
 	
-	
-	public class ButtonListener implements ActionListener{
 
+	
+	//Action Listener dei bottoni Gestione Selezione e Visualizzazione
+
+public class ButtonListener implements ActionListener{
 		StartFrame rifer;
-		
+	
 		public ButtonListener(StartFrame e) {
 			rifer = e;
 		}
@@ -112,22 +129,25 @@ public class StartFrame extends JFrame{
 			
 			
 			String testo = io.getText();
-			if(testo.equalsIgnoreCase("Selezione")) {
-				rifer.setSize(800, 400);
-				contenitore.remove(visualizzazione);
+			if(testo.equalsIgnoreCase("Selezione")){			//Ridimensionamento del frame per
+				rifer.setSize(800, 400);						//visualizzare il pannello di selezione
+				contenitore.removeAll();
 				contenitore.add(selezione);
 				selezione.setVisible(true);
 				gestione.setVisible(false);
 				visualizzazione.setVisible(false);
 			}
-			else if(testo.equalsIgnoreCase("Gestione")) {
+			else if(testo.equalsIgnoreCase("Gestione")){		//visualizzazione del pannello di gestione
+				rifer.setSize(800, 300);
+				contenitore.removeAll();
+				contenitore.add(gestione);
 				selezione.setVisible(false);
 				gestione.setVisible(true);
 				visualizzazione.setVisible(false);
 			}
-			else if(testo.equalsIgnoreCase("Visualizzazione")) {
-				rifer.setSize(800, 450);
-				contenitore.remove(selezione);
+			else if(testo.equalsIgnoreCase("Visualizzazione")){	//visualizzazione del pannello di visualizzazione
+				rifer.setSize(800, 450);	
+				contenitore.removeAll();
 				contenitore.add(visualizzazione);
 				selezione.setVisible(false);
 				gestione.setVisible(false);

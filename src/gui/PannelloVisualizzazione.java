@@ -4,7 +4,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
-import javax.swing.JFrame;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
+
 import javax.swing.JPanel;
 import javax.swing.event.MouseInputListener;
 
@@ -22,6 +24,7 @@ public class PannelloVisualizzazione extends JPanel {
 	public PannelloVisualizzazione(CentroUrbano e) {
 		rifer = e;
 		addMouseListener(new VisualListener(this));
+		addMouseWheelListener(new Zoomlistener());
 		}
 	
 	
@@ -34,18 +37,20 @@ public class PannelloVisualizzazione extends JPanel {
 		
 		
 		
-		
-		int i, j;
-		for(i = 0; i < 15 ;i++ ) {
-			for(j = 0; j < 6; j++) {
-				u.drawRect(PX+(L*i*Z), PY+(L*j*Z), L*Z, L*Z);
+
+		int i, j, settx, setty;
+		for(i = 0, setty = 0; i < 6 ;i++) {
+			if(i%3 == 0) setty = i/3;
+			for(j = 0, settx = 0; j < 15; j++) {
+				if(j%5 == 0) settx = j/5;
+				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
 				
-				switch(rifer.lista[j%2][i%3].lista[j%3][i%5].getTip()) {
-				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);
+				switch(rifer.lista[setty][settx].lista[i%3][j%5].getTip()) {
+				case 1:	paintStrada(u, PX+(L*j*Z), PY+(L*i*Z), L*Z, i%3, j%5, setty, settx);
 						break;
-				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z); 
+				case 2:	paintPub(u,PX+(L*j*Z), PY+(L*i*Z), L*Z); 
 						break;
-				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 
+				case 3: paintPriv(u, PX+(L*j*Z), PY+(L*i*Z), L*Z); 
 						break;
 				default: break;
 				}
@@ -65,12 +70,9 @@ public class PannelloVisualizzazione extends JPanel {
 		e.drawRect(x+(L/10), y+(L/10), L-(L/5), L-(L/5));
 	}
 	
-	private void paintStrada(Graphics2D e, int x, int y, int L, int i, int j) {
-		e.drawLine(x+(L/2), y, x+(L/2), y+L-(L/2));
-
-		int settX, settY, lottX, lottY;
+	private void paintStrada(Graphics2D e, int x, int y, int L, int lottX, int lottY, int settX, int settY) {
 		
-		settX = j%2; settY = j%3; lottX = j%3; lottY = i%5;
+		e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 		
 		//Destra
 		if( (lottY) == 4 ) {
@@ -107,13 +109,27 @@ public class PannelloVisualizzazione extends JPanel {
 		
 		//Sopra
 		if( (lottX) == 0) {
-			if((settX) != 0) {
+			if((settX) != 1) {
 				if(rifer.lista[settX+1][settY].lista[2][lottY].getTip() == 1)
-					e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
+					e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 				}
 		}
 		else if(rifer.lista[settX][settY].lista[lottX-1][lottY].getTip() == 1)
-			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
+			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
+		
+	}
+	
+	private class Zoomlistener implements MouseWheelListener{
+
+		
+		public void mouseWheelMoved(MouseWheelEvent e) {
+			Z -= e.getWheelRotation();
+			if(Z > 10) Z = 10;
+			if(Z < 1) Z = 1;
+			
+			repaint();
+			
+		}
 		
 	}
 	
@@ -122,19 +138,12 @@ public class PannelloVisualizzazione extends JPanel {
 		Point pos = new Point(0, 0);
 		PannelloVisualizzazione rifer;
 		
+		
 		public VisualListener(PannelloVisualizzazione e) {
 			rifer = e;
 		}
 		
-		public void mouseClicked(MouseEvent e) {
-			if(e.getPoint() == pos)
-				return;
-			
-			JFrame io = new JFrame("Lotto");
-			io.setSize(300, 500);
-			io.setVisible(true);
-			io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			
+		public void mouseClicked(MouseEvent e) {			
 		}
 
 		
