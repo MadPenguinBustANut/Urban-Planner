@@ -40,6 +40,7 @@ public class FrameLotto extends JFrame {
 		LY=		(int) Lotto.getY();
 		this.lotto = lotto;
 		this.centroUrbano = centroUrbano;
+		this.setLocation(320, 0);
 		createTesti();
 		createBottoni();
 		createPanel();
@@ -140,7 +141,7 @@ public class FrameLotto extends JFrame {
 			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 
-				JOptionPane.showMessageDialog(null, "Rimozione già effettuata.");
+				JOptionPane.showMessageDialog(null, "Rimozione gia' effettuata.");
 			}
 			else x.addStato();
 		}
