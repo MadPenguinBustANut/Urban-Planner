@@ -112,21 +112,19 @@ public class CreaStrada extends JPanel {
 private class mouseEvent implements MouseInputListener{
 		
 	public void mouseClicked(MouseEvent e) {
-		if(inizio == true) {
+		if(inizio) {
+			inizio = false;
 			primoX= e.getX()/(L*Z);		
 			primoY= e.getY()/(L*Z);		
 			System.out.println("PRIMO CLICK" + primoX + primoY);
 		}
-		if(inizio == false) {
+		else {
+			inizio = true;
 			secondoX= e.getX()/(L*Z);	
 			secondoY= e.getY()/(L*Z);	
 			costruisciPercorso();
 			System.out.println("SECONDO CLICK" + secondoX + secondoY);
 		}
-		
-		if(inizio == true) 
-			inizio = false;
-		else inizio = true;
 	
 	}
 	@Override
