@@ -58,7 +58,8 @@ public class FrameModifica extends JFrame{
 		
 		setTitle("Modifica");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(500, 750);
+		setSize(500, 500);
+		setResizable(false);
 		setVisible(true);
 	}
 	
@@ -87,7 +88,7 @@ public class FrameModifica extends JFrame{
 					JFrame nuovoFrame = new JFrame ();
 					CreaStrada nuovaS = new CreaStrada (newP, rifer.lista[settX][settY], rifer);
 					nuovoFrame.add(nuovaS);
-					nuovoFrame.setSize(700, 700);
+					nuovoFrame.setSize(500, 500);
 					nuovoFrame.setVisible(true);
 					nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				}
@@ -97,10 +98,11 @@ public class FrameModifica extends JFrame{
 					JFrame nuovoFrame = new JFrame ();
 					PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer, newP);
 					
-					
+					nuovoFrame.setTitle("Seleziona il lotto");
 					nuovoFrame.add(VMod);
 					nuovoFrame.setVisible(true);
-					nuovoFrame.setSize(700,700);
+					nuovoFrame.setResizable(false);
+					nuovoFrame.setSize(270,195);
 					nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				}	
 			}

@@ -140,7 +140,7 @@ public class PannelloVModifica extends JPanel {
 						io.setVisible(false);
 						io.dispose();
 						//Inizializzazione a nuovo Lotto
-						io.setSize(700, 700);
+						io.setSize(500, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 						JComponent comp= (JComponent) e.getSource(); ////toglie frame quando fai modifica lotto
