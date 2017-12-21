@@ -3,6 +3,7 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import javax.swing.event.MouseInputListener;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Settori;
+import gui.PannelloVModifica.MioRicevitore;
 
 public class CreaStrada extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -50,6 +52,14 @@ public class CreaStrada extends JPanel {
 			}
 		}
 		
+	}
+	
+	class MioRicevitore implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			repaint();
+			
+		}
 	}
 	
 	
@@ -102,6 +112,9 @@ public class CreaStrada extends JPanel {
 		rifer = ilsettore;
 		centro= uncentro;
 		addMouseListener(new mouseEvent());
+		ActionListener listener = new MioRicevitore();
+		Timer timer = new Timer(1000, listener);
+		timer.start();
 	}
 	
 	
