@@ -3,10 +3,13 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+import javax.swing.event.MouseInputListener;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Settori;
@@ -22,35 +25,25 @@ public class CreaStrada extends JPanel {
 	int L = 10;
 	Settori rifer;
 	CentroUrbano centro;
+	Point coordinate;
 	public int Z = 5;
-	
-	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
-		NSettore = numsettore;
-		rifer = ilsettore;
-		centro= uncentro;
-	}
-	
-	
-	/**
-	 * Serve a disegnare il tutto
-	 */
 	
 	public void paintComponent(Graphics g) {
 		Graphics2D u = (Graphics2D) g;
 		u.clearRect(0, 0, this.getWidth(), this.getHeight());
 		
 		int i, j;
-		for(i = 0; i < 5 ;i++ ) {
-			for(j = 0; j < 3; j++) {
-				u.drawRect(PX+(L*i*Z), PY+(L*j*Z), L*Z, L*Z);
+		for(i = 0; i < 3 ;i++ ) {
+			for(j = 0; j < 5; j++) {
+				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
 				
 				//Controllo il tipo del lotto
-				switch(rifer.lista[j][i].getTip()) {
-				case 1:	paintStrada(u, PX+(L*1*Z), PY+(L*0*Z), L*Z, i, j);	//STRADA
+				switch(rifer.lista[i][j].getTip()) {
+				case 1:	paintStrada(u, PX+(L*j*Z), PY+(L*i*Z), L*Z, i, j);	//STRADA
 						break;
-				case 2:	paintPub(u,PX+(L*1*Z), PY+(L*0*Z), L*Z);			//PUBBLICO
+				case 2:	paintPub(u,PX+(L*j*Z), PY+(L*i*Z), L*Z);			//PUBBLICO
 						break;
-				case 3: paintPriv(u, PX+(L*i*Z), PY+(L*j*Z), L*Z); 			//PRIVATO
+				case 3: paintPriv(u, PX+(L*j*Z), PY+(L*i*Z), L*Z); 			//PRIVATO
 						break;
 				default: break;
 				}
@@ -74,57 +67,104 @@ public class CreaStrada extends JPanel {
 		e.drawLine(x+(L/2), y, x+(L/2), y+L-(L/2));
 
 		//Controllo se i lotti adiacenti hanno una strada
-		
 		//Destra
-		if( (y) == 4 ) {
+		if( (j) == 4 ) {
 		}
-		else if(rifer.lista[x][y+1].getTip() == 1)
+		else if(rifer.lista[i][j+1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+L, y+(L/2));
 		
 		
 		//Basso
-		if( (x) == 2) {
+		if( (i) == 2) {
 		}
-		else if(rifer.lista[x+1][y].getTip() == 1)
+		else if(rifer.lista[i+1][j].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 		
 		//Sinistra
-		if( (y) == 0 ) {
+		if( (j) == 0 ) {
 		}
-		else if(rifer.lista[x][y-1].getTip() == 1)
+		else if(rifer.lista[i][j-1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x, y+(L/2));
 		
 		
 		//Sopra
-		if( (x) == 0) {
+		if( (i) == 0) {
 		}
-		else if(rifer.lista[x-1][y].getTip() == 1)
+		else if(rifer.lista[i-1][j].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 	}
+	
+	
+	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
+		NSettore = numsettore;
+		rifer = ilsettore;
+		centro= uncentro;
+		addMouseListener(new mouseEvent());
+	}
+	
 	
 	/**
 	 * Metodo principale della classe, si avvia quando viene cliccato il mouse
 	 * @param e L'evento che genera il clic
 	 */
-	 
+private class mouseEvent implements MouseInputListener{
+		
 	public void mouseClicked(MouseEvent e) {
 		if(inizio == true) {
-			Point evento = e.getPoint();
 			primoX= e.getX()/(L*Z);		
 			primoY= e.getY()/(L*Z);		
-			inizio = false;
+			System.out.println("PRIMO CLICK" + primoX + primoY);
 		}
 		if(inizio == false) {
-			Point evento = e.getPoint();
 			secondoX= e.getX()/(L*Z);	
 			secondoY= e.getY()/(L*Z);	
 			costruisciPercorso();
-			inizio = false;
+			System.out.println("SECONDO CLICK" + secondoX + secondoY);
 		}
+		
+		if(inizio == true) 
+			inizio = false;
+		else inizio = true;
 	
 	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+}
 	
 	/**
 	 * Viene chiamato da mouseClicked 
@@ -227,4 +267,6 @@ public class CreaStrada extends JPanel {
 		}
 		this.repaint();
 	}
+
+	
 }
