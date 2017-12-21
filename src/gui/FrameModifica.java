@@ -97,12 +97,15 @@ public class FrameModifica extends JFrame{
 					JFrame nuovoFrame = new JFrame ();
 					PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer, newP);
 					
+					
+					
 					nuovoFrame.setTitle("Seleziona il lotto");
 					nuovoFrame.add(VMod);
-					nuovoFrame.setVisible(true);
 					nuovoFrame.setResizable(false);
+					nuovoFrame.setLocation(200, 100);
 					nuovoFrame.setSize(270,195);
 					nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+					nuovoFrame.setVisible(true);
 				}	
 			}
 		}

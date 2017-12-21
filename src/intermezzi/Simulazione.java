@@ -25,28 +25,23 @@ public class Simulazione {
 	 * moltiplicandolo per il suo coefficiente di invecchiamento /100
 	 * */
 	public void invecchiamento (CentroUrbano centro) {
-		for (Settori[]x : centro.lista ) {
-			for (Settori a: x) {
-				for (Lotti[]c: a.lista) {
-					for (Lotti d: c) {
-						if (d.getTip()==2) { //se per la seconda volta invecchia un edificio pubblico, questo viene distrutto.
-							Edificabile ed;
-							ed = d.edificio;
-							EPubblico EPub = (EPubblico) ed;
-							System.out.println("STAT="+EPub.getStato());
-							if (EPub.getStato()>1) {
-								d.edificio = Lotti.VUOTO;
-							}
-							else EPub.addStato();
+		for(int a = 0; a < 2; a++) {
+			for(int b = 0; b < 3; b++) {
+				for(int c = 0; c < 3; c++) {
+					for(int d = 0; d< 5; d++) {
+						Lotti k = centro.lista[a][b].lista[c][d];
+						k.setCeff(k.getCeff()-(k.getCeff()*k.getCinv())/100);
+						if(k.getTip() == 2) {
+							EPubblico u = (EPubblico) k.edificio;
+							if(u.getStato() > 1)
+								centro.lista[a][b].rmLotto(c, d);
+							else if(u.getStato() == 1)  u.addStato();
 						}
-							d.setCeff(d.getCeff()-(d.getCeff()*d.getCinv())/100);
-				
 					}
 				}
 			}
 		}
 	}
-	
 	
 	/**
 	 * RICEVE: @param CentroUrbano
