@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
@@ -30,7 +31,6 @@ public class StartFrameListener implements ActionListener{
 		JMenuItem t = (JMenuItem) e.getSource();
 		if(t.getText().equalsIgnoreCase("Salva")) {
 			salva();
-			JOptionPane.showMessageDialog(null, "File salvato");
 		}
 		else if(t.getText().equalsIgnoreCase("Carica")) {
 			carica();
@@ -38,11 +38,14 @@ public class StartFrameListener implements ActionListener{
 		}
 		else if(t.getText().equalsIgnoreCase("Nuovo")) {
 			nuovo();
-			JOptionPane.showMessageDialog(null, "Simulazione riavviata.");
+			
 		}
 		else if(t.getText().equalsIgnoreCase("Esci")) {
-			JOptionPane.showMessageDialog(null, "Credits: Zolfanelli, Correale, Lanaro, Madonna, Nicodemo");
-			System.exit(0);
+			JFrame temp= new JFrame("Avviso");
+			temp.add(new JLabel("Simulazione riavviata."));
+			temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			temp.setSize(200,110);
+			temp.setVisible(true);
 		}
 	}
 	
@@ -57,6 +60,13 @@ public class StartFrameListener implements ActionListener{
 			out = new ObjectOutputStream(writer);
 			out.writeObject(rifer.uno);
 		} catch (IOException e) {
+		}
+		finally{JFrame temp= new JFrame("Salvataggio");
+		temp.add(new JLabel("Salvato nella cartella corrente in Salvataggio.sav"));
+		temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		temp.setSize(500,110);
+		temp.setResizable(false);
+		temp.setVisible(true);
 		}
 	}
 	
@@ -75,6 +85,11 @@ public class StartFrameListener implements ActionListener{
 		rifer.setVisible(false);
 		StartFrame io = new StartFrame(new CentroUrbano());
 		io.setLocation(rifer.getX(), rifer.getY());
+		JFrame temp= new JFrame("Avviso");
+		temp.add(new JLabel("Simulazione riavviata."));
+		temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		temp.setSize(200,110);
+		temp.setVisible(true);
 		rifer.dispose();
 		
 	}

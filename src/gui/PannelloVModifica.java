@@ -146,27 +146,18 @@ public class PannelloVModifica extends JPanel {
 					
 					Point Lotto = new Point(lx, ly);
 					
-					io = new FrameLotto(centro.lista[coordinate.y][coordinate.x].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
-
 					if(io.isVisible()) {
-						io.setVisible(false);
 						io.dispose();
-						//Inizializzazione a nuovo Lotto
+						io = new FrameLotto(centro.lista[coordinate.y][coordinate.x].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
 						io.setSize(300, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			//			JComponent comp= (JComponent) e.getSource(); 				
-			//			Window win = SwingUtilities.getWindowAncestor(comp);
-			//			win.dispose();
 					}
 					else {
-						//Inizializzazione a Lotto
+						io = new FrameLotto(centro.lista[coordinate.y][coordinate.x].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
 						io.setSize(300, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			//			JComponent comp= (JComponent) e.getSource(); 				
-			//			Window win = SwingUtilities.getWindowAncestor(comp);
-			//			win.dispose();
 					
 				
 					}
