@@ -69,14 +69,14 @@ public class Simulazione {
 		int lot2 = -1;
 				
 		//NORDOVEST
-		if ((l1-1) < 0){		
-			if ((l2-1) < 0){ 				//se c'e' un cambio di settore per RIGA E COLONNA
-				if((s1-1) >= 0){ 			//se non esce dal riquadro
-					if ((s2-1) >=0) {
-					set1 = s1-1;
-					set2 = s2-1;
-					lot1 = 2;
-					lot2 = 4;
+		if ((l1-1) < 0){		  //quando la x del lotto e' uguale a 0
+			if ((l2-1) < 0){ 		//quando la y del lotto e' 0		//se c'e' un cambio di settore per RIGA E COLONNA
+				if((s1-1) > -1){ 			//se non esce dal riquadro
+					if ((s2-1) > -1) {
+						set1 = s1-1;
+						set2 = s2-1;
+						lot1 = 2;
+						lot2 = 4;
 					}
 				}
 			}
