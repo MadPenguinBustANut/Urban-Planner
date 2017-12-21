@@ -12,7 +12,7 @@ import javax.swing.border.TitledBorder;
 
 import centrourbano.Settori;
 
-public class FrameModificaLotto extends JFrame {
+public class FrameModificaSettore extends JFrame {
 	private static final long serialVersionUID = 1L;
 	int PX = 3;
 	int PY = 3;
@@ -21,7 +21,7 @@ public class FrameModificaLotto extends JFrame {
 
 	Settori rifer;
 	
-	public FrameModificaLotto() {
+	public FrameModificaSettore() {
 		
 		setVisible(true);
 		setSize(500, 700);

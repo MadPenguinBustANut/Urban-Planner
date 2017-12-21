@@ -16,9 +16,9 @@ import edifici.Edificabile;
  * del coefficiente di efficienza del lotto colpito dal disastro e una modifica ridotta (quel numero casuale /3), a tutti settori circostanti. 
  * 
  * */
-public class SimulazioneT {
+public class Simulazione {
 	
-	public SimulazioneT() {
+	public Simulazione() {
 	}
 	
 	
