@@ -41,11 +41,14 @@ public class StartFrameListener implements ActionListener{
 			
 		}
 		else if(t.getText().equalsIgnoreCase("Esci")) {
-			JFrame temp= new JFrame("Avviso");
-			temp.add(new JLabel("Simulazione riavviata."));
+			rifer.setEnabled(false);
+			JFrame temp= new JFrame("Chiusura");
+			temp.add(new JLabel("Made by Alessandro Zolfanelli, Tiziana Correale, Stefano Nicodemo, Vito Carmine Lanaro e Giuseppe Madonna."));
 			temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			temp.setSize(200,110);
+			temp.setSize(300,110);
+			temp.setResizable(false);
 			temp.setVisible(true);
+			
 		}
 	}
 	
@@ -88,8 +91,9 @@ public class StartFrameListener implements ActionListener{
 		JFrame temp= new JFrame("Avviso");
 		temp.add(new JLabel("Simulazione riavviata."));
 		temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		temp.setSize(200,110);
+		temp.setSize(500,110);
 		temp.setVisible(true);
+		temp.setResizable(false);
 		rifer.dispose();
 		
 	}

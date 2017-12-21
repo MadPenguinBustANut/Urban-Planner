@@ -140,7 +140,7 @@ public class FrameLotto extends JFrame {
 		else if(lotto.getTip() == 2) {
 			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
-
+		
 				JFrame temp= new JFrame("Errore");
 				temp.add(new JLabel("Rimozione già effettuata."));
 				temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
