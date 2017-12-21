@@ -155,7 +155,7 @@ public class PannelloVModifica extends JPanel {
 						io.setSize(300, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		//				JComponent comp= (JComponent) e.getSource(); 				//toglie frame quando fai modifica lotto
+			//			JComponent comp= (JComponent) e.getSource(); 				
 			//			Window win = SwingUtilities.getWindowAncestor(comp);
 			//			win.dispose();
 					}
@@ -164,9 +164,9 @@ public class PannelloVModifica extends JPanel {
 						io.setSize(300, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				//		JComponent comp= (JComponent) e.getSource(); 				//toglie frame quando fai modifica lotto
-				//		Window win = SwingUtilities.getWindowAncestor(comp);
-					//	win.dispose();
+			//			JComponent comp= (JComponent) e.getSource(); 				
+			//			Window win = SwingUtilities.getWindowAncestor(comp);
+			//			win.dispose();
 					
 				
 					}
