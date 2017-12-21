@@ -73,7 +73,8 @@ public class PannelloVisualizzazione extends JPanel {
 	}
 	
 	private void paintStrada(Graphics2D e, int x, int y, int L, int lottX, int lottY, int settX, int settY) {
-		e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
+		
+		e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 		
 		
 		//Destra
@@ -113,11 +114,11 @@ public class PannelloVisualizzazione extends JPanel {
 		if( (lottX) == 0) {
 			if((settX) != 0) {
 				if(rifer.lista[settX+1][settY].lista[2][lottY].getTip() == 1)
-					e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
+					e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 				}
 		}
 		else if(rifer.lista[settX][settY].lista[lottX-1][lottY].getTip() == 1)
-			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
+			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 		
 	}
 	

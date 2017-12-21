@@ -1,10 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class PannelloSettore extends JPanel {
@@ -17,70 +19,92 @@ public class PannelloSettore extends JPanel {
 	private int height = 100;
 	private int settX = 0;
 	private int settY = 0;
+	private FrameModifica rifer;
+	boolean[][] arrayB = new boolean[2][3];
+	boolean tr = false;
 	
-	public PannelloSettore () {
+	
+	public PannelloSettore (FrameModifica e) {
 		super();
+		addMouseListener(new Posizione());
+		rifer = e;
 	}
 	
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 2; j++) {
-				g2.drawRect(x+(weight*i), y+(height*j), weight*i, height*j);
-
 		g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 		
-		for ( i = 0; i < 3; i++) {
-			for ( j = 0; j < 2; j++) {
-				g2.drawRect(20+(weight*j), 20+(height*i), weight, height);
-
-			}
+		if(tr) {
+			g2.drawLine(0, 0, 15, 15);
 		}
+		
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 2; j++) {
+				g2.drawRect(20+(weight*j), 20+(height*i), weight, height);
+				if(arrayB[j][i]) {
+					g2.setColor(Color.CYAN);
+					g2.fillRect(19+(weight*j), 19+(height*i), weight-2, height-2);
+					g2.setColor(Color.BLACK);
+			}
+		}	
 	}
+}
 	
 	class Posizione implements MouseListener{
 
 		public void mouseClicked(MouseEvent e) {
 
+			if(tr) {
+				tr = false;
+			}
+			else tr = true;
+			
 			int a = e.getX();
 			int b = e.getY();
 			
 			if (a > 20 && a < 20 +(weight*2) && b > 20 && b < 20+(height*3)) {
-				int SettX = a/weight;
-				int SettY = b/height;
+				settX = (a/weight);
+				settY = b/height;
+				for(boolean[] x : arrayB) {
+					for(boolean t : x)
+						t = false;
+				}
 				
-				
+				arrayB[settY][settX] = true;
+				repaint();
+				}
 			}
-		}
+		
 
 		@Override
-		public void mouseEntered(MouseEvent e) {
+		public void mouseEntered(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void mouseExited(MouseEvent e) {
+		public void mouseExited(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void mousePressed(MouseEvent e) {
+		public void mousePressed(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 			
 		}
 
 		@Override
-		public void mouseReleased(MouseEvent e) {
+		public void mouseReleased(MouseEvent arg0) {
 			// TODO Auto-generated method stub
 			
 		}
 		
 	}
-	
 }
+
 		
-}
-}
+
+
+
