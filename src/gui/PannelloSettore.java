@@ -74,7 +74,7 @@ public class PannelloSettore extends JPanel {
 				settY = b/(height);
 
 				System.out.println("X="+a+" Y="+b);	
-				System.out.println("settX="+settY+" settY="+settY);
+				System.out.println("settX="+settX+" settY="+settY);
 				
 				for(int i = 0; i < 3; i++) {
 					for(int j = 0; j < 2; j++) {
