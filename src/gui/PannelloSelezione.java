@@ -18,15 +18,22 @@ public class PannelloSelezione extends JPanel{
 		super(new BorderLayout());
 		
 		centro= c;
+		
+		//Bottoni per la selezione del metodo di selezione
+		
 		cEffButton= new JRadioButton ("Coefficiente Efficienza");
 		cInvButton= new JRadioButton ("Coefficiente Invecchiamento");
 	    ValoreButton= new JRadioButton ("Valore");
 		cEffButton.setSelected(true);
 	    
+		//Vengono riuniti in un unico gruop
+		
 		ButtonGroup group= new ButtonGroup();
 	    group.add(cEffButton);
 	    group.add(cInvButton);
 	    group.add(ValoreButton);
+	    
+	    //Vengono inseriti nel panel di appartenza
 	    
 	    panel= new JPanel(new GridLayout(3,1));
 	    panel.add(cEffButton);
@@ -35,19 +42,28 @@ public class PannelloSelezione extends JPanel{
 	    
 	    panel.setBorder(new TitledBorder(new EtchedBorder(),"Metodi di Selezione in base a:"));
 	    
+	    //Bottoni per la selezione del metodo di ordinamento
+	    
 	    normalOrdButton= new JRadioButton("Dal più Grande al più Piccolo");
 	    inversOrdButton= new JRadioButton("Dal più Piccolo al più Grande");
 	    normalOrdButton.setSelected(true);
 	    
+	    //Vengono inseriti in un unico group
+	    
 	    ButtonGroup groupOrd= new ButtonGroup();
 	    groupOrd.add(normalOrdButton);
 	    groupOrd.add(inversOrdButton);
+	    
+	    //Vengono inseriti nel panel
 	    
 	    panelG= new JPanel(new GridLayout(2,1));
 	    panelG.add(normalOrdButton);
 	    panelG.add(inversOrdButton);
 	    
 	    panelG.setBorder(new TitledBorder(new EtchedBorder(),"Metodi di ordinamento:"));
+	    
+	    //Aree di Testo per l'inserimento dei relativi valori
+	    //di max e min per le varie tipologie di selezione
 	    
 	    maxEff= new JTextField(FIELD_WIDTH);
 	    maxEff.setText(""+100);
@@ -62,6 +78,8 @@ public class PannelloSelezione extends JPanel{
 	    minVal= new JTextField(FIELD_WIDTH);
 	    minVal.setText(""+0);
 	    
+	    //Vengono inseriti nel panel di appartenenza
+	    
 	    panelM= new JPanel(new GridLayout(3,2));
 	    panelM.add(maxEff);
 	    panelM.add(minEff);
@@ -70,17 +88,24 @@ public class PannelloSelezione extends JPanel{
 	    panelM.add(maxVal);
 	    panelM.add(minVal);
 	    
+	    
 	    panelM.setBorder(new TitledBorder(new EtchedBorder(),"Massimo   -   Minimo"));
+	    
+	    //Bottone per effettuare la selezione
 	    
 	    calButton=new JButton("Effettua Selezione");
 	    calButton.addActionListener(listener);
+	    
+	    //Area di Testo per la visualizzazione del risultato della selezione
 	    
 	    textArea= new JTextArea(5,30);
 	    textArea.setEditable(false);
 	    scrollPanel= new JScrollPane(textArea);
 	    
+	    //Vengono inseriti tutti i pezzi nel layout
+	    
 	    add(scrollPanel,BorderLayout.SOUTH);
-	    add(calButton,BorderLayout.SOUTH);
+	    add(calButton,BorderLayout.NORTH);
 	    
 	    add(panel, BorderLayout.WEST);
 	    add(panelG,BorderLayout.EAST);

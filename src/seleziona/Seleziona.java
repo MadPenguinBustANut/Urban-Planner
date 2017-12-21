@@ -43,11 +43,18 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {
-						if(centro.lista[l][k].getLotto(i, y).getTip()!=0)
+						if(centro.lista[l][k].getLotto(i, y).getTip()==0) {
+							
+							//Testing se viene effettuato il select su tutte i lotti
+
+							x++;
+							System.out.println("Settore"+l+":"+k+"   Lotto"+i+":"+y+" "+centro.lista[l][k].getLotto(i, y).getCeff()+"\n");
 						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
 							lista[j]=centro.lista[l][k].lista[i][y];
 						}
+						}
 					}
+		System.out.println("N volte:"+x+"\n");
 		this.setCount(j);
 	}
 	
@@ -84,6 +91,8 @@ public class Seleziona implements Serializable{
 	}
 	
 	
+	//Ritorrna il Conto di quanti elementi ci sono in lista
+	
 	public int getCount() {
 		return count;
 	}
@@ -91,6 +100,8 @@ public class Seleziona implements Serializable{
 	public void setCount(int c) {
 		count+=c;
 	}
+	
+	//Ritorna il tipo di selezione effettuata
 	
 	public int getScelta() {
 		return scelta;
@@ -103,9 +114,9 @@ public class Seleziona implements Serializable{
     private int scelta;
     private int count=0;
     
-    
-    private static final int MAX_X = 2;
-	private static final int MAX_Y = 4;
+    private int x=0;
+    private static final int MAX_X = 3;
+	private static final int MAX_Y = 5;
     private final static int DIM_LIST=90;
     
     

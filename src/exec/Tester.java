@@ -1,6 +1,7 @@
 package exec;
 
 import centrourbano.CentroUrbano;
+import edifici.EPrivato;
 import gui.StartFrame;
 
 public class Tester {
