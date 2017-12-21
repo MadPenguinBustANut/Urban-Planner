@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -63,15 +64,18 @@ public class StartFrame extends JFrame{
 		gestione.setVisible(false);
 		
 		add(grid);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		/*setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			@Override public void windowClosing(WindowEvent e) {
-				JOptionPane.showMessageDialog(null,"Credits: \n Alessandro Zolfanelli \n Vito Carmine Lanaro \n Tiziana Correale \n Giuseppe Madonna \n Stefano Nicodemo");
-	            System.exit(0);
+				JFrame temp= new JFrame("Chiusura Programma");
+				temp.add(new JLabel("Credits: \n Alessandro Zolfanelli \n Vito Carmine Lanaro \n Tiziana Correale \n Giuseppe Madonna \n Stefano Nicodemo"));
+				temp.setDefaultCloseOperation(EXIT_ON_CLOSE);
+				temp.setSize(700,110);
+				temp.setVisible(true);
+	          
 	        };
 	    });
-	    */
+	   
 		setSize(800, 150);
 		setVisible(true);
 	}

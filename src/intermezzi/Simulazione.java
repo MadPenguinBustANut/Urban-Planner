@@ -25,27 +25,24 @@ public class Simulazione {
 	 * moltiplicandolo per il suo coefficiente di invecchiamento /100
 	 * */
 	public void invecchiamento (CentroUrbano centro) {
-		for (Settori[]x : centro.lista ) {
-			for (Settori a: x) {
-				for (Lotti[]c: a.lista) {
-					for (Lotti d: c) {
-						if (d.getTip()==2) { //se per la seconda volta invecchia un edificio pubblico, questo viene distrutto.
-							Edificabile ed;
-							ed = d.edificio;
-							EPubblico EPub = (EPubblico) ed;
-							if (EPub.getStato()>1) {
-								d.setValore(1);
-								d.edificio = Lotti.VUOTO;
-							}
+		for(int a = 0; a < 2; a++) {
+			for(int b = 0; b < 3; b++) {
+				for(int c = 0; c < 3; c++) {
+					for(int d = 0; d< 5; d++) {
+						Lotti k = centro.lista[a][b].lista[c][d];
+						k.setCeff(k.getCeff()-(k.getCeff()*k.getCinv())/100);
+						if(k.getTip() == 2) {
+							EPubblico u = (EPubblico) k.edificio;
+							System.out.println("Stato="+u.getStato());
+							if(u.getStato() > 1)
+								centro.lista[a][b].rmLotto(c, d);
+							else if(u.getStato() == 1)  u.addStato();
 						}
-							d.setCeff(d.getCeff()-(d.getCeff()*d.getCinv())/100);
-				
 					}
 				}
 			}
 		}
 	}
-	
 	
 	/**
 	 * RICEVE: @param CentroUrbano
@@ -55,7 +52,7 @@ public class Simulazione {
 	public void disastro (CentroUrbano centro) {
 	
 	//genero numeri casuali per determinare settore e lotto
-		Random random = new Random();
+		Random random = new Random(System.currentTimeMillis());
 		int s1 = random.nextInt(2);
 		int s2 = random.nextInt(3);
 		int l1= random.nextInt(3);
@@ -73,7 +70,7 @@ public class Simulazione {
 				
 		//NORDOVEST
 		if ((l1-1) < 0){		
-			if ((l2-1) < 0){ 				//se c'� un cambio di settore per RIGA E COLONNA
+			if ((l2-1) < 0){ 				//se c'e' un cambio di settore per RIGA E COLONNA
 				if((s1-1) >= 0){ 			//se non esce dal riquadro
 					if ((s2-1) >=0) {
 					set1 = s1-1;
