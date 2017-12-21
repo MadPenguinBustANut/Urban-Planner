@@ -141,15 +141,14 @@ public class FrameLotto extends JFrame {
 			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 
-<<<<<<< HEAD
 				JFrame temp= new JFrame("Errore");
 				temp.add(new JLabel("Rimozione già effettuata."));
 				temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				temp.setSize(200,110);
 				temp.setVisible(true);
-=======
+
 				JOptionPane.showMessageDialog(null, "Rimozione gia' effettuata.");
->>>>>>> 15925e0a23f20bc40f2e79420df52eed4fc0374e
+
 			}
 			else x.addStato();
 		}
