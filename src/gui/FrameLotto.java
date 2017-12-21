@@ -82,6 +82,7 @@ public class FrameLotto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// costruisci
 				costruzione();
+				dispose();
 				
 			}
 		}
@@ -163,7 +164,7 @@ public class FrameLotto extends JFrame {
 		if(removeButton.isEnabled()) {
 			JFrame temp= new JFrame("Errore");
 			temp.add(new JLabel("Demolisci prima di costruire."));
-			temp.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			temp.setSize(200,110);
 			temp.setVisible(true);
 		}
