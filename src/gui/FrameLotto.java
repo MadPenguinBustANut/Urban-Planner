@@ -82,6 +82,7 @@ public class FrameLotto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// costruisci
 				costruzione();
+				dispose();
 				
 			}
 		}
