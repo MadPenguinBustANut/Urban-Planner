@@ -163,6 +163,8 @@ public class PannelloSelezione extends JPanel{
 		
 		int flag=0;
 		Ordinamento Ord;
+		textArea.setText("");
+		
 		
 		if(normalOrdButton.isSelected()) {
 			flag=0;

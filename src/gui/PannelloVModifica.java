@@ -150,12 +150,14 @@ public class PannelloVModifica extends JPanel {
 						io.dispose();
 						io = new FrameLotto(centro.lista[coordinate.y][coordinate.x].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
 						io.setSize(300, 500);
+						io.setLocation(rifer.getLocationOnScreen().x + rifer.getWidth()+ 20, rifer.getLocationOnScreen().y);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					}
 					else {
 						io = new FrameLotto(centro.lista[coordinate.y][coordinate.x].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
 						io.setSize(300, 500);
+						io.setLocation(rifer.getLocationOnScreen().x + rifer.getWidth()+ 20, rifer.getLocationOnScreen().y);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					

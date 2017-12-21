@@ -188,8 +188,8 @@ private class mouseEvent implements MouseInputListener{
 			int diff = primoY - secondoY;
 			if(diff < 0) {
 				System.out.println("ci muoviamo verso il basso");
-				if (checkY(primoY,diff - diff*2)) {
-					costruisciY(primoY,diff);
+				if (checkY(primoY, -diff)) {
+					costruisciY(primoY, -diff);
 					return;}
 				}
 			if(diff > 0) {
@@ -204,14 +204,14 @@ private class mouseEvent implements MouseInputListener{
 				int diff = primoX - secondoX;
 				if(diff < 0) {
 					System.out.println("Ci muoviamo verso destra");
-					if (checkX(primoX,diff - diff*2)) {
+					if (checkX(primoX, -diff)) {
 						costruisciX(primoX,diff - diff*2);
 						return;
 						}
 					}
 				if(diff > 0) {
 					System.out.println("Ci muoviamo verso sinistra");
-					if (checkX(secondoX,diff)==true) {
+					if (checkX(secondoX,diff)) {
 						costruisciX(secondoX,diff);
 						return;
 						}
@@ -234,7 +234,6 @@ private class mouseEvent implements MouseInputListener{
 	 * @param diff La differenza di caselle , indica quando si deve fermare
 	 * @return True se e' libero, false se non lo e'
 	 */
-	
 	private boolean checkY(int valoreIniziale, int diff) {
 		for(int i = valoreIniziale; i <= diff ; i++) {
 			if(rifer.lista[primoY][i].getTip() != 0)
