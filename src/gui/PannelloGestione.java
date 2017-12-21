@@ -69,7 +69,7 @@ public class PannelloGestione extends JPanel {
 					io.setVisible(true);
 				}
 					else if(rif.getText().equalsIgnoreCase("Invecchiamento"))
-						sim.invecchiamento(centroUrbano);
+						sim.invecchiamento(centroUrbano,informazioni);
 				
 					else if(rif.getText().equalsIgnoreCase("Disastro"))
 						sim.disastro(centroUrbano,informazioni);
