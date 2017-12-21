@@ -10,11 +10,6 @@ public class Tester {
 		
 		CentroUrbano a = new CentroUrbano();
 		StartFrame io = new StartFrame(a);
-<<<<<<< HEAD
-		
-
-=======
->>>>>>> fa3fd797bde489ae4779666fa508a79ec416ccbe
 	}
 
 }
