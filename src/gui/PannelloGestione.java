@@ -11,8 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
-//import intermezzi.SimulazioneT;
-import intermezzi.SimulazioneT;
+import intermezzi.Simulazione;
 
 
 /**
@@ -25,7 +24,7 @@ public class PannelloGestione extends JPanel {
 		private JButton pDisastro;
 		private JButton pModifica;
 		private CentroUrbano centroUrbano;
-		private SimulazioneT sim;
+		private Simulazione sim;
 		private JTextArea informazioni;
 		
 		private JPanel paPulsanti;
@@ -43,7 +42,7 @@ public class PannelloGestione extends JPanel {
 			pDisastro.addActionListener(new ButtonListener());
 			
 			
-			sim = new SimulazioneT();
+			sim = new Simulazione();
 			
 			paPulsanti = new JPanel(new GridLayout(3, 1));
 			

@@ -9,6 +9,7 @@ import centrourbano.Lotti;
 import centrourbano.Settori;
 import edifici.EPubblico;
 import edifici.Edificabile;
+import gui.PannelloGestione;
 /**
  * In questa classe si simulano l'invecchiamento del Centro Urbano e la gestione di un disastro. 
  * L'invecchiamento fa diminuire il coefficiente di efficienza. In caso di secondo invecchiamento di un edificio pubblico, questo viene distrutto.
@@ -16,9 +17,9 @@ import edifici.Edificabile;
  * del coefficiente di efficienza del lotto colpito dal disastro e una modifica ridotta (quel numero casuale /3), a tutti settori circostanti. 
  * 
  * */
-public class SimulazioneT {
+public class Simulazione {
 	
-	public SimulazioneT() {
+	public Simulazione() {
 	}
 	
 	

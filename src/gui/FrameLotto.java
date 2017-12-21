@@ -143,7 +143,7 @@ public class FrameLotto extends JFrame {
 			if(x.getStato() > 0) {
 		
 				JFrame temp= new JFrame("Errore");
-				temp.add(new JLabel("Rimozione già effettuata."));
+				temp.add(new JLabel("Rimozione gia' effettuata."));
 				temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				temp.setSize(200,110);
 				temp.setResizable(false);
@@ -167,6 +167,7 @@ public class FrameLotto extends JFrame {
 			temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			temp.setSize(200,110);
 			temp.setVisible(true);
+			return;
 		}
 		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX);
 		if(radio2.isSelected()) {
