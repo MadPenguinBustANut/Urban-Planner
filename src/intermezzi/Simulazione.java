@@ -33,10 +33,11 @@ public class Simulazione {
 							Edificabile ed;
 							ed = d.edificio;
 							EPubblico EPub = (EPubblico) ed;
+							System.out.println("STAT="+EPub.getStato());
 							if (EPub.getStato()>1) {
-								d.setValore(1);
 								d.edificio = Lotti.VUOTO;
 							}
+							else EPub.addStato();
 						}
 							d.setCeff(d.getCeff()-(d.getCeff()*d.getCinv())/100);
 				
