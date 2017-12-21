@@ -258,8 +258,8 @@ public class CentroUrbano implements Serializable{
 	}
 
 	//Ho associato delle MACRO ai limiti del settore in modo da rendere piu leggibile il codice
-	private static final int MAX_X = 4;
-	private static final int MAX_Y = 2;
+	private static final int MAX_X = 2;
+	private static final int MAX_Y = 4;
 	
 
 	//Ho associato delle MACRO ai limiti del centrourbano in modo da rendere piu leggibile il codice
