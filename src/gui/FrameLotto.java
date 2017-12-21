@@ -134,7 +134,7 @@ public class FrameLotto extends JFrame {
 	public void rimozione() {
 		removeButton.setEnabled(false);
 		
-		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettY, SettX, LX, LX);
+		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettY, SettX, LY, LX);
 		
 		else if(lotto.getTip() == 2) {
 			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
@@ -144,7 +144,7 @@ public class FrameLotto extends JFrame {
 			}
 			else x.addStato();
 		}
-		else centroUrbano.lista[SettX][SettY].rmLotto(LX, LY);
+		else centroUrbano.lista[SettX][SettY].rmLotto(LY, LX);
 		success.setText("Demolizione avvenuta.");
 	}
 

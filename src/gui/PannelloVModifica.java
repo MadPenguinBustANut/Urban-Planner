@@ -76,7 +76,6 @@ public class PannelloVModifica extends JPanel {
 		e.drawLine(x+(L/2), y, x+(L/2), y+L-(L/2));
 
 		//Controllo se i lotti adiacenti hanno una strada
-		System.out.println("X ="+ j + "Y ="+ i);
 		//Destra
 		if( (j) == 4 ) {
 		}
@@ -128,7 +127,6 @@ public class PannelloVModifica extends JPanel {
 					int lx = e.getX()/(L*Z);
 					int ly = e.getY()/(L*Z);
 					
-					System.out.println("X =" + lx + " Y =" + ly);
 					
 					
 					
@@ -140,10 +138,10 @@ public class PannelloVModifica extends JPanel {
 						io.setVisible(false);
 						io.dispose();
 						//Inizializzazione a nuovo Lotto
-						io.setSize(500, 500);
+						io.setSize(300, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						JComponent comp= (JComponent) e.getSource(); ////toglie frame quando fai modifica lotto
+						JComponent comp= (JComponent) e.getSource(); 				//toglie frame quando fai modifica lotto
 						Window win = SwingUtilities.getWindowAncestor(comp);
 						win.dispose();
 					}
@@ -152,7 +150,7 @@ public class PannelloVModifica extends JPanel {
 						io.setSize(300, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						JComponent comp= (JComponent) e.getSource(); ////toglie frame quando fai modifica lotto
+						JComponent comp= (JComponent) e.getSource(); 				//toglie frame quando fai modifica lotto
 						Window win = SwingUtilities.getWindowAncestor(comp);
 						win.dispose();
 					

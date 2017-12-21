@@ -27,7 +27,6 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano che edificio vendere
 	 * @return	Ritorna il prezzo di vendita dell'edificio
 	 */
-
 	public int vendiEdificio(int X, int Y) {
 		Lotti vend = getLotto(X, Y);
 		int tot = (vend.getValore() + this.getValore()) * vend.getCeff();
@@ -307,7 +306,8 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui aumentare il valore
 	 */
 
-	public void addOne(int X,int Y) {
+	public void addOne(int Y,int X) {
+		System.out.println("X="+X+" Y="+Y);
 		if(lista[(int) X][(int) Y].getTip()==EPRIV)
 			lista[(int) X][(int) Y].setValore(lista[(int) X][(int) Y].getValore() + 1);
 	}
