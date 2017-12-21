@@ -339,6 +339,9 @@ public class Settori implements Serializable{
 		valore = value;
 	}
 
+	public void subCeff(int valore, int X, int Y) {
+		lista[(int) X][(int) Y].setCeff(lista[(int) X][(int) Y].getCeff() - valore/3);
+	}
 
 
 	//Ho associato delle MACRO ai limiti del settore in modo da rendere piu leggibile il codice
