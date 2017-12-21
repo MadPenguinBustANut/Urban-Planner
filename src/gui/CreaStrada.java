@@ -185,32 +185,39 @@ private class mouseEvent implements MouseInputListener{
 	
 	private void costruisciPercorso() { 
 		if (primoX == secondoX) {
+			System.out.println("Stessa colonna");
 			int diff = primoY - secondoY;
 			if(diff < 0) {
-				if (checkY(primoY,diff)==true) {
+				System.out.println("ci muoviamo verso il basso");
+				if (checkY(primoY,diff)) {
 					costruisciY(primoY,diff);
 					return;}
 				}
 			if(diff > 0) {
-				if (checkY(secondoY,diff)== true) {
+				System.out.println("Ci muoviamo verso l'alto");
+				if (checkY(secondoY,diff)) {
 					costruisciY(secondoY,diff);
 					return;}
 			}
 		}
 		
-		if (primoY == secondoY) {
-			int diff = primoX - secondoX;
-			if(diff < 0) {
-				if (checkX(primoX,diff)==true) {
-					costruisciY(primoX,diff);
-					return;}
+		else if (primoY == secondoY) {
+				int diff = primoX - secondoX;
+				if(diff < 0) {
+					System.out.println("Ci muoviamo verso destra");
+					if (checkX(primoX,diff)) {
+						costruisciX(primoX,diff);
+						return;
+						}
+					}
+				if(diff > 0) {
+					System.out.println("Ci muoviamo verso sinistra");
+					if (checkX(secondoX,diff)==true) {
+						costruisciX(secondoX,diff);
+						return;
+						}
+					}
 				}
-			if(diff > 0) {
-				if (checkY(secondoX,diff)==true) {
-					costruisciY(secondoX,diff);
-					return;}
-				}
-			}
 			
 		JFrame FrameEcc = new JFrame ();
 		JLabel scritta = new JLabel ("Seleziona un punto ortogonale");
@@ -230,8 +237,8 @@ private class mouseEvent implements MouseInputListener{
 	 */
 	
 	private boolean checkY(int valoreIniziale, int diff) {
-		for(int i=valoreIniziale;i<diff;i++) {
-			if(rifer.lista[primoX][i].getTip() != 0)
+		for(int i = valoreIniziale; i < diff ; i++) {
+			if(rifer.lista[primoY][i].getTip() != 0)
 				return false;
 		}
 		return true;
@@ -244,10 +251,9 @@ private class mouseEvent implements MouseInputListener{
 	 * @param diff La differenza di caselle , indica quando si deve fermare
 	 * @return True se e' libero, false se non lo e'
 	 */
-	
 	private boolean checkX(int valoreIniziale,int diff) {
-		for(int i=valoreIniziale;i<diff;i++) {
-			if(rifer.lista[i][primoY].getTip() != 0)
+		for(int i = valoreIniziale; i < diff ; i++) {
+			if(rifer.lista[primoY][i].getTip() != 0)
 				return false;
 		}
 		return true;
@@ -258,10 +264,9 @@ private class mouseEvent implements MouseInputListener{
 	 * @param valoreIniziale Valore da cui far partire il ciclo for
 	 * @param diff La differenza di caselle , indica quando si deve fermare
 	 */
-	
 	private void costruisciY(int valoreIniziale, int diff) {
-		for(int i=valoreIniziale;i<diff;i++) {
-			centro.addStrada(NSettore.x, NSettore.y, primoX, i);
+		for(int i=valoreIniziale; i < diff; i++) {
+			centro.addStrada(NSettore.x, NSettore.y, i, primoX);
 		}
 		this.repaint();
 	}
@@ -274,7 +279,7 @@ private class mouseEvent implements MouseInputListener{
 	
 	private void costruisciX(int valoreIniziale,int diff) {
 		for(int i=valoreIniziale;i<diff;i++) {
-			centro.addStrada(NSettore.x, NSettore.y, i, primoY);
+			centro.addStrada(NSettore.x, NSettore.y, primoY, i);
 		}
 		this.repaint();
 	}
