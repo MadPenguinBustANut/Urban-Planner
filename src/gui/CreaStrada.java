@@ -12,7 +12,7 @@ import centrourbano.CentroUrbano;
 import centrourbano.Settori;
 
 public class CreaStrada extends JPanel {
-
+	private static final long serialVersionUID = 1L;
 	boolean inizio = true;
 	Point NSettore;
 	int primoX,primoY;
