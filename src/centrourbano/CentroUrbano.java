@@ -123,8 +123,8 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(LX==MAX_X && LY == MAX_Y) {
-			if((settX + 1) < MAX_MASTER_X && (settY - 1) >-1)
-				lista[(int) (settX + 1)][(int) (settY - 1)].addOne(0, MAX_Y);			
+			if((settX + 1) < MAX_MASTER_X && (settY + 1) <MAX_MASTER_Y)
+				lista[(int) (settX + 1)][(int) (settY + 1)].addOne(0, MAX_Y);			
 	
 		}
 		
@@ -196,13 +196,13 @@ public class CentroUrbano implements Serializable{
 		}
 		
 		if(LX < MAX_X && LY == MAX_Y) {
-			if((settY - 1) > -1)
-				 lista[settX][(settY - 1)].subOne(LX, 0);
+			if((settY + 1) < MAX_MASTER_Y)
+				 lista[settX][(settY + 1)].subOne(LX, 0);
 		}
 		
 		if(LX==MAX_X && LY == MAX_Y) {
-			if((settX + 1) < MAX_MASTER_X && (settY - 1) >-1)
-				lista[(int) (settX + 1)][(int) (settY - 1)].subOne(0, MAX_Y);			
+			if((settX + 1) < MAX_MASTER_X && (settY + 1) <MAX_MASTER_Y)
+				lista[(int) (settX + 1)][(int) (settY + 1)].subOne(0, MAX_Y);			
 	
 		}
 		
@@ -249,8 +249,6 @@ public class CentroUrbano implements Serializable{
 				lista[(int) (settX -1)][(int) (settY + 1)].subOne(MAX_X, 0);
 
 		}
-		
-		lista[(int) settX][(int) settY].addLotto(new Strada(), LX, LY);
 			
 		
 		lista[(int) settX][(int) settY].rmLotto(LX, LY);
