@@ -2,6 +2,7 @@ package seleziona;
 
 import java.io.Serializable;
 
+
 import centrourbano.*;
 
 public class Seleziona implements Serializable{
@@ -47,14 +48,15 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {
-						if(centro.lista[l][k].getLotto(i, y).getTip()==0) {
+						if(centro.lista[l][k].getLotto(i, y).getTip()!=0) {
 							
 							//Testing se viene effettuato il select su tutte i lotti
 
 							x++;
-							System.out.println("Settore"+l+":"+k+"   Lotto"+i+":"+y+" "+centro.lista[l][k].getLotto(i, y).getCeff()+"\n");
+							System.out.println(centro.lista[l][k].getLotto(i, y).getCeff()+"\n");
 						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
 							lista[count]=centro.lista[l][k].lista[i][y];
+							System.out.println(lista[count].getCeff());
 							setCount();
 						}
 						}

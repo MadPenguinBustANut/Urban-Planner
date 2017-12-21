@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+
 import javax.swing.border.*;
 
 import java.awt.BorderLayout;
@@ -163,6 +164,8 @@ public class PannelloSelezione extends JPanel{
 		
 		int flag=0;
 		Ordinamento Ord;
+		textArea.setText("");
+		
 		
 		if(normalOrdButton.isSelected()) {
 			flag=0;
@@ -174,13 +177,13 @@ public class PannelloSelezione extends JPanel{
 		Ord.sceltaOrd();
 		for(int i=0;i < Select.getCount();i++) {
 			if(Select.getCount() != 0) {
-				textArea.append("Lotto :"+i+"\t");
-				textArea.append("Coeff Efficienza"+Select.lista[i].getCeff()+"\t");
-				textArea.append("Coeff Invecchiamento"+Select.lista[i].getCinv()+"\t");
-
-				if (Select.getScelta() == 3 && Select.lista[i].getTip() == 3)
-					textArea.append("Valore"+Select.lista[i].getValore()+"\t");
-				textArea.append("\n");
+				
+				textArea.append("Coeff Efficienza :"+Select.lista[i].getCeff()+"\n");
+				textArea.append("Coeff Invecchiamento :"+Select.lista[i].getCinv()+"\n");
+				
+				if (Select.getScelta() == 2 && Select.lista[i].getTip() == 3)
+					textArea.append("Valore"+Select.lista[i].getValore()+"\n");
+	                textArea.append("\n");
 			}
 		}
 	}

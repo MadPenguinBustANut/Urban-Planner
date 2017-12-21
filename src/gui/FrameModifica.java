@@ -60,6 +60,7 @@ public class FrameModifica extends JFrame{
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(300, 300);
 		setVisible(true);
+
 	}
 	
 		public void mouseClicked(MouseEvent e) {
