@@ -101,6 +101,7 @@ public class PannelloSelezione extends JPanel{
 	    textArea= new JTextArea(5,30);
 	    textArea.setEditable(false);
 	    scrollPanel= new JScrollPane(textArea);
+	 
 	    
 	    //Vengono inseriti tutti i pezzi nel layout
 	    
