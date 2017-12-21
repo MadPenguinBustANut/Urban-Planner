@@ -51,6 +51,7 @@ public class PannelloGestione extends JPanel {
 			
 			add(informazioni = new JTextArea(), BorderLayout.CENTER);
 			add(paPulsanti, BorderLayout.EAST);
+			informazioni.setText("Effettuare una selezione con i bottoni a destra. Le informazioni verranno mostrare in questo campo");
 			informazioni.setEditable(false);
 		}
 		
