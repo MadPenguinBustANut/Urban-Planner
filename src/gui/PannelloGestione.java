@@ -33,14 +33,20 @@ public class PannelloGestione extends JPanel {
 			super(new BorderLayout());
 			centroUrbano = c;
 			pModifica = new JButton ("Modifica");
+			pInvecchia = new JButton ("Invecchiamento");
+			pDisastro = new JButton ("Disastro");
 			
 			pModifica.addActionListener(new ButtonListener());
+			pInvecchia.addActionListener(new ButtonListener());
+			pDisastro.addActionListener(new ButtonListener());
+			
+			
 			sim = new Simulazione();
 			
 			paPulsanti = new JPanel(new GridLayout(3, 1));
 			
-			paPulsanti.add(pInvecchia = new JButton ("Invecchiamento"));
-			paPulsanti.add(pDisastro = new JButton ("Disastro"));
+			paPulsanti.add(pInvecchia);
+			paPulsanti.add(pDisastro);
 			paPulsanti.add(pModifica);
 			
 			add(informazioni = new JTextArea(), BorderLayout.CENTER);

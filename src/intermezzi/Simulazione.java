@@ -33,6 +33,7 @@ public class Simulazione {
 						k.setCeff(k.getCeff()-(k.getCeff()*k.getCinv())/100);
 						if(k.getTip() == 2) {
 							EPubblico u = (EPubblico) k.edificio;
+							System.out.println("Stato="+u.getStato());
 							if(u.getStato() > 1)
 								centro.lista[a][b].rmLotto(c, d);
 							else if(u.getStato() == 1)  u.addStato();
