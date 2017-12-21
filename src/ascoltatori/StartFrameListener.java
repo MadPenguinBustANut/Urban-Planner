@@ -42,7 +42,7 @@ public class StartFrameListener implements ActionListener{
 			JFrame temp= new JFrame("Chiusura");
 			temp.add(new JLabel("Made by Alessandro Zolfanelli, Tiziana Correale, Stefano Nicodemo, Vito Carmine Lanaro e Giuseppe Madonna."));
 			temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			temp.setSize(300,110);
+			temp.setSize(700,110);
 			temp.setResizable(false);
 			temp.setVisible(true);
 			
