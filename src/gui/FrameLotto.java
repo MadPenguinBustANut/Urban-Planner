@@ -51,7 +51,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	public FrameLotto() {
-		// TODO vito e' gay
+		// Test
 	}
 
 	public void createTesti() {
