@@ -38,7 +38,7 @@ public class Seleziona implements Serializable{
 	//le condizioni di max e min di coeff. di Efficienza dei lotti
 	
 	private void coeffEff() {
-		int j=0;
+		count = 0;
 		for(int l=0;l<2;l++)
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
@@ -50,28 +50,28 @@ public class Seleziona implements Serializable{
 							x++;
 							System.out.println("Settore"+l+":"+k+"   Lotto"+i+":"+y+" "+centro.lista[l][k].getLotto(i, y).getCeff()+"\n");
 						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
-							lista[j]=centro.lista[l][k].lista[i][y];
+							lista[count]=centro.lista[l][k].lista[i][y];
+							setCount();
 						}
 						}
 					}
-		System.out.println("N volte:"+x+"\n");
-		this.setCount(j);
 	}
 	
 	//Il metodo coeffInv seleziona i lotti presenti nel settore selezionato che rispettano 
 	//le condizioni di max e min di coeff. di Invecchiamento dei lotti
 	
 	private void coeffInv() {
-		int j=0;
+		count = 0;
 		for(int l=0;l<2;l++)
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {	
 						if(centro.lista[l][k].getLotto(i, y).getTip()!=0)
-						if(centro.lista[l][k].getLotto(i, y).getCinv()>min && centro.lista[l][k].getLotto(i, y).getCinv()<max)
-							lista[j]=centro.lista[l][k].getLotto(i, y);
+							if(centro.lista[l][k].getLotto(i, y).getCinv()>min && centro.lista[l][k].getLotto(i, y).getCinv()<max) {
+								lista[count]=centro.lista[l][k].getLotto(i, y);
+								setCount();
+							}
 					}
-		this.setCount(j);
 	}
 	
 	//Il metodo val seleziona i lotti presenti nel settore selezionato che rispettano 
@@ -79,15 +79,17 @@ public class Seleziona implements Serializable{
 	
 	
 	private void val() {
-		int j=0;
+		count = 0;
 		for(int l=0;l<2;l++)
 			for(int k=0;k<3;k++)	
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++)
 						if(centro.lista[l][k].lista[i][y].getTip()==3 && centro.lista[l][k].getLotto(i, y).getTip()!=0)
-						if(centro.lista[l][k].getLotto(i, y).getValore()>min && centro.lista[l][k].getLotto(i, y).getValore()<max)
-							lista[j]=centro.lista[l][k].getLotto(i, y);
-		this.setCount(j);
+							if(centro.lista[l][k].getLotto(i, y).getValore()>min && centro.lista[l][k].getLotto(i, y).getValore()<max) {
+							lista[count]=centro.lista[l][k].getLotto(i, y);
+							setCount();
+						}
+							
 	}
 	
 	
@@ -97,8 +99,8 @@ public class Seleziona implements Serializable{
 		return count;
 	}
 	
-	public void setCount(int c) {
-		count+=c;
+	public void setCount() {
+		count++;
 	}
 	
 	//Ritorna il tipo di selezione effettuata

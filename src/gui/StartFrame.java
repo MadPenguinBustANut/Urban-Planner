@@ -64,17 +64,8 @@ public class StartFrame extends JFrame{
 		gestione.setVisible(false);
 		
 		add(grid);
-		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		this.addWindowListener(new WindowAdapter() {
-			@Override public void windowClosing(WindowEvent e) {
-				JFrame temp= new JFrame("Chiusura Programma");
-				temp.add(new JLabel("Credits: \n Alessandro Zolfanelli \n Vito Carmine Lanaro \n Tiziana Correale \n Giuseppe Madonna \n Stefano Nicodemo"));
-				temp.setDefaultCloseOperation(EXIT_ON_CLOSE);
-				temp.setSize(700,110);
-				temp.setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	          
-	        };
-	    });
 	   
 		setSize(800, 150);
 		setVisible(true);
