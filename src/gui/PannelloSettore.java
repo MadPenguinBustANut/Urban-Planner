@@ -70,14 +70,17 @@ public class PannelloSettore extends JPanel {
 			int b = e.getY();
 			
 			if (a > 20 && a < 20 +(weight*3) && b > 20 && b < 20+(height*2)) {
-				settX = a/weight;
-				settY = b/height;
+				settX = a/(weight);
+				settY = b/(height);
+
+				System.out.println("X="+a+" Y="+b);	
+				System.out.println("settX="+settY+" settY="+settY);
+				
 				for(int i = 0; i < 3; i++) {
 					for(int j = 0; j < 2; j++) {
 						arrayB[j][i] = false;
 					}
 				}
-				
 				rifer.settX = settY;
 				rifer.settY = settX;
 				arrayB[settY][settX] = true;

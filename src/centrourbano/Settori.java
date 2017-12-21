@@ -305,8 +305,7 @@ public class Settori implements Serializable{
 	 * @param X Coordinata X, che insieme alla Y indicano in che posizione si trova il lotto a cui aumentare il valore
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui aumentare il valore
 	 */
-
-	public void addOne(int Y,int X) {
+	public void addOne(int X,int Y) {
 		System.out.println("X="+X+" Y="+Y);
 		if(lista[(int) X][(int) Y].getTip()==EPRIV)
 			lista[(int) X][(int) Y].setValore(lista[(int) X][(int) Y].getValore() + 1);
@@ -327,7 +326,6 @@ public class Settori implements Serializable{
 	 * Questo metodo ritorna il valore del settore
 	 * @return Valore del settore
 	 */
-
 	public int getValore() {
 		return valore;
 	}

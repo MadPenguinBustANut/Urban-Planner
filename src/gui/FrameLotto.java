@@ -144,7 +144,7 @@ public class FrameLotto extends JFrame {
 			}
 			else x.addStato();
 		}
-		else centroUrbano.lista[SettX][SettY].rmLotto(LY, LX);
+		else centroUrbano.lista[SettY][SettX].rmLotto(LY, LX);
 		success.setText("Demolizione avvenuta.");
 	}
 

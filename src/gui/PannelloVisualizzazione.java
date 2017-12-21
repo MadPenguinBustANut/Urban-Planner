@@ -44,9 +44,8 @@ public class PannelloVisualizzazione extends JPanel {
 			for(j = 0, settx = 0; j < 15; j++) {
 				if(j%5 == 0) settx = j/5;
 				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
-				u.drawString(""+ setty +"-"+ settx +","+ i%3 +"-"+j%5, PX+(L*j*Z), PY+(L*i*Z));
+				u.drawString(""+ setty +"-"+ settx +","+ i%3 +"-"+j%5, PX+(L*j*Z), PY+(L*i*Z)+L);
 				
-				System.out.println(""+setty+","+settx+","+i%3+","+j%5);
 				switch(rifer.lista[setty][settx].lista[i%3][j%5].getTip()) {
 				case 1:	paintStrada(u, PX+(L*j*Z), PY+(L*i*Z), L*Z, i%3, j%5, setty, settx);
 						break;
