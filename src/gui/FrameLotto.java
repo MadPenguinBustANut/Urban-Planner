@@ -153,10 +153,16 @@ public class FrameLotto extends JFrame {
 	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
+		if(removeButton.isEnabled()) JOptionPane.showMessageDialog(null, "Demolisci prima di costruire");
 		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX);
-		if(radio2.isSelected()) centroUrbano.lista[SettY][SettX].addLotto(new EPubblico(), LY, LX);
-		if(radio3.isSelected()) centroUrbano.lista[SettY][SettX].addLotto(new EPrivato(), LY, LX);
-		success.setText("Costruzione avvenuta.");
+		if(radio2.isSelected()) {
+			centroUrbano.lista[SettY][SettX].addLotto(new EPubblico(), LY, LX);
+			success.setText("Costruzione avvenuta.");
+		}
+		if(radio3.isSelected()) { centroUrbano.lista[SettY][SettX].addLotto(new EPrivato(), LY, LX);
+			success.setText("Costruzione avvenuta.");
+		}
+		
 	}
 
 	/**

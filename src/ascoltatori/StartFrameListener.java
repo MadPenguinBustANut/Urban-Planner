@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import centrourbano.CentroUrbano;
 import gui.StartFrame;
@@ -29,6 +30,7 @@ public class StartFrameListener implements ActionListener{
 		JMenuItem t = (JMenuItem) e.getSource();
 		if(t.getText().equalsIgnoreCase("Salva")) {
 			salva();
+			JOptionPane.showMessageDialog(null, "File salvato");
 		}
 		else if(t.getText().equalsIgnoreCase("Carica")) {
 			carica();
@@ -36,8 +38,10 @@ public class StartFrameListener implements ActionListener{
 		}
 		else if(t.getText().equalsIgnoreCase("Nuovo")) {
 			nuovo();
+			JOptionPane.showMessageDialog(null, "Simulazione riavviata.");
 		}
 		else if(t.getText().equalsIgnoreCase("Esci")) {
+			JOptionPane.showMessageDialog(null, "Credits: Zolfanelli, Correale, Lanaro, Madonna, Nicodemo");
 			System.exit(0);
 		}
 	}
@@ -68,8 +72,11 @@ public class StartFrameListener implements ActionListener{
 	}
 	
 	private void nuovo() {
-		rifer.uno = new CentroUrbano();
-		rifer.centro.nDati(rifer.uno);
+		rifer.setVisible(false);
+		StartFrame io = new StartFrame(new CentroUrbano());
+		io.setLocation(rifer.getX(), rifer.getY());
+		rifer.dispose();
+		
 	}
 
 	

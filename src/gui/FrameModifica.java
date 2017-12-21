@@ -8,10 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 import centrourbano.CentroUrbano;
 
@@ -29,16 +33,15 @@ public class FrameModifica extends JFrame{
 	private CentroUrbano rifer;
 	
 	public FrameModifica (CentroUrbano e) {
-		super("Seleziona settore");
-		
+
 		rifer = e;
 		JPanel io = new JPanel(new BorderLayout());
 		JPanel io2 = new JPanel();
 		PannelloSettore x = new PannelloSettore(this);
 		JPanel PPul = new JPanel(new GridLayout(1,2));
 		
-		JButton modStrada = new JButton("crea strada");
-		JButton modSettore = new JButton("modifica settore");
+		JButton modStrada = new JButton("Crea strada");
+		JButton modSettore = new JButton("Modifica settore");
 		PPul.add(modStrada);
 		PPul.add(modSettore);
 		
@@ -55,7 +58,7 @@ public class FrameModifica extends JFrame{
 		
 		setTitle("Modifica");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(500, 750);
+		setSize(300, 300);
 		setVisible(true);
 	}
 	
@@ -84,20 +87,21 @@ public class FrameModifica extends JFrame{
 					JFrame nuovoFrame = new JFrame ();
 					CreaStrada nuovaS = new CreaStrada (newP, rifer.lista[settX][settY], rifer);
 					nuovoFrame.add(nuovaS);
-					nuovoFrame.setSize(700, 700);
+					nuovoFrame.setSize(500, 500);
 					nuovoFrame.setVisible(true);
 					nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				}
 				
 				else if(rif.getText().equalsIgnoreCase("modifica settore")) {
-					Point newP = new Point(settX, settY);
+					Point newP = new Point(settY, settX);
 					JFrame nuovoFrame = new JFrame ();
 					PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer, newP);
 					
-					
+					nuovoFrame.setTitle("Seleziona il lotto");
 					nuovoFrame.add(VMod);
 					nuovoFrame.setVisible(true);
-					nuovoFrame.setSize(700,700);
+					nuovoFrame.setResizable(false);
+					nuovoFrame.setSize(270,195);
 					nuovoFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				}	
 			}

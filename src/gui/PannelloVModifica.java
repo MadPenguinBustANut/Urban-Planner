@@ -3,9 +3,13 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Window;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
 import centrourbano.CentroUrbano;
@@ -130,21 +134,28 @@ public class PannelloVModifica extends JPanel {
 					
 					Point Lotto = new Point(lx, ly);
 					
-					io = new FrameLotto(centro.lista[coordinate.x][coordinate.y].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
+					io = new FrameLotto(centro.lista[coordinate.y][coordinate.x].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
 
 					if(io.isVisible()) {
 						io.setVisible(false);
 						io.dispose();
 						//Inizializzazione a nuovo Lotto
-						io.setSize(700, 700);
+						io.setSize(500, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						JComponent comp= (JComponent) e.getSource(); ////toglie frame quando fai modifica lotto
+						Window win = SwingUtilities.getWindowAncestor(comp);
+						win.dispose();
 					}
 					else {
 						//Inizializzazione a Lotto
 						io.setSize(300, 500);
 						io.setVisible(true);
 						io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						JComponent comp= (JComponent) e.getSource(); ////toglie frame quando fai modifica lotto
+						Window win = SwingUtilities.getWindowAncestor(comp);
+						win.dispose();
+					
 				
 					}
 				}

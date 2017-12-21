@@ -6,8 +6,13 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class PannelloSettore extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -26,6 +31,10 @@ public class PannelloSettore extends JPanel {
 	
 	public PannelloSettore (FrameModifica e) {
 		super();
+		Border lowerEtched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+        TitledBorder title = BorderFactory.createTitledBorder(lowerEtched, "Effettua la selezione");
+        this.setBorder(title);
+		this.setToolTipText("Effettua la selezione");
 		addMouseListener(new Posizione());
 		rifer = e;
 	}
@@ -35,16 +44,13 @@ public class PannelloSettore extends JPanel {
 
 		g2.clearRect(0, 0, this.getWidth(), this.getHeight());
 		
-		if(tr) {
-			g2.drawLine(0, 0, 15, 15);
-		}
 		
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 2; j++) {
+		for (int j = 0; j < 3; j++) {
+			for (int i = 0; i < 2; i++) {
 				g2.drawRect(20+(weight*j), 20+(height*i), weight, height);
-				if(arrayB[j][i]) {
-					g2.setColor(Color.CYAN);
-					g2.fillRect(19+(weight*j), 19+(height*i), weight-2, height-2);
+				if(arrayB[i][j] == true) {
+					g2.setColor(Color.YELLOW);
+					g2.fillRect(21+(weight*j), 21+(height*i), weight-2, height-2);
 					g2.setColor(Color.BLACK);
 			}
 		}	
@@ -63,14 +69,17 @@ public class PannelloSettore extends JPanel {
 			int a = e.getX();
 			int b = e.getY();
 			
-			if (a > 20 && a < 20 +(weight*2) && b > 20 && b < 20+(height*3)) {
-				settX = (a/weight);
+			if (a > 20 && a < 20 +(weight*3) && b > 20 && b < 20+(height*2)) {
+				settX = a/weight;
 				settY = b/height;
-				for(boolean[] x : arrayB) {
-					for(boolean t : x)
-						t = false;
+				for(int i = 0; i < 3; i++) {
+					for(int j = 0; j < 2; j++) {
+						arrayB[j][i] = false;
+					}
 				}
 				
+				rifer.settX = settY;
+				rifer.settY = settX;
 				arrayB[settY][settX] = true;
 				repaint();
 				}
