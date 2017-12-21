@@ -3,21 +3,17 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.event.MouseInputListener;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Settori;
-import gui.DatiPanel.MioRicevitore;
 
 public class PannelloVModifica extends JPanel {
 	private static final long serialVersionUID = 1L;

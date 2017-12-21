@@ -6,10 +6,7 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
-import centrourbano.Settori;
 import edifici.EPubblico;
-import edifici.Edificabile;
-import gui.PannelloGestione;
 /**
  * In questa classe si simulano l'invecchiamento del Centro Urbano e la gestione di un disastro. 
  * L'invecchiamento fa diminuire il coefficiente di efficienza. In caso di secondo invecchiamento di un edificio pubblico, questo viene distrutto.
