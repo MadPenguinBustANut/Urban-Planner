@@ -51,7 +51,7 @@ public class Simulazione {
 	public void disastro (CentroUrbano centro) {
 	
 	//genero numeri casuali per determinare settore e lotto
-		Random random = new Random();
+		Random random = new Random(System.currentTimeMillis());
 		int s1 = random.nextInt(2);
 		int s2 = random.nextInt(3);
 		int l1= random.nextInt(3);
@@ -69,7 +69,7 @@ public class Simulazione {
 				
 		//NORDOVEST
 		if ((l1-1) < 0){		
-			if ((l2-1) < 0){ 				//se c'� un cambio di settore per RIGA E COLONNA
+			if ((l2-1) < 0){ 				//se c'e' un cambio di settore per RIGA E COLONNA
 				if((s1-1) >= 0){ 			//se non esce dal riquadro
 					if ((s2-1) >=0) {
 					set1 = s1-1;
