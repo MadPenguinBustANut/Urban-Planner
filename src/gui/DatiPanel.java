@@ -1,7 +1,11 @@
 package gui;
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
+import javax.swing.Timer;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -10,7 +14,7 @@ import centrourbano.CentroUrbano;
 public class DatiPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	
+	CentroUrbano centro;
 	
 	
 	
@@ -18,7 +22,7 @@ public class DatiPanel extends JPanel {
 	
 	public DatiPanel(CentroUrbano c) {
 		super();
-		
+		centro=c;
 		
 		f1.setEditable(false);
 		f2.setEditable(false);
@@ -37,7 +41,11 @@ public class DatiPanel extends JPanel {
 		add(t5);
 		add(f5);
 		
-		nDati(c);
+		nDati(centro);
+		
+		ActionListener listener = new MioRicevitore();
+		Timer t = new Timer(3000, listener);
+		t.start();
 		
 	
 }
@@ -50,6 +58,14 @@ public class DatiPanel extends JPanel {
 		f5.setText(""+c.numLottiPrivati());
 	}
 	
+	class MioRicevitore implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			nDati(centro);
+			
+		}
+	}
+
 
 	private	JLabel t1 = new JLabel("Numero settori");
 	private	JLabel t2 = new JLabel("Numero Lotti");
