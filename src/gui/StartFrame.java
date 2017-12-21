@@ -56,15 +56,14 @@ public class StartFrame extends JFrame{
 		gestione.setVisible(false);
 		
 		add(grid);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		/*setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			@Override public void windowClosing(WindowEvent e) {
 				JOptionPane.showMessageDialog(null,"Credits: \n Alessandro Zolfanelli \n Vito Carmine Lanaro \n Tiziana Correale \n Giuseppe Madonna \n Stefano Nicodemo");
 	            System.exit(0);
 	        };
 	    });
-	    */
+	   
 		setSize(800, 150);
 		setVisible(true);
 	}
