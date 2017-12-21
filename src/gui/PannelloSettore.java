@@ -6,8 +6,13 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class PannelloSettore extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -26,6 +31,10 @@ public class PannelloSettore extends JPanel {
 	
 	public PannelloSettore (FrameModifica e) {
 		super();
+		Border lowerEtched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+        TitledBorder title = BorderFactory.createTitledBorder(lowerEtched, "Effettua la selezione");
+        this.setBorder(title);
+		this.setToolTipText("Effettua la selezione");
 		addMouseListener(new Posizione());
 		rifer = e;
 	}

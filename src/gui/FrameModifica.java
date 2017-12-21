@@ -8,10 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 import centrourbano.CentroUrbano;
 
@@ -29,16 +33,15 @@ public class FrameModifica extends JFrame{
 	private CentroUrbano rifer;
 	
 	public FrameModifica (CentroUrbano e) {
-		super("Seleziona settore");
-		
+
 		rifer = e;
 		JPanel io = new JPanel(new BorderLayout());
 		JPanel io2 = new JPanel();
 		PannelloSettore x = new PannelloSettore(this);
 		JPanel PPul = new JPanel(new GridLayout(1,2));
 		
-		JButton modStrada = new JButton("crea strada");
-		JButton modSettore = new JButton("modifica settore");
+		JButton modStrada = new JButton("Crea strada");
+		JButton modSettore = new JButton("Modifica settore");
 		PPul.add(modStrada);
 		PPul.add(modSettore);
 		
