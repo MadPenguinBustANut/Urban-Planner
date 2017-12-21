@@ -141,7 +141,14 @@ public class FrameLotto extends JFrame {
 			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 
+				JFrame temp= new JFrame("Errore");
+				temp.add(new JLabel("Rimozione già effettuata."));
+				temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				temp.setSize(200,110);
+				temp.setVisible(true);
+
 				JOptionPane.showMessageDialog(null, "Rimozione gia' effettuata.");
+
 			}
 			else x.addStato();
 		}
@@ -154,7 +161,13 @@ public class FrameLotto extends JFrame {
 	 * tipo scelto dall'utente attraverso i pulsanti radiali
 	 */
 	public void costruzione() {
-		if(removeButton.isEnabled()) JOptionPane.showMessageDialog(null, "Demolisci prima di costruire");
+		if(removeButton.isEnabled()) {
+			JFrame temp= new JFrame("Errore");
+			temp.add(new JLabel("Demolisci prima di costruire."));
+			temp.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			temp.setSize(200,110);
+			temp.setVisible(true);
+		}
 		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX);
 		if(radio2.isSelected()) {
 			centroUrbano.lista[SettY][SettX].addLotto(new EPubblico(), LY, LX);

@@ -146,10 +146,7 @@ public class PannelloVModifica extends JPanel {
 					
 					Point Lotto = new Point(lx, ly);
 					
-					
-
 					if(io.isVisible()) {
-						io.setVisible(false);
 						io.dispose();
 						io = new FrameLotto(centro.lista[coordinate.y][coordinate.x].lista[Lotto.y][Lotto.x], centro, coordinate, Lotto);
 						io.setSize(300, 500);
