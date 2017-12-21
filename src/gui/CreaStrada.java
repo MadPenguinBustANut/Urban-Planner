@@ -219,7 +219,7 @@ private class mouseEvent implements MouseInputListener{
 				}
 			
 		JFrame FrameEcc = new JFrame ();
-		JLabel scritta = new JLabel ("Seleziona un punto ortogonale");
+		JLabel scritta = new JLabel ("Seleziona un percorso ortonale e senza lotti");
 		FrameEcc.add(scritta);
 		FrameEcc.setSize(300, 60);
 		FrameEcc.setVisible(true);
