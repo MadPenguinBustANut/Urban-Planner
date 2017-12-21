@@ -57,8 +57,8 @@ public class Simulazione {
 		Random random = new Random(System.currentTimeMillis());
 		int settX = random.nextInt(2);
 		int settY = random.nextInt(3);
-		int LY= random.nextInt(3);
-		int LX= random.nextInt(5);
+		int LY= random.nextInt(5);
+		int LX= random.nextInt(3);
 		int d1= random.nextInt(100); //coefficiente di efficenza può essere anche azzerato;
 		
 		//seleziono il lotto casuale usando i numeri generati prima
@@ -89,7 +89,7 @@ public class Simulazione {
 			if((settY - 1) > -1)
 				centro.lista[(int) settX][(int) (settY - 1)].subCeff(d1,LX, 0);
 			
-			if(((settX + 1) < MAX_MASTER_X) && ((settY - 1) < MAX_MASTER_Y))
+			if(((settX + 1) < MAX_MASTER_X) && ((settY - 1) > -1))
 				centro.lista[(int) (settX + 1)][(int) (settY - 1)].subCeff(d1,0, 0);
 			
 			return;
