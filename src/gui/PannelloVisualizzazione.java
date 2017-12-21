@@ -44,7 +44,6 @@ public class PannelloVisualizzazione extends JPanel {
 			for(j = 0, settx = 0; j < 15; j++) {
 				if(j%5 == 0) settx = j/5;
 				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
-				u.drawString(""+ setty +"-"+ settx +","+ i%3 +"-"+j%5, PX+(L*j*Z), PY+(L*i*Z)+L);
 				
 				switch(rifer.lista[setty][settx].lista[i%3][j%5].getTip()) {
 				case 1:	paintStrada(u, PX+(L*j*Z), PY+(L*i*Z), L*Z, i%3, j%5, setty, settx);
@@ -75,7 +74,6 @@ public class PannelloVisualizzazione extends JPanel {
 		
 		e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 		
-		System.out.println("SettX="+settX+" settY="+settY+" lottX="+lottX+" lottY="+lottY);
 		//Destra
 		if( (lottY) == 4 ) {
 			if((settY) != 2) {
