@@ -25,7 +25,7 @@ public class PannelloGestione extends JPanel {
 		private JButton pModifica;
 		private CentroUrbano centroUrbano;
 		//private SimulazioneT sim;
-		private JTextArea informazioni;
+		public JTextArea informazioni;
 		
 		private JPanel paPulsanti;
 		
