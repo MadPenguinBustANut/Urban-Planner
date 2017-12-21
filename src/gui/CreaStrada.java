@@ -14,7 +14,6 @@ import javax.swing.event.MouseInputListener;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Settori;
-import gui.PannelloVModifica.MioRicevitore;
 
 public class CreaStrada extends JPanel {
 	private static final long serialVersionUID = 1L;
