@@ -43,7 +43,7 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {
-						if(centro.lista[l][k].getLotto(i, y).getTip()==0) {
+						if(centro.lista[l][k].getLotto(i, y).getTip()!=0) {
 							
 							//Testing se viene effettuato il select su tutte i lotti
 

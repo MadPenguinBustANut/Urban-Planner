@@ -31,6 +31,8 @@ public class StartFrame extends JFrame{
 		
 		uno = c;
 		centro = new DatiPanel(c);
+		
+		//Aggiunge i bottoni Selezione Visualizzazione e Gestione presenti in tutti i pannel
 		selezioneB.addActionListener(new ButtonListener(this));
 		gestioneB.addActionListener(new ButtonListener(this));
 		visualizzazioneB.addActionListener(new ButtonListener(this));
@@ -39,12 +41,17 @@ public class StartFrame extends JFrame{
 		gestione = new PannelloGestione(c);
 		
 		
+		//Li inserisce nel frame
+		
 		io.add(gestioneB);
 		io.add(selezioneB);
 		io.add(visualizzazioneB);
 		
-
+		//Crea il pannello contenitore
+		
 		contenitore = new JPanel(new GridLayout(1,1));
+		
+		//Vengono piazzati i varii oggetti nel frame
 		
 		grid.add(contenitore, BorderLayout.CENTER);
 		grid.add(centro, BorderLayout.NORTH);
@@ -68,6 +75,8 @@ public class StartFrame extends JFrame{
 		setSize(800, 150);
 		setVisible(true);
 	}
+	
+	//Menu non implementato per caricare un file contentente il centro da esaminare (cioè penso)
 	
 	private JMenuBar addFile() {
 		JMenuBar due = new JMenuBar();
@@ -109,6 +118,8 @@ public class StartFrame extends JFrame{
 	private JButton visualizzazioneB = new JButton("Visualizzazione");
 	
 
+	
+	//Action Listener dei bottoni Gestione Selezione e Visualizzazione
 
 public class ButtonListener implements ActionListener{
 		StartFrame rifer;
