@@ -2,6 +2,8 @@ package intermezzi;
 
 import java.util.Random;
 
+import javax.swing.JTextArea;
+
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
 import centrourbano.Settori;
@@ -49,233 +51,89 @@ public class Simulazione {
 	 * seleziona un lotto causale, ne modifica il coefficiente di efficienza sottraendo ad esso un numero causale da 1 a 100)
 	 * poi modifica tutti i lotti circostanti sottraendo al loro coefficiente di efficienza un terzo di quel numero casuale
 	 * */
-	public void disastro (CentroUrbano centro) {
+	public void disastro (CentroUrbano centro,JTextArea informazioni) {
 	
 	//genero numeri casuali per determinare settore e lotto
 		Random random = new Random(System.currentTimeMillis());
-		int s1 = random.nextInt(2);
-		int s2 = random.nextInt(3);
-		int l1= random.nextInt(3);
-		int l2= random.nextInt(5);
+		int settX = random.nextInt(2);
+		int settY = random.nextInt(3);
+		int LY= random.nextInt(3);
+		int LX= random.nextInt(5);
 		int d1= random.nextInt(100); //coefficiente di efficenza può essere anche azzerato;
 		
 		//seleziono il lotto casuale usando i numeri generati prima
-		centro.lista[s1][s2].lista[l1][l2].setCeff(centro.lista[s1][s2].lista[l1][l2].getCeff()-d1);
-	
-	
-		int set1 = -1;
-		int set2 = -1;
-		int lot1 = -1;
-		int lot2 = -1;
-				
-		//NORDOVEST
-		if ((l1-1) < 0){		  //quando la x del lotto e' uguale a 0
-			if ((l2-1) < 0){ 		//quando la y del lotto e' 0		//se c'e' un cambio di settore per RIGA E COLONNA
-				if((s1-1) > -1){ 			//se non esce dal riquadro
-					if ((s2-1) > -1) {
-						set1 = s1-1;
-						set2 = s2-1;
-						lot1 = 2;
-						lot2 = 4;
-					}
-				}
-			}
-			else { 			//se c'è solo un cambio di settore SOLO PER RIGA
-			set1 = s1-1;
-			set2 = s2;
-			lot1 = 2;
-			lot2 = l2;
-			}
-		}
-			else if ((l2-1)<0){ //se c'è un cambio di settore SOLO PER COLONNA 
-			if ((s2-1)>0)
-			set1 = s1;
-			set2 = s2-1;
-			lot1 = l1;
-			lot2 = 4;	
-			}   
-			else {
-			set1 = s1;
-			set2 = s2;
-			lot1 = l1-1;
-			lot2 = l2-1;
+		centro.lista[settX][settY].lista[LX][LY].setCeff(centro.lista[settX][settY].lista[LX][LY].getCeff()-d1);
+		informazioni.append("Il disastro e' avvenuto nel settore " + settY + " " + settX + " al lotto " +LX + " " + LY  + "\n");
+		
+
+		if(LX==MAX_X && LY < MAX_Y) {
+			if((settX + 1) < MAX_MASTER_X)
+				centro.lista[(int) (settX + 1)][(int) settY].subCeff(d1,0, LY);
 		}
 		
-		centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));	
+		if(LX < MAX_X && LY == MAX_Y) {
+			if((settY + 1) < MAX_MASTER_Y)
+				 centro.lista[settX][(settY + 1)].subCeff(d1,LX, 0);
+		}
+		
+		if(LX==MAX_X && LY == MAX_Y) {
+			if((settX + 1) < MAX_MASTER_X && (settY + 1) <MAX_MASTER_Y)
+				centro.lista[(int) (settX + 1)][(int) (settY + 1)].subCeff(d1,0, MAX_Y);			
 	
-	//NORD
-		if ((l1-1) < 0){				//cambio settore per riga
-			if((s1-1) >= 0){			//se non esce
-				set1 = s1-1;
-				set2 = s2;
-				lot1 = 2;
-				lot2 = l2;
-			}
 		}
-		else {							//se non cambia settore
-			set1 = s1;
-			set2 = s2;
-			lot1 = l1-1;
-			lot2 = l2;
-		}
-	
-		//NORDEST
-		if ((l1-1) < 0){
-			if ((l2 + 1) > 4){
-				if ((s1-1) >= 0){ // fuori da RIGA E COLONNA
-					if ((s2+1) < 3){ 
-						set1 = s1-1;
-						set2 = s2+1;
-						lot1 = 2;
-						lot2 = 0;
-					}
-				}
-				else throw new IndexOutOfBoundsException();
-			}	
-			else { //fuori dalla RIGA ma non dalla colonna
-				set1 = s1-1;
-				set2 = s2;
-				lot1 = 2;
-				lot2 = l2+1;
-			}
-		}
-		else {
+		
+		if(LX==MAX_X && LY == 0) {
+			if((settX + 1) < MAX_MASTER_X)
+				centro.lista[(int) (settX + 1)][(int) settY].subCeff(d1,0, LY);
 
-		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
+			if((settY - 1) > -1)
+				centro.lista[(int) settX][(int) (settY - 1)].subCeff(d1,LX, 0);
 			
-	
-		//EST
-		if ((l2+1) > 4) {					//cambio settore per riga
-			if((s2+1) < 2) {
-				set1 = s1;
-				set2 = s2+1;
-				lot1 = l1;
-				lot2 = 0;
-			}
+			if(((settX + 1) < MAX_MASTER_X) && ((settY - 1) < MAX_MASTER_Y))
+				centro.lista[(int) (settX + 1)][(int) (settY - 1)].subCeff(d1,0, 0);
+			
+			return;
+		}
+		
+		if(LX==0 && LY == MAX_Y) {
+			
+			if((settY + 1) < MAX_MASTER_Y)
+				centro.lista[(int) settX][(int) (settY + 1)].subCeff(d1,LX, 0);
+			
+			if((settX - 1) >-1)
+				centro.lista[(int) (settX - 1)][(int) settY].subCeff(d1,MAX_X, LY);
+			
+			if(((settX - 1) >-1) && ((settY + 1) < MAX_MASTER_Y))
+				centro.lista[(int) (settX - 1)][(int) settY + 1].subCeff(d1,MAX_X, 0);
+			
+			return;
+		}
+		
+		if(LX==0 && LY >0) {
+			if((settX - 1) >-1)
+				centro.lista[(int) (settX - 1)][(int) settY].subCeff(d1,MAX_X, LY);
+		}
+		
+		if(LX>0 && LY ==0) {
+			if((settY - 1) > -1)
+				centro.lista[(int) settX][(int) (settY - 1)].subCeff(d1,LX, MAX_Y);
+		}
+		
+		if(LX==0 && LY ==0) {
+			
+			if((settX - 1) >-1 && (settY + 1) < MAX_MASTER_Y)
+				centro.lista[(int) (settX -1)][(int) (settY + 1)].subCeff(d1,MAX_X, 0);
 
 		}
-		else {								//nessun cambio settore
-			set1 = s1;
-			set2 = s2;
-			lot1 = l1;
-			lot2 = l2+1;
-		}
 	
-		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
-	
-		//SUDEST
-		if((l1+1) > 2) {
-			if ((l2+1) > 2) {
-				if((s1+1) < 2) {
-					if ((s2+1) < 3) {		//cambio settore per riga e colonna
-						set1 = s1+1;
-						set2 = s2+1;
-						lot1 = 0;
-						lot2 = 0;
-					}
-				}
-			}
-			else if ((s1+1) < 3){			//cambio settore per riga
-				set1 = s1+1;
-				set2 = s2;
-				lot1 = 0;
-				lot2 = l2+1;
-			}
-		}
-		else if ((l2 + 1) > 2){ 			//cambio di settore per colonna
-			if ((s2+1) < 2) {	
-				set1 = s1;
-				set2 = s2+1;
-				lot1 = l1+1;
-				lot2 = 0;
-			}
-		}	
-		else {								//nessun cambio di settore
-			set1 = s1;
-			set2 = s2;
-			lot1 = l1+1;
-			lot2 = l2+1;
-		}
-	
-		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
-		
-		//SUD
-		if ((l1+1) > 2) {					//cambio di settore per riga
-			if((s1+1) < 2) {
-				set1 = s1+1;
-				set2 = s2;
-				lot1 = 0;
-				lot2 = l2;
-			}
-		}
-		else {								//nessun cambio di settore
-			set1 = s1;
-			set2 = s2;
-			lot1 = l1+1;
-			lot2 = l2;
-		}
-	
-		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
-		
-		//SUDOVEST							
-		if((l1+1) < 0) {
-			if((l2-1) < 0) {
-				if((s1+1) < 2) {			//cambio di settore per riga e colonna
-					if((s2-1) >= 0) {
-						set1 = s1+1;
-						set2 = s2-1;
-						lot1 = 0;
-						lot2 = 4;
-					}
-				}
-			}
-			else if ((s1+1) < 2) {							//cambio di settore per riga
-				set1 = s1+1;
-				set2 = s2;
-				lot1 = 4;
-				lot2 = l2-1;
-			}
-		}
-		else if ((l2-1) < 0) {								//cambio di seettore per colonna
-			if ((s2-1) >= 0) {
-				set1 = s1;
-				set2 = s2-1;
-				lot1 = l1+1;
-				lot2 = 4;
-			}
-		}
-		else {												//nessun cambio di settore
-			set1 = s1;
-			set2 = s2; 
-			lot1 = l1-1;
-			lot2 = l2+1;
-		}
-	
-	if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-		centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
-	
-	//OVEST
-		if((l1-1) < 0) {
-			if ((s1-1) >=0){
-				set1 = s1-1;
-				set2 = s2;
-				lot1 = 4;
-				lot2 = l2;
-			}
-		}
-		else {
-			set1 = s1;
-			set2 = s2;
-			lot1 = l1-1;
-			lot2 = l2;
-		}
-		
-		if((set1!=-1) && (set2!=-1) && (lot1!=-1) && (lot2!=-1))
-			centro.lista[set1][set2].lista[lot1][lot2].setCeff(centro.lista[set1][set2].lista[lot1][lot2].getCeff()-(d1/3));
 	}
-}
+	
+	//Ho associato delle MACRO ai limiti del settore in modo da rendere piu leggibile il codice
+	private static final int MAX_X = 2;
+	private static final int MAX_Y = 4;
+	
+
+	//Ho associato delle MACRO ai limiti del centrourbano in modo da rendere piu leggibile il codice
+	private static final int MAX_MASTER_X = 2;
+	private static final int MAX_MASTER_Y = 3;
 }
