@@ -55,7 +55,7 @@ public class PannelloGestione extends JPanel {
 				JButton rif = (JButton) e.getSource();
 				if(rif.getText().equalsIgnoreCase("Modifica")) {
 					FrameModifica io = new FrameModifica(centroUrbano);
-					io.setSize(800, 600);
+					io.setSize(950, 310);
 					io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					io.setVisible(true);
 				}

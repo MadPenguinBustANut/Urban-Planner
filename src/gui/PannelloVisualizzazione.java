@@ -75,7 +75,7 @@ public class PannelloVisualizzazione extends JPanel {
 		
 		e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 		
-		
+		System.out.println("SettX="+settX+" settY="+settY+" lottX="+lottX+" lottY="+lottY);
 		//Destra
 		if( (lottY) == 4 ) {
 			if((settY) != 2) {
@@ -111,7 +111,7 @@ public class PannelloVisualizzazione extends JPanel {
 		
 		//Sopra
 		if( (lottX) == 0) {
-			if((settX) != 0) {
+			if((settX) != 1) {
 				if(rifer.lista[settX+1][settY].lista[2][lottY].getTip() == 1)
 					e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 				}
