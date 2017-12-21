@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 //import intermezzi.SimulazioneT;
+import intermezzi.SimulazioneT;
 
 
 /**
@@ -24,7 +25,7 @@ public class PannelloGestione extends JPanel {
 		private JButton pDisastro;
 		private JButton pModifica;
 		private CentroUrbano centroUrbano;
-		//private SimulazioneT sim;
+		private SimulazioneT sim;
 		private JTextArea informazioni;
 		
 		private JPanel paPulsanti;
@@ -42,7 +43,7 @@ public class PannelloGestione extends JPanel {
 			pDisastro.addActionListener(new ButtonListener());
 			
 			
-			//sim = new SimulazioneT();
+			sim = new SimulazioneT();
 			
 			paPulsanti = new JPanel(new GridLayout(3, 1));
 			
@@ -68,11 +69,11 @@ public class PannelloGestione extends JPanel {
 					io.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					io.setVisible(true);
 				}
-			//	else if(rif.getText().equalsIgnoreCase("Invecchiamento"))
-					//sim.invecchiamento(centroUrbano);
+					else if(rif.getText().equalsIgnoreCase("Invecchiamento"))
+						sim.invecchiamento(centroUrbano);
 				
-			//	else if(rif.getText().equalsIgnoreCase("Disastro"))
-					//sim.disastro(centroUrbano,informazioni);
+					else if(rif.getText().equalsIgnoreCase("Disastro"))
+						sim.disastro(centroUrbano,informazioni);
 					
 			}
 			
