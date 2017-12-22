@@ -1,7 +1,7 @@
 package seleziona;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
 
 import centrourbano.*;
 
@@ -13,6 +13,7 @@ public class Seleziona implements Serializable{
 	
 	public Seleziona(CentroUrbano centr,double ma,double mi,int scelt) {
         lista= new Lotti[DIM_LIST];
+        settLott= new ArrayList<String>();
 		centro=centr;
 		max=ma;
 		min=mi;
@@ -45,14 +46,9 @@ public class Seleziona implements Serializable{
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {
 						if(centro.lista[l][k].getLotto(i, y).getTip()!=0) {
-							
-							//Testing se viene effettuato il select su tutte i lotti
-
-							x++;
-							System.out.println(centro.lista[l][k].getLotto(i, y).getCeff()+"\n");
 						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
 							lista[count]=centro.lista[l][k].lista[i][y];
-							System.out.println(lista[count].getCeff());
+					        settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
 							setCount();
 						}
 						}
@@ -71,6 +67,7 @@ public class Seleziona implements Serializable{
 						if(centro.lista[l][k].getLotto(i, y).getTip()!=0)
 							if(centro.lista[l][k].getLotto(i, y).getCinv()>min && centro.lista[l][k].getLotto(i, y).getCinv()<max) {
 								lista[count]=centro.lista[l][k].getLotto(i, y);
+								settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
 								setCount();
 							}
 					}
@@ -89,6 +86,7 @@ public class Seleziona implements Serializable{
 						if(centro.lista[l][k].lista[i][y].getTip()==3 && centro.lista[l][k].getLotto(i, y).getTip()!=0)
 							if(centro.lista[l][k].getLotto(i, y).getValore()>min && centro.lista[l][k].getLotto(i, y).getValore()<max) {
 							lista[count]=centro.lista[l][k].getLotto(i, y);
+							settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
 							setCount();
 						}
 							
@@ -117,6 +115,10 @@ public class Seleziona implements Serializable{
     private double min;
     private int scelta;
     private int count=0;
+    
+    
+    //Array di Stringhe contenenti il numero di settore e di lotto dei lotti memorizzati
+    public ArrayList<String> settLott;
     
     private int x=0;
     private static final int MAX_X = 3;

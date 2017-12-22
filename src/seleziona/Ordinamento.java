@@ -38,18 +38,24 @@ public class Ordinamento implements Serializable{
 			boolean f=false;
 			for(int j=0;j<select.getCount()-1;j++) {
 				if(flag==0) {
-					if(select.lista[j].getCeff()>select.lista[j+1].getCeff()) {
-						Lotti k=select.lista[j];
-						select.lista[j]=select.lista[j+1];
-						select.lista[j+1]=k;
-						f=true;
-					}
-				}
-				else {
 					if(select.lista[j].getCeff()<select.lista[j+1].getCeff()) {
 						Lotti k=select.lista[j];
 						select.lista[j]=select.lista[j+1];
 						select.lista[j+1]=k;
+						String x=select.settLott.get(j);
+						select.settLott.set(j, select.settLott.get(j+1));
+						select.settLott.set(j+1, x);
+						f=true;
+					}
+				}
+				else {
+					if(select.lista[j].getCeff()>select.lista[j+1].getCeff()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						String x=select.settLott.get(j);
+						select.settLott.set(j, select.settLott.get(j+1));
+						select.settLott.set(j+1, x);
 						f=true;
 					}
 				}
@@ -67,18 +73,24 @@ public class Ordinamento implements Serializable{
 			boolean f=false;
 			for(int j=0;j<select.getCount()-1;j++) {
 			    if(flag==0) {
-			    	if(select.lista[j].getCinv()>select.lista[j+1].getCinv()) {
-						Lotti k=select.lista[j];
-						select.lista[j]=select.lista[j+1];
-						select.lista[j+1]=k;
-						f=true;
-					}
-			    }
-			    else{
 			    	if(select.lista[j].getCinv()<select.lista[j+1].getCinv()) {
 						Lotti k=select.lista[j];
 						select.lista[j]=select.lista[j+1];
 						select.lista[j+1]=k;
+						String x=select.settLott.get(j);
+						select.settLott.set(j, select.settLott.get(j+1));
+						select.settLott.set(j+1, x);
+						f=true;
+					}
+			    }
+			    else{
+			    	if(select.lista[j].getCinv()>select.lista[j+1].getCinv()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						String x=select.settLott.get(j);
+						select.settLott.set(j, select.settLott.get(j+1));
+						select.settLott.set(j+1, x);
 						f=true;
 					}
 			    }
@@ -96,18 +108,25 @@ public class Ordinamento implements Serializable{
 			boolean f=false;
 			for(int j=0;j<select.getCount()-1;j++) {
 				if(flag==0) {
-					if(select.lista[j].getValore()>select.lista[j+1].getValore()) {
-						Lotti k=select.lista[j];
-						select.lista[j]=select.lista[j+1];
-						select.lista[j+1]=k;
-						f=true;
-					}
-				}
-				else{
 					if(select.lista[j].getValore()<select.lista[j+1].getValore()) {
 						Lotti k=select.lista[j];
 						select.lista[j]=select.lista[j+1];
 						select.lista[j+1]=k;
+						String x=select.settLott.get(j);
+						select.settLott.set(j, select.settLott.get(j+1));
+						select.settLott.set(j+1, x);
+						f=true;
+					}
+				}
+				else{
+					if(select.lista[j].getValore()>select.lista[j+1].getValore()) {
+						Lotti k=select.lista[j];
+						select.lista[j]=select.lista[j+1];
+						select.lista[j+1]=k;
+						String x=select.settLott.get(j);
+						select.settLott.set(j, select.settLott.get(j+1));
+						select.settLott.set(j+1, x);
+			
 						f=true;
 					}
 				}
@@ -123,4 +142,5 @@ public class Ordinamento implements Serializable{
 	
 	private int flag;
 	private Seleziona select;
+	
 }
