@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
+import eccezioni.NotPrivException;
 import edifici.EPrivato;
 import edifici.EPubblico;
 
@@ -139,13 +140,23 @@ public class FrameLotto extends JFrame {
 	}
 //vendi edificabile privato
 	public void vendita() {
+		
+		try {
+	
+		centroUrbano.lista[SettY][SettX].vendiEdificio(LX, LY);
 		vendiButton.setEnabled(false);
 		removeButton.setEnabled(false);
-		try {
-		centroUrbano.lista[SettY][SettX].vendiEdificio(LX, LY);
-		}
-		catch{
 		success.setText("Vendita effettuata");
+		}
+		catch(NotPrivException e) {
+			JFrame temp= new JFrame("Errore");
+			temp.add(new JLabel("Il lotto non è vendibile"));
+			temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			temp.setSize(200,110);
+			temp.setResizable(false);
+			temp.setVisible(true);
+		}
+		
 	}
 	/**
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
