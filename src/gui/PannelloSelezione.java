@@ -182,12 +182,6 @@ public class PannelloSelezione extends JPanel{
 				textArea.append("Coeff Invecchiamento :"+Select.lista[i].getCinv()+"\n");
 				
 				if (Select.getScelta() == 2 && Select.lista[i].getTip() == 3)
-					textArea.append("Valore :"+Select.lista[i].getValore()+"\n");
-				textArea.append("Lotto :"+i+"\t");
-				textArea.append("Coeff Efficienza :"+Select.lista[i].getCeff()+"\t");
-				textArea.append("Coeff Invecchiamento :"+Select.lista[i].getCinv()+"\t");
-				
-				if (Select.getScelta() == 2 && Select.lista[i].getTip() == 3)
 					textArea.append("Valore"+Select.lista[i].getValore()+"\t");
 	                textArea.append("\n");
 			}
