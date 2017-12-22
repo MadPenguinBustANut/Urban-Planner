@@ -8,8 +8,9 @@ import centrourbano.*;
 public class Seleziona implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	//Seleziona contiene il settore selezionato, il massimo e il minimo ammissibili nella selezione, 
-	//il tipi di selezione scelta e un array che conterra tutti i lotti scelti
+	/**Seleziona contiene il settore selezionato, il massimo e il minimo ammissibili nella selezione, 
+	* il tipi di selezione scelta e un array che conterra tutti i lotti scelti
+	*/
 	
 	public Seleziona(CentroUrbano centr,double ma,double mi,int scelt) {
         lista= new Lotti[DIM_LIST];
@@ -21,7 +22,9 @@ public class Seleziona implements Serializable{
 		
 	}
 	
-	//Il metodo scelta selezione il metodo di selezione
+	/**
+	 *Seleziona il metodo di selezione
+	 * */
 	
 	public void Scelta() {
 		switch(scelta) {
@@ -36,8 +39,9 @@ public class Seleziona implements Serializable{
 		
 	}
 	
-	//Il metodo coeffEff selezione i lotti presenti nel settore selezionato che rispettano 
-	//le condizioni di max e min di coeff. di Efficienza dei lotti
+	/**Seleziona i lotti presenti nel settore selezionato che rispettano 
+	*le condizioni di max e min di coeff. di Efficienza dei lotti
+	*/ 
 	
 	private void coeffEff() {
 		count = 0;
@@ -55,8 +59,9 @@ public class Seleziona implements Serializable{
 					}
 	}
 	
-	//Il metodo coeffInv seleziona i lotti presenti nel settore selezionato che rispettano 
-	//le condizioni di max e min di coeff. di Invecchiamento dei lotti
+	/**Seleziona i lotti presenti nel settore selezionato che rispettano 
+	*le condizioni di max e min di coeff. di Invecchiamento dei lotti
+	*/
 	
 	private void coeffInv() {
 		count = 0;
@@ -73,8 +78,8 @@ public class Seleziona implements Serializable{
 					}
 	}
 	
-	//Il metodo val seleziona i lotti presenti nel settore selezionato che rispettano 
-    //le condizioni di max e min di Valore dei lotti
+	/**Seleziona i lotti presenti nel settore selezionato che rispettano 
+    *le condizioni di max e min di Valore dei lotti */
 	
 	
 	private void val() {
@@ -93,7 +98,7 @@ public class Seleziona implements Serializable{
 	}
 	
 	
-	//Ritorrna il Conto di quanti elementi ci sono in lista
+	/**Ritorna il Conto di quanti elementi ci sono in lista */
 	
 	public int getCount() {
 		return count;
@@ -103,7 +108,7 @@ public class Seleziona implements Serializable{
 		count++;
 	}
 	
-	//Ritorna il tipo di selezione effettuata
+	/**Ritorna il tipo di selezione effettuata */
 	
 	public int getScelta() {
 		return scelta;

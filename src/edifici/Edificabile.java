@@ -9,7 +9,7 @@ public abstract class Edificabile implements Serializable{
 	public Edificabile() {
 		 Random rnd = new Random(System.currentTimeMillis());
 		 ceff=rnd.nextInt(100);
-		 cinv=rnd.nextInt(100);
+		 cinv=rnd.nextInt(10);
 	}
 	
 	

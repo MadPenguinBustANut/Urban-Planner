@@ -9,12 +9,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-
 import centrourbano.CentroUrbano;
 import gui.StartFrame;
 
@@ -37,7 +34,7 @@ public class StartFrameListener implements ActionListener{
 			
 		}
 		else if(t.getText().equalsIgnoreCase("Nuovo")) {
-			nuovo();
+			nuovo(new CentroUrbano());
 			
 		}
 		else if(t.getText().equalsIgnoreCase("Esci")) {
@@ -45,7 +42,7 @@ public class StartFrameListener implements ActionListener{
 			JFrame temp= new JFrame("Chiusura");
 			temp.add(new JLabel("Made by Alessandro Zolfanelli, Tiziana Correale, Stefano Nicodemo, Vito Carmine Lanaro e Giuseppe Madonna."));
 			temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			temp.setSize(300,110);
+			temp.setSize(700,110);
 			temp.setResizable(false);
 			temp.setVisible(true);
 			
@@ -64,29 +61,28 @@ public class StartFrameListener implements ActionListener{
 			out.writeObject(rifer.uno);
 		} catch (IOException e) {
 		}
-		finally{JFrame temp= new JFrame("Salvataggio");
-		temp.add(new JLabel("Salvato nella cartella corrente in Salvataggio.sav"));
-		temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		temp.setSize(500,110);
-		temp.setResizable(false);
-		temp.setVisible(true);
+		
+		
 		}
-	}
 	
 	private void carica() {
-		JFileChooser io = new JFileChooser();
-		JFrame nuovo = new JFrame("File");
-		io.addActionListener(new Filechooserlistener(nuovo));
-		nuovo.add(io);
-		nuovo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		nuovo.setSize(600,  300);
-		nuovo.setVisible(true);
+		FileInputStream reader = null;
+		ObjectInputStream in = null;
+		try {
+			reader = new FileInputStream(file);
+			in = new ObjectInputStream(reader);
+			nuovo((CentroUrbano)in.readObject());
+		} catch (IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
-	private void nuovo() {
+	private void nuovo(CentroUrbano c) {
 		rifer.setVisible(false);
-		StartFrame io = new StartFrame(new CentroUrbano());
+		StartFrame io = new StartFrame(c);
 		io.setLocation(rifer.getX(), rifer.getY());
 		JFrame temp= new JFrame("Avviso");
 		temp.add(new JLabel("Simulazione riavviata."));
@@ -98,41 +94,7 @@ public class StartFrameListener implements ActionListener{
 		
 	}
 
-	
-	
-	private class Filechooserlistener implements ActionListener{
 
-		JFrame rife;
-		
-		public Filechooserlistener(JFrame nuovo) {
-			rife = nuovo;
-		}
-		
-		
-		public void actionPerformed(ActionEvent e) {
-			JFileChooser chooser = (JFileChooser) e.getSource();
-			if(JFileChooser.APPROVE_SELECTION.equalsIgnoreCase(e.getActionCommand())) {
-				file = chooser.getSelectedFile();
-				
-				FileInputStream reader = null;
-				try {
-					reader = new FileInputStream(file);
-				} catch (FileNotFoundException e1) {
-				}
-				ObjectInputStream in = null;
-				try {
-					in = new ObjectInputStream(reader);
-					rifer.uno = (CentroUrbano) in.readObject();
-				} catch (ClassNotFoundException e1) {
-				} catch (IOException e1) {
-				}
-				rifer.centro.nDati(rifer.uno);
-			}
-			else if(JFileChooser.CANCEL_SELECTION.equalsIgnoreCase(e.getActionCommand())) {
-				rife.dispose();
-			}
-		}
-		
-	}
-	
 }
+
+

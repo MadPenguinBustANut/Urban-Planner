@@ -9,7 +9,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -52,7 +51,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	public FrameLotto() {
-		// TODO vito e' gay
+		// Test
 	}
 
 	public void createTesti() {
@@ -82,6 +81,7 @@ public class FrameLotto extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// costruisci
 				costruzione();
+				dispose();
 				
 			}
 		}
@@ -142,7 +142,7 @@ public class FrameLotto extends JFrame {
 			if(x.getStato() > 0) {
 		
 				JFrame temp= new JFrame("Errore");
-				temp.add(new JLabel("Rimozione già effettuata."));
+				temp.add(new JLabel("Rimozione gia' effettuata."));
 				temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				temp.setSize(200,110);
 				temp.setResizable(false);
@@ -163,9 +163,10 @@ public class FrameLotto extends JFrame {
 		if(removeButton.isEnabled()) {
 			JFrame temp= new JFrame("Errore");
 			temp.add(new JLabel("Demolisci prima di costruire."));
-			temp.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 			temp.setSize(200,110);
 			temp.setVisible(true);
+			return;
 		}
 		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX);
 		if(radio2.isSelected()) {

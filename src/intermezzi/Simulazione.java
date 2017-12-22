@@ -6,9 +6,7 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
-import centrourbano.Settori;
 import edifici.EPubblico;
-import edifici.Edificabile;
 /**
  * In questa classe si simulano l'invecchiamento del Centro Urbano e la gestione di un disastro. 
  * L'invecchiamento fa diminuire il coefficiente di efficienza. In caso di secondo invecchiamento di un edificio pubblico, questo viene distrutto.
@@ -16,9 +14,9 @@ import edifici.Edificabile;
  * del coefficiente di efficienza del lotto colpito dal disastro e una modifica ridotta (quel numero casuale /3), a tutti settori circostanti. 
  * 
  * */
-public class SimulazioneT {
+public class Simulazione {
 	
-	public SimulazioneT() {
+	public Simulazione() {
 	}
 	
 	
@@ -26,7 +24,7 @@ public class SimulazioneT {
 	 * RICEVE: @param CentroUrbano e ne modifica il coefficiente di efficienza di ogni lotto in ogni settore 
 	 * moltiplicandolo per il suo coefficiente di invecchiamento /100
 	 * */
-	public void invecchiamento (CentroUrbano centro) {
+	public void invecchiamento (CentroUrbano centro,JTextArea informazioni) {
 		for(int a = 0; a < 2; a++) {
 			for(int b = 0; b < 3; b++) {
 				for(int c = 0; c < 3; c++) {
@@ -44,6 +42,7 @@ public class SimulazioneT {
 				}
 			}
 		}
+		informazioni.append("Invecchiamento avvenuto con successo \n");
 	}
 	
 	/**
