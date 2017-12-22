@@ -21,6 +21,8 @@ public abstract class Edificabile implements Serializable{
 	}
 	public void setCeff(int nuovo) {
 		ceff = nuovo;
+		if(ceff>100) ceff=100;
+		if(ceff<0) ceff= 0;
 	}
 
 	public int getCinv() {
