@@ -177,9 +177,9 @@ public class PannelloSelezione extends JPanel{
 		Ord.sceltaOrd();
 		for(int i=0;i < Select.getCount();i++) {
 			if(Select.getCount() != 0) {
-				textArea.append("Lotto :"+i+"\t");
-				textArea.append("Coeff Efficienza :"+Select.lista[i].getCeff()+"\t");
-				textArea.append("Coeff Invecchiamento :"+Select.lista[i].getCinv()+"\t");
+				textArea.append(""+Select.settLott.get(i)+"\n");
+				textArea.append("Coeff Efficienza :"+Select.lista[i].getCeff()+"\n");
+				textArea.append("Coeff Invecchiamento :"+Select.lista[i].getCinv()+"\n");
 				
 				if (Select.getScelta() == 2 && Select.lista[i].getTip() == 3)
 					textArea.append("Valore"+Select.lista[i].getValore()+"\t");
