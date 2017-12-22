@@ -24,7 +24,7 @@ public class Simulazione {
 	 * RICEVE: @param CentroUrbano e ne modifica il coefficiente di efficienza di ogni lotto in ogni settore 
 	 * moltiplicandolo per il suo coefficiente di invecchiamento /100
 	 * */
-	public void invecchiamento (CentroUrbano centro) {
+	public void invecchiamento (CentroUrbano centro,JTextArea informazioni) {
 		for(int a = 0; a < 2; a++) {
 			for(int b = 0; b < 3; b++) {
 				for(int c = 0; c < 3; c++) {
@@ -42,6 +42,7 @@ public class Simulazione {
 				}
 			}
 		}
+		informazioni.append("Invecchiamento avvenuto con successo \n");
 	}
 	
 	/**

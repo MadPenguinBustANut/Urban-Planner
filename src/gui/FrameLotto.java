@@ -51,6 +51,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	public FrameLotto() {
+
 	}
 
 	public void createTesti() {
