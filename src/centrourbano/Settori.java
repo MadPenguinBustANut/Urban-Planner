@@ -340,6 +340,12 @@ public class Settori implements Serializable{
 		valore = value;
 	}
 
+	/**
+	 * Abbassa il coefficiente di efficienza di un terzo del valore passato
+	 * @param valore Il valore passato
+	 * @param X
+	 * @param Y
+	 */
 	public void subCeff(int valore, int X, int Y) {
 		lista[(int) X][(int) Y].setCeff(lista[(int) X][(int) Y].getCeff() - valore/3);
 	}

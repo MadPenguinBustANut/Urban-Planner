@@ -9,7 +9,8 @@ import centrourbano.Lotti;
 import edifici.EPubblico;
 /**
  * In questa classe si simulano l'invecchiamento del Centro Urbano e la gestione di un disastro. 
- * L'invecchiamento fa diminuire il coefficiente di efficienza. In caso di secondo invecchiamento di un edificio pubblico, questo viene distrutto.
+ * L'invecchiamento fa diminuire il coefficiente di efficienza. In caso di secondo invecchiamento di un edificio pubblico, questo viene distrutto
+ * se è avviata la demolizione
  * Il disastro viene generato in un lotto determinato casualmente. Esso apporta una modifica sostanziosa (un numero casuale da 1 a 100) 
  * del coefficiente di efficienza del lotto colpito dal disastro e una modifica ridotta (quel numero casuale /3), a tutti settori circostanti. 
  * 
@@ -30,7 +31,7 @@ public class Simulazione {
 				for(int c = 0; c < 3; c++) {
 					for(int d = 0; d< 5; d++) {
 						Lotti k = centro.lista[a][b].lista[c][d];
-						k.setCeff(k.getCeff()-(k.getCeff()*k.getCinv())/100);
+						k.setCeff(k.getCeff()-(k.getCeff()*k.getCinv())/100); //Esce un valore compreso fra 1 e 10
 						if(k.getTip() == 2) {
 							EPubblico u = (EPubblico) k.edificio;
 							System.out.println("Stato="+u.getStato());
@@ -64,7 +65,9 @@ public class Simulazione {
 		centro.lista[settX][settY].lista[LX][LY].setCeff(centro.lista[settX][settY].lista[LX][LY].getCeff()-d1);
 		informazioni.append("Il disastro e' avvenuto nel settore " + settY + " " + settX + " al lotto " +LX + " " + LY  + "\n");
 		
-
+		//Questo è per diminuire i dintorni del luogo del disastro
+			//Calcolo prima i casi limite
+		
 		if(LX==MAX_X && LY < MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X)
 				centro.lista[(int) (settX + 1)][(int) settY].subCeff(d1,0, LY);
@@ -124,6 +127,27 @@ public class Simulazione {
 				centro.lista[(int) (settX -1)][(int) (settY + 1)].subCeff(d1,MAX_X, 0);
 
 		}
+		
+		//Casi interni al settore
+		
+		if((LY - 1) > -1)
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1, LX,LY - 1);
+		if((LY + 1) < MAX_Y )
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX,LY + 1);
+		if((LX - 1) > -1) {
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY);
+			if((LY-1) > -1)
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY - 1);
+			if((LY + 1) < MAX_Y)
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY + 1);
+		}
+		if((LX + 1) < MAX_X) {
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX + 1,LY);
+			if((LY-1) > -1)
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX + 1,LY -1);
+			if((LY+1) < MAX_Y)
+			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX +1,LY +1);
+			}
 	
 	}
 	
