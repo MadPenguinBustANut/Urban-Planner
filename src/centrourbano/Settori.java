@@ -5,7 +5,7 @@ import edifici.EPubblico;
 
 import eccezioni.LottoLibero;
 import edifici.Edificabile;
-
+import eccezioni.NotPrivException;
 
 public class Settori implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -27,8 +27,10 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano che edificio vendere
 	 * @return	Ritorna il prezzo di vendita dell'edificio
 	 */
-	public int vendiEdificio(int X, int Y) {
+	public int vendiEdificio(int X, int Y) throws NotPrivException{
 		Lotti vend = getLotto(X, Y);
+		if(vend.getTip() !=3)
+			throw new NotPrivException();
 		int tot = (vend.getValore() + this.getValore()) * vend.getCeff();
 		rmLotto(X, Y);
 		return tot;
