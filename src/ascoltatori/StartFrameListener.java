@@ -46,7 +46,7 @@ public class StartFrameListener implements ActionListener{
 		else if(t.getText().equalsIgnoreCase("Esci")) {
 			rifer.setEnabled(false);
 			JFrame temp= new JFrame("Chiusura");
-			temp.add(new JLabel("Made by Alessandro Zolfanelli, Tiziana Correale, Stefano Nicodemo, Vito Carmine Lanaro e Giuseppe Madonna."));
+			temp.add(new JLabel("In uscita."));
 			temp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			temp.setSize(700,110);
 			temp.setResizable(false);
