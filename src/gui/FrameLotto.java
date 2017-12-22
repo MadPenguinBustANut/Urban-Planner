@@ -151,7 +151,7 @@ public class FrameLotto extends JFrame {
 		
 		try {
 	
-		centroUrbano.lista[SettY][SettX].vendiEdificio(LX, LY);
+		centroUrbano.lista[SettY][SettX].vendiEdificio(LY, LX);
 		vendiButton.setEnabled(false);
 		removeButton.setEnabled(false);
 		success.setText("Vendita effettuata");
