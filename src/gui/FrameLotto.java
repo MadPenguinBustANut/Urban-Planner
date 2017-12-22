@@ -71,6 +71,7 @@ public class FrameLotto extends JFrame {
 		radio2 = new JRadioButton("Pubblico");
 		radio3 = new JRadioButton("Privato");
 		okButton = new JButton("Costruire");
+		vendiButton = new JButton("Vendi");
 
 		removeButton = new JButton("Demolisci");
 		if (lotto.getTip()==0) removeButton.setEnabled(false);
@@ -93,6 +94,13 @@ public class FrameLotto extends JFrame {
 			 
 			}
 		}
+		class VendiListener implements ActionListener{
+			public void actionPerformed(ActionEvent e) {
+				vendita();
+			}
+		}
+		ActionListener vendi= new VendiListener();
+		vendiButton.addActionListener(vendi);
 		ActionListener remover = new RemoveButton();
 		removeButton.addActionListener(remover);
 
@@ -119,6 +127,7 @@ public class FrameLotto extends JFrame {
 		dx.add(radio3);
 		sx.add(p2);
 		dx.add(okButton);
+		dx.add(vendiButton);
 		sx.add(s3);
 		dx.add(success);
 		sx.add(p3);
@@ -127,7 +136,16 @@ public class FrameLotto extends JFrame {
 		panel.setVisible(true);
 		add(panel);
 	}
-
+//vendi edificabile privato
+	public void vendita() {
+		vendiButton.setEnabled(false);
+		removeButton.setEnabled(false);
+		try {
+		centroUrbano.lista[SettY][SettX].vendiEdificio(LX, LY);
+		}
+		catch{
+		success.setText("Vendita effettuata");
+	}
 	/**
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
@@ -196,7 +214,7 @@ public class FrameLotto extends JFrame {
 	private CentroUrbano centroUrbano;
 	private JLabel s1, s2, s3,success;
 	private JTextArea p1, p2, p3;
-	private JButton okButton, removeButton;
+	private JButton okButton, removeButton, vendiButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO = 10;
 }
