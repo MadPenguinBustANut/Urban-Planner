@@ -35,6 +35,12 @@ public class StartFrameListener implements ActionListener{
 		}
 		else if(t.getText().equalsIgnoreCase("Nuovo")) {
 			nuovo(new CentroUrbano());
+			JFrame temp= new JFrame("Avviso");
+			temp.add(new JLabel("Simulazione riavviata."));
+			temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			temp.setSize(500,110);
+			temp.setVisible(true);
+			temp.setResizable(false);
 			
 		}
 		else if(t.getText().equalsIgnoreCase("Esci")) {
@@ -76,7 +82,14 @@ public class StartFrameListener implements ActionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		finally {
+			JFrame temp= new JFrame("Avviso");
+			temp.add(new JLabel("File caricato."));
+			temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			temp.setSize(500,110);
+			temp.setVisible(true);
+			temp.setResizable(false);
+		}
 		
 	}
 	
@@ -84,12 +97,7 @@ public class StartFrameListener implements ActionListener{
 		rifer.setVisible(false);
 		StartFrame io = new StartFrame(c);
 		io.setLocation(rifer.getX(), rifer.getY());
-		JFrame temp= new JFrame("Avviso");
-		temp.add(new JLabel("Simulazione riavviata."));
-		temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		temp.setSize(500,110);
-		temp.setVisible(true);
-		temp.setResizable(false);
+		
 		rifer.dispose();
 		
 	}
