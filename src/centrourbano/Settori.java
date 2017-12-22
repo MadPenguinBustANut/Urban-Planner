@@ -306,7 +306,6 @@ public class Settori implements Serializable{
 	 * @param Y Coordinata Y, che insieme alla X indicano in che posizione si trova il lotto a cui aumentare il valore
 	 */
 	public void addOne(int X,int Y) {
-		System.out.println("X="+X+" Y="+Y);
 		if(lista[(int) X][(int) Y].getTip()==EPRIV)
 			lista[(int) X][(int) Y].setValore(lista[(int) X][(int) Y].getValore() + 1);
 	}

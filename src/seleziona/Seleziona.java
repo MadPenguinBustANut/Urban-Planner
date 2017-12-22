@@ -52,7 +52,6 @@ public class Seleziona implements Serializable{
 							
 							//Testing se viene effettuato il select su tutte i lotti
 
-							x++;
 							System.out.println(centro.lista[l][k].getLotto(i, y).getCeff()+"\n");
 						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
 							lista[count]=centro.lista[l][k].lista[i][y];
@@ -123,7 +122,6 @@ public class Seleziona implements Serializable{
     private int scelta;
     private int count=0;
     
-    private int x=0;
     private static final int MAX_X = 3;
 	private static final int MAX_Y = 5;
     private final static int DIM_LIST=90;

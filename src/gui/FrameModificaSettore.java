@@ -3,13 +3,7 @@ package gui;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.EtchedBorder;
-import javax.swing.border.TitledBorder;
-
 import centrourbano.Settori;
 
 public class FrameModificaSettore extends JFrame {

@@ -127,15 +127,13 @@ private class mouseEvent implements MouseInputListener{
 		if(inizio) {
 			inizio = false;
 			primoX= e.getX()/(L*Z);		
-			primoY= e.getY()/(L*Z);		
-			System.out.println("PRIMO CLICK" + primoX + primoY);
+			primoY= e.getY()/(L*Z);
 		}
 		else {
 			inizio = true;
 			secondoX= e.getX()/(L*Z);	
 			secondoY= e.getY()/(L*Z);	
 			costruisciPercorso();
-			System.out.println("SECONDO CLICK" + secondoX + secondoY);
 		}
 	
 	}
@@ -184,35 +182,30 @@ private class mouseEvent implements MouseInputListener{
 	
 	private void costruisciPercorso() { 
 		if (primoX == secondoX) {
-			System.out.println("Stessa colonna");
 			int diff = primoY - secondoY;
 			if(diff < 0) {
-				System.out.println("ci muoviamo verso il basso");
 				if (checkY(primoY, -diff)) {
 					costruisciY(primoY, -diff);
 					return;}
 				}
 			if(diff > 0) {
-				System.out.println("Ci muoviamo verso l'alto");
-				if (checkY(secondoY,diff - diff *2)) {
-					costruisciY(secondoY,diff);
+				if (checkY(secondoY, diff)) {
+					costruisciY(secondoY, diff);
 					return;}
 			}
 		}
 		
 		else if (primoY == secondoY) {
 				int diff = primoX - secondoX;
-				if(diff < 0) {
-					System.out.println("Ci muoviamo verso destra");
+				if(diff < 0) {							//Destra
 					if (checkX(primoX, -diff)) {
-						costruisciX(primoX,diff - diff*2);
+						costruisciX(primoX, secondoX);
 						return;
 						}
 					}
-				if(diff > 0) {
-					System.out.println("Ci muoviamo verso sinistra");
-					if (checkX(secondoX,diff)) {
-						costruisciX(secondoX,diff);
+				if(diff > 0) {							//Sinistra
+					if (checkX(secondoX, diff)) {
+						costruisciX(secondoX, primoX);
 						return;
 						}
 					}
@@ -221,7 +214,7 @@ private class mouseEvent implements MouseInputListener{
 		JFrame FrameEcc = new JFrame ();
 		JLabel scritta = new JLabel ("Seleziona un percorso ortonale e senza lotti");
 		FrameEcc.add(scritta);
-		FrameEcc.setSize(300, 60);
+		FrameEcc.setSize(350, 60);
 		FrameEcc.setVisible(true);
 		return;
 	}
@@ -236,7 +229,7 @@ private class mouseEvent implements MouseInputListener{
 	 */
 	private boolean checkY(int valoreIniziale, int diff) {
 		for(int i = valoreIniziale; i <= diff ; i++) {
-			if(rifer.lista[primoY][i].getTip() != 0)
+			if(rifer.lista[i][primoX].getTip() != 0)
 				return false;
 		}
 		return true;
@@ -263,7 +256,8 @@ private class mouseEvent implements MouseInputListener{
 	 * @param diff La differenza di caselle , indica quando si deve fermare
 	 */
 	private void costruisciY(int valoreIniziale, int diff) {
-		for(int i=valoreIniziale; i <= diff; i++) {
+		if(valoreIniziale == 1 && diff == 1) diff = 2;
+		for(int i= valoreIniziale; i <= diff; i++) {
 			centro.addStrada(NSettore.x, NSettore.y, i, primoX);
 		}
 		this.repaint();
@@ -277,6 +271,7 @@ private class mouseEvent implements MouseInputListener{
 	
 	private void costruisciX(int valoreIniziale,int diff) {
 		for(int i=valoreIniziale;i<=diff;i++) {
+			System.out.println("Costruisco su "+i+" Val ="+valoreIniziale+" diff="+diff);
 			centro.addStrada(NSettore.x, NSettore.y, primoY, i);
 		}
 		this.repaint();

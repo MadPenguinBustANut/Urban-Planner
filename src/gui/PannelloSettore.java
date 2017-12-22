@@ -7,18 +7,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 public class PannelloSettore extends JPanel {
 	private static final long serialVersionUID = 1L;
-
-	private int x = 30;
-	private int y = 60;
 
 	private int weight = 300;
 	private int height = 100;
@@ -40,7 +35,7 @@ public class PannelloSettore extends JPanel {
 	}
 	
 	/**
-	 * Disegna sei rettangoli rappresentanti i sei settori che è possibile selezionare
+	 * Disegna sei rettangoli rappresentanti i sei settori che ï¿½ possibile selezionare
 	 * */
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
