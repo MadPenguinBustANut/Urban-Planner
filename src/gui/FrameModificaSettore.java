@@ -1,3 +1,10 @@
+/*
+ * 
+ * QUESTA CLASSE NON SERVE PIU
+ * LA LASCIAMO COME BACKUP
+ * 
+ * 
+ * 
 package gui;
 
 import java.awt.Graphics;
@@ -92,4 +99,4 @@ public class FrameModificaSettore extends JFrame {
 		}
 
 		
-}
+} */
