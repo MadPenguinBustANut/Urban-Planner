@@ -74,11 +74,17 @@ public class FrameLotto extends JFrame {
 		radio3 = new JRadioButton("Privato");
 		okButton = new JButton("Costruire");
 		vendiButton = new JButton("Vendi");
+		restauroButton= new JButton("Restaura");
 
 		removeButton = new JButton("Demolisci");
 		if (lotto.getTip()==0) removeButton.setEnabled(false);
 
-		
+		class RestauraButtoner implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				restaura();
+				getInfo();
+			}
+		}
 		class OkButtoner implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				// costruisci
@@ -87,8 +93,6 @@ public class FrameLotto extends JFrame {
 				
 			}
 		}
-		ActionListener listenerOk = new OkButtoner();
-		okButton.addActionListener(listenerOk);
 
 		class RemoveButton implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
@@ -105,7 +109,10 @@ public class FrameLotto extends JFrame {
 		vendiButton.addActionListener(vendi);
 		ActionListener remover = new RemoveButton();
 		removeButton.addActionListener(remover);
-
+		ActionListener listenerOk = new OkButtoner();
+		okButton.addActionListener(listenerOk);
+		ActionListener restaura= new RestauraButtoner();
+		restauroButton.addActionListener(restaura);
 	}
 
 	public void createPanel() {
@@ -130,6 +137,7 @@ public class FrameLotto extends JFrame {
 		sx.add(p2);
 		dx.add(okButton);
 		dx.add(vendiButton);
+		dx.add(restauroButton);
 		sx.add(s3);
 		dx.add(success);
 		sx.add(p3);
@@ -161,6 +169,12 @@ public class FrameLotto extends JFrame {
 	/**
 	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
 	 */
+	public void restaura() {
+		if(lotto.getCeff()==100) restauroButton.setEnabled(false);
+		int temp=lotto.getCeff();
+		lotto.setCeff(temp+10);
+		success.setText("Restauro effettuato");
+	}
 	public void rimozione() {
 		removeButton.setEnabled(false);
 		
@@ -226,7 +240,7 @@ public class FrameLotto extends JFrame {
 	private CentroUrbano centroUrbano;
 	private JLabel s1, s2, s3,success;
 	private JTextArea p1, p2, p3;
-	private JButton okButton, removeButton, vendiButton;
+	private JButton okButton, removeButton, vendiButton, restauroButton;
 	private JRadioButton radio1, radio2, radio3;
 	final int TEXTLARGO = 10;
 }
