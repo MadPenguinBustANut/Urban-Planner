@@ -94,7 +94,7 @@ public class FrameModifica extends JFrame{
 				else if(rif.getText().equalsIgnoreCase("modifica settore")) {
 					Point newP = new Point(settY, settX);
 					JFrame nuovoFrame = new JFrame ();
-					PannelloVModifica VMod = new PannelloVModifica(rifer.lista[settX][settY], rifer, newP);
+					PannelloLotto VMod = new PannelloLotto(rifer.lista[settX][settY], rifer, newP);
 					
 					
 					

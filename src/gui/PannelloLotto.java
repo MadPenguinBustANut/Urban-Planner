@@ -15,7 +15,7 @@ import javax.swing.event.MouseInputListener;
 import centrourbano.CentroUrbano;
 import centrourbano.Settori;
 
-public class PannelloVModifica extends JPanel {
+public class PannelloLotto extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	
@@ -26,7 +26,7 @@ public class PannelloVModifica extends JPanel {
 	CentroUrbano centro;
 	Point coordinate;
 	
-	public PannelloVModifica(Settori e, CentroUrbano t, Point a) {
+	public PannelloLotto(Settori e, CentroUrbano t, Point a) {
 		rifer = e;
 		centro = t;
 		addMouseListener(new VisualListener(this));
@@ -117,12 +117,12 @@ public class PannelloVModifica extends JPanel {
 	
 	private class VisualListener implements MouseInputListener{
 		
-		PannelloVModifica rifer;
+		PannelloLotto rifer;
 
 		FrameLotto io = new FrameLotto();
 		
 		
-		public VisualListener(PannelloVModifica e) {
+		public VisualListener(PannelloLotto e) {
 			rifer = e;
 			io.setVisible(false);
 		}
