@@ -47,7 +47,7 @@ public class PannelloSettore extends JPanel {
 			for (int i = 0; i < 2; i++) {
 				g2.drawRect(20+(weight*j), 20+(height*i), weight, height);
 				if(arrayB[i][j] == true) {
-					g2.setColor(Color.YELLOW);
+					g2.setColor(Color.BLUE);
 					g2.fillRect(21+(weight*j), 21+(height*i), weight-2, height-2);
 					g2.setColor(Color.BLACK);
 			}

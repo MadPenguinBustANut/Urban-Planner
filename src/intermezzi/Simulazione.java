@@ -43,7 +43,7 @@ public class Simulazione {
 				}
 			}
 		}
-		informazioni.append("Invecchiamento avvenuto con successo \n");
+		informazioni.append("Hai fatto scorrere del tempo. \n");
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class Simulazione {
 		
 		//seleziono il lotto casuale usando i numeri generati prima
 		centro.lista[settX][settY].lista[LX][LY].setCeff(centro.lista[settX][settY].lista[LX][LY].getCeff()-d1);
-		informazioni.append("Il disastro e' avvenuto nel settore " + settY + " " + settX + " al lotto " +LX + " " + LY  + "\n");
+		informazioni.append("Un disastro e' avvenuto nel settore " + settY + " " + settX + " al lotto " +LX + " " + LY  + " e dintorni \n");
 		
 		//Questo è per diminuire i dintorni del luogo del disastro
 			//Calcolo prima i casi limite

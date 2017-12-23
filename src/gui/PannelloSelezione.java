@@ -94,7 +94,7 @@ public class PannelloSelezione extends JPanel{
 	    
 	    //Bottone per effettuare la selezione
 	    
-	    calButton=new JButton("Effettua Selezione");
+	    calButton=new JButton("Mostra Lotti");
 	    calButton.addActionListener(listener);
 	    
 	    //Area di Testo per la visualizzazione del risultato della selezione
