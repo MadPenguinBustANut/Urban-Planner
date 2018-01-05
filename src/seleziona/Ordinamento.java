@@ -1,9 +1,9 @@
 package seleziona;
 
 import java.io.*;
-
-
-import centrourbano.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Ordinamento implements Serializable{
 
@@ -14,26 +14,32 @@ public class Ordinamento implements Serializable{
 	public Ordinamento(int f, Seleziona sel) {
 		flag=f;
 		select=sel;
+		selez=new ArrayList<>(Arrays.asList(select));
+
 	}
 	
 	/**Il metodo sceltaOrd seleziona in base a quale valore effettuare l'ordinamento*/
 	
 	public void sceltaOrd() {
-		
 		switch(select.getScelta()) {
-		case 0: coeffEff();
+		case 0:
+			Collections.sort(selez, new EfficComparator());
+		
 		        break;
-		case 1: coeffInv();
+		case 1: Collections.sort(selez, new InvComparator());
 		        break;
-		case 2: val();
+		case 2: Collections.sort(selez, new ValComparator());
 		        break;
 		} 
 		
 	}
 	
+
+
+	//
 	/**Il metodo coeffEff effettua il bubleSort della lista in base al coeff. di Efficienza*/
 	
-	private void coeffEff() {
+	/*private void coeffEff() {
 		for(int i=0;i<select.getCount();i++) {
 			boolean f=false;
 			for(int j=0;j<select.getCount()-1;j++) {
@@ -66,7 +72,7 @@ public class Ordinamento implements Serializable{
 		
 	}
 	
-	/**Il metodo coeffInv effettua il bubleSort della lista in base al coeff. di Invecchiamento*/
+	Il metodo coeffInv effettua il bubleSort della lista in base al coeff. di Invecchiamento.E' stato scartato e sto provando array.sort
 	
 	private void coeffInv() {
 		for(int i=0;i<select.getCount();i++) {
@@ -99,9 +105,9 @@ public class Ordinamento implements Serializable{
 		}
 		
 	}
+	Il metodo coeffInv effettua il bubleSort della lista in base al coeff. di Invecchiamento.E' stato scartato e sto provando array.sort
 	
-	
-	/**Il metodo val effettua il bubbleSort della lista in base al Valore*/
+	Il metodo val effettua il bubbleSort della lista in base al Valore
 	
 	private void val() {
 		for(int i=0;i<select.getCount();i++) {
@@ -135,12 +141,15 @@ public class Ordinamento implements Serializable{
 		}
 		
 	}
-	
-	
+*/
 	
 	
 	
 	private int flag;
+	private ArrayList selez;
 	private Seleziona select;
+	
+
+
 	
 }
