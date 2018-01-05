@@ -13,22 +13,22 @@ public class Ordinamento implements Serializable{
 	
 	public Ordinamento(int f, Seleziona sel) {
 		flag=f;
-		select=sel;
-		selez=new ArrayList<>(Arrays.asList(select));
+		selez=sel;
+		select=new ArrayList<>(Arrays.asList(select));
 
 	}
 	
 	/**Il metodo sceltaOrd seleziona in base a quale valore effettuare l'ordinamento*/
 	
 	public void sceltaOrd() {
-		switch(select.getScelta()) {
+		switch(selez.getScelta()) {
 		case 0:
-			Collections.sort(selez, new EfficComparator());
+			Collections.sort(select, new EfficComparator());
 		
 		        break;
-		case 1: Collections.sort(selez, new InvComparator());
+		case 1: Collections.sort(select, new InvComparator());
 		        break;
-		case 2: Collections.sort(selez, new ValComparator());
+		case 2: Collections.sort(select, new ValComparator());
 		        break;
 		} 
 		
@@ -146,8 +146,8 @@ public class Ordinamento implements Serializable{
 	
 	
 	private int flag;
-	private ArrayList selez;
-	private Seleziona select;
+	private ArrayList select;
+	private Seleziona selez ;
 	
 
 
