@@ -9,14 +9,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import centrourbano.CentroUrbano;
 import gui.StartFrame;
 
-public class StartFrameListener implements ActionListener{
+public class StartFrameListener implements ActionListener,Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3796252926992624304L;
 	StartFrame rifer;
 	File file = new File("Salvataggio.sav");
 	
