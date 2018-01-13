@@ -8,7 +8,13 @@ import edifici.Edificabile;
 import eccezioni.NotPrivException;
 
 public class Settori implements Serializable{
-	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 662167796821612495L;
+
+
 
 	public Settori() {
 		setValore(0);

@@ -4,7 +4,13 @@ import java.io.Serializable;
 import edifici.*;
 
 public class Lotti implements Serializable{
-	private static final long serialVersionUID = 1L;
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3846108721713100131L;
+
 
 	public Lotti() {
 		edificio = VUOTO;
