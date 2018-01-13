@@ -7,7 +7,7 @@ import edifici.Strada;
 public class CentroUrbano implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	// Calcolare Numero di settori, lotti, lotti liberi, strade, lotti privati
+	// Restituisce il Numero di settori, lotti, lotti liberi, strade, lotti privati e crea\rimuove una strada
 	
 	public CentroUrbano() {
 		lista = new Settori[2][3];

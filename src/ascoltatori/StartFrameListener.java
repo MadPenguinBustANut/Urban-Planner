@@ -28,6 +28,12 @@ public class StartFrameListener implements ActionListener{
 		JMenuItem t = (JMenuItem) e.getSource();
 		if(t.getText().equalsIgnoreCase("Salva")) {
 			salva();
+			JFrame temp= new JFrame("Avviso");
+			temp.add(new JLabel("Salvataggio effettuato."));
+			temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			temp.setSize(500,110);
+			temp.setVisible(true);
+			temp.setResizable(false);
 		}
 		else if(t.getText().equalsIgnoreCase("Carica")) {
 			carica();
