@@ -27,8 +27,9 @@ public class Ordinamento implements Serializable{
 	public void sceltaOrd() {
 		switch(selez.getScelta()) {
 		case 0:
-			if(flag!=0)
-			Collections.sort(select, new EfficComparator());
+			if(flag!=0) {
+				Collections.sort(select, Collections.reverseOrder(new EfficComparator()));
+			}
 			else{
 				Collections.sort(select, Collections.reverseOrder(new EfficComparator()));
 			}
@@ -36,13 +37,13 @@ public class Ordinamento implements Serializable{
 		        break;
 		       
 		case 1: 
-			if(flag!=0)Collections.sort(select, new InvComparator());
+			if(flag!=0)Collections.sort(select, Collections.reverseOrder(new InvComparator()));
 			else{
 				Collections.sort(select, Collections.reverseOrder(new InvComparator()));
 			}
 		        break;
 		case 2: 
-			if(flag!=0)Collections.sort(select, new ValComparator());
+			if(flag!=0)Collections.sort(select, Collections.reverseOrder(new ValComparator()));
 			else{
 				Collections.sort(select, Collections.reverseOrder(new ValComparator()));
 			}
