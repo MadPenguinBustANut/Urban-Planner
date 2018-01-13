@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import centrourbano.*;
 import seleziona.*;
@@ -175,14 +176,15 @@ public class PannelloSelezione extends JPanel{
 		}
 		Ord= new Ordinamento(flag,Select);
 		Ord.sceltaOrd();
-		for(int i=0;i < Select.getCount();i++) {
-			if(Select.getCount() != 0) {
-				textArea.append(""+Select.settLott.get(i)+"\n");
-				textArea.append("Coeff Efficienza :"+Select.lista[i].getCeff()+"\n");
-				textArea.append("Coeff Invecchiamento :"+Select.lista[i].getCinv()+"\n");
+		ArrayList<String> temp= Select.getInfo();
+		for(int i=0;i < Ord.getSelect().size() && i<temp.size();i++) {
+			if(Ord.getSelect().size() != 0) {
+				textArea.append(temp.get(i)+"\n");
+				textArea.append("Coeff Efficienza :"+Ord.getSelect().get(i).getCeff()+"\n");
+				textArea.append("Coeff Invecchiamento :"+Ord.getSelect().get(i).getCinv()+"\n");
 				
-				if (Select.getScelta() == 2 && Select.lista[i].getTip() == 3)
-					textArea.append("Valore"+Select.lista[i].getValore()+"\t");
+				if (Select.getScelta() == 2 && Ord.getSelect().get(i).getTip() == 3)
+					textArea.append("Valore "+Ord.getSelect().get(i).getValore()+"\t");
 	                textArea.append("\n");
 			}
 		}

@@ -114,6 +114,12 @@ public class Seleziona implements Serializable{
 		return scelta;
 	}
 	
+	public Lotti[] getLista() {
+		return lista;
+	}
+	public ArrayList<String> getInfo(){
+		return settLott;
+	}
 
     private CentroUrbano centro;
     private double max;
@@ -122,7 +128,7 @@ public class Seleziona implements Serializable{
     private int count=0;
     
     //Array di Stringhe contenenti il numero di settore e di lotto dei lotti memorizzati
-    public ArrayList<String> settLott;
+    private ArrayList<String> settLott;
     
 
     private static final int MAX_X = 3;
@@ -130,5 +136,5 @@ public class Seleziona implements Serializable{
     private final static int DIM_LIST=90;
     
     
-    public Lotti lista[];
+    private Lotti lista[];
 }

@@ -30,6 +30,7 @@ public class Lotti implements Serializable{
 	 */
 	
 	public int getValore() {
+		if(this.getTip()!=3) return 0;
 		return ((EPrivato) edificio).getValore();
 	}
 
