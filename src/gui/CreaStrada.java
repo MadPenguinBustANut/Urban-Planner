@@ -16,18 +16,17 @@ import centrourbano.CentroUrbano;
 import centrourbano.Settori;
 
 	public class CreaStrada extends JPanel {
-	private static final long serialVersionUID = 1L;
-	boolean inizio = true;
-	Point NSettore;
-	int primoX,primoY;
-	int secondoX,secondoY;
-	int PX = 3;
-	int PY = 3;
-	int L = 10;
-	Settori rifer;
-	CentroUrbano centro;
-	Point coordinate;
-	public int Z = 5;
+	
+	
+	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
+		NSettore = numsettore;
+		rifer = ilsettore;
+		centro= uncentro;
+		addMouseListener(new mouseEvent());
+		ActionListener listener = new MioRicevitore();
+		Timer timer = new Timer(1000, listener);
+		timer.start();
+	}
 	
 	public void paintComponent(Graphics g) {
 		Graphics2D u = (Graphics2D) g;
@@ -106,15 +105,7 @@ import centrourbano.Settori;
 	}
 	
 	
-	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
-		NSettore = numsettore;
-		rifer = ilsettore;
-		centro= uncentro;
-		addMouseListener(new mouseEvent());
-		ActionListener listener = new MioRicevitore();
-		Timer timer = new Timer(1000, listener);
-		timer.start();
-	}
+	
 	
 	
 	/**
@@ -210,12 +201,17 @@ private class mouseEvent implements MouseInputListener{
 						}
 					}
 				}
-			
-		JFrame FrameEcc = new JFrame ();
+		if(!flag) {
+		JFrame FrameEcc = new JFrame ("Errore");
 		JLabel scritta = new JLabel ("Seleziona un percorso ortonale e senza lotti");
 		FrameEcc.add(scritta);
 		FrameEcc.setSize(350, 60);
+		FrameEcc.setResizable(false);
+		FrameEcc.setAlwaysOnTop(true);
+		
 		FrameEcc.setVisible(true);
+		flag=true;
+		}
 		return;
 	}
 	
@@ -277,5 +273,16 @@ private class mouseEvent implements MouseInputListener{
 		this.repaint();
 	}
 
-	
+	private static final long serialVersionUID = 1L;
+	private boolean inizio = true;
+	private boolean flag= false;
+	private Point NSettore;
+	private int primoX,primoY;
+	private int secondoX,secondoY;
+	private int PX = 3;
+	private int PY = 3;
+	private int L = 10;
+	private Settori rifer;
+	private CentroUrbano centro;
+	private int Z = 5;
 }
