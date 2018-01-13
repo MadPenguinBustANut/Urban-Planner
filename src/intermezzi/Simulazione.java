@@ -34,10 +34,10 @@ public class Simulazione {
 						k.setCeff(k.getCeff()-(k.getCeff()*k.getCinv())/100); //Esce un valore compreso fra 1 e 10
 						if(k.getTip() == 2) {
 							EPubblico u = (EPubblico) k.edificio;
-							System.out.println("Stato="+u.getStato()); 
+							System.out.println("Stato="+u.getStato());
 							if(u.getStato() > 1)
 								centro.lista[a][b].rmLotto(c, d);
-							else if(u.getStato() <= 1)  u.addStato();
+							else if(u.getStato() == 1)  u.addStato();
 						}
 					}
 				}
@@ -59,7 +59,7 @@ public class Simulazione {
 		int settY = random.nextInt(3);
 		int LY= random.nextInt(5);
 		int LX= random.nextInt(3);
-		int d1= random.nextInt(100); //coefficiente di efficenza puo' essere anche azzerato
+		int d1= random.nextInt(100); //coefficiente di efficenza può essere anche azzerato;
 		
 		//seleziono il lotto casuale usando i numeri generati prima
 		centro.lista[settX][settY].lista[LX][LY].setCeff(centro.lista[settX][settY].lista[LX][LY].getCeff()-d1);
