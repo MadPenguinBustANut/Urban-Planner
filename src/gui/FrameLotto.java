@@ -174,7 +174,14 @@ public class FrameLotto extends JFrame {
 	public void restaura() {
 		if(lotto.getCeff()==100) restauroButton.setEnabled(false);
 		if(lotto.getTip()==0) {
+			JFrame temporaneo= new JFrame("Errore");
+			temporaneo.add(new JLabel("Il lotto è vuoto."));
+			temporaneo.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			temporaneo.setSize(400,110);
+			temporaneo.setResizable(false);
+			temporaneo.setVisible(true);
 			throw new LottoLibero();
+			
 		}
 		int temp=lotto.getCeff();
 		lotto.setCeff(temp+10);
