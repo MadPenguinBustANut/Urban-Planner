@@ -26,8 +26,8 @@ import centrourbano.CentroUrbano;
 
 public class FrameModifica extends JFrame{
 	private static final long serialVersionUID = 1L;
-	public int settX;
-	public int settY;
+	private int settX;
+	private int settY;
 	private CentroUrbano rifer;
 	
 	public FrameModifica (CentroUrbano e) {
@@ -109,5 +109,11 @@ public class FrameModifica extends JFrame{
 				}	
 			}
 		}
-
+		
+		public void setSettX(int settX) {
+			this.settX=settX;
+		}
+		public void setSettY(int settY) {
+			this.settY=settY;
+		}
 	}

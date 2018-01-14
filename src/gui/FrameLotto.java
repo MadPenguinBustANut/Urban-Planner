@@ -15,6 +15,8 @@ import javax.swing.JTextArea;
 
 import centrourbano.CentroUrbano;
 import centrourbano.Lotti;
+import centrourbano.Settori;
+import eccezioni.LottoLibero;
 import eccezioni.NotPrivException;
 import edifici.EPrivato;
 import edifici.EPubblico;
@@ -160,7 +162,7 @@ public class FrameLotto extends JFrame {
 			JFrame temp= new JFrame("Errore");
 			temp.add(new JLabel("Il lotto non è vendibile"));
 			temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-			temp.setSize(200,110);
+			temp.setSize(400,110);
 			temp.setResizable(false);
 			temp.setVisible(true);
 		}
@@ -171,6 +173,9 @@ public class FrameLotto extends JFrame {
 	 */
 	public void restaura() {
 		if(lotto.getCeff()==100) restauroButton.setEnabled(false);
+		if(lotto.getTip()==0) {
+			throw new LottoLibero();
+		}
 		int temp=lotto.getCeff();
 		lotto.setCeff(temp+10);
 		success.setText("Restauro effettuato");

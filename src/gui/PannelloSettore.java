@@ -81,8 +81,8 @@ public class PannelloSettore extends JPanel {
 						arrayB[j][i] = false;
 					}
 				}
-				rifer.settX = settY;
-				rifer.settY = settX;
+				rifer.setSettX(settY);
+				rifer.setSettY(settX);
 				arrayB[settY][settX] = true;
 				repaint();
 				}

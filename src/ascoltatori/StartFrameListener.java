@@ -1,5 +1,6 @@
 package ascoltatori;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -11,9 +12,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+
 import centrourbano.CentroUrbano;
 import gui.StartFrame;
 
@@ -90,18 +94,31 @@ public class StartFrameListener implements ActionListener,Serializable{
 			reader = new FileInputStream(file);
 			in = new ObjectInputStream(reader);
 			nuovo((CentroUrbano)in.readObject());
-		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		finally {
 			JFrame temp= new JFrame("Avviso");
 			temp.add(new JLabel("File caricato."));
 			temp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			temp.setSize(500,110);
 			temp.setVisible(true);
 			temp.setResizable(false);
+		} catch (IOException | ClassNotFoundException e) {
+			JFrame tempFrame= new JFrame("Errore");
+			JPanel temp= new JPanel();
+			temp.add(new JLabel("Errore nel caricare. Riprovare?"),BorderLayout.NORTH);
+			JButton riprova= new JButton("Riprova");
+			riprova.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					tempFrame.dispose();
+					carica();
+				}
+			});
+			temp.add(riprova, BorderLayout.SOUTH);
+			tempFrame.add(temp);
+			tempFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			tempFrame.setSize(500,110);
+			tempFrame.setVisible(true);
+			tempFrame.setResizable(false);
 		}
+
 		
 	}
 	
