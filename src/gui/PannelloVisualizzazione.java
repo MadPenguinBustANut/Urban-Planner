@@ -45,7 +45,7 @@ public class PannelloVisualizzazione extends JPanel {
 				if(j%5 == 0) settx = j/5;
 				u.drawRect(PX+(L*j*Z), PY+(L*i*Z), L*Z, L*Z);
 				
-				switch(rifer.lista[setty][settx].lista[i%3][j%5].getTip()) {
+				switch(rifer.getLista()[setty][settx].lista[i%3][j%5].getTip()) {
 				case 1:	paintStrada(u, PX+(L*j*Z), PY+(L*i*Z), L*Z, i%3, j%5, setty, settx);
 						break;
 				case 2:	paintPub(u,PX+(L*j*Z), PY+(L*i*Z), L*Z); 
@@ -77,44 +77,44 @@ public class PannelloVisualizzazione extends JPanel {
 		//Destra
 		if( (lottY) == 4 ) {
 			if((settY) != 2) {
-				if(rifer.lista[settX][settY+1].lista[lottX][0].getTip() == 1)
+				if(rifer.getLista()[settX][settY+1].lista[lottX][0].getTip() == 1)
 					e.drawLine(x+(L/2), y+(L/2), x+L, y+(L/2));
 				}
 		}
-		else if(rifer.lista[settX][settY].lista[lottX][lottY+1].getTip() == 1)
+		else if(rifer.getLista()[settX][settY].lista[lottX][lottY+1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+L, y+(L/2));
 		
 		
 		//Basso
 		if( (lottX) == 2) {
 			if((settX) != 1) {
-				if(rifer.lista[settX+1][settY].lista[0][lottY].getTip() == 1)
+				if(rifer.getLista()[settX+1][settY].lista[0][lottY].getTip() == 1)
 					e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 				}
 		}
-		else if(rifer.lista[settX][settY].lista[lottX+1][lottY].getTip() == 1)
+		else if(rifer.getLista()[settX][settY].lista[lottX+1][lottY].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y+L);
 		
 		
 		//Sinistra
 		if( (lottY) == 0 ) {
 			if((settY) != 0) {
-				if(rifer.lista[settX][settY-1].lista[lottX][4].getTip() == 1)
+				if(rifer.getLista()[settX][settY-1].lista[lottX][4].getTip() == 1)
 					e.drawLine(x+(L/2), y+(L/2), x, y+(L/2));
 				}
 		}
-		else if(rifer.lista[settX][settY].lista[lottX][lottY-1].getTip() == 1)
+		else if(rifer.getLista()[settX][settY].lista[lottX][lottY-1].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x, y+(L/2));
 		
 		
 		//Sopra
 		if( (lottX) == 0) {
 			if((settX) != 1) {
-				if(rifer.lista[settX+1][settY].lista[2][lottY].getTip() == 1)
+				if(rifer.getLista()[settX+1][settY].lista[2][lottY].getTip() == 1)
 					e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 				}
 		}
-		else if(rifer.lista[settX][settY].lista[lottX-1][lottY].getTip() == 1)
+		else if(rifer.getLista()[settX][settY].lista[lottX-1][lottY].getTip() == 1)
 			e.drawLine(x+(L/2), y+(L/2), x+(L/2), y);
 		
 	}

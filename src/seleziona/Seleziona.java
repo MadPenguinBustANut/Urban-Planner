@@ -49,9 +49,9 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {
-						if(centro.lista[l][k].getLotto(i, y).getTip()!=0) {
-						if(centro.lista[l][k].lista[i][y].getCeff()>min && centro.lista[l][k].lista[i][y].getCeff()<max) {
-							lista[count]=centro.lista[l][k].lista[i][y];
+						if(centro.getLista()[l][k].getLotto(i, y).getTip()!=0) {
+						if(centro.getLista()[l][k].lista[i][y].getCeff()>min && centro.getLista()[l][k].lista[i][y].getCeff()<max) {
+							lista[count]=centro.getLista()[l][k].lista[i][y];
 					        settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
 							setCount();
 						}
@@ -69,9 +69,9 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++) {	
-						if(centro.lista[l][k].getLotto(i, y).getTip()!=0)
-							if(centro.lista[l][k].getLotto(i, y).getCinv()>min && centro.lista[l][k].getLotto(i, y).getCinv()<max) {
-								lista[count]=centro.lista[l][k].getLotto(i, y);
+						if(centro.getLista()[l][k].getLotto(i, y).getTip()!=0)
+							if(centro.getLista()[l][k].getLotto(i, y).getCinv()>min && centro.getLista()[l][k].getLotto(i, y).getCinv()<max) {
+								lista[count]=centro.getLista()[l][k].getLotto(i, y);
 								settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
 								setCount();
 							}
@@ -88,9 +88,9 @@ public class Seleziona implements Serializable{
 			for(int k=0;k<3;k++)	
 				for(int i=0;i<MAX_X;i++)
 					for(int y=0;y<MAX_Y;y++)
-						if(centro.lista[l][k].lista[i][y].getTip()==3 && centro.lista[l][k].getLotto(i, y).getTip()!=0)
-							if(centro.lista[l][k].getLotto(i, y).getValore()>min && centro.lista[l][k].getLotto(i, y).getValore()<max) {
-							lista[count]=centro.lista[l][k].getLotto(i, y);
+						if(centro.getLista()[l][k].lista[i][y].getTip()==3 && centro.getLista()[l][k].getLotto(i, y).getTip()!=0)
+							if(centro.getLista()[l][k].getLotto(i, y).getValore()>min && centro.getLista()[l][k].getLotto(i, y).getValore()<max) {
+							lista[count]=centro.getLista()[l][k].getLotto(i, y);
 							settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
 							setCount();
 						}

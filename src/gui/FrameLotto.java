@@ -151,7 +151,7 @@ public class FrameLotto extends JFrame {
 		
 		try {
 	
-		centroUrbano.lista[SettY][SettX].vendiEdificio(LY, LX);
+		centroUrbano.getLista()[SettY][SettX].vendiEdificio(LY, LX);
 		vendiButton.setEnabled(false);
 		removeButton.setEnabled(false);
 		success.setText("Vendita effettuata");
@@ -181,7 +181,7 @@ public class FrameLotto extends JFrame {
 		if(lotto.getTip() == 1) centroUrbano.rmStrada(SettY, SettX, LY, LX);
 		
 		else if(lotto.getTip() == 2) {
-			EPubblico x = (EPubblico) centroUrbano.lista[SettY][SettX].lista[LY][LX].edificio;
+			EPubblico x = (EPubblico) centroUrbano.getLista()[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 		
 				JFrame temp= new JFrame("Errore");
@@ -194,7 +194,7 @@ public class FrameLotto extends JFrame {
 			}
 			else x.addStato();
 		}
-		else centroUrbano.lista[SettY][SettX].rmLotto(LY, LX);
+		else centroUrbano.getLista()[SettY][SettX].rmLotto(LY, LX);
 		success.setText("Demolizione avvenuta.");
 	}
 
@@ -213,10 +213,10 @@ public class FrameLotto extends JFrame {
 		}
 		if(radio1.isSelected()) centroUrbano.addStrada(SettY, SettX, LY, LX);
 		if(radio2.isSelected()) {
-			centroUrbano.lista[SettY][SettX].addLotto(new EPubblico(), LY, LX);
+			centroUrbano.getLista()[SettY][SettX].addLotto(new EPubblico(), LY, LX);
 			success.setText("Costruzione avvenuta.");
 		}
-		if(radio3.isSelected()) { centroUrbano.lista[SettY][SettX].addLotto(new EPrivato(), LY, LX);
+		if(radio3.isSelected()) { centroUrbano.getLista()[SettY][SettX].addLotto(new EPrivato(), LY, LX);
 			success.setText("Costruzione avvenuta.");
 		}
 		

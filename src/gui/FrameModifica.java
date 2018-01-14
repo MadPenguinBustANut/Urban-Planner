@@ -84,7 +84,7 @@ public class FrameModifica extends JFrame{
 					Point newP = new Point(settX, settY);				
 					
 					JFrame nuovoFrame = new JFrame ();
-					CreaStrada nuovaS = new CreaStrada (newP, rifer.lista[settX][settY], rifer);
+					CreaStrada nuovaS = new CreaStrada (newP, rifer.getLista()[settX][settY], rifer);
 					nuovoFrame.add(nuovaS);
 					nuovoFrame.setSize(300, 200);
 					nuovoFrame.setVisible(true);
@@ -94,7 +94,7 @@ public class FrameModifica extends JFrame{
 				else if(rif.getText().equalsIgnoreCase("modifica settore")) {
 					Point newP = new Point(settY, settX);
 					JFrame nuovoFrame = new JFrame ();
-					PannelloLotto VMod = new PannelloLotto(rifer.lista[settX][settY], rifer, newP);
+					PannelloLotto VMod = new PannelloLotto(rifer.getLista()[settX][settY], rifer, newP);
 					
 					
 					

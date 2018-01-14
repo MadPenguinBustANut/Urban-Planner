@@ -23,8 +23,8 @@ public class StartFrameListener implements ActionListener,Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 3796252926992624304L;
-	StartFrame rifer;
-	File file = new File("Salvataggio.sav");
+	private StartFrame rifer;
+	private File file = new File("Salvataggio.sav");
 	
 	public StartFrameListener(StartFrame e) {
 		rifer = e;

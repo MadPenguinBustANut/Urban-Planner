@@ -30,13 +30,13 @@ public class Simulazione {
 			for(int b = 0; b < 3; b++) {
 				for(int c = 0; c < 3; c++) {
 					for(int d = 0; d< 5; d++) {
-						Lotti k = centro.lista[a][b].lista[c][d];
+						Lotti k = centro.getLista()[a][b].lista[c][d];
 						k.setCeff(k.getCeff()-(k.getCeff()*k.getCinv())/100); //Esce un valore compreso fra 1 e 10
 						if(k.getTip() == 2) {
 							EPubblico u = (EPubblico) k.edificio;
 							System.out.println("Stato="+u.getStato());
 							if(u.getStato() > 1)
-								centro.lista[a][b].rmLotto(c, d);
+								centro.getLista()[a][b].rmLotto(c, d);
 							else if(u.getStato() == 1)  u.addStato();
 						}
 					}
@@ -62,7 +62,7 @@ public class Simulazione {
 		int d1= random.nextInt(100); //coefficiente di efficenza pu√≤ essere anche azzerato;
 		
 		//seleziono il lotto casuale usando i numeri generati prima
-		centro.lista[settX][settY].lista[LX][LY].setCeff(centro.lista[settX][settY].lista[LX][LY].getCeff()-d1);
+		centro.getLista()[settX][settY].lista[LX][LY].setCeff(centro.getLista()[settX][settY].lista[LX][LY].getCeff()-d1);
 		informazioni.append("Un disastro e' avvenuto nel settore " + settY + " " + settX + " al lotto " +LX + " " + LY  + " e dintorni \n");
 		
 		//Questo Ë per diminuire i dintorni del luogo del disastro
@@ -70,29 +70,29 @@ public class Simulazione {
 		
 		if(LX==MAX_X && LY < MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X)
-				centro.lista[(int) (settX + 1)][(int) settY].subCeff(d1,0, LY);
+				centro.getLista()[(int) (settX + 1)][(int) settY].subCeff(d1,0, LY);
 		}
 		
 		if(LX < MAX_X && LY == MAX_Y) {
 			if((settY + 1) < MAX_MASTER_Y)
-				 centro.lista[settX][(settY + 1)].subCeff(d1,LX, 0);
+				 centro.getLista()[settX][(settY + 1)].subCeff(d1,LX, 0);
 		}
 		
 		if(LX==MAX_X && LY == MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X && (settY + 1) <MAX_MASTER_Y)
-				centro.lista[(int) (settX + 1)][(int) (settY + 1)].subCeff(d1,0, MAX_Y);			
+				centro.getLista()[(int) (settX + 1)][(int) (settY + 1)].subCeff(d1,0, MAX_Y);			
 	
 		}
 		
 		if(LX==MAX_X && LY == 0) {
 			if((settX + 1) < MAX_MASTER_X)
-				centro.lista[(int) (settX + 1)][(int) settY].subCeff(d1,0, LY);
+				centro.getLista()[(int) (settX + 1)][(int) settY].subCeff(d1,0, LY);
 
 			if((settY - 1) > -1)
-				centro.lista[(int) settX][(int) (settY - 1)].subCeff(d1,LX, 0);
+				centro.getLista()[(int) settX][(int) (settY - 1)].subCeff(d1,LX, 0);
 			
 			if(((settX + 1) < MAX_MASTER_X) && ((settY - 1) > -1))
-				centro.lista[(int) (settX + 1)][(int) (settY - 1)].subCeff(d1,0, 0);
+				centro.getLista()[(int) (settX + 1)][(int) (settY - 1)].subCeff(d1,0, 0);
 			
 			return;
 		}
@@ -100,53 +100,53 @@ public class Simulazione {
 		if(LX==0 && LY == MAX_Y) {
 			
 			if((settY + 1) < MAX_MASTER_Y)
-				centro.lista[(int) settX][(int) (settY + 1)].subCeff(d1,LX, 0);
+				centro.getLista()[(int) settX][(int) (settY + 1)].subCeff(d1,LX, 0);
 			
 			if((settX - 1) >-1)
-				centro.lista[(int) (settX - 1)][(int) settY].subCeff(d1,MAX_X, LY);
+				centro.getLista()[(int) (settX - 1)][(int) settY].subCeff(d1,MAX_X, LY);
 			
 			if(((settX - 1) >-1) && ((settY + 1) < MAX_MASTER_Y))
-				centro.lista[(int) (settX - 1)][(int) settY + 1].subCeff(d1,MAX_X, 0);
+				centro.getLista()[(int) (settX - 1)][(int) settY + 1].subCeff(d1,MAX_X, 0);
 			
 			return;
 		}
 		
 		if(LX==0 && LY >0) {
 			if((settX - 1) >-1)
-				centro.lista[(int) (settX - 1)][(int) settY].subCeff(d1,MAX_X, LY);
+				centro.getLista()[(int) (settX - 1)][(int) settY].subCeff(d1,MAX_X, LY);
 		}
 		
 		if(LX>0 && LY ==0) {
 			if((settY - 1) > -1)
-				centro.lista[(int) settX][(int) (settY - 1)].subCeff(d1,LX, MAX_Y);
+				centro.getLista()[(int) settX][(int) (settY - 1)].subCeff(d1,LX, MAX_Y);
 		}
 		
 		if(LX==0 && LY ==0) {
 			
 			if((settX - 1) >-1 && (settY + 1) < MAX_MASTER_Y)
-				centro.lista[(int) (settX -1)][(int) (settY + 1)].subCeff(d1,MAX_X, 0);
+				centro.getLista()[(int) (settX -1)][(int) (settY + 1)].subCeff(d1,MAX_X, 0);
 
 		}
 		
 		//Casi interni al settore
 		
 		if((LY - 1) > -1)
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1, LX,LY - 1);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1, LX,LY - 1);
 		if((LY + 1) < MAX_Y )
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX,LY + 1);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1,LX,LY + 1);
 		if((LX - 1) > -1) {
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY);
 			if((LY-1) > -1)
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY - 1);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY - 1);
 			if((LY + 1) < MAX_Y)
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY + 1);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1,LX - 1,LY + 1);
 		}
 		if((LX + 1) < MAX_X) {
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX + 1,LY);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1,LX + 1,LY);
 			if((LY-1) > -1)
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX + 1,LY -1);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1,LX + 1,LY -1);
 			if((LY+1) < MAX_Y)
-			centro.lista[(int) (settX)][(int) settY].subCeff(d1,LX +1,LY +1);
+			centro.getLista()[(int) (settX)][(int) settY].subCeff(d1,LX +1,LY +1);
 			}
 	
 	}

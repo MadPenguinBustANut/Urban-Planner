@@ -1,6 +1,7 @@
 package centrourbano;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import edifici.Strada;
 
@@ -254,9 +255,13 @@ public class CentroUrbano implements Serializable{
 				lista[(int) (settX -1)][(int) (settY + 1)].subOne(MAX_X, 0);
 
 		}
-			
+		
+		
 		
 			
+	}
+	public Settori[][] getLista(){
+		return lista;
 	}
 
 	//Ho associato delle MACRO ai limiti del settore in modo da rendere piu leggibile il codice
@@ -267,5 +272,5 @@ public class CentroUrbano implements Serializable{
 	//Ho associato delle MACRO ai limiti del centrourbano in modo da rendere piu leggibile il codice
 	private static final int MAX_MASTER_X = 2;
 	private static final int MAX_MASTER_Y = 3;
-	public Settori[][] lista;
+	private Settori[][] lista;
 }
