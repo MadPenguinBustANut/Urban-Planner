@@ -1,7 +1,6 @@
 package centrourbano;
 
 import java.io.Serializable;
-import java.util.Arrays;
 
 import edifici.Strada;
 
