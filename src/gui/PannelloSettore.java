@@ -15,7 +15,7 @@ import javax.swing.border.TitledBorder;
 public class PannelloSettore extends JPanel {
 	private static final long serialVersionUID = 1L;
 
-	private int weight = 300;
+	private int width = 300;
 	private int height = 100;
 	private int settX = 0;
 	private int settY = 0;
@@ -45,10 +45,10 @@ public class PannelloSettore extends JPanel {
 		
 		for (int j = 0; j < 3; j++) {
 			for (int i = 0; i < 2; i++) {
-				g2.drawRect(20+(weight*j), 20+(height*i), weight, height);
+				g2.drawRect(20+(width*j), 20+(height*i), width, height);
 				if(arrayB[i][j] == true) {
 					g2.setColor(Color.BLUE);
-					g2.fillRect(21+(weight*j), 21+(height*i), weight-2, height-2);
+					g2.fillRect(21+(width*j), 21+(height*i), width-2, height-2);
 					g2.setColor(Color.BLACK);
 			}
 		}	
@@ -69,8 +69,8 @@ public class PannelloSettore extends JPanel {
 			int a = e.getX();
 			int b = e.getY();
 			
-			if (a > 20 && a < 20 +(weight*3) && b > 20 && b < 20+(height*2)) {
-				settX = a/(20 + weight);
+			if (a > 20 && a < 20 +(width*3) && b > 20 && b < 20+(height*2)) {
+				settX = a/(20 + width);
 				settY = b/(20 + height);
 
 				System.out.println("X="+a+" Y="+b);	
