@@ -5,8 +5,12 @@ import java.io.Serializable;
 import edifici.Strada;
 
 public class CentroUrbano implements Serializable{
-	private static final long serialVersionUID = 1L;
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5809073122538620432L;
 	// Restituisce il Numero di settori, lotti, lotti liberi, strade, lotti privati e crea\rimuove una strada
 	
 	public CentroUrbano() {
