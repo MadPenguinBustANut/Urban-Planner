@@ -4,8 +4,13 @@ import java.io.Serializable;
 import java.util.Random;
 
 public abstract class Edificabile implements Serializable{
-	private static final long serialVersionUID = 1L;
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4469409375632492047L;
+
 	public Edificabile() {
 		 Random rnd = new Random(System.currentTimeMillis());
 		 ceff=rnd.nextInt(100);

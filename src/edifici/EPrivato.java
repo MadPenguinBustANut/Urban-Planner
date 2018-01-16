@@ -3,8 +3,13 @@ package edifici;
 import java.util.Random;
 
 public class EPrivato extends Edificabile{
-	private static final long serialVersionUID = 1L;
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4832650938675169199L;
+
 	public EPrivato() {
 		 Random rnd = new Random(System.currentTimeMillis());
 		 valore=rnd.nextInt(100);
