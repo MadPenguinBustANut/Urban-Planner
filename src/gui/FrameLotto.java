@@ -161,9 +161,7 @@ public class FrameLotto extends JFrame {
 		}
 		
 	}
-	/**
-	 * Elimina l'edificabile nel lotto attuale sostituendolo con l'edificabile VUOTO
-	 */
+	
 	public void restaura() throws LottoLibero {
 		if(lotto.getCeff()==100) restauroButton.setEnabled(false);
 		if(lotto.getTip()==0) {
