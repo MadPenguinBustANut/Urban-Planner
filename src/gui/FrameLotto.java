@@ -188,7 +188,7 @@ public class FrameLotto extends JFrame {
 			if(x.getStato() > 0) {
 		
 				JFrame temp= new JFrame("Errore");
-				temp.add(new JLabel("Rimozione gia' effettuata."));
+				temp.add(new JLabel("Rimozione gia' in corso. Verrà eliminato con lo scorrere del tempo."));
 				temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				temp.setSize(400,110);
 				temp.setResizable(false);
