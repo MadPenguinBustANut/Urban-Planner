@@ -13,8 +13,7 @@ public class Ordinamento implements Serializable{
 	
 	/**Ordinamento contiene i lotti selezionati e in che modo ordinarli(flag=0 ord normal flag=1 ord inverso)*/
 	
-	public Ordinamento(int f, Seleziona sel) {
-		flag=f;
+	public Ordinamento( Seleziona sel) {
 		selez=sel;
 		select=new ArrayList<>(Arrays.asList(selez.getLista()));
 
@@ -27,26 +26,18 @@ public class Ordinamento implements Serializable{
 	public void sceltaOrd() {
 		switch(selez.getScelta()) {
 		case 0:
-			if(flag!=0) {
+
 				Collections.sort(select, Collections.reverseOrder(new EfficComparator()));
-			}
-			else{
-				Collections.sort(select, Collections.reverseOrder(new EfficComparator()));
-			}
+			
 		
 		        break;
 		       
 		case 1: 
-			if(flag!=0)Collections.sort(select, Collections.reverseOrder(new InvComparator()));
-			else{
-				Collections.sort(select, Collections.reverseOrder(new InvComparator()));
-			}
+			Collections.sort(select, Collections.reverseOrder(new InvComparator()));
+
 		        break;
 		case 2: 
-			if(flag!=0)Collections.sort(select, Collections.reverseOrder(new ValComparator()));
-			else{
-				Collections.sort(select, Collections.reverseOrder(new ValComparator()));
-			}
+			Collections.sort(select, Collections.reverseOrder(new ValComparator()));
 		        break;
 		} 
 		
@@ -55,7 +46,6 @@ public class Ordinamento implements Serializable{
 	
 	
 	
-	private int flag;
 	private ArrayList<Lotti> select;
 	private Seleziona selez ;
 	

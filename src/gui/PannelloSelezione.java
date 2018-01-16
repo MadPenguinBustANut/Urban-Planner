@@ -46,23 +46,6 @@ public class PannelloSelezione extends JPanel{
 	    
 	    //Bottoni per la selezione del metodo di ordinamento
 	    
-	    normalOrdButton= new JRadioButton("Dal più Grande al più Piccolo");
-	    inversOrdButton= new JRadioButton("Dal più Piccolo al più Grande");
-	    normalOrdButton.setSelected(true);
-	    
-	    //Vengono inseriti in un unico group
-	    
-	    ButtonGroup groupOrd= new ButtonGroup();
-	    groupOrd.add(normalOrdButton);
-	    groupOrd.add(inversOrdButton);
-	    
-	    //Vengono inseriti nel panel
-	    
-	    panelG= new JPanel(new GridLayout(2,1));
-	    panelG.add(normalOrdButton);
-	    panelG.add(inversOrdButton);
-	    
-	    panelG.setBorder(new TitledBorder(new EtchedBorder(),"Metodi di ordinamento:"));
 	    
 	    //Aree di Testo per l'inserimento dei relativi valori
 	    //di max e min per le varie tipologie di selezione
@@ -111,7 +94,6 @@ public class PannelloSelezione extends JPanel{
 	    add(calButton,BorderLayout.NORTH);
 	    
 	    add(panel, BorderLayout.WEST);
-	    add(panelG,BorderLayout.EAST);
 	    add(panelM,BorderLayout.CENTER);
 	    
 	}
@@ -163,18 +145,10 @@ public class PannelloSelezione extends JPanel{
 	private void OrdPrintLista(Seleziona Select) {
 		
 		
-		int flag=0;
 		Ordinamento Ord;
 		textArea.setText("");
-		
-		
-		if(normalOrdButton.isSelected()) {
-			flag=0;
-		}
-		if(inversOrdButton.isSelected()) {
-			flag=1;
-		}
-		Ord= new Ordinamento(flag,Select);
+
+		Ord= new Ordinamento(Select);
 		Ord.sceltaOrd();
 		ArrayList<String> temp= Select.getInfo();
 		for(int i=0;i < Ord.getSelect().size() && i<temp.size();i++) {
@@ -201,9 +175,6 @@ public class PannelloSelezione extends JPanel{
     private JTextField minVal;
     
     private JButton calButton;
-    
-    private JRadioButton normalOrdButton;
-    private JRadioButton inversOrdButton;
     
     
     private JPanel panel;
