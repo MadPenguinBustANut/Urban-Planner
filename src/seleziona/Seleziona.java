@@ -44,16 +44,14 @@ public class Seleziona implements Serializable{
 	*/ 
 	
 	private void coeffEff() {
-		count = 0;
-		for(int l=0;l<2;l++)
-			for(int k=0;k<3;k++)
-				for(int i=0;i<MAX_X;i++)
-					for(int y=0;y<MAX_Y;y++) {
+		
+		for(int l=0;l<MAX_XSETTORE;l++)
+			for(int k=0;k<MAX_YSETTORE;k++)
+				for(int i=0;i<MAX_XLOTTO;i++)
+					for(int y=0;y<MAX_YLOTTO;y++) {
 						if(centro.getLista()[l][k].getLotto(i, y).getTip()!=0) {
 						if(centro.getLista()[l][k].lista[i][y].getCeff()>min && centro.getLista()[l][k].lista[i][y].getCeff()<max) {
-							lista[count]=centro.getLista()[l][k].lista[i][y];
-					        settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
-							setCount();
+							addLista(l,k,i,y);
 						}
 						}
 					}
@@ -64,16 +62,14 @@ public class Seleziona implements Serializable{
 	*/
 	
 	private void coeffInv() {
-		count = 0;
-		for(int l=0;l<2;l++)
-			for(int k=0;k<3;k++)
-				for(int i=0;i<MAX_X;i++)
-					for(int y=0;y<MAX_Y;y++) {	
+		
+		for(int l=0;l<MAX_XSETTORE;l++)
+			for(int k=0;k<MAX_YSETTORE;k++)
+				for(int i=0;i<MAX_XLOTTO;i++)
+					for(int y=0;y<MAX_YLOTTO;y++) {	
 						if(centro.getLista()[l][k].getLotto(i, y).getTip()!=0)
 							if(centro.getLista()[l][k].getLotto(i, y).getCinv()>min && centro.getLista()[l][k].getLotto(i, y).getCinv()<max) {
-								lista[count]=centro.getLista()[l][k].getLotto(i, y);
-								settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
-								setCount();
+								addLista(l,k,i,y);
 							}
 					}
 	}
@@ -83,16 +79,14 @@ public class Seleziona implements Serializable{
 	
 	
 	private void val() {
-		count = 0;
-		for(int l=0;l<2;l++)
-			for(int k=0;k<3;k++)	
-				for(int i=0;i<MAX_X;i++)
-					for(int y=0;y<MAX_Y;y++)
+		
+		for(int l=0;l<MAX_XSETTORE;l++)
+			for(int k=0;k<MAX_YSETTORE;k++)	
+				for(int i=0;i<MAX_XLOTTO;i++)
+					for(int y=0;y<MAX_YLOTTO;y++)
 						if(centro.getLista()[l][k].lista[i][y].getTip()==3 && centro.getLista()[l][k].getLotto(i, y).getTip()!=0)
 							if(centro.getLista()[l][k].getLotto(i, y).getValore()>min && centro.getLista()[l][k].getLotto(i, y).getValore()<max) {
-							lista[count]=centro.getLista()[l][k].getLotto(i, y);
-							settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
-							setCount();
+								addLista(l,k,i,y);
 						}
 							
 	}
@@ -114,11 +108,15 @@ public class Seleziona implements Serializable{
 		return scelta;
 	}
 	
+	//Aggiunge un lotto alla lista e la corrispettiva descrizione in settLott
+	
+	private void addLista(int l,int k,int i, int y) {
+		lista[count]=centro.getLista()[l][k].getLotto(i, y);
+		settLott.add(count, "Settore: "+l+":"+k+"\nLotto: "+i+":"+y);
+		setCount();
+	}
 	public Lotti[] getLista() {
 		return lista;
-	}
-	public ArrayList<String> getInfo(){
-		return settLott;
 	}
 
     private CentroUrbano centro;
@@ -127,14 +125,22 @@ public class Seleziona implements Serializable{
     private int scelta;
     private int count=0;
     
+    
     //Array di Stringhe contenenti il numero di settore e di lotto dei lotti memorizzati
     private ArrayList<String> settLott;
-    
-
-    private static final int MAX_X = 3;
-	private static final int MAX_Y = 5;
+    private static final int MAX_XSETTORE= 2;
+    private static final int MAX_YSETTORE= 3;
+    private static final int MAX_XLOTTO = 3;
+	private static final int MAX_YLOTTO = 5;
     private final static int DIM_LIST=90;
     
     
     private Lotti lista[];
+
+	public ArrayList<String> getInfo() {
+		return settLott;
+		
+	}
+
+	
 }

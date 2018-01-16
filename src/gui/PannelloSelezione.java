@@ -14,8 +14,13 @@ import centrourbano.*;
 import seleziona.*;
 
 public class PannelloSelezione extends JPanel{
-	private static final long serialVersionUID = 1L;
+
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2121421821060885638L;
+
 	public PannelloSelezione(CentroUrbano c) {
 		super(new BorderLayout());
 		
@@ -178,7 +183,6 @@ public class PannelloSelezione extends JPanel{
     
     
     private JPanel panel;
-    private JPanel panelG;
     private JPanel panelM;
     
     private JTextArea textArea;
