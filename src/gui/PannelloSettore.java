@@ -13,8 +13,11 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 public class PannelloSettore extends JPanel {
-	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1319424254367057678L;
 	private int width = 300;
 	private int height = 100;
 	private int settX = 0;
