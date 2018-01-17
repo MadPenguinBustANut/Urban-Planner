@@ -18,6 +18,10 @@ import centrourbano.Settori;
 	public class CreaStrada extends JPanel {
 	
 	
+	/**
+		 * 
+		 */
+		private static final long serialVersionUID = -3604749607418975087L;
 	public CreaStrada(Point numsettore,Settori ilsettore,CentroUrbano uncentro) {
 		NSettore = numsettore;
 		rifer = ilsettore;
@@ -273,7 +277,6 @@ private class mouseEvent implements MouseInputListener{
 		this.repaint();
 	}
 
-	private static final long serialVersionUID = 1L;
 	private boolean inizio = true;
 	private boolean flag= false;
 	private Point NSettore;
