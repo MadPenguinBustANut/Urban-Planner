@@ -16,8 +16,12 @@ import centrourbano.CentroUrbano;
 import centrourbano.Settori;
 
 public class PannelloLotto extends JPanel {
-	private static final long serialVersionUID = 1L;
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6256763290105091428L;
 	//in questa classe si seleizona il lotto su cui disegnare.
 	int PX = 3;
 	int PY = 3;

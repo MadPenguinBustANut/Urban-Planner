@@ -6,8 +6,13 @@ import java.util.ArrayList;
 import centrourbano.*;
 
 public class Seleziona implements Serializable{
-	private static final long serialVersionUID = 1L;
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7498197661210131047L;
+
 	/**Seleziona contiene il settore selezionato, il massimo e il minimo ammissibili nella selezione, 
 	* il tipi di selezione scelta e un array che conterra tutti i lotti scelti
 	*/

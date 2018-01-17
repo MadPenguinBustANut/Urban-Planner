@@ -12,8 +12,11 @@ import javax.swing.JTextField;
 import centrourbano.CentroUrbano;
 
 public class DatiPanel extends JPanel {
-	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6475711976777967853L;
 	CentroUrbano centro;
 	
 	

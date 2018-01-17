@@ -18,11 +18,16 @@ import intermezzi.Simulazione;
  * Il Pannello Gestione contiene una finestra informativa ed una serie di pulsanti 
  * */
 public class PannelloGestione extends JPanel {
-	private static final long serialVersionUID = 1L;
+
 		
 		
 		
 		
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1604129713682110563L;
+
 		public PannelloGestione (CentroUrbano c) {
 			super(new BorderLayout());
 			centroUrbano = c;

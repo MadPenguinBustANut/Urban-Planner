@@ -9,8 +9,12 @@ import centrourbano.Lotti;
 
 public class Ordinamento implements Serializable{
 
-	private static final long serialVersionUID = 1L;
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6750123478772739079L;
 	/**Ordinamento contiene i lotti selezionati e in che modo ordinarli(flag=0 ord normal flag=1 ord inverso)*/
 	
 	public Ordinamento( Seleziona sel) {

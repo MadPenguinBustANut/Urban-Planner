@@ -18,7 +18,14 @@ import ascoltatori.StartFrameListener;
 import centrourbano.CentroUrbano;
 
 public class StartFrame extends JFrame{
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -825081298686096534L;
+
+
+
 	public StartFrame(CentroUrbano c) {
 		super("Urban Planner");
 

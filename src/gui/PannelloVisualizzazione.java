@@ -13,9 +13,13 @@ import javax.swing.event.MouseInputListener;
 import centrourbano.CentroUrbano;
 
 public class PannelloVisualizzazione extends JPanel {
-	private static final long serialVersionUID = 1L;
+	
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1198328826969364432L;
 	int PX = 3;
 	int PY = 3;
 	int L = 10;

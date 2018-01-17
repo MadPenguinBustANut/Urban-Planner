@@ -15,8 +15,12 @@ import edifici.EPrivato;
 import edifici.EPubblico;
 
 public class FrameLotto extends JFrame {
-	private static final long serialVersionUID = 1L;
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5810793527231372492L;
 	/**
 	 * Il frame presenta sul lato sinistro dentro tre campi di testo i valori di:
 	 * -Valore lotto -Coefficente di efficienza -Coefficente di invecchiamento
@@ -187,7 +191,7 @@ public class FrameLotto extends JFrame {
 			EPubblico x = (EPubblico) centroUrbano.getLista()[SettY][SettX].lista[LY][LX].edificio;
 			if(x.getStato() > 0) {
 		
-				JFrame temp= new JFrame("Errore");
+				JFrame temp= new JFrame();
 				temp.add(new JLabel("Rimozione gia' in corso. Verrà eliminato con lo scorrere del tempo."));
 				temp.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				temp.setSize(400,110);
