@@ -117,11 +117,11 @@ public class CentroUrbano implements Serializable{
 	public void addStrada(int settX, int settY,int LX ,int LY) {
 	
 
-		lista[(int) settX][(int) settY].addLotto(new Strada(), LX, LY);
+		lista[settX][ settY].addLotto(new Strada(), LX, LY);
 		
 		if(LX==MAX_X && LY < MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X)
-				lista[(int) (settX + 1)][(int) settY].addOne(0, LY);
+				lista[ (settX + 1)][ settY].addOne(0, LY);
 		}
 		
 		if(LX < MAX_X && LY == MAX_Y) {
@@ -131,19 +131,19 @@ public class CentroUrbano implements Serializable{
 		
 		if(LX==MAX_X && LY == MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X && (settY + 1) <MAX_MASTER_Y)
-				lista[(int) (settX + 1)][(int) (settY + 1)].addOne(0, 0);			
+				lista[ (settX + 1)][ (settY + 1)].addOne(0, 0);			
 	
 		}
 		
 		if(LX==MAX_X && LY == 0) {
 			if((settX + 1) < MAX_MASTER_X)
-				lista[(int) (settX + 1)][(int) settY].addOne(0, LY);
+				lista[(settX + 1)][ settY].addOne(0, LY);
 
 			if((settY - 1) > -1)
-				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
+				lista[ settX][ (settY - 1)].addOne(LX, MAX_Y);
 			
 			if(((settX + 1) < MAX_MASTER_X) && ((settY - 1) > -1))
-				lista[(int) (settX + 1)][(int) (settY - 1)].addOne(0, MAX_Y);
+				lista[ (settX + 1)][ (settY - 1)].addOne(0, MAX_Y);
 			
 			return;
 		}
@@ -151,31 +151,31 @@ public class CentroUrbano implements Serializable{
 		if(LX==0 && LY == MAX_Y) {
 			
 			if((settY + 1) < MAX_MASTER_Y)
-				lista[(int) settX][(int) (settY + 1)].addOne(LX, 0);
+				lista[ settX][ (settY + 1)].addOne(LX, 0);
 			
 			if((settX - 1) >-1)
-				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
+				lista[ (settX - 1)][ settY].addOne(MAX_X, LY);
 			
 			if(((settX - 1) >-1) && ((settY + 1) < MAX_MASTER_Y))
-				lista[(int) (settX - 1)][(int) settY + 1].addOne(MAX_X, 0);
+				lista[ (settX - 1)][ settY + 1].addOne(MAX_X, 0);
 			
 			return;
 		}
 		
 		if(LX==0 && LY >0) {
 			if((settX - 1) >-1)
-				lista[(int) (settX - 1)][(int) settY].addOne(MAX_X, LY);
+				lista[ (settX - 1)][ settY].addOne(MAX_X, LY);
 		}
 		
 		if(LX>0 && LY ==0) {
 			if((settY - 1) > -1)
-				lista[(int) settX][(int) (settY - 1)].addOne(LX, MAX_Y);
+				lista[settX][ (settY - 1)].addOne(LX, MAX_Y);
 		}
 		
 		if(LX==0 && LY ==0) {
 			
 			if((settX - 1) >-1 && (settY + 1) < MAX_MASTER_Y)
-				lista[(int) (settX -1)][(int) (settY + 1)].addOne(MAX_X, 0);
+				lista[ (settX -1)][ (settY + 1)].addOne(MAX_X, 0);
 
 		}
 		
@@ -196,12 +196,12 @@ public class CentroUrbano implements Serializable{
 	public void rmStrada(int settX, int settY,int LX ,int LY) {
 		
 
-		lista[(int) settX][(int) settY].rmLotto(LX, LY);
+		lista[ settX][ settY].rmLotto(LX, LY);
 		
 		
 		if(LX==MAX_X && LY < MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X)
-				lista[(int) (settX + 1)][(int) settY].subOne(0, LY);
+				lista[ (settX + 1)][settY].subOne(0, LY);
 		}
 		
 		if(LX < MAX_X && LY == MAX_Y) {
@@ -211,19 +211,19 @@ public class CentroUrbano implements Serializable{
 		
 		if(LX==MAX_X && LY == MAX_Y) {
 			if((settX + 1) < MAX_MASTER_X && (settY + 1) <MAX_MASTER_Y)
-				lista[(int) (settX + 1)][(int) (settY + 1)].subOne(0, MAX_Y);			
+				lista[ (settX + 1)][ (settY + 1)].subOne(0, MAX_Y);			
 	
 		}
 		
 		if(LX==MAX_X && LY == 0) {
 			if((settX + 1) < MAX_MASTER_X)
-				lista[(int) (settX + 1)][(int) settY].subOne(0, LY);
+				lista[ (settX + 1)][ settY].subOne(0, LY);
 
 			if((settY - 1) > -1)
-				lista[(int) settX][(int) (settY - 1)].subOne(LX, 0);
+				lista[ settX][ (settY - 1)].subOne(LX, 0);
 			
 			if(((settX + 1) < MAX_MASTER_X) && ((settY - 1) < MAX_MASTER_Y))
-				lista[(int) (settX + 1)][(int) (settY - 1)].subOne(0, 0);
+				lista[ (settX + 1)][ (settY - 1)].subOne(0, 0);
 			
 			return;
 		}
@@ -231,31 +231,31 @@ public class CentroUrbano implements Serializable{
 		if(LX==0 && LY == MAX_Y) {
 			
 			if((settY + 1) < MAX_MASTER_Y)
-				lista[(int) settX][(int) (settY + 1)].subOne(LX, 0);
+				lista[ settX][ (settY + 1)].subOne(LX, 0);
 			
 			if((settX - 1) >-1)
-				lista[(int) (settX - 1)][(int) settY].subOne(MAX_X, LY);
+				lista[ (settX - 1)][ settY].subOne(MAX_X, LY);
 			
 			if(((settX - 1) >-1) && ((settY + 1) < MAX_MASTER_Y))
-				lista[(int) (settX - 1)][(int) settY + 1].subOne(MAX_X, 0);
+				lista[ (settX - 1)][ settY + 1].subOne(MAX_X, 0);
 			
 			return;
 		}
 		
 		if(LX==0 && LY >0) {
 			if((settX - 1) >-1)
-				lista[(int) (settX - 1)][(int) settY].subOne(MAX_X, LY);
+				lista[ (settX - 1)][ settY].subOne(MAX_X, LY);
 		}
 		
 		if(LX>0 && LY ==0) {
 			if((settY - 1) > -1)
-				lista[(int) settX][(int) (settY - 1)].subOne(LX, MAX_Y);
+				lista[ settX][(settY - 1)].subOne(LX, MAX_Y);
 		}
 		
 		if(LX==0 && LY ==0) {
 			
 			if((settX - 1) >-1 && (settY + 1) < MAX_MASTER_Y)
-				lista[(int) (settX -1)][(int) (settY + 1)].subOne(MAX_X, 0);
+				lista[ (settX -1)][ (settY + 1)].subOne(MAX_X, 0);
 
 		}
 		

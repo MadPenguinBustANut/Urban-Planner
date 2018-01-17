@@ -85,7 +85,11 @@ public class Lotti implements Serializable{
 	
 	
 	public static Edificabile VUOTO = new Edificabile(){
-		private static final long serialVersionUID = 1L;
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 2330168859087552320L;
 
 		public void setCeff(int nuovo) {}
 		
