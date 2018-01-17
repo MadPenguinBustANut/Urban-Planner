@@ -51,7 +51,7 @@ public class FrameLotto extends JFrame {
 	}
 
 	public FrameLotto() {
-
+		//serve per non dare eccezioni durante la chiamata a modifica di Lotti vuoti.
 	}
 
 	public void createTesti() {
